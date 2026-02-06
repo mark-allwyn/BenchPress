@@ -1,0 +1,80 @@
+# Default configuration for llm-eval
+# Copy to config.yaml and fill in your API keys
+
+models:
+  # Add models you want to test. Each entry needs:
+  #   provider: anthropic | openai | google | ollama | openai_compatible
+  #   model: the model string
+  #   api_key_env: name of env var holding your API key
+  #   params: optional generation params
+
+  claude-sonnet:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    api_key_env: ANTHROPIC_API_KEY
+    params:
+      max_tokens: 4096
+      temperature: 0
+
+  gpt-4o:
+    provider: openai
+    model: gpt-4o
+    api_key_env: OPENAI_API_KEY
+    params:
+      max_tokens: 4096
+      temperature: 0
+
+  # gemini-pro:
+  #   provider: google
+  #   model: gemini-2.0-flash
+  #   api_key_env: GOOGLE_API_KEY
+  #   params:
+  #     max_tokens: 4096
+  #     temperature: 0
+
+  # ollama-llama3:
+  #   provider: ollama
+  #   model: llama3
+  #   base_url: http://localhost:11434/v1   # default, can omit
+  #   params:
+  #     max_tokens: 4096
+  #     temperature: 0
+
+  # local-model:
+  #   provider: openai_compatible
+  #   model: your-model-name
+  #   api_key_env: LOCAL_API_KEY     # or set to "none"
+  #   base_url: http://localhost:8000/v1
+  #   params:
+  #     max_tokens: 4096
+  #     temperature: 0
+
+judge:
+  # Which model to use as judge (must be a key from 'models' above)
+  model: claude-sonnet
+  params:
+    max_tokens: 1024
+    temperature: 0
+
+eval:
+  # Path to eval set JSON
+  eval_file: evals/default.json
+
+  # Filter prompts (optional)
+  # categories: [coding, writing]
+  # difficulty: [hard]
+  # ids: [C01, L02]
+
+  # Runs per prompt (for consistency checks)
+  runs_per_prompt: 1
+
+  # Seconds between API calls (rate limiting)
+  delay_between_calls: 1.0
+
+output:
+  # Where to save results
+  results_dir: results
+
+  # Output formats
+  save_json: true
+  save_markdown: true
