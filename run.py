@@ -10,6 +10,10 @@ Usage:
     python run.py eval claude-sonnet-4 --ids C01 L02  # Specific prompts
     python run.py eval claude-sonnet-4 --category coding --difficulty hard
 
+    python run.py rejudge                              # Rejudge all models with current judge
+    python run.py rejudge gpt-4o                      # Rejudge one model
+    python run.py rejudge --force                     # Rejudge even if already scored
+
     python run.py compare                             # Compare all models
     python run.py compare claude-sonnet-4 gpt-4o      # Compare specific models
     python run.py compare --category coding           # Compare on coding only
@@ -414,6 +418,129 @@ def _save_comparison_md(path, leaderboard, models, prompts, prompts_by_id):
         f.write("\n".join(lines))
 
 
+def cmd_rejudge(args):
+    config = load_config(args.config)
+    models_cfg = config.get("models", {})
+    judge_cfg = config.get("judge", {})
+    judge_model_name = judge_cfg.get("model")
+
+    if not judge_model_name or judge_model_name not in models_cfg:
+        print(f"Judge model '{judge_model_name}' not found in config.yaml")
+        sys.exit(1)
+
+    try:
+        judge_provider = get_provider(models_cfg[judge_model_name])
+    except ValueError as e:
+        print(f"Error initializing judge provider: {e}")
+        sys.exit(1)
+
+    judge_params = judge_cfg.get("params", {})
+
+    # Determine which models to rejudge
+    if args.models:
+        model_names = args.models
+    else:
+        model_names = list_evaluated_models()
+
+    if not model_names:
+        print("No models to rejudge.")
+        return
+
+    prompts = load_eval()
+    prompts_by_id = {p["id"]: p for p in prompts}
+    delay = config.get("eval", {}).get("delay_between_calls", 1.0)
+
+    print(f"\n{'='*60}")
+    print(f"  Rejudging with: {judge_model_name}")
+    print(f"  Models: {len(model_names)}")
+    print(f"  Force: {args.force}")
+    print(f"{'='*60}\n")
+
+    total_judged = 0
+    total_skipped = 0
+    total_errors = 0
+
+    for model_name in model_names:
+        if model_name == judge_model_name:
+            print(f"  Skipping {model_name} (is the judge model)")
+            continue
+
+        model_data = load_model_results(model_name)
+        if not model_data["runs"]:
+            print(f"  Skipping {model_name} (no results)")
+            continue
+
+        pids = list(model_data["runs"].keys())
+        to_judge = []
+
+        for pid in pids:
+            run = latest_run(model_data, pid)
+            if not run or run.get("error"):
+                continue
+            if not args.force and run.get("judge_model") == judge_model_name and run.get("judge_score") is not None:
+                total_skipped += 1
+                continue
+            to_judge.append(pid)
+
+        if not to_judge:
+            print(f"  {model_name}: all {len(pids)} prompts already judged by {judge_model_name}")
+            continue
+
+        print(f"  {model_name}: rejudging {len(to_judge)}/{len(pids)} prompts...")
+
+        for i, pid in enumerate(to_judge, 1):
+            run = latest_run(model_data, pid)
+            pmeta = prompts_by_id.get(pid)
+            if not pmeta:
+                print(f"    [{i}/{len(to_judge)}] {pid} - prompt not found in eval set, skipping")
+                continue
+
+            print(f"    [{i}/{len(to_judge)}] {pid}...", end=" ", flush=True)
+
+            auto_checks = run.get("auto_checks", {"flags": [], "auto_scores": {}, "passed": True})
+
+            try:
+                jr = judge_response(judge_provider, judge_params, pmeta, run["content"], auto_checks)
+
+                # Append a new run entry with updated judge fields, same response
+                entry = {
+                    "timestamp": datetime.now().isoformat(),
+                    "api_model": run.get("api_model", ""),
+                    "content": run["content"],
+                    "latency_s": run.get("latency_s", 0),
+                    "input_tokens": run.get("input_tokens"),
+                    "output_tokens": run.get("output_tokens"),
+                    "auto_checks": auto_checks,
+                    "judge_score": jr["judge_score"],
+                    "judge_rationale": jr["judge_rationale"],
+                    "judge_model": judge_model_name,
+                }
+
+                model_data["runs"][pid].append(entry)
+
+                score_str = f"{jr['judge_score']}/5" if jr["judge_score"] else "failed"
+                print(f"{score_str}")
+                if jr["judge_score"] is not None:
+                    total_judged += 1
+                else:
+                    total_errors += 1
+            except Exception as e:
+                print(f"error: {e}")
+                total_errors += 1
+
+            if i < len(to_judge):
+                time.sleep(delay)
+
+        save_model_results(model_name, model_data)
+
+    print(f"\n  Done: {total_judged} judged, {total_skipped} skipped, {total_errors} errors")
+
+    # Auto-regenerate dashboard
+    path = generate_dashboard()
+    if path:
+        print(f"  Dashboard updated: {path}")
+
+
 def cmd_dashboard(args):
     path = generate_dashboard(args.output if hasattr(args, "output") else None)
     if path:
@@ -453,12 +580,16 @@ def main():
     p.add_argument("--category", nargs="+")
     p.add_argument("--difficulty", nargs="+")
 
+    p = sub.add_parser("rejudge", help="Re-score existing responses with current judge")
+    p.add_argument("models", nargs="*", help="Models to rejudge (default: all)")
+    p.add_argument("--force", action="store_true", help="Rejudge even if already scored by current judge")
+
     p = sub.add_parser("dashboard", help="Generate HTML dashboard")
     p.add_argument("--output", default=None, help="Output file path")
     p.add_argument("--open", action="store_true", help="Open in browser")
 
     args = parser.parse_args()
-    cmds = {"eval": cmd_eval, "compare": cmd_compare, "models": cmd_models, "prompts": cmd_prompts, "dashboard": cmd_dashboard}
+    cmds = {"eval": cmd_eval, "compare": cmd_compare, "models": cmd_models, "prompts": cmd_prompts, "rejudge": cmd_rejudge, "dashboard": cmd_dashboard}
     fn = cmds.get(args.command)
     if fn:
         fn(args)

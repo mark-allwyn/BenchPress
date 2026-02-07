@@ -1,14 +1,28 @@
 """Generate a self-contained HTML dashboard from eval results."""
 
+import html as html_mod
 import json
 import math
 import os
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+import yaml
+
 RESULTS_DIR = "results"
 EVAL_FILE = "evals/default.json"
-DASHBOARD_FILE = "dashboard.html"
+DOCS_DIR = "docs"
+DASHBOARD_FILE = os.path.join(DOCS_DIR, "dashboard.html")
+CONFIG_FILE = "config.yaml"
+
+
+def load_config():
+    """Load config.yaml to get judge model name."""
+    if Path(CONFIG_FILE).exists():
+        with open(CONFIG_FILE) as f:
+            return yaml.safe_load(f)
+    return {}
 
 
 def load_all_results():
@@ -32,7 +46,7 @@ def latest_run(model_data, pid):
     return runs[-1] if runs else {}
 
 
-def compute_stats(models, prompts):
+def compute_stats(models, prompts, judge_model=None):
     """Compute all stats needed for the dashboard."""
     pids = [p["id"] for p in prompts]
     categories = sorted(set(p["category"] for p in prompts))
@@ -120,6 +134,7 @@ def compute_stats(models, prompts):
         "flags": flags,
         "total_prompts": len(pids),
         "total_models": len(models),
+        "judge_model": judge_model,
         "generated": datetime.now().isoformat(),
     }
 
@@ -457,9 +472,10 @@ def generate_html(stats):
     <nav class="nav">
       <a href="dashboard.html" class="nav-link active">Overview</a>
       <a href="categories.html" class="nav-link">By Category</a>
+      <a href="methodology.html" class="nav-link">Methodology</a>
     </nav>
     <div class="meta" style="text-align:right">
-      {stats['total_models']} models evaluated<br>
+      {stats['total_models']} models evaluated{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''}<br>
       Updated: {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}
     </div>
   </div>
@@ -1024,9 +1040,10 @@ def generate_categories_html(stats):
     <nav class="nav">
       <a href="dashboard.html" class="nav-link">Overview</a>
       <a href="categories.html" class="nav-link active">By Category</a>
+      <a href="methodology.html" class="nav-link">Methodology</a>
     </nav>
     <div class="meta" style="text-align:right">
-      {stats['total_models']} models evaluated<br>
+      {stats['total_models']} models evaluated{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''}<br>
       Updated: {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}
     </div>
   </div>
@@ -1109,6 +1126,572 @@ cats.forEach(cat => {{
 </html>"""
 
 
+def generate_methodology_html(stats):
+    """Generate the methodology and focus page."""
+    prompts = load_prompts()
+
+    # Compute category/difficulty/check_type breakdowns
+    cats = Counter(p["category"] for p in prompts)
+    diffs = Counter(p["difficulty"] for p in prompts)
+    checks = Counter(p["check_type"] for p in prompts)
+
+    cat_rows = ""
+    for cat in sorted(cats):
+        display = cat.replace("_", " ").title()
+        subcats = sorted(set(p["subcategory"].replace("_", " ") for p in prompts if p["category"] == cat))
+        sub_str = ", ".join(subcats)
+        cat_rows += f"""<tr>
+          <td style="font-weight:600;text-transform:capitalize">{display}</td>
+          <td class="num">{cats[cat]}</td>
+          <td style="color:var(--text2);font-size:0.8rem">{sub_str}</td>
+        </tr>\n"""
+
+    diff_rows = ""
+    for d in ["easy", "medium", "hard"]:
+        if d in diffs:
+            diff_rows += f'<tr><td style="font-weight:600;text-transform:capitalize">{d}</td><td class="num">{diffs[d]}</td></tr>\n'
+
+    # Group check types into categories
+    automated_checks = []
+    judge_only_checks = []
+    noop_types = {"calibration", "reasoning", "format_check", "checklist", "analysis", "synthesis", "comparison", "behavioral"}
+    for ct in sorted(checks):
+        display = ct.replace("_", " ")
+        if ct in noop_types:
+            judge_only_checks.append((display, checks[ct]))
+        else:
+            automated_checks.append((display, checks[ct]))
+
+    auto_rows = "".join(
+        f'<tr><td>{name}</td><td class="num">{count}</td></tr>\n'
+        for name, count in automated_checks
+    )
+    judge_rows = "".join(
+        f'<tr><td>{name}</td><td class="num">{count}</td></tr>\n'
+        for name, count in judge_only_checks
+    )
+
+    # Build questions section grouped by category
+    diff_colors = {"easy": "var(--green)", "medium": "var(--yellow)", "hard": "var(--red)"}
+    questions_sections = ""
+    for cat in sorted(cats):
+        display_cat = cat.replace("_", " ").title()
+        cat_prompts = [p for p in prompts if p["category"] == cat]
+        prompt_cards = ""
+        for p in cat_prompts:
+            pid = p["id"]
+            subcat = p["subcategory"].replace("_", " ")
+            diff = p["difficulty"]
+            diff_color = diff_colors.get(diff, "var(--text2)")
+            prompt_text = html_mod.escape(p["prompt"])
+            ideal_text = html_mod.escape(p.get("ideal", ""))
+            criteria = p.get("criteria", [])
+            criteria_html = " ".join(
+                f'<span class="criteria-tag">{html_mod.escape(c)}</span>'
+                for c in criteria
+            )
+            check = p.get("check_type", "").replace("_", " ")
+
+            prompt_cards += f"""<div class="prompt-card">
+          <div class="prompt-header">
+            <span class="prompt-id">{pid}</span>
+            <span class="prompt-subcat">{subcat}</span>
+            <span class="prompt-diff" style="color:{diff_color}">{diff}</span>
+            <span class="prompt-check">{check}</span>
+          </div>
+          <div class="prompt-text">{prompt_text}</div>
+          <div class="prompt-ideal"><strong>What we look for:</strong> {ideal_text}</div>
+          <div class="prompt-criteria">{criteria_html}</div>
+        </div>\n"""
+
+        questions_sections += f"""<details class="category-section" open>
+      <summary class="category-toggle">{display_cat} <span class="category-count">{cats[cat]} prompts</span></summary>
+      {prompt_cards}
+    </details>\n"""
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarkDown - Methodology</title>
+<style>
+  :root {{
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3345;
+    --text: #e4e7f0;
+    --text2: #8b90a5;
+    --accent: #6c72ff;
+    --accent2: #4ecdc4;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+  }}
+  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+  body {{
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }}
+  .header {{
+    background: linear-gradient(135deg, #1a1d27 0%, #242836 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }}
+  .header h1 {{ font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }}
+  .header .meta {{ font-size: 0.8rem; color: var(--text2); }}
+  .nav {{
+    display: flex;
+    gap: 0.25rem;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 0.25rem;
+  }}
+  .nav-link {{
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text2);
+    text-decoration: none;
+    transition: all 0.2s;
+  }}
+  .nav-link:hover {{ color: var(--text); background: rgba(255,255,255,0.05); }}
+  .nav-link.active {{ color: var(--text); background: var(--accent); }}
+  .container {{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem 3rem;
+  }}
+  .card {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }}
+  .card h2 {{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }}
+  .card h3 {{
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent2);
+  }}
+  .card p {{
+    color: var(--text2);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }}
+  .card ul {{
+    color: var(--text2);
+    font-size: 0.85rem;
+    margin-left: 1.25rem;
+    margin-bottom: 0.75rem;
+  }}
+  .card li {{
+    margin-bottom: 0.3rem;
+  }}
+  table {{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }}
+  th {{
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 2px solid var(--border);
+    color: var(--text2);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }}
+  th.num {{ text-align: right; }}
+  td {{
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }}
+  td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+  tr:last-child td {{ border-bottom: none; }}
+  tr:hover td {{ background: var(--surface2); }}
+  .grid-2 {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }}
+  .scoring-scale {{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+  }}
+  .scoring-scale .score {{ font-weight: 700; font-variant-numeric: tabular-nums; }}
+  .scoring-scale .desc {{ color: var(--text2); }}
+  .score-5 {{ color: var(--green); }}
+  .score-4 {{ color: #86efac; }}
+  .score-3 {{ color: var(--yellow); }}
+  .score-2 {{ color: var(--orange); }}
+  .score-1 {{ color: var(--red); }}
+  .highlight {{
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+    color: var(--text2);
+    border-left: 3px solid var(--accent);
+  }}
+  .kpi-row {{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }}
+  .kpi {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-align: center;
+  }}
+  .kpi .value {{
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }}
+  .kpi .label {{
+    font-size: 0.75rem;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }}
+  @media (max-width: 900px) {{
+    .header {{ padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; }}
+    .container {{ padding: 1rem; }}
+    .grid-2 {{ grid-template-columns: 1fr; }}
+    .kpi-row {{ grid-template-columns: repeat(2, 1fr); }}
+  }}
+  @media (max-width: 600px) {{
+    .container {{ padding: 0.75rem; }}
+    .header {{ padding: 1rem 0.75rem; }}
+    .header h1 {{ font-size: 1.2rem; }}
+    .card {{ padding: 1rem; }}
+    .kpi-row {{ grid-template-columns: 1fr 1fr; }}
+    .kpi .value {{ font-size: 1.4rem; }}
+  }}
+  .category-section {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }}
+  .category-toggle {{
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }}
+  .category-toggle::-webkit-details-marker {{ display: none; }}
+  .category-toggle::before {{
+    content: '\\25B6';
+    font-size: 0.7rem;
+    color: var(--accent);
+    transition: transform 0.2s;
+  }}
+  details[open] > .category-toggle::before {{
+    transform: rotate(90deg);
+  }}
+  .category-count {{
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text2);
+    background: var(--surface2);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }}
+  .prompt-card {{
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+  }}
+  .prompt-card:hover {{
+    background: rgba(255,255,255,0.02);
+  }}
+  .prompt-header {{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }}
+  .prompt-id {{
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: rgba(108,114,255,0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+  }}
+  .prompt-subcat {{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: capitalize;
+  }}
+  .prompt-diff {{
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }}
+  .prompt-check {{
+    font-size: 0.7rem;
+    color: var(--text2);
+    background: var(--surface2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    text-transform: capitalize;
+  }}
+  .prompt-text {{
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    background: var(--bg);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 0.6rem;
+    font-family: 'Inter', -apple-system, sans-serif;
+  }}
+  .prompt-ideal {{
+    font-size: 0.8rem;
+    color: var(--text2);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }}
+  .prompt-ideal strong {{
+    color: var(--accent2);
+  }}
+  .prompt-criteria {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }}
+  .criteria-tag {{
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    background: rgba(78,205,196,0.1);
+    color: var(--accent2);
+    font-weight: 500;
+    text-transform: capitalize;
+  }}
+  .section-divider {{
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+  }}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>MarkDown - Methodology</h1>
+    <div class="meta">How models are evaluated and scored</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <nav class="nav">
+      <a href="dashboard.html" class="nav-link">Overview</a>
+      <a href="categories.html" class="nav-link">By Category</a>
+      <a href="methodology.html" class="nav-link active">Methodology</a>
+    </nav>
+    <div class="meta" style="text-align:right">
+      {stats['total_models']} models evaluated{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''}<br>
+      Updated: {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Quick stats -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="value">{len(prompts)}</div>
+    <div class="label">Prompts</div>
+  </div>
+  <div class="kpi">
+    <div class="value">{len(cats)}</div>
+    <div class="label">Categories</div>
+  </div>
+  <div class="kpi">
+    <div class="value">{len(checks)}</div>
+    <div class="label">Check Types</div>
+  </div>
+  <div class="kpi">
+    <div class="value">{stats['total_models']}</div>
+    <div class="label">Models Tested</div>
+  </div>
+</div>
+
+<!-- Focus -->
+<div class="card">
+  <h2>Focus</h2>
+  <p>
+    This evaluation measures what matters for practical, day-to-day use of LLMs as a working tool.
+    It is not a general knowledge benchmark or a trivia test. The prompt set is designed around
+    tasks a developer, researcher, or technical writer would actually ask an LLM to do, with
+    emphasis on scenarios where models commonly fail or diverge.
+  </p>
+  <h3>What we test for</h3>
+  <ul>
+    <li><strong>Accuracy under pressure</strong> - trap questions, false premises, phantom bugs, and wrong claims that tempt sycophantic agreement</li>
+    <li><strong>Honest calibration</strong> - does the model hedge when uncertain, refuse when appropriate, and acknowledge its own limitations?</li>
+    <li><strong>Instruction following</strong> - exact format compliance, word count targets, constraint adherence, and banned word avoidance</li>
+    <li><strong>Reasoning depth</strong> - multi-step problems, causal reasoning, estimation, and the ability to show work rather than guess</li>
+    <li><strong>Practical coding</strong> - real debugging scenarios, architecture decisions, code review, and implementation - not leetcode</li>
+    <li><strong>Writing quality</strong> - tone control, concision, editing skill, and the ability to adapt style to audience</li>
+  </ul>
+  <h3>What we deliberately avoid</h3>
+  <ul>
+    <li>Trivia and memorization (Wikipedia knowledge is cheap)</li>
+    <li>Simple Q&A that any model can pass</li>
+    <li>Prompts with only one valid answer format</li>
+    <li>Benchmarks that reward verbosity over substance</li>
+  </ul>
+</div>
+
+<!-- Pipeline -->
+<div class="card">
+  <h2>Evaluation Pipeline</h2>
+  <p>Each model runs through the same pipeline for every prompt:</p>
+  <div class="highlight">
+    Prompt sent to model &rarr; Response collected with latency/token counts &rarr;
+    Automated checks run &rarr; LLM judge scores 1-5 with rationale &rarr;
+    Results persisted as JSON
+  </div>
+  <ul>
+    <li>All models receive identical prompts with <code>temperature: 0</code> for reproducibility</li>
+    <li>No system prompts are injected - models receive only the raw user prompt</li>
+    <li>Each prompt has a defined ideal answer and scoring criteria that the judge evaluates against</li>
+    <li>Results are append-only - re-running a model adds a new entry, preserving history</li>
+  </ul>
+</div>
+
+<!-- Two-layer scoring -->
+<div class="grid-2">
+  <div class="card">
+    <h2>Auto-Checks (Layer 1)</h2>
+    <p>
+      Deterministic, heuristic checks that run instantly on every response.
+      These flag mechanical failures and feed into the judge as additional signal.
+    </p>
+    <table>
+      <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
+      <tbody>{auto_rows}</tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Judge-Only (Layer 2)</h2>
+    <p>
+      These check types have no automated heuristic - the LLM judge scores them
+      entirely on quality, reasoning, and adherence to criteria.
+    </p>
+    <table>
+      <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
+      <tbody>{judge_rows}</tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Judge scoring -->
+<div class="card">
+  <h2>LLM Judge Scoring</h2>
+  <p>
+    A separate LLM (configured in <code>config.yaml</code>) scores every response on a 1-5 scale.
+    The judge receives the original prompt, the ideal answer, the scoring criteria, and any
+    auto-check flags. It returns a score and a short rationale.
+  </p>
+  <div class="scoring-scale">
+    <span class="score score-5">5</span><span class="desc">Excellent - fully addresses the prompt, accurate, well-structured, meets all criteria</span>
+    <span class="score score-4">4</span><span class="desc">Good - mostly correct with minor gaps or style issues</span>
+    <span class="score score-3">3</span><span class="desc">Adequate - partially addresses the prompt, some errors or missing elements</span>
+    <span class="score score-2">2</span><span class="desc">Poor - significant errors, missing key requirements, or off-topic</span>
+    <span class="score score-1">1</span><span class="desc">Failing - wrong, harmful, empty, or completely misses the point</span>
+  </div>
+  <h3>Judge guidelines</h3>
+  <ul>
+    <li>Hallucinated facts, fabricated references, and confident wrong answers are penalised</li>
+    <li>Appropriate hedging, asking for clarification, and refusing harmful requests are rewarded</li>
+    <li>Auto-check flag failures lower the score</li>
+    <li>A 3 is average, 5 is genuinely excellent - the scale is strict but fair</li>
+  </ul>
+</div>
+
+<!-- Efficiency metric -->
+<div class="card">
+  <h2>Efficiency Metric</h2>
+  <p>
+    The efficiency score balances quality against verbosity:
+    <code>efficiency = avg_score / log2(avg_tokens)</code>.
+    This rewards models that achieve high scores without padding responses with unnecessary tokens.
+    A concise, correct answer scores higher than an equally correct but bloated one.
+  </p>
+</div>
+
+<!-- Prompt breakdown -->
+<div class="card">
+  <h2>Prompt Set Breakdown</h2>
+  <table>
+    <thead><tr><th>Category</th><th class="num">Prompts</th><th>Subcategories</th></tr></thead>
+    <tbody>{cat_rows}</tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Difficulty Distribution</h2>
+  <table>
+    <thead><tr><th>Difficulty</th><th class="num">Prompts</th></tr></thead>
+    <tbody>{diff_rows}</tbody>
+  </table>
+</div>
+
+<!-- Questions -->
+<div class="section-divider">All {len(prompts)} Questions</div>
+
+{questions_sections}
+
+</div>
+
+</body>
+</html>"""
+
+
 def generate_dashboard(output_path=None):
     """Main entry point - generate dashboard HTML files."""
     if output_path is None:
@@ -1123,8 +1706,19 @@ def generate_dashboard(output_path=None):
         print("No model results found.")
         return None
 
+    # Determine judge model and exclude from leaderboard
+    config = load_config()
+    judge_model = config.get("judge", {}).get("model")
+    if judge_model and judge_model in models:
+        del models[judge_model]
+
     prompts = load_prompts()
-    stats = compute_stats(models, prompts)
+    stats = compute_stats(models, prompts, judge_model=judge_model)
+
+    # Ensure output directory exists
+    out_dir = os.path.dirname(output_path)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
 
     # Main dashboard
     html = generate_html(stats)
@@ -1132,10 +1726,21 @@ def generate_dashboard(output_path=None):
         f.write(html)
 
     # Categories page
-    cat_path = os.path.join(os.path.dirname(output_path) or ".", "categories.html")
+    cat_path = os.path.join(out_dir or ".", "categories.html")
     cat_html = generate_categories_html(stats)
     with open(cat_path, "w") as f:
         f.write(cat_html)
+
+    # Methodology page
+    meth_path = os.path.join(out_dir or ".", "methodology.html")
+    meth_html = generate_methodology_html(stats)
+    with open(meth_path, "w") as f:
+        f.write(meth_html)
+
+    # Index redirect (for GitHub Pages root URL)
+    index_path = os.path.join(out_dir or ".", "index.html")
+    with open(index_path, "w") as f:
+        f.write('<!DOCTYPE html>\n<meta http-equiv="refresh" content="0;url=dashboard.html">\n')
 
     return output_path
 
@@ -1143,5 +1748,7 @@ def generate_dashboard(output_path=None):
 if __name__ == "__main__":
     path = generate_dashboard()
     if path:
+        out_dir = os.path.dirname(path) or "."
         print(f"Dashboard generated: {path}")
-        print(f"Categories page generated: categories.html")
+        print(f"Categories page generated: {os.path.join(out_dir, 'categories.html')}")
+        print(f"Index redirect generated: {os.path.join(out_dir, 'index.html')}")
