@@ -14,6 +14,11 @@ Usage:
     python run.py rejudge gpt-4o                      # Rejudge one model
     python run.py rejudge --force                     # Rejudge even if already scored
 
+    python run.py deepeval                             # Score all models with DeepEval metrics
+    python run.py deepeval gpt-4o                     # Score one model
+    python run.py deepeval --ids C01 C02              # Score specific prompts
+    python run.py deepeval --force                    # Re-score even if already scored
+
     python run.py compare                             # Compare all models
     python run.py compare claude-sonnet-4 gpt-4o      # Compare specific models
     python run.py compare --category coding           # Compare on coding only
@@ -206,6 +211,21 @@ def cmd_eval(args):
                 score_str = f"{jr['judge_score']}/5" if jr["judge_score"] else "failed"
                 print(f"    Judge: {score_str}")
 
+            # DeepEval scoring (inline during eval if enabled)
+            deepeval_cfg = config.get("deepeval", {})
+            if deepeval_cfg.get("enabled"):
+                try:
+                    from scripts.deepeval_scorer import score_with_deepeval
+                    de = score_with_deepeval(pmeta, content, config)
+                    entry["deepeval_scores"] = de["deepeval_scores"]
+                    entry["deepeval_avg"] = de["deepeval_avg"]
+                    if de["deepeval_avg"] is not None:
+                        print(f"    DeepEval: {de['deepeval_avg']:.2f} ({', '.join(f'{k}={v:.2f}' for k, v in de['deepeval_scores'].items() if v is not None)})")
+                    else:
+                        print(f"    DeepEval: failed")
+                except Exception as e2:
+                    print(f"    DeepEval error: {e2}")
+
         except Exception as e:
             latency = time.time() - t0
             entry = {
@@ -271,17 +291,24 @@ def cmd_compare(args):
 
     col_w = max(len(n) for n in models) + 2
 
-    print(f"\n{'='*70}")
-    print(f"  MODEL COMPARISON — {len(pids)} prompts")
-    print(f"{'='*70}\n")
+    # Load composite weights
+    config = load_config()
+    comp_cfg = config.get("composite", {})
+    judge_weight = comp_cfg.get("judge_weight", 0.5)
+    deepeval_weight = comp_cfg.get("deepeval_weight", 0.5)
 
-    header = f"{'Model':<{col_w}} {'Score':>9} {'Scored':>7} {'Flagged':>8} {'Latency':>8} {'Tokens':>8}"
+    print(f"\n{'='*80}")
+    print(f"  MODEL COMPARISON — {len(pids)} prompts")
+    print(f"{'='*80}\n")
+
+    header = f"{'Model':<{col_w}} {'Composite':>10} {'Score':>9} {'Scored':>7} {'Flagged':>8} {'Latency':>8} {'Tokens':>8}"
     print(header)
     print("─" * len(header))
 
     leaderboard = []
     for name, data in models.items():
         scores, latencies, tokens = [], [], []
+        de_avgs = []
         flagged = 0
         for pid in pids:
             run = latest_run(data, pid)
@@ -293,18 +320,35 @@ def cmd_compare(args):
                 flagged += 1
             latencies.append(run.get("latency_s", 0))
             tokens.append(run.get("output_tokens", 0) or 0)
+            de_avg = run.get("deepeval_avg")
+            if de_avg is not None:
+                de_avgs.append(de_avg)
 
         total = sum(1 for pid in pids if latest_run(data, pid))
         avg_s = sum(scores) / len(scores) if scores else 0
         avg_l = sum(latencies) / len(latencies) if latencies else 0
         avg_t = sum(tokens) / len(tokens) if tokens else 0
-        leaderboard.append((name, avg_s, len(scores), total, flagged, avg_l, avg_t))
+        deepeval_avg = sum(de_avgs) / len(de_avgs) if de_avgs else None
 
-    leaderboard.sort(key=lambda x: (x[2] > 0, x[1]), reverse=True)
+        # Composite score
+        normalized_judge = (avg_s - 1) / 4 if scores else None
+        if normalized_judge is not None and deepeval_avg is not None:
+            composite = round(judge_weight * normalized_judge + deepeval_weight * deepeval_avg, 4)
+        elif normalized_judge is not None:
+            composite = round(normalized_judge, 4)
+        elif deepeval_avg is not None:
+            composite = round(deepeval_avg, 4)
+        else:
+            composite = None
 
-    for name, avg_s, scored, total, flagged, avg_l, avg_t in leaderboard:
+        leaderboard.append((name, avg_s, len(scores), total, flagged, avg_l, avg_t, composite))
+
+    leaderboard.sort(key=lambda x: (x[2] > 0, x[7] or 0), reverse=True)
+
+    for name, avg_s, scored, total, flagged, avg_l, avg_t, composite in leaderboard:
         s = f"{avg_s:.2f}/5" if scored else "  —  "
-        print(f"{name:<{col_w}} {s:>9} {scored:>3}/{total:<3} {flagged:>8} {avg_l:>7.1f}s {avg_t:>7.0f}")
+        c = f"{composite:.2f}" if composite is not None else "  —  "
+        print(f"{name:<{col_w}} {c:>10} {s:>9} {scored:>3}/{total:<3} {flagged:>8} {avg_l:>7.1f}s {avg_t:>7.0f}")
 
     # Category breakdown
     if not args.category:
@@ -392,12 +436,13 @@ def _save_comparison_md(path, leaderboard, models, prompts, prompts_by_id):
         "# LLM Comparison Report",
         f"*Generated: {datetime.now().isoformat()}*\n",
         "## Leaderboard\n",
-        "| Model | Avg Score | Scored | Flagged | Avg Latency | Avg Tokens |",
-        "|---|---|---|---|---|---|",
+        "| Model | Composite | Avg Score | Scored | Flagged | Avg Latency | Avg Tokens |",
+        "|---|---|---|---|---|---|---|",
     ]
-    for name, avg_s, scored, total, flagged, avg_l, avg_t in leaderboard:
-        s = f"{avg_s:.2f}/5" if scored else "—"
-        lines.append(f"| {name} | {s} | {scored}/{total} | {flagged} | {avg_l:.1f}s | {avg_t:.0f} |")
+    for name, avg_s, scored, total, flagged, avg_l, avg_t, composite in leaderboard:
+        s = f"{avg_s:.2f}/5" if scored else "-"
+        c = f"{composite:.2f}" if composite is not None else "-"
+        lines.append(f"| {name} | {c} | {s} | {scored}/{total} | {flagged} | {avg_l:.1f}s | {avg_t:.0f} |")
 
     lines.append("\n## Per-Prompt Detail\n")
     for p in prompts:
@@ -541,6 +586,126 @@ def cmd_rejudge(args):
         print(f"  Dashboard updated: {path}")
 
 
+def cmd_deepeval(args):
+    from scripts.deepeval_scorer import score_with_deepeval
+
+    config = load_config(args.config)
+
+    # Determine which models to score
+    if args.models:
+        model_names = args.models
+    else:
+        model_names = list_evaluated_models()
+
+    if not model_names:
+        print("No models to score.")
+        return
+
+    # Exclude judge model
+    judge_model = config.get("judge", {}).get("model")
+    model_names = [m for m in model_names if m != judge_model]
+
+    prompts = load_eval()
+    prompts_by_id = {p["id"]: p for p in prompts}
+
+    # Optional filtering
+    if args.ids:
+        prompts = filter_prompts(prompts, ids=args.ids)
+        prompts_by_id = {p["id"]: p for p in prompts}
+    filter_pids = set(prompts_by_id.keys()) if args.ids else None
+
+    delay = config.get("eval", {}).get("delay_between_calls", 1.0)
+
+    print(f"\n{'='*60}")
+    print(f"  DeepEval Scoring")
+    print(f"  Models: {len(model_names)}")
+    print(f"  Force: {args.force}")
+    print(f"{'='*60}\n")
+
+    total_scored = 0
+    total_skipped = 0
+    total_errors = 0
+
+    for model_name in model_names:
+        model_data = load_model_results(model_name)
+        if not model_data["runs"]:
+            print(f"  Skipping {model_name} (no results)")
+            continue
+
+        pids = list(model_data["runs"].keys())
+        if filter_pids:
+            pids = [p for p in pids if p in filter_pids]
+
+        to_score = []
+        for pid in pids:
+            run = latest_run(model_data, pid)
+            if not run or run.get("error"):
+                continue
+            if not args.force and run.get("deepeval_scores"):
+                total_skipped += 1
+                continue
+            to_score.append(pid)
+
+        if not to_score:
+            print(f"  {model_name}: all prompts already have DeepEval scores")
+            continue
+
+        print(f"  {model_name}: scoring {len(to_score)}/{len(pids)} prompts...")
+
+        for i, pid in enumerate(to_score, 1):
+            run = latest_run(model_data, pid)
+            pmeta = prompts_by_id.get(pid)
+            if not pmeta:
+                print(f"    [{i}/{len(to_score)}] {pid} - prompt not found in eval set, skipping")
+                continue
+
+            print(f"    [{i}/{len(to_score)}] {pid}...", end=" ", flush=True)
+
+            try:
+                de = score_with_deepeval(pmeta, run["content"], config)
+
+                # Append a new run entry with DeepEval scores, preserving everything else
+                entry = {
+                    "timestamp": datetime.now().isoformat(),
+                    "api_model": run.get("api_model", ""),
+                    "content": run["content"],
+                    "latency_s": run.get("latency_s", 0),
+                    "input_tokens": run.get("input_tokens"),
+                    "output_tokens": run.get("output_tokens"),
+                    "auto_checks": run.get("auto_checks", {"flags": [], "auto_scores": {}, "passed": True}),
+                    "judge_score": run.get("judge_score"),
+                    "judge_rationale": run.get("judge_rationale", ""),
+                    "judge_model": run.get("judge_model"),
+                    "deepeval_scores": de["deepeval_scores"],
+                    "deepeval_avg": de["deepeval_avg"],
+                }
+
+                model_data["runs"][pid].append(entry)
+
+                if de["deepeval_avg"] is not None:
+                    parts = ", ".join(f"{k}={v:.2f}" for k, v in de["deepeval_scores"].items() if v is not None)
+                    print(f"avg={de['deepeval_avg']:.2f} ({parts})")
+                    total_scored += 1
+                else:
+                    print("failed")
+                    total_errors += 1
+            except Exception as e:
+                print(f"error: {e}")
+                total_errors += 1
+
+            if i < len(to_score):
+                time.sleep(delay)
+
+        save_model_results(model_name, model_data)
+
+    print(f"\n  Done: {total_scored} scored, {total_skipped} skipped, {total_errors} errors")
+
+    # Auto-regenerate dashboard
+    path = generate_dashboard()
+    if path:
+        print(f"  Dashboard updated: {path}")
+
+
 def cmd_dashboard(args):
     path = generate_dashboard(args.output if hasattr(args, "output") else None)
     if path:
@@ -584,12 +749,17 @@ def main():
     p.add_argument("models", nargs="*", help="Models to rejudge (default: all)")
     p.add_argument("--force", action="store_true", help="Rejudge even if already scored by current judge")
 
+    p = sub.add_parser("deepeval", help="Score stored responses with DeepEval metrics")
+    p.add_argument("models", nargs="*", help="Models to score (default: all)")
+    p.add_argument("--ids", nargs="+", help="Only score specific prompt IDs")
+    p.add_argument("--force", action="store_true", help="Re-score even if already has DeepEval scores")
+
     p = sub.add_parser("dashboard", help="Generate HTML dashboard")
     p.add_argument("--output", default=None, help="Output file path")
     p.add_argument("--open", action="store_true", help="Open in browser")
 
     args = parser.parse_args()
-    cmds = {"eval": cmd_eval, "compare": cmd_compare, "models": cmd_models, "prompts": cmd_prompts, "rejudge": cmd_rejudge, "dashboard": cmd_dashboard}
+    cmds = {"eval": cmd_eval, "compare": cmd_compare, "models": cmd_models, "prompts": cmd_prompts, "rejudge": cmd_rejudge, "deepeval": cmd_deepeval, "dashboard": cmd_dashboard}
     fn = cmds.get(args.command)
     if fn:
         fn(args)

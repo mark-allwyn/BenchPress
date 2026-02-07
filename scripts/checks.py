@@ -393,5 +393,5 @@ CHECKERS = {
     "analysis": check_noop,
     "synthesis": check_noop,
     "comparison": check_noop,
-    "behavioral": check_noop,
+    "behavioural": check_noop,
 }

@@ -46,8 +46,10 @@ def latest_run(model_data, pid):
     return runs[-1] if runs else {}
 
 
-def compute_stats(models, prompts, judge_model=None):
+def compute_stats(models, prompts, judge_model=None, composite_config=None):
     """Compute all stats needed for the dashboard."""
+    judge_weight = (composite_config or {}).get("judge_weight", 0.5)
+    deepeval_weight = (composite_config or {}).get("deepeval_weight", 0.5)
     pids = [p["id"] for p in prompts]
     categories = sorted(set(p["category"] for p in prompts))
     cat_pids = {c: [p["id"] for p in prompts if p["category"] == c] for c in categories}
@@ -56,6 +58,8 @@ def compute_stats(models, prompts, judge_model=None):
     for name, data in models.items():
         scores, latencies, tokens, errors = [], [], [], 0
         flagged = 0
+        de_scores_all = {"correctness": [], "coherence": [], "instruction_following": []}
+        de_avgs = []
         for pid in pids:
             run = latest_run(data, pid)
             if not run:
@@ -69,6 +73,15 @@ def compute_stats(models, prompts, judge_model=None):
                 flagged += 1
             latencies.append(run.get("latency_s", 0))
             tokens.append(run.get("output_tokens", 0) or 0)
+            # DeepEval scores
+            de = run.get("deepeval_scores", {})
+            for metric_key in de_scores_all:
+                val = de.get(metric_key)
+                if val is not None:
+                    de_scores_all[metric_key].append(val)
+            de_avg = run.get("deepeval_avg")
+            if de_avg is not None:
+                de_avgs.append(de_avg)
 
         total = sum(1 for pid in pids if latest_run(data, pid))
         avg_s = sum(scores) / len(scores) if scores else 0
@@ -78,6 +91,8 @@ def compute_stats(models, prompts, judge_model=None):
 
         # Category scores
         cat_scores = {}
+        cat_deepeval = {}
+        cat_composite = {}
         for cat in categories:
             cs = [
                 latest_run(data, pid).get("judge_score")
@@ -85,6 +100,24 @@ def compute_stats(models, prompts, judge_model=None):
                 if latest_run(data, pid) and latest_run(data, pid).get("judge_score") is not None
             ]
             cat_scores[cat] = round(sum(cs) / len(cs), 2) if cs else None
+            # DeepEval per-category average
+            cat_de = [
+                latest_run(data, pid).get("deepeval_avg")
+                for pid in cat_pids[cat]
+                if latest_run(data, pid) and latest_run(data, pid).get("deepeval_avg") is not None
+            ]
+            cat_deepeval[cat] = round(sum(cat_de) / len(cat_de), 2) if cat_de else None
+            # Per-category composite
+            cat_nj = (cat_scores[cat] - 1) / 4 if cat_scores[cat] is not None else None
+            cat_da = cat_deepeval[cat]
+            if cat_nj is not None and cat_da is not None:
+                cat_composite[cat] = round(judge_weight * cat_nj + deepeval_weight * cat_da, 4)
+            elif cat_nj is not None:
+                cat_composite[cat] = round(cat_nj, 4)
+            elif cat_da is not None:
+                cat_composite[cat] = round(cat_da, 4)
+            else:
+                cat_composite[cat] = None
 
         # Score distribution
         dist = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
@@ -96,6 +129,23 @@ def compute_stats(models, prompts, judge_model=None):
             efficiency = round(avg_s / math.log2(avg_t), 2)
         else:
             efficiency = 0
+
+        # DeepEval averages
+        deepeval_avg = round(sum(de_avgs) / len(de_avgs), 4) if de_avgs else None
+        deepeval_metrics = {}
+        for metric_key, vals in de_scores_all.items():
+            deepeval_metrics[metric_key] = round(sum(vals) / len(vals), 4) if vals else None
+
+        # Composite score: weighted average of normalized judge (0-1) and deepeval avg (0-1)
+        normalized_judge = (avg_s - 1) / 4 if scores else None
+        if normalized_judge is not None and deepeval_avg is not None:
+            composite_score = round(judge_weight * normalized_judge + deepeval_weight * deepeval_avg, 4)
+        elif normalized_judge is not None:
+            composite_score = round(normalized_judge, 4)
+        elif deepeval_avg is not None:
+            composite_score = round(deepeval_avg, 4)
+        else:
+            composite_score = None
 
         leaderboard.append({
             "name": name,
@@ -110,9 +160,14 @@ def compute_stats(models, prompts, judge_model=None):
             "efficiency": efficiency,
             "cat_scores": cat_scores,
             "score_dist": dist,
+            "deepeval_avg": deepeval_avg,
+            "deepeval_metrics": deepeval_metrics,
+            "cat_deepeval": cat_deepeval,
+            "composite_score": composite_score,
+            "cat_composite": cat_composite,
         })
 
-    leaderboard.sort(key=lambda x: (x["scored"] > 0, x["avg_score"]), reverse=True)
+    leaderboard.sort(key=lambda x: (x["scored"] > 0, x["composite_score"] or 0), reverse=True)
 
     # Per-prompt flags
     flags = []
@@ -148,7 +203,7 @@ def generate_html(stats):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MarkDown - LLM Evaluation Leaderboard</title>
+<title>BenchPress - LLM Evaluation Leaderboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   :root {{
@@ -176,19 +231,33 @@ def generate_html(stats):
   .header {{
     background: linear-gradient(135deg, #1a1d27 0%, #242836 100%);
     border-bottom: 1px solid var(--border);
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2.5rem;
+  }}
+  .header-inner {{
+    max-width: 1440px;
+    margin: 0 auto;
+  }}
+  .header-top {{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.25rem;
   }}
   .header h1 {{
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    margin: 0;
+  }}
+  .header .byline {{
+    font-size: 0.85rem;
+    color: var(--text2);
+    margin: 0.2rem 0 0;
   }}
   .header .meta {{
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text2);
+    margin-top: 0.5rem;
   }}
   .container {{
     max-width: 1440px;
@@ -229,6 +298,7 @@ def generate_html(stats):
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
+    align-items: stretch;
   }}
   .grid-full {{
     margin-bottom: 1.5rem;
@@ -238,12 +308,51 @@ def generate_html(stats):
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
   }}
   .card h2 {{
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text);
+  }}
+  .card .chart-container {{
+    flex: 1;
+  }}
+  .info-tip {{
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text2);
+    background: var(--surface2);
+    border-radius: 50%;
+    margin-left: 6px;
+    cursor: default;
+    vertical-align: middle;
+  }}
+  .info-tip:hover::after {{
+    content: attr(data-info);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 6px;
+    background: var(--surface2);
+    color: var(--text1);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 20;
+    pointer-events: none;
+    border: 1px solid var(--border);
   }}
   table {{
     width: 100%;
@@ -281,7 +390,7 @@ def generate_html(stats):
     font-size: 0.8rem;
   }}
   .rank-1 {{ background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }}
-  .rank-2 {{ background: linear-gradient(135deg, #94a3b8, #64748b); color: #000; }}
+  .rank-2 {{ background: linear-gradient(135deg, #c0cfe0, #8da4bf); color: #1e293b; }}
   .rank-3 {{ background: linear-gradient(135deg, #d97706, #b45309); color: #fff; }}
   .rank-n {{ background: var(--surface2); color: var(--text2); }}
   .score-bar {{
@@ -319,6 +428,7 @@ def generate_html(stats):
   .chart-container {{
     position: relative;
     width: 100%;
+    min-height: 320px;
     height: 320px;
   }}
   .flags-list {{
@@ -350,6 +460,27 @@ def generate_html(stats):
   .cat-table td.cat-name {{
     font-weight: 600;
     text-transform: capitalize;
+  }}
+  td[data-tip] {{
+    position: relative;
+    cursor: default;
+  }}
+  td[data-tip]:hover::after {{
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface2);
+    color: var(--text1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+    border: 1px solid var(--border);
   }}
   .score-cell {{
     font-weight: 600;
@@ -440,8 +571,8 @@ def generate_html(stats):
   @media (max-width: 900px) {{
     .kpi-row {{ grid-template-columns: repeat(2, 1fr); }}
     .container {{ padding: 1rem; }}
-    .header {{ padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; }}
-    .header .meta {{ text-align: left !important; }}
+    .header {{ padding: 1rem; }}
+    .header-top {{ flex-direction: column; align-items: flex-start; gap: 0.5rem; }}
   }}
   @media (max-width: 600px) {{
     .kpi-row {{ grid-template-columns: 1fr 1fr; gap: 0.75rem; }}
@@ -464,20 +595,17 @@ def generate_html(stats):
 <body>
 
 <div class="header">
-  <div>
-    <h1>MarkDown - LLM Evaluation Leaderboard</h1>
-    <div class="meta">{stats['total_prompts']} prompts across {len(stats['categories'])} categories</div>
-  </div>
-  <div style="display:flex;align-items:center;gap:1.5rem">
-    <nav class="nav">
-      <a href="dashboard.html" class="nav-link active">Overview</a>
-      <a href="categories.html" class="nav-link">By Category</a>
-      <a href="methodology.html" class="nav-link">Methodology</a>
-    </nav>
-    <div class="meta" style="text-align:right">
-      {stats['total_models']} models evaluated{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''}<br>
-      Updated: {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}
+  <div class="header-inner">
+    <div class="header-top">
+      <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
+      <nav class="nav">
+        <a href="dashboard.html" class="nav-link active">Overview</a>
+        <a href="categories.html" class="nav-link">By Category</a>
+        <a href="methodology.html" class="nav-link">Methodology</a>
+      </nav>
     </div>
+    <p class="byline">Opinionated in scope. Objective in execution.</p>
+    <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
   </div>
 </div>
 
@@ -488,7 +616,7 @@ def generate_html(stats):
   <div class="kpi">
     <div class="label">Top Model</div>
     <div class="value" style="font-size:1.3rem">{stats['leaderboard'][0]['name'] if stats['leaderboard'] else '-'}</div>
-    <div class="sub">{stats['leaderboard'][0]['avg_score']}/5 avg score</div>
+    <div class="sub">{f"{stats['leaderboard'][0]['composite_score']:.2f}" if stats['leaderboard'] and stats['leaderboard'][0].get('composite_score') is not None else '-'} composite</div>
   </div>
   <div class="kpi">
     <div class="label">Models Evaluated</div>
@@ -510,14 +638,16 @@ def generate_html(stats):
 <!-- Leaderboard + Score Chart -->
 <div class="grid-full">
   <div class="card">
-    <h2>Leaderboard</h2>
+    <h2>Leaderboard <span class="info-tip" data-info="Ranked by composite score. Click column headers to re-sort.">?</span></h2>
     <div class="table-scroll">
       <table id="leaderboard-table">
         <thead>
           <tr>
             <th style="width:3rem" data-sort="rank" data-type="num">#</th>
             <th data-sort="name" data-type="str">Model</th>
-            <th data-sort="score" data-type="num" class="desc">Score</th>
+            <th data-sort="composite" data-type="num" class="desc">Composite</th>
+            <th data-sort="score" data-type="num">Judge</th>
+            <th class="num" data-sort="deepeval" data-type="num">DeepEval</th>
             <th class="num" data-sort="scored" data-type="num">Scored</th>
             <th class="num" data-sort="errors" data-type="num">Errors</th>
             <th class="num" data-sort="flags" data-type="num">Flags</th>
@@ -534,16 +664,19 @@ def generate_html(stats):
   </div>
 </div>
 
+<!-- DeepEval Breakdown -->
+{_deepeval_breakdown_card(stats['leaderboard'])}
+
 <!-- Charts row -->
 <div class="grid-2">
   <div class="card">
-    <h2>Overall Scores</h2>
+    <h2>Composite Scores <span class="info-tip" data-info="Weighted average of normalised judge score (0-1) and DeepEval average.">?</span></h2>
     <div class="chart-container">
       <canvas id="scoreChart"></canvas>
     </div>
   </div>
   <div class="card">
-    <h2>Efficiency (Score / log2 Tokens)</h2>
+    <h2>Efficiency <span class="info-tip" data-info="Quality per token: avg_score / log2(avg_tokens). Higher means better quality with fewer tokens.">?</span></h2>
     <div class="chart-container">
       <canvas id="efficiencyChart"></canvas>
     </div>
@@ -553,7 +686,7 @@ def generate_html(stats):
 <!-- Category breakdown (full width) -->
 <div class="grid-full">
   <div class="card">
-    <h2>Category Breakdown</h2>
+    <h2>Category Breakdown <span class="info-tip" data-info="Composite score per category. Hover cells for judge and DeepEval breakdown.">?</span></h2>
     <div class="table-scroll">
       <table class="cat-table">
         <thead>
@@ -573,13 +706,13 @@ def generate_html(stats):
 <!-- Radar + Score Distribution -->
 <div class="grid-2">
   <div class="card">
-    <h2>Category Radar - Top 5</h2>
+    <h2>Category Radar - Top 5 <span class="info-tip" data-info="Composite scores by category for the top 5 models. Wider coverage means more consistent performance.">?</span></h2>
     <div class="chart-container">
       <canvas id="radarChart"></canvas>
     </div>
   </div>
   <div class="card">
-    <h2>Score Distribution</h2>
+    <h2>Score Distribution <span class="info-tip" data-info="LLM judge scores (1-5) per model. More green (5/5) means higher quality responses.">?</span></h2>
     <div class="chart-container">
       <canvas id="distChart"></canvas>
     </div>
@@ -589,7 +722,7 @@ def generate_html(stats):
 <!-- Flags -->
 <div class="grid-full">
   <div class="card">
-    <h2>Auto-Check Flags ({len(stats['flags'])} prompts flagged)</h2>
+    <h2>Auto-Check Flags ({len(stats['flags'])} prompts flagged) <span class="info-tip" data-info="Automated heuristic checks that flag potential issues like wrong answers, hallucinations, or format violations.">?</span></h2>
     <div class="flags-list">
       {"".join(_flag_item(f) for f in stats['flags'][:30])}
       {f'<div style="padding:0.5rem;color:var(--text2);font-size:0.85rem">...and {len(stats["flags"])-30} more</div>' if len(stats['flags']) > 30 else ''}
@@ -610,19 +743,28 @@ const COLORS = [
   '#f59e0b', '#14b8a6'
 ];
 
+function compositeColor(s) {{
+  if (s >= 0.95) return '#22c55e';
+  if (s >= 0.90) return '#4ade80';
+  if (s >= 0.85) return '#86efac';
+  if (s >= 0.80) return '#eab308';
+  if (s >= 0.70) return '#f97316';
+  return '#ef4444';
+}}
+
 Chart.defaults.color = '#8b90a5';
 Chart.defaults.borderColor = '#2e3345';
 Chart.defaults.font.family = "'Inter', sans-serif";
 
-// Score bar chart
+// Composite score bar chart (0-1 scale)
 new Chart(document.getElementById('scoreChart'), {{
   type: 'bar',
   data: {{
     labels: lb.map(m => m.name),
     datasets: [{{
-      data: lb.map(m => m.avg_score),
-      backgroundColor: lb.map((_, i) => COLORS[i % COLORS.length] + 'cc'),
-      borderColor: lb.map((_, i) => COLORS[i % COLORS.length]),
+      data: lb.map(m => m.composite_score || 0),
+      backgroundColor: lb.map(m => compositeColor(m.composite_score || 0) + 'cc'),
+      borderColor: lb.map(m => compositeColor(m.composite_score || 0)),
       borderWidth: 1,
       borderRadius: 4,
     }}]
@@ -632,7 +774,7 @@ new Chart(document.getElementById('scoreChart'), {{
     maintainAspectRatio: false,
     plugins: {{ legend: {{ display: false }} }},
     scales: {{
-      y: {{ min: 0, max: 5, ticks: {{ stepSize: 1 }} }},
+      y: {{ min: 0, max: 1, ticks: {{ stepSize: 0.2 }} }},
       x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}
     }}
   }}
@@ -647,15 +789,17 @@ new Chart(document.getElementById('efficiencyChart'), {{
     datasets: [{{
       data: effSorted.map(m => m.efficiency),
       backgroundColor: effSorted.map(m => {{
-        if (m.efficiency >= 0.5) return '#4ecdc4cc';
-        if (m.efficiency >= 0.4) return '#22c55ecc';
-        if (m.efficiency >= 0.3) return '#eab308cc';
+        if (m.efficiency >= 0.50) return '#22c55ecc';
+        if (m.efficiency >= 0.45) return '#4ade80cc';
+        if (m.efficiency >= 0.40) return '#86efaccc';
+        if (m.efficiency >= 0.35) return '#eab308cc';
         return '#f97316cc';
       }}),
       borderColor: effSorted.map(m => {{
-        if (m.efficiency >= 0.5) return '#4ecdc4';
-        if (m.efficiency >= 0.4) return '#22c55e';
-        if (m.efficiency >= 0.3) return '#eab308';
+        if (m.efficiency >= 0.50) return '#22c55e';
+        if (m.efficiency >= 0.45) return '#4ade80';
+        if (m.efficiency >= 0.40) return '#86efac';
+        if (m.efficiency >= 0.35) return '#eab308';
         return '#f97316';
       }}),
       borderWidth: 1,
@@ -673,7 +817,7 @@ new Chart(document.getElementById('efficiencyChart'), {{
   }}
 }});
 
-// Radar chart (top 5 models)
+// Radar chart (top 5 models) - uses composite per-category scores (0-1 scale)
 const top5 = lb.slice(0, 5);
 new Chart(document.getElementById('radarChart'), {{
   type: 'radar',
@@ -681,7 +825,7 @@ new Chart(document.getElementById('radarChart'), {{
     labels: cats.map(c => c.replace('_', ' ')),
     datasets: top5.map((m, i) => ({{
       label: m.name,
-      data: cats.map(c => m.cat_scores[c] || 0),
+      data: cats.map(c => (m.cat_composite && m.cat_composite[c]) || 0),
       borderColor: COLORS[i],
       backgroundColor: COLORS[i] + '22',
       pointBackgroundColor: COLORS[i],
@@ -695,8 +839,8 @@ new Chart(document.getElementById('radarChart'), {{
     scales: {{
       r: {{
         min: 0,
-        max: 5,
-        ticks: {{ stepSize: 1, display: false }},
+        max: 1,
+        ticks: {{ stepSize: 0.2, display: false }},
         grid: {{ color: '#2e3345' }},
         angleLines: {{ color: '#2e3345' }},
         pointLabels: {{ font: {{ size: 11 }}, color: '#e4e7f0' }}
@@ -800,11 +944,118 @@ def _score_color(score):
     return "score-1"
 
 
+def _deepeval_color(score):
+    """Return inline CSS color for a 0-1 DeepEval score."""
+    if score is None:
+        return "color:var(--text2)"
+    if score >= 0.8:
+        return "color:var(--green)"
+    if score >= 0.6:
+        return "color:#86efac"
+    if score >= 0.4:
+        return "color:var(--yellow)"
+    if score >= 0.2:
+        return "color:var(--orange)"
+    return "color:var(--red)"
+
+
+def _composite_color(score):
+    """Return inline CSS color for a 0-1 composite score with tighter bands."""
+    if score is None:
+        return "color:var(--text2)"
+    if score >= 0.95:
+        return "color:#22c55e"
+    if score >= 0.90:
+        return "color:#4ade80"
+    if score >= 0.85:
+        return "color:#86efac"
+    if score >= 0.80:
+        return "color:var(--yellow)"
+    if score >= 0.70:
+        return "color:var(--orange)"
+    return "color:var(--red)"
+
+
+def _efficiency_color(score):
+    """Return inline CSS color for efficiency score, matching chart bands."""
+    if score is None:
+        return "color:var(--text2)"
+    if score >= 0.50:
+        return "color:#22c55e"
+    if score >= 0.45:
+        return "color:#4ade80"
+    if score >= 0.40:
+        return "color:#86efac"
+    if score >= 0.35:
+        return "color:var(--yellow)"
+    return "color:var(--orange)"
+
+
+def _deepeval_breakdown_card(leaderboard):
+    """Generate the DeepEval Breakdown card HTML."""
+    # Check if any model has DeepEval data
+    has_data = any(m.get("deepeval_avg") is not None for m in leaderboard)
+    if not has_data:
+        return ""
+
+    metric_names = {"correctness": "Correctness", "coherence": "Coherence", "instruction_following": "Instruction Following"}
+    rows = ""
+    for i, m in enumerate(leaderboard):
+        de_avg = m.get("deepeval_avg")
+        de_metrics = m.get("deepeval_metrics", {})
+        if de_avg is None:
+            continue
+
+        cells = ""
+        for key in ["correctness", "coherence", "instruction_following"]:
+            val = de_metrics.get(key)
+            if val is not None:
+                color = _deepeval_color(val)
+                cells += f'<td class="num" style="font-weight:600;{color}">{val:.2f}</td>'
+            else:
+                cells += '<td class="num" style="color:var(--text2)">-</td>'
+
+        avg_color = _deepeval_color(de_avg)
+        cells += f'<td class="num" style="font-weight:700;{avg_color}">{de_avg:.2f}</td>'
+
+        rows += f'<tr><td style="font-weight:600">{m["name"]}</td>{cells}</tr>\n'
+
+    if not rows:
+        return ""
+
+    headers = "".join(f'<th class="num">{v}</th>' for v in metric_names.values())
+
+    return f"""<div class="grid-full">
+  <div class="card">
+    <h2>DeepEval Breakdown <span class="info-tip" data-info="Per-metric DeepEval G-Eval scores (0-1): correctness, coherence, and instruction following.">?</span></h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            {headers}
+            <th class="num">Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>"""
+
+
 def _leaderboard_row(i, m):
     rank_cls = f"rank-{i+1}" if i < 3 else "rank-n"
-    pct = (m["avg_score"] / 5) * 100
+    # Composite score (0-1 scale)
+    comp_val = m.get("composite_score")
+    comp_str = f"{comp_val:.2f}" if comp_val is not None else "-"
+    comp_data = f"{comp_val}" if comp_val is not None else "0"
+    comp_color = _composite_color(comp_val)
+
+    # Judge score
     sc = _score_color(m["avg_score"])
-    color = ["#fbbf24", "#94a3b8", "#d97706"][i] if i < 3 else "#6c72ff"
 
     errors_badge = ""
     if m["errors"]:
@@ -818,31 +1069,42 @@ def _leaderboard_row(i, m):
     else:
         flags_badge = '<span class="badge badge-ok">0</span>'
 
-    return f"""<tr data-rank="{i+1}" data-name="{m['name']}" data-score="{m['avg_score']}" data-scored="{m['scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}">
+    de_val = m.get('deepeval_avg')
+    de_str = f"{de_val:.2f}" if de_val is not None else "-"
+    de_data = f"{de_val}" if de_val is not None else "0"
+    de_color = _deepeval_color(de_val)
+
+    return f"""<tr data-rank="{i+1}" data-name="{m['name']}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-scored="{m['scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}">
       <td><span class="rank {rank_cls}">{i+1}</span></td>
       <td style="font-weight:600">{m['name']}</td>
-      <td>
-        <div class="score-bar">
-          <div class="bar"><div class="fill" style="width:{pct}%;background:{color}"></div></div>
-          <div class="val {sc}">{m['avg_score']:.2f}</div>
-        </div>
-      </td>
+      <td class="num" style="font-weight:700;{comp_color}">{comp_str}</td>
+      <td class="num {sc}" style="font-weight:600">{m['avg_score']:.2f}/5</td>
+      <td class="num" style="font-weight:600;{de_color}">{de_str}</td>
       <td class="num">{m['scored']}/{m['total']}</td>
       <td class="num">{errors_badge}</td>
       <td class="num">{flags_badge}</td>
       <td class="num">{m['avg_latency']:.1f}s</td>
       <td class="num">{m['avg_tokens']:.0f}</td>
-      <td class="num" style="font-weight:600;color:var(--accent2)">{m['efficiency']:.2f}</td>
+      <td class="num" style="font-weight:600;{_efficiency_color(m['efficiency'])}">{m['efficiency']:.2f}</td>
     </tr>"""
 
 
 def _category_row(cat, leaderboard):
     cells = ""
     for m in leaderboard:
+        comp = m.get("cat_composite", {}).get(cat)
         s = m["cat_scores"].get(cat)
-        if s is not None:
-            cls = _score_color(s)
-            cells += f'<td class="num score-cell {cls}">{s:.2f}</td>'
+        de = m.get("cat_deepeval", {}).get(cat)
+        if comp is not None or s is not None:
+            comp_color = _composite_color(comp)
+            comp_str = f"{comp:.2f}" if comp is not None else "-"
+            tip_parts = []
+            if s is not None:
+                tip_parts.append(f"Judge: {s:.2f}/5")
+            if de is not None:
+                tip_parts.append(f"DeepEval: {de:.2f}")
+            tip = " | ".join(tip_parts)
+            cells += f'<td class="num" style="font-weight:600;{comp_color}" data-tip="{tip}">{comp_str}</td>'
         else:
             cells += '<td class="num" style="color:var(--text2)">-</td>'
 
@@ -872,7 +1134,7 @@ def generate_categories_html(stats):
         best = None
         best_score = 0
         for m in stats["leaderboard"]:
-            s = m["cat_scores"].get(cat)
+            s = m.get("cat_composite", {}).get(cat)
             if s is not None and s > best_score:
                 best_score = s
                 best = m["name"]
@@ -880,7 +1142,7 @@ def generate_categories_html(stats):
         winner_cards += f"""<div class="winner-card">
           <div class="winner-cat">{display_cat}</div>
           <div class="winner-name">{best or '-'}</div>
-          <div class="winner-score">{best_score:.2f}/5</div>
+          <div class="winner-score">{best_score:.2f}</div>
         </div>\n"""
 
     # Build chart canvases
@@ -899,7 +1161,7 @@ def generate_categories_html(stats):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MarkDown - By Category</title>
+<title>BenchPress - By Category</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   :root {{
@@ -925,13 +1187,21 @@ def generate_categories_html(stats):
   .header {{
     background: linear-gradient(135deg, #1a1d27 0%, #242836 100%);
     border-bottom: 1px solid var(--border);
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2.5rem;
+  }}
+  .header-inner {{
+    max-width: 1440px;
+    margin: 0 auto;
+  }}
+  .header-top {{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.25rem;
   }}
-  .header h1 {{ font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }}
-  .header .meta {{ font-size: 0.8rem; color: var(--text2); }}
+  .header h1 {{ font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }}
+  .header .byline {{ font-size: 0.85rem; color: var(--text2); margin: 0.2rem 0 0; }}
+  .header .meta {{ font-size: 0.75rem; color: var(--text2); margin-top: 0.5rem; }}
   .nav {{
     display: flex;
     gap: 0.25rem;
@@ -1013,8 +1283,8 @@ def generate_categories_html(stats):
     .winners {{ grid-template-columns: repeat(2, 1fr); }}
   }}
   @media (max-width: 900px) {{
-    .header {{ padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; }}
-    .header .meta {{ text-align: left !important; }}
+    .header {{ padding: 1rem; }}
+    .header-top {{ flex-direction: column; align-items: flex-start; gap: 0.5rem; }}
     .container {{ padding: 1rem; }}
   }}
   @media (max-width: 600px) {{
@@ -1032,20 +1302,17 @@ def generate_categories_html(stats):
 <body>
 
 <div class="header">
-  <div>
-    <h1>MarkDown - By Category</h1>
-    <div class="meta">Best models per category</div>
-  </div>
-  <div style="display:flex;align-items:center;gap:1.5rem">
-    <nav class="nav">
-      <a href="dashboard.html" class="nav-link">Overview</a>
-      <a href="categories.html" class="nav-link active">By Category</a>
-      <a href="methodology.html" class="nav-link">Methodology</a>
-    </nav>
-    <div class="meta" style="text-align:right">
-      {stats['total_models']} models evaluated{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''}<br>
-      Updated: {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}
+  <div class="header-inner">
+    <div class="header-top">
+      <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
+      <nav class="nav">
+        <a href="dashboard.html" class="nav-link">Overview</a>
+        <a href="categories.html" class="nav-link active">By Category</a>
+        <a href="methodology.html" class="nav-link">Methodology</a>
+      </nav>
     </div>
+    <p class="byline">Opinionated in scope. Objective in execution.</p>
+    <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
   </div>
 </div>
 
@@ -1074,11 +1341,12 @@ const COLORS = [
   '#f59e0b', '#14b8a6'
 ];
 
-function scoreColor(s) {{
-  if (s >= 4.5) return '#22c55e';
-  if (s >= 3.5) return '#86efac';
-  if (s >= 2.5) return '#eab308';
-  if (s >= 1.5) return '#f97316';
+function compositeColor(s) {{
+  if (s >= 0.95) return '#22c55e';
+  if (s >= 0.90) return '#4ade80';
+  if (s >= 0.85) return '#86efac';
+  if (s >= 0.80) return '#eab308';
+  if (s >= 0.70) return '#f97316';
   return '#ef4444';
 }}
 
@@ -1087,10 +1355,10 @@ Chart.defaults.borderColor = '#2e3345';
 Chart.defaults.font.family = "'Inter', sans-serif";
 
 cats.forEach(cat => {{
-  // Get models with scores for this category, sorted descending
+  // Get models with composite scores for this category, sorted descending
   const entries = lb
-    .filter(m => m.cat_scores[cat] != null)
-    .map(m => ({{ name: m.name, score: m.cat_scores[cat] }}))
+    .filter(m => m.cat_composite && m.cat_composite[cat] != null)
+    .map(m => ({{ name: m.name, score: m.cat_composite[cat] }}))
     .sort((a, b) => b.score - a.score);
 
   const canvas = document.getElementById('chart-' + cat);
@@ -1102,8 +1370,8 @@ cats.forEach(cat => {{
       labels: entries.map(e => e.name),
       datasets: [{{
         data: entries.map(e => e.score),
-        backgroundColor: entries.map(e => scoreColor(e.score) + 'cc'),
-        borderColor: entries.map(e => scoreColor(e.score)),
+        backgroundColor: entries.map(e => compositeColor(e.score) + 'cc'),
+        borderColor: entries.map(e => compositeColor(e.score)),
         borderWidth: 1,
         borderRadius: 4,
       }}]
@@ -1114,7 +1382,7 @@ cats.forEach(cat => {{
       maintainAspectRatio: false,
       plugins: {{ legend: {{ display: false }} }},
       scales: {{
-        x: {{ min: 0, max: 5, ticks: {{ stepSize: 1 }} }},
+        x: {{ min: 0, max: 1, ticks: {{ stepSize: 0.2 }} }},
         y: {{ ticks: {{ font: {{ size: 12, weight: '600' }} }} }}
       }}
     }}
@@ -1154,7 +1422,7 @@ def generate_methodology_html(stats):
     # Group check types into categories
     automated_checks = []
     judge_only_checks = []
-    noop_types = {"calibration", "reasoning", "format_check", "checklist", "analysis", "synthesis", "comparison", "behavioral"}
+    noop_types = {"calibration", "reasoning", "format_check", "checklist", "analysis", "synthesis", "comparison", "behavioural"}
     for ct in sorted(checks):
         display = ct.replace("_", " ")
         if ct in noop_types:
@@ -1214,7 +1482,7 @@ def generate_methodology_html(stats):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MarkDown - Methodology</title>
+<title>BenchPress - Methodology</title>
 <style>
   :root {{
     --bg: #0f1117;
@@ -1240,13 +1508,21 @@ def generate_methodology_html(stats):
   .header {{
     background: linear-gradient(135deg, #1a1d27 0%, #242836 100%);
     border-bottom: 1px solid var(--border);
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2.5rem;
+  }}
+  .header-inner {{
+    max-width: 1440px;
+    margin: 0 auto;
+  }}
+  .header-top {{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.25rem;
   }}
-  .header h1 {{ font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }}
-  .header .meta {{ font-size: 0.8rem; color: var(--text2); }}
+  .header h1 {{ font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }}
+  .header .byline {{ font-size: 0.85rem; color: var(--text2); margin: 0.2rem 0 0; }}
+  .header .meta {{ font-size: 0.75rem; color: var(--text2); margin-top: 0.5rem; }}
   .nav {{
     display: flex;
     gap: 0.25rem;
@@ -1382,7 +1658,8 @@ def generate_methodology_html(stats):
     margin-top: 0.25rem;
   }}
   @media (max-width: 900px) {{
-    .header {{ padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; }}
+    .header {{ padding: 1rem; }}
+    .header-top {{ flex-direction: column; align-items: flex-start; gap: 0.5rem; }}
     .container {{ padding: 1rem; }}
     .grid-2 {{ grid-template-columns: 1fr; }}
     .kpi-row {{ grid-template-columns: repeat(2, 1fr); }}
@@ -1520,20 +1797,17 @@ def generate_methodology_html(stats):
 <body>
 
 <div class="header">
-  <div>
-    <h1>MarkDown - Methodology</h1>
-    <div class="meta">How models are evaluated and scored</div>
-  </div>
-  <div style="display:flex;align-items:center;gap:1.5rem">
-    <nav class="nav">
-      <a href="dashboard.html" class="nav-link">Overview</a>
-      <a href="categories.html" class="nav-link">By Category</a>
-      <a href="methodology.html" class="nav-link active">Methodology</a>
-    </nav>
-    <div class="meta" style="text-align:right">
-      {stats['total_models']} models evaluated{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''}<br>
-      Updated: {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}
+  <div class="header-inner">
+    <div class="header-top">
+      <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
+      <nav class="nav">
+        <a href="dashboard.html" class="nav-link">Overview</a>
+        <a href="categories.html" class="nav-link">By Category</a>
+        <a href="methodology.html" class="nav-link active">Methodology</a>
+      </nav>
     </div>
+    <p class="byline">Opinionated in scope. Objective in execution.</p>
+    <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judged by {stats["judge_model"]}' if stats.get("judge_model") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
   </div>
 </div>
 
@@ -1593,6 +1867,8 @@ def generate_methodology_html(stats):
   <div class="highlight">
     Prompt sent to model &rarr; Response collected with latency/token counts &rarr;
     Automated checks run &rarr; LLM judge scores 1-5 with rationale &rarr;
+    DeepEval G-Eval metrics (correctness, coherence, instruction following) &rarr;
+    Composite score computed (weighted merge of judge + DeepEval) &rarr;
     Results persisted as JSON
   </div>
   <ul>
@@ -1651,6 +1927,54 @@ def generate_methodology_html(stats):
     <li>Auto-check flag failures lower the score</li>
     <li>A 3 is average, 5 is genuinely excellent - the scale is strict but fair</li>
   </ul>
+</div>
+
+<!-- DeepEval scoring -->
+<div class="card">
+  <h2>DeepEval G-Eval Scoring (Layer 3)</h2>
+  <p>
+    In addition to the single LLM judge score, each response is scored by
+    <a href="https://github.com/confident-ai/deepeval" style="color:var(--accent)">DeepEval</a>
+    using G-Eval metrics - research-backed LLM evaluation criteria that provide
+    multi-dimensional scoring on a 0-1 scale.
+  </p>
+  <h3>Metrics</h3>
+  <div class="scoring-scale">
+    <span class="score score-5">Correctness</span><span class="desc">Is the response factually correct compared to the expected output? Penalises contradictions, omissions, and hallucinations.</span>
+    <span class="score score-4">Coherence</span><span class="desc">Does the response have clear logical flow, good structure, and present ideas without contradictions?</span>
+    <span class="score score-3">Instruction Following</span><span class="desc">Does the response address all parts of the prompt and adhere to format, length, and constraint requirements?</span>
+  </div>
+  <h3>How it works</h3>
+  <ul>
+    <li>Each metric uses a chain-of-thought evaluation via the same judge model</li>
+    <li>Scores are 0-1 floats (DeepEval's native scale), independent of the 1-5 judge score</li>
+    <li>Both scoring systems coexist - DeepEval supplements rather than replaces the judge</li>
+    <li>Can be run retroactively on existing results: <code>python run.py deepeval</code></li>
+  </ul>
+</div>
+
+<!-- Composite score -->
+<div class="card">
+  <h2>Composite Score</h2>
+  <p>
+    The composite score merges the LLM Judge score and DeepEval average into a single
+    0-1 metric for unified ranking. The judge score is first normalized from its 1-5 scale
+    to 0-1 using <code>(judge_score - 1) / 4</code>, then combined with the DeepEval
+    average via a configurable weighted average.
+  </p>
+  <div class="highlight">
+    composite = judge_weight &times; normalized_judge + deepeval_weight &times; deepeval_avg
+  </div>
+  <h3>Fallback behavior</h3>
+  <ul>
+    <li><strong>Both scores available</strong> - weighted average (default: 50/50)</li>
+    <li><strong>Only judge score</strong> - composite = normalized judge score</li>
+    <li><strong>Only DeepEval score</strong> - composite = DeepEval average</li>
+    <li><strong>Neither</strong> - no composite score</li>
+  </ul>
+  <p>
+    Weights are configurable in <code>config.yaml</code> under the <code>composite:</code> section.
+  </p>
 </div>
 
 <!-- Efficiency metric -->
@@ -1713,7 +2037,8 @@ def generate_dashboard(output_path=None):
         del models[judge_model]
 
     prompts = load_prompts()
-    stats = compute_stats(models, prompts, judge_model=judge_model)
+    composite_config = config.get("composite", {})
+    stats = compute_stats(models, prompts, judge_model=judge_model, composite_config=composite_config)
 
     # Ensure output directory exists
     out_dir = os.path.dirname(output_path)

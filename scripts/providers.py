@@ -146,6 +146,29 @@ class OllamaProvider(Provider):
         return content, usage
 
 
+class BedrockProvider(Provider):
+    def __init__(self, model: str, region: str = None):
+        import boto3
+        self.model = model
+        self.client = boto3.client("bedrock-runtime", region_name=region)
+
+    def complete(self, prompt: str, params: dict) -> tuple[str, dict]:
+        response = self.client.converse(
+            modelId=self.model,
+            messages=[{"role": "user", "content": [{"text": prompt}]}],
+            inferenceConfig={
+                "maxTokens": params.get("max_tokens", 4096),
+                "temperature": params.get("temperature", 0),
+            },
+        )
+        content = response["output"]["message"]["content"][0]["text"]
+        usage = {
+            "input_tokens": response["usage"]["inputTokens"],
+            "output_tokens": response["usage"]["outputTokens"],
+        }
+        return content, usage
+
+
 def get_provider(config: dict) -> Provider:
     provider_type = config["provider"]
 
@@ -166,5 +189,8 @@ def get_provider(config: dict) -> Provider:
         return OpenAIProvider(config["model"], api_key, base_url)
     elif provider_type == "google":
         return GoogleProvider(config["model"], api_key)
+    elif provider_type == "bedrock":
+        region = config.get("region")
+        return BedrockProvider(config["model"], region)
     else:
         raise ValueError(f"Unknown provider: {provider_type}")
