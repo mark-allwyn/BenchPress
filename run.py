@@ -71,8 +71,19 @@ def load_model_results(model_name: str) -> dict:
 def save_model_results(model_name: str, data: dict):
     os.makedirs(RESULTS_DIR, exist_ok=True)
     data["updated"] = datetime.now().isoformat()
-    with open(model_path(model_name), "w") as f:
-        json.dump(data, f, indent=2)
+    target = model_path(model_name)
+    tmp = target + ".tmp"
+    try:
+        with open(tmp, "w") as f:
+            json.dump(data, f, indent=2)
+        # Validate before replacing
+        with open(tmp) as f:
+            json.load(f)
+        os.replace(tmp, target)
+    except Exception:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+        raise
 
 
 def list_evaluated_models() -> list[str]:
@@ -244,7 +255,10 @@ def cmd_eval(args):
         if pid not in model_data["runs"]:
             model_data["runs"][pid] = []
         model_data["runs"][pid].append(entry)
-        save_model_results(model_name, model_data)
+        try:
+            save_model_results(model_name, model_data)
+        except Exception as e:
+            print(f"  ⚠ Save failed (will retry next prompt): {e}")
 
         if i < len(prompts):
             time.sleep(delay)
@@ -416,8 +430,12 @@ def cmd_models(args):
         data = load_model_results(name)
         total = len(data["runs"])
         scored = sum(1 for rs in data["runs"].values() if rs and rs[-1].get("judge_score") is not None)
+        de_scored = sum(
+            1 for rs in data["runs"].values()
+            if rs and rs[-1].get("deepeval_scores") and any(v is not None for v in rs[-1]["deepeval_scores"].values())
+        )
         updated = data.get("updated", data.get("created", "?"))[:10]
-        print(f"  {name:<30} {total:>2} prompts, {scored:>2} scored  (updated: {updated})")
+        print(f"  {name:<30} {total:>2} prompts, {scored:>2} judged, {de_scored:>2} deepeval  (updated: {updated})")
 
 
 def cmd_prompts(args):
@@ -560,6 +578,10 @@ def cmd_rejudge(args):
                     "judge_rationale": jr["judge_rationale"],
                     "judge_model": judge_model_name,
                 }
+                # Carry forward deepeval scores from previous run
+                if run.get("deepeval_scores"):
+                    entry["deepeval_scores"] = run["deepeval_scores"]
+                    entry["deepeval_avg"] = run.get("deepeval_avg")
 
                 model_data["runs"][pid].append(entry)
 
@@ -573,10 +595,13 @@ def cmd_rejudge(args):
                 print(f"error: {e}")
                 total_errors += 1
 
+            try:
+                save_model_results(model_name, model_data)
+            except Exception as e:
+                print(f"    ⚠ Save failed (will retry next prompt): {e}")
+
             if i < len(to_judge):
                 time.sleep(delay)
-
-        save_model_results(model_name, model_data)
 
     print(f"\n  Done: {total_judged} judged, {total_skipped} skipped, {total_errors} errors")
 
@@ -641,7 +666,8 @@ def cmd_deepeval(args):
             run = latest_run(model_data, pid)
             if not run or run.get("error"):
                 continue
-            if not args.force and run.get("deepeval_scores"):
+            de_scores = run.get("deepeval_scores", {})
+            if not args.force and de_scores and any(v is not None for v in de_scores.values()):
                 total_skipped += 1
                 continue
             to_score.append(pid)
@@ -693,10 +719,13 @@ def cmd_deepeval(args):
                 print(f"error: {e}")
                 total_errors += 1
 
+            try:
+                save_model_results(model_name, model_data)
+            except Exception as e:
+                print(f"    ⚠ Save failed (will retry next prompt): {e}")
+
             if i < len(to_score):
                 time.sleep(delay)
-
-        save_model_results(model_name, model_data)
 
     print(f"\n  Done: {total_scored} scored, {total_skipped} skipped, {total_errors} errors")
 

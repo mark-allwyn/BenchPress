@@ -116,7 +116,7 @@ def check_constraint(meta: dict, response: str) -> dict:
     expected_count = constraints.get("count")
     if expected_count:
         # Count numbered items or bullet points
-        items = re.findall(r"(?:^|\n)\s*(?:\d+[\.\):]|[-•*])\s+\S", response)
+        items = re.findall(r"^\s*(?:\d+[\.\):]|[-•*])\s+\S", response, re.MULTILINE)
         if len(items) != expected_count:
             flags.append(f"COUNT_MISMATCH: found ~{len(items)} items (expected {expected_count})")
 

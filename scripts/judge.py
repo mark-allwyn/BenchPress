@@ -59,6 +59,36 @@ def build_judge_prompt(prompt_meta: dict, response: str, auto_checks: dict) -> s
     return "\n".join(parts)
 
 
+def _extract_json_object(text: str) -> str | None:
+    """Find the outermost {...} in text, handling nested braces."""
+    start = text.find("{")
+    if start == -1:
+        return None
+    depth = 0
+    in_string = False
+    escape = False
+    for i in range(start, len(text)):
+        c = text[i]
+        if escape:
+            escape = False
+            continue
+        if c == "\\":
+            escape = True
+            continue
+        if c == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start:i + 1]
+    return None
+
+
 def parse_judge_response(raw: str) -> dict:
     """Extract score and rationale JSON from judge output.
 
@@ -73,9 +103,9 @@ def parse_judge_response(raw: str) -> dict:
         text = fence_match.group(1).strip()
 
     # Try to find JSON object in text
-    brace_match = re.search(r"\{[^{}]*\}", text)
-    if brace_match:
-        text = brace_match.group(0)
+    extracted = _extract_json_object(text)
+    if extracted:
+        text = extracted
 
     try:
         parsed = json.loads(text)
