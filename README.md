@@ -1,8 +1,8 @@
-# llm-eval
+# BenchPress
 
-Personal LLM evaluation harness. Build up your own benchmarks over time instead of trusting public leaderboards.
+Personal LLM evaluation harness. Run the same prompts against different models, auto-score via LLM-as-judge and DeepEval, and compare over time. Results persist as per-model JSON files in `results/`.
 
-Each model gets a persistent JSON file in `results/`. When a new model drops, run the eval, score it, and compare against everything you've tested before.
+![Dashboard](docs/screenshot.png)
 
 ## Quick Start
 
@@ -10,65 +10,81 @@ Each model gets a persistent JSON file in `results/`. When a new model drops, ru
 pip install -r requirements.txt
 
 cp config.example.yaml config.yaml
-# Edit config.yaml — add your API keys
+# Edit config.yaml - add your API keys and configure judge model
 
 export ANTHROPIC_API_KEY=sk-...
 export OPENAI_API_KEY=sk-...
 
-# Run eval against a model
+# Run eval against a model (scores via LLM judge inline)
 python run.py eval claude-sonnet-4
 
-# Score the results
-python run.py score claude-sonnet-4
-
 # Later, when a new model comes out:
-python run.py eval gpt-5
-python run.py score gpt-5
+python run.py eval gpt-5.2
 
 # Compare everything
 python run.py compare
+
+# View the dashboard
+python run.py dashboard --open
 ```
 
 ## Workflow
 
 ```
-┌─────────────────────────────────────────────────────┐
-│  New model drops                                    │
-│                                                     │
-│  1. Add to config.yaml                              │
-│  2. python run.py eval <model>     → auto-checks    │
-│  3. python run.py score <model>    → human 1-5      │
-│  4. python run.py compare          → leaderboard    │
-│                                                     │
-│  results/<model>.json accumulates over time         │
-└─────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│  New model drops                                                 │
+│                                                                  │
+│  1. Add to config.yaml                                           │
+│  2. python run.py eval <model>   -> auto-checks + judge + deep   │
+│  3. python run.py dashboard      -> HTML leaderboard             │
+│  4. python run.py compare        -> terminal comparison          │
+│                                                                  │
+│  results/<model>.json accumulates over time                      │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ## Commands
 
 ```bash
-# ── Evaluate ──
+# -- Evaluate --
 python run.py eval claude-sonnet-4                  # All prompts
 python run.py eval claude-sonnet-4 --ids C01 L02    # Specific prompts
 python run.py eval claude-sonnet-4 --category coding --difficulty hard
 python run.py eval claude-sonnet-4 --rerun          # Re-run (appends, keeps history)
 
-# ── Score ──
-python run.py score claude-sonnet-4                 # Score all
-python run.py score claude-sonnet-4 --unscored      # Only unscored prompts
-python run.py score claude-sonnet-4 --ids C01       # Re-score specific
+# -- Re-judge / DeepEval --
+python run.py rejudge                               # Re-judge all models with current judge
+python run.py rejudge claude-sonnet-4 --force       # Force re-judge even if already scored
+python run.py deepeval                              # Score all models with DeepEval metrics
+python run.py deepeval gpt-4o --ids C01 --force     # Re-score specific prompts
 
-# ── Compare ──
+# -- Compare --
 python run.py compare                               # All models
 python run.py compare claude-sonnet-4 gpt-4o        # Specific models
 python run.py compare --category coding             # By category
 python run.py compare --save                        # Save markdown report
 
-# ── Browse ──
+# -- Dashboard --
+python run.py dashboard                             # Generate HTML dashboard
+python run.py dashboard --open                      # Generate and open in browser
+
+# -- Browse --
 python run.py models                                # List evaluated models
 python run.py prompts                               # List eval prompts
 python run.py prompts --difficulty hard              # Filter prompts
 ```
+
+## Scoring Pipeline
+
+Each response is scored through three layers:
+
+1. **Auto-checks** - deterministic heuristic checks (word count, JSON validity, trap detection, etc.) that flag mechanical failures instantly
+2. **LLM judge** - a separate LLM scores each response 1-5 against the prompt's ideal answer and criteria
+3. **DeepEval G-Eval** - research-backed metrics (correctness, coherence, instruction following) scored 0-1
+
+The **composite score** merges judge and DeepEval into a single 0-1 metric: `composite = judge_weight * ((judge - 1) / 4) + deepeval_weight * deepeval_avg`. Weights default to 50/50, configurable in `config.yaml`.
+
+The dashboard auto-regenerates after each `eval`, `rejudge`, and `deepeval` run.
 
 ## Results Structure
 
@@ -78,8 +94,7 @@ Each model gets its own file:
 results/
 ├── claude-sonnet-4.json      # Persists across runs
 ├── gpt-4o.json
-├── gemini-2-flash.json
-├── llama-3-70b.json
+├── gpt-5.2.json
 └── comparison.md             # Generated by --save
 ```
 
@@ -88,43 +103,56 @@ Each model file stores run history per prompt:
 ```json
 {
   "model_name": "claude-sonnet-4",
-  "created": "2025-02-06T...",
-  "updated": "2025-02-06T...",
+  "created": "2026-02-06T...",
+  "updated": "2026-02-06T...",
   "runs": {
     "C01": [
       {
-        "timestamp": "2025-02-06T...",
+        "timestamp": "2026-02-06T...",
         "api_model": "claude-sonnet-4-20250514",
         "content": "...",
         "latency_s": 3.2,
         "input_tokens": 245,
         "output_tokens": 612,
         "auto_checks": { "flags": [], "passed": true },
-        "human_score": 4,
-        "human_notes": "Good but missed negative k edge case"
+        "judge_score": 4,
+        "judge_rationale": "Mostly correct but missed edge case...",
+        "judge_model": "gpt-4.1",
+        "deepeval_scores": { "correctness": 0.87, "coherence": 0.94, "instruction_following": 0.91 },
+        "deepeval_avg": 0.9067
       }
     ]
   }
 }
 ```
 
-Re-running with `--rerun` appends a new entry — you keep full history and the latest run is used for comparisons.
+Re-running with `--rerun` appends a new entry - you keep full history and the latest run is used for comparisons.
 
 ## Auto-Checks
 
-Every response gets automated checks that flag mechanical issues without replacing your judgment:
+Every response gets automated checks that flag mechanical issues. 19 active checkers, plus 8 judge-only categories that rely entirely on LLM scoring:
 
 | Check | What it catches |
 |---|---|
-| `trap_no_bug` | Model invents a phantom bug in working code (C01) |
-| `trap_common_error` | Model confuses memory vs compute complexity (L02) |
-| `trap_wrong_claim` | Model agrees with your wrong claim instead of correcting (M01) |
+| `trap_no_bug` | Model invents a phantom bug in working code |
+| `trap_common_error` | Model confuses memory vs compute complexity |
+| `trap_wrong_claim` | Model agrees with a wrong claim instead of correcting |
+| `sycophancy_check` | Model sycophantically agrees with a wrong position |
 | `json_valid` | Response isn't valid JSON when asked for JSON |
-| `constraint_check` | Wrong count, included excluded terms |
+| `constraint_check` | Wrong item count, included excluded terms |
 | `refusal_check` | Unnecessary refusal on legitimate requests |
 | `ambiguity_check` | Didn't ask for clarification on vague input |
 | `word_count` | Over/under target word count |
+| `word_count_reduction` | Insufficiently compressed summary |
+| `response_length` | Exceeds maximum word count |
+| `banned_words` | Uses explicitly banned words |
 | `self_awareness` | Doesn't acknowledge known limitations |
+| `code_runnable` | No code block found when code was expected |
+| `hallucination_api` | Treats a fake API/library as real |
+| `acknowledges_nonexistence` | Doesn't flag a fake event/thing as nonexistent |
+| `table_format` | Wrong column/row count in table output |
+| `multi_step_verify` | Expected numeric answer not found |
+| `statistical_significance` | Overclaims statistical significance |
 
 ## Adding Models
 
@@ -141,6 +169,8 @@ llama-3-70b:
     max_tokens: 4096
     temperature: 0
 ```
+
+Supported providers: `anthropic`, `openai`, `google`, `ollama`, `openai_compatible`.
 
 ## Adding Prompts
 
@@ -165,13 +195,20 @@ After adding prompts, run existing models with `--rerun` or just `eval` (only ne
 
 ```
 llm-eval/
-├── run.py                  # CLI: eval, score, compare, models, prompts
-├── config.example.yaml     # Template — copy to config.yaml
+├── run.py                       # CLI: eval, compare, rejudge, deepeval, dashboard, models, prompts
+├── config.example.yaml          # Template - copy to config.yaml
 ├── requirements.txt
 ├── evals/
-│   └── default.json        # 24 eval prompts
+│   └── default.json             # 80 eval prompts across 8 categories
 ├── scripts/
-│   ├── providers.py        # Anthropic, OpenAI, Google, OpenAI-compatible
-│   └── checks.py           # 13 automated response checkers
-└── results/                # Per-model JSON files (git-ignored)
+│   ├── providers.py             # Anthropic, OpenAI, Google, Ollama, OpenAI-compatible
+│   ├── checks.py                # 19 automated response checkers
+│   ├── judge.py                 # LLM-as-judge scoring (1-5)
+│   ├── deepeval_scorer.py       # DeepEval G-Eval integration (0-1)
+│   └── dashboard.py             # HTML dashboard generation
+├── docs/                        # Generated dashboard pages (GitHub Pages)
+│   ├── dashboard.html
+│   ├── categories.html
+│   └── methodology.html
+└── results/                     # Per-model JSON files (git-ignored)
 ```

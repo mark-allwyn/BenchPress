@@ -31,8 +31,11 @@ def load_all_results():
     for f in sorted(Path(RESULTS_DIR).glob("*.json")):
         if f.stem == "comparison":
             continue
-        with open(f) as fh:
-            models[f.stem] = json.load(fh)
+        try:
+            with open(f) as fh:
+                models[f.stem] = json.load(fh)
+        except (json.JSONDecodeError, IOError) as e:
+            print(f"  Warning: skipping corrupt result file {f.name}: {e}")
     return models
 
 
@@ -60,8 +63,9 @@ def compute_stats(models, prompts, judge_model=None, composite_config=None):
         flagged = 0
         de_scores_all = {"correctness": [], "coherence": [], "instruction_following": []}
         de_avgs = []
+        runs_cache = {pid: latest_run(data, pid) for pid in pids}
         for pid in pids:
-            run = latest_run(data, pid)
+            run = runs_cache[pid]
             if not run:
                 continue
             if run.get("error"):
@@ -83,7 +87,7 @@ def compute_stats(models, prompts, judge_model=None, composite_config=None):
             if de_avg is not None:
                 de_avgs.append(de_avg)
 
-        total = sum(1 for pid in pids if latest_run(data, pid))
+        total = sum(1 for pid in pids if runs_cache[pid])
         avg_s = sum(scores) / len(scores) if scores else 0
         avg_l = sum(latencies) / len(latencies) if latencies else 0
         avg_t = sum(tokens) / len(tokens) if tokens else 0
@@ -95,16 +99,16 @@ def compute_stats(models, prompts, judge_model=None, composite_config=None):
         cat_composite = {}
         for cat in categories:
             cs = [
-                latest_run(data, pid).get("judge_score")
+                runs_cache[pid].get("judge_score")
                 for pid in cat_pids[cat]
-                if latest_run(data, pid) and latest_run(data, pid).get("judge_score") is not None
+                if runs_cache[pid] and runs_cache[pid].get("judge_score") is not None
             ]
             cat_scores[cat] = round(sum(cs) / len(cs), 2) if cs else None
             # DeepEval per-category average
             cat_de = [
-                latest_run(data, pid).get("deepeval_avg")
+                runs_cache[pid].get("deepeval_avg")
                 for pid in cat_pids[cat]
-                if latest_run(data, pid) and latest_run(data, pid).get("deepeval_avg") is not None
+                if runs_cache[pid] and runs_cache[pid].get("deepeval_avg") is not None
             ]
             cat_deepeval[cat] = round(sum(cat_de) / len(cat_de), 2) if cat_de else None
             # Per-category composite
@@ -147,10 +151,20 @@ def compute_stats(models, prompts, judge_model=None, composite_config=None):
         else:
             composite_score = None
 
+        # Count prompts with non-None deepeval scores
+        de_scored = sum(
+            1 for pid in pids
+            if runs_cache[pid]
+            and not runs_cache[pid].get("error")
+            and runs_cache[pid].get("deepeval_scores")
+            and any(v is not None for v in runs_cache[pid]["deepeval_scores"].values())
+        )
+
         leaderboard.append({
             "name": name,
             "avg_score": round(avg_s, 2),
             "scored": len(scores),
+            "de_scored": de_scored,
             "total": total,
             "errors": errors,
             "flagged": flagged,
@@ -648,7 +662,8 @@ def generate_html(stats):
             <th data-sort="composite" data-type="num" class="desc">Composite</th>
             <th data-sort="score" data-type="num">Judge</th>
             <th class="num" data-sort="deepeval" data-type="num">DeepEval</th>
-            <th class="num" data-sort="scored" data-type="num">Scored</th>
+            <th class="num" data-sort="scored" data-type="num">Judged</th>
+            <th class="num" data-sort="de_scored" data-type="num">DE Scored</th>
             <th class="num" data-sort="errors" data-type="num">Errors</th>
             <th class="num" data-sort="flags" data-type="num">Flags</th>
             <th class="num" data-sort="latency" data-type="num">Avg Latency</th>
@@ -1074,13 +1089,14 @@ def _leaderboard_row(i, m):
     de_data = f"{de_val}" if de_val is not None else "0"
     de_color = _deepeval_color(de_val)
 
-    return f"""<tr data-rank="{i+1}" data-name="{m['name']}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-scored="{m['scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}">
+    return f"""<tr data-rank="{i+1}" data-name="{m['name']}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-scored="{m['scored']}" data-de_scored="{m['de_scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}">
       <td><span class="rank {rank_cls}">{i+1}</span></td>
       <td style="font-weight:600">{m['name']}</td>
       <td class="num" style="font-weight:700;{comp_color}">{comp_str}</td>
       <td class="num {sc}" style="font-weight:600">{m['avg_score']:.2f}/5</td>
       <td class="num" style="font-weight:600;{de_color}">{de_str}</td>
       <td class="num">{m['scored']}/{m['total']}</td>
+      <td class="num">{m['de_scored']}/{m['total']}</td>
       <td class="num">{errors_badge}</td>
       <td class="num">{flags_badge}</td>
       <td class="num">{m['avg_latency']:.1f}s</td>

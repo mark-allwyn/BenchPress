@@ -7,3 +7,4 @@ __pycache__/
 .deepeval/
 *.png
 *.jpg
+!docs/screenshot.png

@@ -49,7 +49,10 @@ class AnthropicProvider(Provider):
         resp = self.client.post("/v1/messages", json=body)
         resp.raise_for_status()
         data = resp.json()
-        content = "".join(b["text"] for b in data["content"] if b["type"] == "text")
+        try:
+            content = "".join(b["text"] for b in data["content"] if b["type"] == "text")
+        except (KeyError, IndexError, TypeError) as e:
+            raise ValueError(f"Unexpected {self.model} response structure: {e}") from e
         usage = {
             "input_tokens": data.get("usage", {}).get("input_tokens"),
             "output_tokens": data.get("usage", {}).get("output_tokens"),
@@ -85,7 +88,10 @@ class OpenAIProvider(Provider):
         resp = self.client.post("/chat/completions", json=body)
         resp.raise_for_status()
         data = resp.json()
-        content = data["choices"][0]["message"]["content"]
+        try:
+            content = data["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError) as e:
+            raise ValueError(f"Unexpected {self.model} response structure: {e}") from e
         usage = {
             "input_tokens": data.get("usage", {}).get("prompt_tokens"),
             "output_tokens": data.get("usage", {}).get("completion_tokens"),
@@ -111,7 +117,10 @@ class GoogleProvider(Provider):
         resp = self.client.post(url, json=body, params={"key": self.api_key})
         resp.raise_for_status()
         data = resp.json()
-        content = data["candidates"][0]["content"]["parts"][0]["text"]
+        try:
+            content = data["candidates"][0]["content"]["parts"][0]["text"]
+        except (KeyError, IndexError, TypeError) as e:
+            raise ValueError(f"Unexpected {self.model} response structure: {e}") from e
         usage_meta = data.get("usageMetadata", {})
         usage = {
             "input_tokens": usage_meta.get("promptTokenCount"),
@@ -138,7 +147,16 @@ class OllamaProvider(Provider):
         resp = self.client.post("/chat/completions", json=body)
         resp.raise_for_status()
         data = resp.json()
-        content = data["choices"][0]["message"]["content"]
+        try:
+            message = data["choices"][0]["message"]
+            content = message.get("content") or ""
+            # Reasoning models (glm, kimi, gpt-oss) put thinking in a
+            # separate field and may exhaust max_tokens before producing
+            # content.  Fall back to reasoning so we never return empty.
+            if not content.strip() and message.get("reasoning"):
+                content = message["reasoning"]
+        except (KeyError, IndexError, TypeError) as e:
+            raise ValueError(f"Unexpected {self.model} response structure: {e}") from e
         usage = {
             "input_tokens": data.get("usage", {}).get("prompt_tokens"),
             "output_tokens": data.get("usage", {}).get("completion_tokens"),
@@ -161,10 +179,16 @@ class BedrockProvider(Provider):
                 "temperature": params.get("temperature", 0),
             },
         )
-        content = response["output"]["message"]["content"][0]["text"]
+        try:
+            # Some models return reasoningContent blocks before the text block
+            blocks = response["output"]["message"]["content"]
+            text_parts = [b["text"] for b in blocks if "text" in b]
+            content = "\n".join(text_parts) if text_parts else ""
+        except (KeyError, IndexError, TypeError) as e:
+            raise ValueError(f"Unexpected {self.model} response structure: {e}") from e
         usage = {
-            "input_tokens": response["usage"]["inputTokens"],
-            "output_tokens": response["usage"]["outputTokens"],
+            "input_tokens": response.get("usage", {}).get("inputTokens"),
+            "output_tokens": response.get("usage", {}).get("outputTokens"),
         }
         return content, usage
 
@@ -175,6 +199,10 @@ def get_provider(config: dict) -> Provider:
     if provider_type == "ollama":
         base_url = config.get("base_url", "http://localhost:11434/v1")
         return OllamaProvider(config["model"], base_url)
+
+    if provider_type == "bedrock":
+        region = config.get("region")
+        return BedrockProvider(config["model"], region)
 
     api_key_env = config.get("api_key_env", "")
     api_key = os.environ.get(api_key_env, "") if api_key_env != "none" else "none"
@@ -189,8 +217,5 @@ def get_provider(config: dict) -> Provider:
         return OpenAIProvider(config["model"], api_key, base_url)
     elif provider_type == "google":
         return GoogleProvider(config["model"], api_key)
-    elif provider_type == "bedrock":
-        region = config.get("region")
-        return BedrockProvider(config["model"], region)
     else:
         raise ValueError(f"Unknown provider: {provider_type}")

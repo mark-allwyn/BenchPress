@@ -71,6 +71,18 @@ eval:
   # Seconds between API calls (rate limiting)
   delay_between_calls: 1.0
 
+deepeval:
+  enabled: true
+  metrics:
+    - correctness
+    - coherence
+    - instruction_following
+
+composite:
+  # Weights for combining judge (1-5 normalised to 0-1) and DeepEval avg (0-1)
+  judge_weight: 0.5
+  deepeval_weight: 0.5
+
 output:
   # Where to save results
   results_dir: results
