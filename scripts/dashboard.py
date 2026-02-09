@@ -13,7 +13,7 @@ import yaml
 RESULTS_DIR = "results"
 EVAL_FILE = "evals/default.json"
 DOCS_DIR = "docs"
-DASHBOARD_FILE = os.path.join(DOCS_DIR, "dashboard.html")
+DASHBOARD_FILE = os.path.join(DOCS_DIR, "index.html")
 CONFIG_FILE = "config.yaml"
 
 
@@ -613,7 +613,7 @@ def generate_html(stats):
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
       <nav class="nav">
-        <a href="dashboard.html" class="nav-link active">Overview</a>
+        <a href="index.html" class="nav-link active">Overview</a>
         <a href="categories.html" class="nav-link">By Category</a>
         <a href="methodology.html" class="nav-link">Methodology</a>
       </nav>
@@ -1322,7 +1322,7 @@ def generate_categories_html(stats):
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
       <nav class="nav">
-        <a href="dashboard.html" class="nav-link">Overview</a>
+        <a href="index.html" class="nav-link">Overview</a>
         <a href="categories.html" class="nav-link active">By Category</a>
         <a href="methodology.html" class="nav-link">Methodology</a>
       </nav>
@@ -1817,7 +1817,7 @@ def generate_methodology_html(stats):
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
       <nav class="nav">
-        <a href="dashboard.html" class="nav-link">Overview</a>
+        <a href="index.html" class="nav-link">Overview</a>
         <a href="categories.html" class="nav-link">By Category</a>
         <a href="methodology.html" class="nav-link active">Methodology</a>
       </nav>
@@ -2077,11 +2077,6 @@ def generate_dashboard(output_path=None):
     meth_html = generate_methodology_html(stats)
     with open(meth_path, "w") as f:
         f.write(meth_html)
-
-    # Index redirect (for GitHub Pages root URL)
-    index_path = os.path.join(out_dir or ".", "index.html")
-    with open(index_path, "w") as f:
-        f.write('<!DOCTYPE html>\n<meta http-equiv="refresh" content="0;url=dashboard.html">\n')
 
     return output_path
 

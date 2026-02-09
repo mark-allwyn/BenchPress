@@ -213,7 +213,7 @@ llm-eval/
 │   ├── deepeval_scorer.py       # DeepEval G-Eval integration (0-1)
 │   └── dashboard.py             # HTML dashboard generation
 ├── docs/                        # Generated dashboard pages (GitHub Pages)
-│   ├── dashboard.html
+│   ├── index.html
 │   ├── categories.html
 │   └── methodology.html
 └── results/                     # Per-model JSON files (git-ignored)
