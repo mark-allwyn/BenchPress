@@ -176,7 +176,7 @@ llama-3-70b:
     temperature: 0
 ```
 
-Supported providers: `anthropic`, `openai`, `google`, `ollama`, `openai_compatible`.
+Supported providers: `anthropic`, `openai`, `google`, `ollama`, `bedrock`, `openai_compatible`.
 
 ## Adding Prompts
 
