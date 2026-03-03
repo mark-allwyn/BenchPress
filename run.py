@@ -40,7 +40,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from scripts.providers import get_provider
+from scripts.providers import get_provider, sanitize_error
 from scripts.checks import check_response
 from scripts.judge import judge_response
 from scripts.dashboard import generate_dashboard
@@ -244,13 +244,13 @@ def cmd_eval(args):
                 "api_model": model_cfg["model"],
                 "content": "",
                 "latency_s": round(latency, 2),
-                "error": str(e),
+                "error": sanitize_error(str(e)),
                 "auto_checks": {"flags": ["API_ERROR"], "auto_scores": {}, "passed": False},
                 "judge_score": None,
                 "judge_rationale": "",
                 "judge_model": judge_model_name,
             }
-            print(f"✗ Error: {e}")
+            print(f"✗ Error: {sanitize_error(str(e))}")
 
         if pid not in model_data["runs"]:
             model_data["runs"][pid] = []

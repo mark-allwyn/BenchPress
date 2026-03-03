@@ -1,11 +1,31 @@
 """API providers for different LLM services."""
 
 import os
+import re
 import json
 import time
 import httpx
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+
+
+def sanitize_error(error_msg: str) -> str:
+    """Strip API keys and tokens from error messages."""
+    s = error_msg
+    # URL query params (e.g. ?key=AIza...)
+    s = re.sub(r'(key=)[^&\s\'"]+', r'\1[REDACTED]', s)
+    # Bearer tokens
+    s = re.sub(r'(Bearer\s+)[^\s\'"]+', r'\1[REDACTED]', s)
+    # x-api-key header values
+    s = re.sub(r'(x-api-key[:\s]+)[^\s\'"]+', r'\1[REDACTED]', s, flags=re.IGNORECASE)
+    # Known key prefixes
+    s = re.sub(r'sk-ant-api\S+', '[REDACTED]', s)
+    s = re.sub(r'sk-proj-\S+', '[REDACTED]', s)
+    s = re.sub(r'AIzaSy\S+', '[REDACTED]', s)
+    s = re.sub(r'xai-\S+', '[REDACTED]', s)
+    s = re.sub(r'hf_[A-Za-z0-9]+', '[REDACTED]', s)
+    s = re.sub(r'AKIA[A-Z0-9]+', '[REDACTED]', s)
+    return s
 
 
 @dataclass
