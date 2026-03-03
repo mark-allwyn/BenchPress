@@ -47,7 +47,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 1.0,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -127,7 +127,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 72.46,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -144,7 +144,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 1.13,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -1530,7 +1530,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 2.42,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -1588,7 +1588,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 2.2,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -1694,7 +1694,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 13.2,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2227,7 +2227,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 1.34,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2271,7 +2271,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 0.6,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2355,7 +2355,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 1.51,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2396,7 +2396,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 1.51,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2437,7 +2437,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 2.38,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2480,7 +2480,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 51.46,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
@@ -2521,7 +2521,7 @@
         "api_model": "gemini-3.1-pro-preview",
         "content": "",
         "latency_s": 3.87,
-        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=AIzaSyDw1Aa2mD9gBzh2NG4_CkS9tKbqDqejJvI'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=REDACTED'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
         "auto_checks": {
           "flags": [
             "API_ERROR"
