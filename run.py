@@ -163,29 +163,27 @@ def cmd_eval(args):
     params = model_cfg.get("params", {})
     delay = config.get("eval", {}).get("delay_between_calls", 1.0)
 
-    # Set up LLM judge
-    judge_provider = None
-    judge_params = {}
-    judge_model_name = None
-    judge_cfg = config.get("judge", {})
-    if judge_cfg:
-        judge_model_name = judge_cfg.get("model")
-        if judge_model_name and judge_model_name in models_cfg:
-            if judge_model_name == model_name:
-                print(f"  Warning: judge model '{judge_model_name}' is the same as eval model, skipping judge")
-            else:
-                try:
-                    judge_provider = get_provider(models_cfg[judge_model_name])
-                    judge_params = judge_cfg.get("params", {})
-                except ValueError as e:
-                    print(f"  Warning: could not init judge provider: {e}")
-        elif judge_model_name:
-            print(f"  Warning: judge model '{judge_model_name}' not found in config, skipping judge")
+    # Set up LLM judges
+    judges_cfg = config.get("judges", [])
+    judge_providers = {}
+    for jcfg in judges_cfg:
+        jname = jcfg.get("model")
+        if not jname or jname not in models_cfg:
+            print(f"  Warning: judge model '{jname}' not found in config, skipping")
+            continue
+        if jname == model_name:
+            print(f"  Skipping judge {jname} (cannot self-judge)")
+            continue
+        try:
+            jprov = get_provider(models_cfg[jname])
+            judge_providers[jname] = {"provider": jprov, "params": jcfg.get("params", {})}
+        except ValueError as e:
+            print(f"  Warning: could not init judge provider '{jname}': {e}")
 
     print(f"\n{'='*60}")
     print(f"  Evaluating: {model_name} ({model_cfg['model']})")
-    if judge_provider:
-        print(f"  Judge: {judge_model_name} ({models_cfg[judge_model_name]['model']})")
+    if judge_providers:
+        print(f"  Judges: {', '.join(judge_providers.keys())}")
     print(f"  Prompts: {len(prompts)}")
     print(f"{'='*60}\n")
 
@@ -207,20 +205,27 @@ def cmd_eval(args):
                 "input_tokens": usage.get("input_tokens"),
                 "output_tokens": usage.get("output_tokens"),
                 "auto_checks": auto,
-                "judge_score": None,
-                "judge_rationale": "",
-                "judge_model": judge_model_name,
+                "judge_scores": {},
+                "judge_score_avg": None,
+                "judge_count": 0,
             }
 
             flag_str = f" ⚠ {', '.join(auto['flags'])}" if auto["flags"] else ""
             print(f"✓ {latency:.1f}s, {usage.get('output_tokens', '?')} tok{flag_str}")
 
-            if judge_provider:
-                jr = judge_response(judge_provider, judge_params, pmeta, content, auto)
-                entry["judge_score"] = jr["judge_score"]
-                entry["judge_rationale"] = jr["judge_rationale"]
-                score_str = f"{jr['judge_score']}/5" if jr["judge_score"] else "failed"
-                print(f"    Judge: {score_str}")
+            if judge_providers:
+                for jname, jinfo in judge_providers.items():
+                    jr = judge_response(jinfo["provider"], jinfo["params"], pmeta, content, auto)
+                    entry["judge_scores"][jname] = {
+                        "score": jr["judge_score"],
+                        "rationale": jr["judge_rationale"],
+                        "judged_at": datetime.now().isoformat(),
+                    }
+                    score_str = f"{jr['judge_score']}/5" if jr["judge_score"] else "failed"
+                    print(f"    Judge ({jname}): {score_str}")
+                valid = [v["score"] for v in entry["judge_scores"].values() if v["score"] is not None]
+                entry["judge_score_avg"] = round(sum(valid) / len(valid), 2) if valid else None
+                entry["judge_count"] = len(valid)
 
             # DeepEval scoring (inline during eval if enabled)
             deepeval_cfg = config.get("deepeval", {})
@@ -246,9 +251,9 @@ def cmd_eval(args):
                 "latency_s": round(latency, 2),
                 "error": sanitize_error(str(e)),
                 "auto_checks": {"flags": ["API_ERROR"], "auto_scores": {}, "passed": False},
-                "judge_score": None,
-                "judge_rationale": "",
-                "judge_model": judge_model_name,
+                "judge_scores": {},
+                "judge_score_avg": None,
+                "judge_count": 0,
             }
             print(f"✗ Error: {sanitize_error(str(e))}")
 
@@ -269,7 +274,7 @@ def cmd_eval(args):
     )
     judged = sum(
         1 for p in prompts
-        if latest_run(model_data, p["id"]).get("judge_score") is not None
+        if latest_run(model_data, p["id"]).get("judge_score_avg") is not None
     )
     print(f"\n  Done: {len(prompts)} prompts, {flagged} auto-flagged, {judged} judge-scored")
     print(f"  Results: {model_path(model_name)}")
@@ -328,8 +333,8 @@ def cmd_compare(args):
             run = latest_run(data, pid)
             if not run:
                 continue
-            if run.get("judge_score") is not None:
-                scores.append(run["judge_score"])
+            if run.get("judge_score_avg") is not None:
+                scores.append(run["judge_score_avg"])
             if run.get("auto_checks", {}).get("flags"):
                 flagged += 1
             latencies.append(run.get("latency_s", 0))
@@ -383,9 +388,9 @@ def cmd_compare(args):
             for name, *_ in leaderboard:
                 data = models[name]
                 sc = [
-                    latest_run(data, pid).get("judge_score")
+                    latest_run(data, pid).get("judge_score_avg")
                     for pid in cat_pids
-                    if latest_run(data, pid) and latest_run(data, pid).get("judge_score") is not None
+                    if latest_run(data, pid) and latest_run(data, pid).get("judge_score_avg") is not None
                 ]
                 row += f" {(f'{sum(sc)/len(sc):.2f}' if sc else '—'):>{cw}}"
             print(row)
@@ -429,7 +434,7 @@ def cmd_models(args):
     for name in models:
         data = load_model_results(name)
         total = len(data["runs"])
-        scored = sum(1 for rs in data["runs"].values() if rs and rs[-1].get("judge_score") is not None)
+        scored = sum(1 for rs in data["runs"].values() if rs and rs[-1].get("judge_score_avg") is not None)
         de_scored = sum(
             1 for rs in data["runs"].values()
             if rs and rs[-1].get("deepeval_scores") and any(v is not None for v in rs[-1]["deepeval_scores"].values())
@@ -470,12 +475,14 @@ def _save_comparison_md(path, leaderboard, models, prompts, prompts_by_id):
             run = latest_run(models[name], pid)
             if not run:
                 continue
-            score = run.get("judge_score", "—")
+            score = run.get("judge_score_avg", "—")
             fl = run.get("auto_checks", {}).get("flags", [])
             flag_str = f" ⚠ {', '.join(fl)}" if fl else ""
-            rationale = run.get("judge_rationale", "")
-            rationale_str = f" — {rationale}" if rationale else ""
-            lines.append(f"**{name}**: score={score}{flag_str}{rationale_str}\n")
+            judge_details = ""
+            for jn, js in run.get("judge_scores", {}).items():
+                if js.get("score") is not None:
+                    judge_details += f" [{jn}: {js['score']}/5]"
+            lines.append(f"**{name}**: score={score}{flag_str}{judge_details}\n")
 
     with open(path, "w") as f:
         f.write("\n".join(lines))
@@ -484,20 +491,30 @@ def _save_comparison_md(path, leaderboard, models, prompts, prompts_by_id):
 def cmd_rejudge(args):
     config = load_config(args.config)
     models_cfg = config.get("models", {})
-    judge_cfg = config.get("judge", {})
-    judge_model_name = judge_cfg.get("model")
 
-    if not judge_model_name or judge_model_name not in models_cfg:
-        print(f"Judge model '{judge_model_name}' not found in config.yaml")
+    # Set up judge providers from judges array
+    judges_cfg = config.get("judges", [])
+    judge_providers = {}
+    for jcfg in judges_cfg:
+        jname = jcfg.get("model")
+        if not jname or jname not in models_cfg:
+            print(f"  Warning: judge model '{jname}' not found in config, skipping")
+            continue
+        # If --judge flag is set, only init that specific judge
+        if args.judge and jname != args.judge:
+            continue
+        try:
+            jprov = get_provider(models_cfg[jname])
+            judge_providers[jname] = {"provider": jprov, "params": jcfg.get("params", {})}
+        except ValueError as e:
+            print(f"  Warning: could not init judge provider '{jname}': {e}")
+
+    if not judge_providers:
+        if args.judge:
+            print(f"Judge '{args.judge}' not found in config judges list.")
+        else:
+            print("No valid judges configured in config.yaml")
         sys.exit(1)
-
-    try:
-        judge_provider = get_provider(models_cfg[judge_model_name])
-    except ValueError as e:
-        print(f"Error initializing judge provider: {e}")
-        sys.exit(1)
-
-    judge_params = judge_cfg.get("params", {})
 
     # Determine which models to rejudge
     if args.models:
@@ -514,7 +531,7 @@ def cmd_rejudge(args):
     delay = config.get("eval", {}).get("delay_between_calls", 1.0)
 
     print(f"\n{'='*60}")
-    print(f"  Rejudging with: {judge_model_name}")
+    print(f"  Rejudging with: {', '.join(judge_providers.keys())}")
     print(f"  Models: {len(model_names)}")
     print(f"  Force: {args.force}")
     print(f"{'='*60}\n")
@@ -524,8 +541,10 @@ def cmd_rejudge(args):
     total_errors = 0
 
     for model_name in model_names:
-        if model_name == judge_model_name:
-            print(f"  Skipping {model_name} (is the judge model)")
+        # Filter out judges that match the model being evaluated (self-judge exclusion)
+        applicable_judges = {jn: jp for jn, jp in judge_providers.items() if jn != model_name}
+        if not applicable_judges:
+            print(f"  Skipping {model_name} (all judges excluded due to self-judge)")
             continue
 
         model_data = load_model_results(model_name)
@@ -534,74 +553,73 @@ def cmd_rejudge(args):
             continue
 
         pids = list(model_data["runs"].keys())
-        to_judge = []
+        changed = False
 
         for pid in pids:
-            run = latest_run(model_data, pid)
-            if not run or run.get("error"):
+            runs = model_data.get("runs", {}).get(pid, [])
+            if not runs:
                 continue
-            if not args.force and run.get("judge_model") == judge_model_name and run.get("judge_score") is not None:
-                total_skipped += 1
+            run = runs[-1]
+            if run.get("error"):
                 continue
-            to_judge.append(pid)
 
-        if not to_judge:
-            print(f"  {model_name}: all {len(pids)} prompts already judged by {judge_model_name}")
-            continue
-
-        print(f"  {model_name}: rejudging {len(to_judge)}/{len(pids)} prompts...")
-
-        for i, pid in enumerate(to_judge, 1):
-            run = latest_run(model_data, pid)
             pmeta = prompts_by_id.get(pid)
             if not pmeta:
-                print(f"    [{i}/{len(to_judge)}] {pid} - prompt not found in eval set, skipping")
                 continue
 
-            print(f"    [{i}/{len(to_judge)}] {pid}...", end=" ", flush=True)
+            # Ensure judge_scores dict exists on the latest run
+            if "judge_scores" not in run:
+                run["judge_scores"] = {}
+
+            # Determine which judges need to score this prompt
+            judges_needed = []
+            for jname in applicable_judges:
+                if not args.force and jname in run["judge_scores"] and run["judge_scores"][jname].get("score") is not None:
+                    total_skipped += 1
+                    continue
+                judges_needed.append(jname)
+
+            if not judges_needed:
+                continue
 
             auto_checks = run.get("auto_checks", {"flags": [], "auto_scores": {}, "passed": True})
 
-            try:
-                jr = judge_response(judge_provider, judge_params, pmeta, run["content"], auto_checks)
+            for jname in judges_needed:
+                jinfo = applicable_judges[jname]
+                print(f"    {model_name}/{pid} judge={jname}...", end=" ", flush=True)
 
-                # Append a new run entry with updated judge fields, same response
-                entry = {
-                    "timestamp": datetime.now().isoformat(),
-                    "api_model": run.get("api_model", ""),
-                    "content": run["content"],
-                    "latency_s": run.get("latency_s", 0),
-                    "input_tokens": run.get("input_tokens"),
-                    "output_tokens": run.get("output_tokens"),
-                    "auto_checks": auto_checks,
-                    "judge_score": jr["judge_score"],
-                    "judge_rationale": jr["judge_rationale"],
-                    "judge_model": judge_model_name,
-                }
-                # Carry forward deepeval scores from previous run
-                if run.get("deepeval_scores"):
-                    entry["deepeval_scores"] = run["deepeval_scores"]
-                    entry["deepeval_avg"] = run.get("deepeval_avg")
+                try:
+                    jr = judge_response(jinfo["provider"], jinfo["params"], pmeta, run["content"], auto_checks)
 
-                model_data["runs"][pid].append(entry)
+                    run["judge_scores"][jname] = {
+                        "score": jr["judge_score"],
+                        "rationale": jr["judge_rationale"],
+                        "judged_at": datetime.now().isoformat(),
+                    }
 
-                score_str = f"{jr['judge_score']}/5" if jr["judge_score"] else "failed"
-                print(f"{score_str}")
-                if jr["judge_score"] is not None:
-                    total_judged += 1
-                else:
+                    score_str = f"{jr['judge_score']}/5" if jr["judge_score"] else "failed"
+                    print(f"{score_str}")
+                    if jr["judge_score"] is not None:
+                        total_judged += 1
+                    else:
+                        total_errors += 1
+                    changed = True
+                except Exception as e:
+                    print(f"error: {e}")
                     total_errors += 1
-            except Exception as e:
-                print(f"error: {e}")
-                total_errors += 1
 
+                time.sleep(delay)
+
+            # Recompute aggregates after all judges scored this prompt
+            valid = [v["score"] for v in run["judge_scores"].values() if v["score"] is not None]
+            run["judge_score_avg"] = round(sum(valid) / len(valid), 2) if valid else None
+            run["judge_count"] = len(valid)
+
+        if changed:
             try:
                 save_model_results(model_name, model_data)
             except Exception as e:
-                print(f"    ⚠ Save failed (will retry next prompt): {e}")
-
-            if i < len(to_judge):
-                time.sleep(delay)
+                print(f"    Save failed: {e}")
 
     print(f"\n  Done: {total_judged} judged, {total_skipped} skipped, {total_errors} errors")
 
@@ -625,10 +643,6 @@ def cmd_deepeval(args):
     if not model_names:
         print("No models to score.")
         return
-
-    # Exclude judge model
-    judge_model = config.get("judge", {}).get("model")
-    model_names = [m for m in model_names if m != judge_model]
 
     prompts = load_eval()
     prompts_by_id = {p["id"]: p for p in prompts}
@@ -699,9 +713,9 @@ def cmd_deepeval(args):
                     "input_tokens": run.get("input_tokens"),
                     "output_tokens": run.get("output_tokens"),
                     "auto_checks": run.get("auto_checks", {"flags": [], "auto_scores": {}, "passed": True}),
-                    "judge_score": run.get("judge_score"),
-                    "judge_rationale": run.get("judge_rationale", ""),
-                    "judge_model": run.get("judge_model"),
+                    "judge_scores": run.get("judge_scores", {}),
+                    "judge_score_avg": run.get("judge_score_avg"),
+                    "judge_count": run.get("judge_count", 0),
                     "deepeval_scores": de["deepeval_scores"],
                     "deepeval_avg": de["deepeval_avg"],
                 }
@@ -844,6 +858,7 @@ def main():
 
     p = sub.add_parser("rejudge", help="Re-score existing responses with current judge")
     p.add_argument("models", nargs="*", help="Models to rejudge (default: all)")
+    p.add_argument("--judge", default=None, help="Target a specific judge model (default: all configured judges)")
     p.add_argument("--force", action="store_true", help="Rejudge even if already scored by current judge")
 
     p = sub.add_parser("deepeval", help="Score stored responses with DeepEval metrics")
