@@ -13,3 +13,4 @@ categories.html
 *.png
 *.jpg
 !docs/screenshot.png
+results/backup/

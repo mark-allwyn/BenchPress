@@ -15,9 +15,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response partially addresses the prompt by discussing edge cases and suggesting improvements, but it incorrectly claims the main bug is that the function returns the k largest elements, which is actually the intended behavior. It also adds unnecessary changes and does not clearly state that the original function is correct for the top-k largest case, as required by the ideal answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response partially addresses the prompt by discussing edge cases and suggesting improvements, but it incorrectly claims the main bug is that the function returns the k largest elements, which is actually the intended behavior. It also adds unnecessary changes and does not clearly state that the original function is correct for the top-k largest case, as required by the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:15:02.402269",
@@ -31,15 +37,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response partially addresses the prompt by discussing edge cases and suggesting improvements, but it incorrectly claims the main bug is that the function returns the k largest elements, which is actually the intended behavior. It also adds unnecessary changes and does not clearly state that the original function is correct for the top-k largest case, as required by the ideal answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.4063,
           "coherence": 0.7141,
           "instruction_following": 0.7891
         },
-        "deepeval_avg": 0.6365
+        "deepeval_avg": 0.6365,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response partially addresses the prompt by discussing edge cases and suggesting improvements, but it incorrectly claims the main bug is that the function returns the k largest elements, which is actually the intended behavior. It also adds unnecessary changes and does not clearly state that the original function is correct for the top-k largest case, as required by the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       }
     ],
     "C02": [
@@ -55,9 +67,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a correct, well-structured implementation with type hints, a clear docstring, and proper handling of return values and exceptions. It uses functools.wraps, addresses edge cases, and includes example usage, fully meeting all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a correct, well-structured implementation with type hints, a clear docstring, and proper handling of return values and exceptions. It uses functools.wraps, addresses edge cases, and includes example usage, fully meeting all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:15:12.429507",
@@ -71,15 +89,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a correct, well-structured implementation with type hints, a clear docstring, and proper handling of return values and exceptions. It uses functools.wraps, addresses edge cases, and includes example usage, fully meeting all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9321,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9774
+        "deepeval_avg": 0.9774,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a correct, well-structured implementation with type hints, a clear docstring, and proper handling of return values and exceptions. It uses functools.wraps, addresses edge cases, and includes example usage, fully meeting all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C03": [
@@ -95,9 +119,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is thorough, systematic, and covers most key causes and debugging steps, including learning rate, mixed precision, data issues, and logging. However, it includes some less relevant suggestions (e.g., gradient accumulation for instability), and could be more concise. It misses explicit mention of checking for inf/nan in inputs/labels and the order of gradient clipping with respect to the scaler, which are important for this scenario.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is thorough, systematic, and covers most key causes and debugging steps, including learning rate, mixed precision, data issues, and logging. However, it includes some less relevant suggestions (e.g., gradient accumulation for instability), and could be more concise. It misses explicit mention of checking for inf/nan in inputs/labels and the order of gradient clipping with respect to the scaler, which are important for this scenario.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:15:25.071306",
@@ -111,15 +141,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is thorough, systematic, and covers most key causes and debugging steps, including learning rate, mixed precision, data issues, and logging. However, it includes some less relevant suggestions (e.g., gradient accumulation for instability), and could be more concise. It misses explicit mention of checking for inf/nan in inputs/labels and the order of gradient clipping with respect to the scaler, which are important for this scenario.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8679,
           "coherence": 0.9881,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.952
+        "deepeval_avg": 0.952,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is thorough, systematic, and covers most key causes and debugging steps, including learning rate, mixed precision, data issues, and logging. However, it includes some less relevant suggestions (e.g., gradient accumulation for instability), and could be more concise. It misses explicit mention of checking for inf/nan in inputs/labels and the order of gradient clipping with respect to the scaler, which are important for this scenario.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "C04": [
@@ -135,9 +171,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response does the math on the API bottleneck, clearly identifies it, and proposes a practical, detailed architecture with appropriate handling for failures, batching, and scaling. It covers all key requirements and is well-structured.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response does the math on the API bottleneck, clearly identifies it, and proposes a practical, detailed architecture with appropriate handling for failures, batching, and scaling. It covers all key requirements and is well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:15:36.905111",
@@ -151,15 +193,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response does the math on the API bottleneck, clearly identifies it, and proposes a practical, detailed architecture with appropriate handling for failures, batching, and scaling. It covers all key requirements and is well-structured.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9119,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9706
+        "deepeval_avg": 0.9706,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response does the math on the API bottleneck, clearly identifies it, and proposes a practical, detailed architecture with appropriate handling for failures, batching, and scaling. It covers all key requirements and is well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C05": [
@@ -175,9 +223,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly identifies all major issues from the ideal answer, prioritizes them well, and provides constructive, actionable suggestions. It includes an improved code example and further recommendations for scalability, fully meeting the criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly identifies all major issues from the ideal answer, prioritizes them well, and provides constructive, actionable suggestions. It includes an improved code example and further recommendations for scalability, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:15:47.660045",
@@ -191,15 +245,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly identifies all major issues from the ideal answer, prioritizes them well, and provides constructive, actionable suggestions. It includes an improved code example and further recommendations for scalability, fully meeting the criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9667
+        "deepeval_avg": 0.9667,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly identifies all major issues from the ideal answer, prioritizes them well, and provides constructive, actionable suggestions. It includes an improved code example and further recommendations for scalability, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C06": [
@@ -215,9 +275,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly explains the conceptual reasoning behind the O(log n) approach, focusing on partitioning and the invariants that make binary search applicable. It avoids just giving code, and instead emphasizes why binary search works, directly addressing the prompt and criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly explains the conceptual reasoning behind the O(log n) approach, focusing on partitioning and the invariants that make binary search applicable. It avoids just giving code, and instead emphasizes why binary search works, directly addressing the prompt and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:16:00.988537",
@@ -231,15 +297,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly explains the conceptual reasoning behind the O(log n) approach, focusing on partitioning and the invariants that make binary search applicable. It avoids just giving code, and instead emphasizes why binary search works, directly addressing the prompt and criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 0.9953,
           "instruction_following": 0.9223
         },
-        "deepeval_avg": 0.9725
+        "deepeval_avg": 0.9725,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly explains the conceptual reasoning behind the O(log n) approach, focusing on partitioning and the invariants that make binary search applicable. It avoids just giving code, and instead emphasizes why binary search works, directly addressing the prompt and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C07": [
@@ -255,9 +327,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a mathematically correct, from-scratch PyTorch implementation with clear shape annotations and thorough explanations of each dimension transformation, including the reason for scaling by sqrt(d_k). It covers projection matrices, masking, and all required steps, meeting all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a mathematically correct, from-scratch PyTorch implementation with clear shape annotations and thorough explanations of each dimension transformation, including the reason for scaling by sqrt(d_k). It covers projection matrices, masking, and all required steps, meeting all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:16:15.257326",
@@ -271,15 +349,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a mathematically correct, from-scratch PyTorch implementation with clear shape annotations and thorough explanations of each dimension transformation, including the reason for scaling by sqrt(d_k). It covers projection matrices, masking, and all required steps, meeting all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a mathematically correct, from-scratch PyTorch implementation with clear shape annotations and thorough explanations of each dimension transformation, including the reason for scaling by sqrt(d_k). It covers projection matrices, masking, and all required steps, meeting all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C08": [
@@ -295,9 +379,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response cleanly extracts the shared logic into a helper function, maintains minimal abstraction, and preserves the original behavior. The code is well-structured and meets all criteria without unnecessary complexity.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response cleanly extracts the shared logic into a helper function, maintains minimal abstraction, and preserves the original behavior. The code is well-structured and meets all criteria without unnecessary complexity.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:16:26.041584",
@@ -311,15 +401,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response cleanly extracts the shared logic into a helper function, maintains minimal abstraction, and preserves the original behavior. The code is well-structured and meets all criteria without unnecessary complexity.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7331,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.911
+        "deepeval_avg": 0.911,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response cleanly extracts the shared logic into a helper function, maintains minimal abstraction, and preserves the original behavior. The code is well-structured and meets all criteria without unnecessary complexity.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C09": [
@@ -335,9 +431,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly identifies the race condition, explains the non-atomicity of counter += 1, and provides multiple fixes. However, it does not explicitly address the nuance of the GIL and why it does not prevent this issue, which is a key criterion for a perfect score.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly identifies the race condition, explains the non-atomicity of counter += 1, and provides multiple fixes. However, it does not explicitly address the nuance of the GIL and why it does not prevent this issue, which is a key criterion for a perfect score.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:16:36.586606",
@@ -351,15 +453,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly identifies the race condition, explains the non-atomicity of counter += 1, and provides multiple fixes. However, it does not explicitly address the nuance of the GIL and why it does not prevent this issue, which is a key criterion for a perfect score.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8256,
           "coherence": 1.0,
           "instruction_following": 0.9
         },
-        "deepeval_avg": 0.9085
+        "deepeval_avg": 0.9085,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly identifies the race condition, explains the non-atomicity of counter += 1, and provides multiple fixes. However, it does not explicitly address the nuance of the GIL and why it does not prevent this issue, which is a key criterion for a perfect score.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "C10": [
@@ -375,9 +483,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The tests provide thorough coverage of all relevant cases, including edge cases like empty strings, invalid input, whitespace, and case sensitivity. There is no redundancy, and the tests accurately reflect the function's behavior and limitations.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The tests provide thorough coverage of all relevant cases, including edge cases like empty strings, invalid input, whitespace, and case sensitivity. There is no redundancy, and the tests accurately reflect the function's behavior and limitations.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:16:50.943429",
@@ -391,15 +505,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The tests provide thorough coverage of all relevant cases, including edge cases like empty strings, invalid input, whitespace, and case sensitivity. There is no redundancy, and the tests accurately reflect the function's behavior and limitations.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.6454,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.8818
+        "deepeval_avg": 0.8818,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The tests provide thorough coverage of all relevant cases, including edge cases like empty strings, invalid input, whitespace, and case sensitivity. There is no redundancy, and the tests accurately reflect the function's behavior and limitations.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C11": [
@@ -417,9 +537,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response provides a basic cache implementation and mentions advanced options, but it does not ask clarifying questions or state assumptions about the user's requirements. It partially addresses the prompt but misses key criteria such as clarification and scope alignment.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response provides a basic cache implementation and mentions advanced options, but it does not ask clarifying questions or state assumptions about the user's requirements. It partially addresses the prompt but misses key criteria such as clarification and scope alignment.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:17:04.176642",
@@ -435,15 +561,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response provides a basic cache implementation and mentions advanced options, but it does not ask clarifying questions or state assumptions about the user's requirements. It partially addresses the prompt but misses key criteria such as clarification and scope alignment.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.3942,
           "coherence": 0.95,
           "instruction_following": 0.9378
         },
-        "deepeval_avg": 0.7607
+        "deepeval_avg": 0.7607,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response provides a basic cache implementation and mentions advanced options, but it does not ask clarifying questions or state assumptions about the user's requirements. It partially addresses the prompt but misses key criteria such as clarification and scope alignment.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       }
     ],
     "C12": [
@@ -459,9 +591,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response systematically identifies a wide range of non-obvious causes for the unaccounted time, avoids focusing on the database query, and suggests concrete debugging steps. It is thorough, accurate, and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response systematically identifies a wide range of non-obvious causes for the unaccounted time, avoids focusing on the database query, and suggests concrete debugging steps. It is thorough, accurate, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:17:16.956122",
@@ -475,15 +613,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response systematically identifies a wide range of non-obvious causes for the unaccounted time, avoids focusing on the database query, and suggests concrete debugging steps. It is thorough, accurate, and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9148,
           "coherence": 0.9982,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.971
+        "deepeval_avg": 0.971,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response systematically identifies a wide range of non-obvious causes for the unaccounted time, avoids focusing on the database query, and suggests concrete debugging steps. It is thorough, accurate, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C13": [
@@ -499,9 +643,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response correctly identifies both SQL injection and XSS vulnerabilities, explains how to fix them, and even notes template injection and input validation issues. It provides clear code examples for secure alternatives, fully addressing the prompt and criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response correctly identifies both SQL injection and XSS vulnerabilities, explains how to fix them, and even notes template injection and input validation issues. It provides clear code examples for secure alternatives, fully addressing the prompt and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:17:30.856511",
@@ -515,15 +665,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response correctly identifies both SQL injection and XSS vulnerabilities, explains how to fix them, and even notes template injection and input validation issues. It provides clear code examples for secure alternatives, fully addressing the prompt and criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.95,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9833
+        "deepeval_avg": 0.9833,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response correctly identifies both SQL injection and XSS vulnerabilities, explains how to fix them, and even notes template injection and input validation issues. It provides clear code examples for secure alternatives, fully addressing the prompt and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C14": [
@@ -539,9 +695,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides clear, accurate analogies between Python and Rust, bridges the mental models effectively, and explains both ownership/borrowing and the &str vs String distinction in a way that is accessible to Python developers. It uses code examples to illustrate concepts and addresses why Rust enforces these distinctions, fully meeting the criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides clear, accurate analogies between Python and Rust, bridges the mental models effectively, and explains both ownership/borrowing and the &str vs String distinction in a way that is accessible to Python developers. It uses code examples to illustrate concepts and addresses why Rust enforces these distinctions, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:17:43.526114",
@@ -555,15 +717,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides clear, accurate analogies between Python and Rust, bridges the mental models effectively, and explains both ownership/borrowing and the &str vs String distinction in a way that is accessible to Python developers. It uses code examples to illustrate concepts and addresses why Rust enforces these distinctions, fully meeting the criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8074,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9358
+        "deepeval_avg": 0.9358,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides clear, accurate analogies between Python and Rust, bridges the mental models effectively, and explains both ownership/borrowing and the &str vs String distinction in a way that is accessible to Python developers. It uses code examples to illustrate concepts and addresses why Rust enforces these distinctions, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "C15": [
@@ -579,9 +747,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly identifies the root cause (connection pool exhaustion due to multiprocessing) and suggests practical fixes, including increasing pool size and ensuring connections are released. However, it misses the key point that multiprocessing pools do not share DB connections across processes, which is crucial for a full diagnosis and optimal solution.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly identifies the root cause (connection pool exhaustion due to multiprocessing) and suggests practical fixes, including increasing pool size and ensuring connections are released. However, it misses the key point that multiprocessing pools do not share DB connections across processes, which is crucial for a full diagnosis and optimal solution.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:17:56.217764",
@@ -595,15 +769,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly identifies the root cause (connection pool exhaustion due to multiprocessing) and suggests practical fixes, including increasing pool size and ensuring connections are released. However, it misses the key point that multiprocessing pools do not share DB connections across processes, which is crucial for a full diagnosis and optimal solution.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8028,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9343
+        "deepeval_avg": 0.9343,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly identifies the root cause (connection pool exhaustion due to multiprocessing) and suggests practical fixes, including increasing pool size and ensuring connections are released. However, it misses the key point that multiprocessing pools do not share DB connections across processes, which is crucial for a full diagnosis and optimal solution.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "L01": [
@@ -619,9 +799,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is technically accurate, well-structured, and covers most key differences and tradeoffs between LoRA and full fine-tuning, including memory, expressivity, and deployment. However, it omits details about LoRA merging, QLoRA, and could provide more nuanced discussion of optimizer state savings and adapter placement, preventing a perfect score.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is technically accurate, well-structured, and covers most key differences and tradeoffs between LoRA and full fine-tuning, including memory, expressivity, and deployment. However, it omits details about LoRA merging, QLoRA, and could provide more nuanced discussion of optimizer state savings and adapter placement, preventing a perfect score.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:18:08.277339",
@@ -635,15 +821,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is technically accurate, well-structured, and covers most key differences and tradeoffs between LoRA and full fine-tuning, including memory, expressivity, and deployment. However, it omits details about LoRA merging, QLoRA, and could provide more nuanced discussion of optimizer state savings and adapter placement, preventing a perfect score.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8182,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9394
+        "deepeval_avg": 0.9394,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is technically accurate, well-structured, and covers most key differences and tradeoffs between LoRA and full fine-tuning, including memory, expressivity, and deployment. However, it omits details about LoRA merging, QLoRA, and could provide more nuanced discussion of optimizer state savings and adapter placement, preventing a perfect score.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "L02": [
@@ -659,9 +851,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response accurately distinguishes between compute and memory complexity, correctly states that FlashAttention does not reduce theoretical compute complexity, and explains the memory and IO optimizations. However, it could be clearer in explicitly stating that FlashAttention does not reduce computational complexity, only practical efficiency and memory usage.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response accurately distinguishes between compute and memory complexity, correctly states that FlashAttention does not reduce theoretical compute complexity, and explains the memory and IO optimizations. However, it could be clearer in explicitly stating that FlashAttention does not reduce computational complexity, only practical efficiency and memory usage.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:18:20.288527",
@@ -675,15 +873,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response accurately distinguishes between compute and memory complexity, correctly states that FlashAttention does not reduce theoretical compute complexity, and explains the memory and IO optimizations. However, it could be clearer in explicitly stating that FlashAttention does not reduce computational complexity, only practical efficiency and memory usage.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.5054,
           "coherence": 0.9924,
           "instruction_following": 0.9
         },
-        "deepeval_avg": 0.7993
+        "deepeval_avg": 0.7993,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response accurately distinguishes between compute and memory complexity, correctly states that FlashAttention does not reduce theoretical compute complexity, and explains the memory and IO optimizations. However, it could be clearer in explicitly stating that FlashAttention does not reduce computational complexity, only practical efficiency and memory usage.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "L03": [
@@ -699,9 +903,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is accurate, well-structured, and covers all key aspects: it explains why double descent is interesting, connects it to the classical bias-variance tradeoff, discusses the interpolation threshold, and mentions implicit regularization. It also ties the phenomenon to modern deep learning, meeting all depth, accuracy, and broader ML connection criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is accurate, well-structured, and covers all key aspects: it explains why double descent is interesting, connects it to the classical bias-variance tradeoff, discusses the interpolation threshold, and mentions implicit regularization. It also ties the phenomenon to modern deep learning, meeting all depth, accuracy, and broader ML connection criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:18:33.470527",
@@ -715,15 +925,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is accurate, well-structured, and covers all key aspects: it explains why double descent is interesting, connects it to the classical bias-variance tradeoff, discusses the interpolation threshold, and mentions implicit regularization. It also ties the phenomenon to modern deep learning, meeting all depth, accuracy, and broader ML connection criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.85,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.95
+        "deepeval_avg": 0.95,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is accurate, well-structured, and covers all key aspects: it explains why double descent is interesting, connects it to the classical bias-variance tradeoff, discusses the interpolation threshold, and mentions implicit regularization. It also ties the phenomenon to modern deep learning, meeting all depth, accuracy, and broader ML connection criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L04": [
@@ -739,9 +955,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a detailed memory breakdown, does the math, discusses optimizer and activation memory, and covers practical techniques (FP16, 8-bit optimizers, ZeRO, checkpointing, gradient accumulation). It acknowledges variable factors and gives actionable recommendations, fully meeting the criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a detailed memory breakdown, does the math, discusses optimizer and activation memory, and covers practical techniques (FP16, 8-bit optimizers, ZeRO, checkpointing, gradient accumulation). It acknowledges variable factors and gives actionable recommendations, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:18:48.675037",
@@ -755,15 +977,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a detailed memory breakdown, does the math, discusses optimizer and activation memory, and covers practical techniques (FP16, 8-bit optimizers, ZeRO, checkpointing, gradient accumulation). It acknowledges variable factors and gives actionable recommendations, fully meeting the criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8352,
           "coherence": 0.906,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9137
+        "deepeval_avg": 0.9137,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a detailed memory breakdown, does the math, discusses optimizer and activation memory, and covers practical techniques (FP16, 8-bit optimizers, ZeRO, checkpointing, gradient accumulation). It acknowledges variable factors and gives actionable recommendations, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L05": [
@@ -779,9 +1007,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is balanced, accurate, and well-calibrated, listing multiple alternatives to RLHF and discussing their tradeoffs without dogmatism. It meets all criteria and closely matches the ideal answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is balanced, accurate, and well-calibrated, listing multiple alternatives to RLHF and discussing their tradeoffs without dogmatism. It meets all criteria and closely matches the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:19:00.112323",
@@ -795,15 +1029,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is balanced, accurate, and well-calibrated, listing multiple alternatives to RLHF and discussing their tradeoffs without dogmatism. It meets all criteria and closely matches the ideal answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8982,
           "coherence": 0.9905,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9629
+        "deepeval_avg": 0.9629,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is balanced, accurate, and well-calibrated, listing multiple alternatives to RLHF and discussing their tradeoffs without dogmatism. It meets all criteria and closely matches the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L06": [
@@ -819,9 +1059,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly corrects the user's assumption, lists multiple legitimate causes, and is not dismissive. It also provides helpful diagnostic steps and context, fully addressing the prompt and meeting all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly corrects the user's assumption, lists multiple legitimate causes, and is not dismissive. It also provides helpful diagnostic steps and context, fully addressing the prompt and meeting all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:19:12.165020",
@@ -835,15 +1081,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly corrects the user's assumption, lists multiple legitimate causes, and is not dismissive. It also provides helpful diagnostic steps and context, fully addressing the prompt and meeting all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9438,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9813
+        "deepeval_avg": 0.9813,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly corrects the user's assumption, lists multiple legitimate causes, and is not dismissive. It also provides helpful diagnostic steps and context, fully addressing the prompt and meeting all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L07": [
@@ -859,9 +1111,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately explains the Chinchilla scaling laws, provides historical context, details the key ratio, and clearly describes the impact on LLM training practices. It is well-structured, complete, and meets all criteria without errors or hallucinations.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately explains the Chinchilla scaling laws, provides historical context, details the key ratio, and clearly describes the impact on LLM training practices. It is well-structured, complete, and meets all criteria without errors or hallucinations.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:19:23.149208",
@@ -875,15 +1133,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately explains the Chinchilla scaling laws, provides historical context, details the key ratio, and clearly describes the impact on LLM training practices. It is well-structured, complete, and meets all criteria without errors or hallucinations.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately explains the Chinchilla scaling laws, provides historical context, details the key ratio, and clearly describes the impact on LLM training practices. It is well-structured, complete, and meets all criteria without errors or hallucinations.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L08": [
@@ -899,9 +1163,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response thoroughly covers metric limitations and offers a wide range of practical suggestions, including additional metrics and best practices. However, it does not explicitly mention contamination checks or LLM-as-judge, which are important for comprehensive evaluation. The answer is well-structured and mostly complete, but missing some key points from the ideal answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response thoroughly covers metric limitations and offers a wide range of practical suggestions, including additional metrics and best practices. However, it does not explicitly mention contamination checks or LLM-as-judge, which are important for comprehensive evaluation. The answer is well-structured and mostly complete, but missing some key points from the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:19:35.578817",
@@ -915,15 +1185,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response thoroughly covers metric limitations and offers a wide range of practical suggestions, including additional metrics and best practices. However, it does not explicitly mention contamination checks or LLM-as-judge, which are important for comprehensive evaluation. The answer is well-structured and mostly complete, but missing some key points from the ideal answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7901,
           "coherence": 1.0,
           "instruction_following": 0.9881
         },
-        "deepeval_avg": 0.9261
+        "deepeval_avg": 0.9261,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response thoroughly covers metric limitations and offers a wide range of practical suggestions, including additional metrics and best practices. However, it does not explicitly mention contamination checks or LLM-as-judge, which are important for comprehensive evaluation. The answer is well-structured and mostly complete, but missing some key points from the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "L09": [
@@ -939,9 +1215,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response clearly recommends prioritizing dataset quality over size and provides actionable steps, including iterative fine-tuning and using expert labelers. However, it lacks explicit reference to supporting evidence (e.g., LIMA paper) and could be more specific about quality signals, which prevents a perfect score.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response clearly recommends prioritizing dataset quality over size and provides actionable steps, including iterative fine-tuning and using expert labelers. However, it lacks explicit reference to supporting evidence (e.g., LIMA paper) and could be more specific about quality signals, which prevents a perfect score.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:19:47.037383",
@@ -955,15 +1237,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response clearly recommends prioritizing dataset quality over size and provides actionable steps, including iterative fine-tuning and using expert labelers. However, it lacks explicit reference to supporting evidence (e.g., LIMA paper) and could be more specific about quality signals, which prevents a perfect score.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.6965,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.8988
+        "deepeval_avg": 0.8988,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response clearly recommends prioritizing dataset quality over size and provides actionable steps, including iterative fine-tuning and using expert labelers. However, it lacks explicit reference to supporting evidence (e.g., LIMA paper) and could be more specific about quality signals, which prevents a perfect score.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "L10": [
@@ -979,9 +1267,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately distinguishes GPTQ, AWQ, and GGUF, provides practical guidance, and clearly maps use cases to each method. It covers technical details, ecosystem compatibility, and quality vs speed tradeoffs, fully addressing the prompt and meeting all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately distinguishes GPTQ, AWQ, and GGUF, provides practical guidance, and clearly maps use cases to each method. It covers technical details, ecosystem compatibility, and quality vs speed tradeoffs, fully addressing the prompt and meeting all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:19:58.640658",
@@ -995,15 +1289,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately distinguishes GPTQ, AWQ, and GGUF, provides practical guidance, and clearly maps use cases to each method. It covers technical details, ecosystem compatibility, and quality vs speed tradeoffs, fully addressing the prompt and meeting all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9667
+        "deepeval_avg": 0.9667,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately distinguishes GPTQ, AWQ, and GGUF, provides practical guidance, and clearly maps use cases to each method. It covers technical details, ecosystem compatibility, and quality vs speed tradeoffs, fully addressing the prompt and meeting all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L11": [
@@ -1019,9 +1319,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response directly challenges the 'always use it' assumption, lists specific failure modes (small batches, RNNs, online learning, inference, domain shift), and mentions alternatives. It is accurate, well-structured, and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response directly challenges the 'always use it' assumption, lists specific failure modes (small batches, RNNs, online learning, inference, domain shift), and mentions alternatives. It is accurate, well-structured, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:20:07.938072",
@@ -1035,15 +1341,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response directly challenges the 'always use it' assumption, lists specific failure modes (small batches, RNNs, online learning, inference, domain shift), and mentions alternatives. It is accurate, well-structured, and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9667
+        "deepeval_avg": 0.9667,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response directly challenges the 'always use it' assumption, lists specific failure modes (small batches, RNNs, online learning, inference, domain shift), and mentions alternatives. It is accurate, well-structured, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "L12": [
@@ -1059,9 +1371,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly explains test-time compute scaling, clearly distinguishes it from generating more tokens, and discusses diminishing returns with mechanistic detail and honest limitations. It is well-structured, accurate, and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly explains test-time compute scaling, clearly distinguishes it from generating more tokens, and discusses diminishing returns with mechanistic detail and honest limitations. It is well-structured, accurate, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:20:21.268820",
@@ -1075,15 +1393,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly explains test-time compute scaling, clearly distinguishes it from generating more tokens, and discusses diminishing returns with mechanistic detail and honest limitations. It is well-structured, accurate, and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9679,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9893
+        "deepeval_avg": 0.9893,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly explains test-time compute scaling, clearly distinguishes it from generating more tokens, and discusses diminishing returns with mechanistic detail and honest limitations. It is well-structured, accurate, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W01": [
@@ -1102,9 +1426,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately and concisely explains KV-cache, including why K and V are cached, the memory-compute tradeoff, and why Q is not cached. It also quantifies the complexity reduction and memory cost, meeting all criteria and staying within the word limit.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately and concisely explains KV-cache, including why K and V are cached, the memory-compute tradeoff, and why Q is not cached. It also quantifies the complexity reduction and memory cost, meeting all criteria and staying within the word limit.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:20:34.359051",
@@ -1121,15 +1451,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately and concisely explains KV-cache, including why K and V are cached, the memory-compute tradeoff, and why Q is not cached. It also quantifies the complexity reduction and memory cost, meeting all criteria and staying within the word limit.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 0.9223
         },
-        "deepeval_avg": 0.9741
+        "deepeval_avg": 0.9741,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately and concisely explains KV-cache, including why K and V are cached, the memory-compute tradeoff, and why Q is not cached. It also quantifies the complexity reduction and memory cost, meeting all criteria and staying within the word limit.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W02": [
@@ -1147,9 +1483,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response effectively compresses the original paragraph to half its length while preserving all key information and maintaining clarity and readability.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response effectively compresses the original paragraph to half its length while preserving all key information and maintaining clarity and readability.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:20:44.217347",
@@ -1165,15 +1507,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response effectively compresses the original paragraph to half its length while preserving all key information and maintaining clarity and readability.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9076,
           "coherence": 1.0,
           "instruction_following": 0.95
         },
-        "deepeval_avg": 0.9525
+        "deepeval_avg": 0.9525,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response effectively compresses the original paragraph to half its length while preserving all key information and maintaining clarity and readability.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W03": [
@@ -1189,9 +1537,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response follows the conventional commits format, keeps the subject under 50 characters, and clearly explains the motivation for the change, including scalability, statelessness, and security improvements.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response follows the conventional commits format, keeps the subject under 50 characters, and clearly explains the motivation for the change, including scalability, statelessness, and security improvements.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:20:55.209498",
@@ -1205,15 +1559,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response follows the conventional commits format, keeps the subject under 50 characters, and clearly explains the motivation for the change, including scalability, statelessness, and security improvements.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.6984,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.8995
+        "deepeval_avg": 0.8995,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response follows the conventional commits format, keeps the subject under 50 characters, and clearly explains the motivation for the change, including scalability, statelessness, and security improvements.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W04": [
@@ -1232,9 +1592,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is concise, professional yet approachable, references achievements without overselling, and makes a clear, actionable request. It meets all criteria and stays under 100 words.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is concise, professional yet approachable, references achievements without overselling, and makes a clear, actionable request. It meets all criteria and stays under 100 words.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:21:07.059923",
@@ -1251,15 +1617,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is concise, professional yet approachable, references achievements without overselling, and makes a clear, actionable request. It meets all criteria and stays under 100 words.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8149,
           "coherence": 0.9029,
           "instruction_following": 0.9
         },
-        "deepeval_avg": 0.8726
+        "deepeval_avg": 0.8726,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is concise, professional yet approachable, references achievements without overselling, and makes a clear, actionable request. It meets all criteria and stays under 100 words.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W05": [
@@ -1275,9 +1647,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The docstring is well-structured, uses Google style, and provides clear descriptions for all parameters, including defaults. However, it omits a Raises section, which is expected per the ideal answer, even if just to state 'No exceptions raised.'",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The docstring is well-structured, uses Google style, and provides clear descriptions for all parameters, including defaults. However, it omits a Raises section, which is expected per the ideal answer, even if just to state 'No exceptions raised.'",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:21:16.919010",
@@ -1291,15 +1669,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The docstring is well-structured, uses Google style, and provides clear descriptions for all parameters, including defaults. However, it omits a Raises section, which is expected per the ideal answer, even if just to state 'No exceptions raised.'",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7036,
           "coherence": 0.9852,
           "instruction_following": 0.9223
         },
-        "deepeval_avg": 0.8704
+        "deepeval_avg": 0.8704,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The docstring is well-structured, uses Google style, and provides clear descriptions for all parameters, including defaults. However, it omits a Raises section, which is expected per the ideal answer, even if just to state 'No exceptions raised.'",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "W06": [
@@ -1315,9 +1699,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides three clearly differentiated explanations tailored to each audience, uses accurate analogies and technical details, and covers all required concepts including B-trees, covering indexes, and write amplification. The depth and tone are appropriate for each level.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides three clearly differentiated explanations tailored to each audience, uses accurate analogies and technical details, and covers all required concepts including B-trees, covering indexes, and write amplification. The depth and tone are appropriate for each level.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:21:26.076910",
@@ -1331,15 +1721,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides three clearly differentiated explanations tailored to each audience, uses accurate analogies and technical details, and covers all required concepts including B-trees, covering indexes, and write amplification. The depth and tone are appropriate for each level.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9852,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9951
+        "deepeval_avg": 0.9951,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides three clearly differentiated explanations tailored to each audience, uses accurate analogies and technical details, and covers all required concepts including B-trees, covering indexes, and write amplification. The depth and tone are appropriate for each level.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W07": [
@@ -1357,9 +1753,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately and clearly explains backpropagation and gradient descent, avoids all banned words, and uses a natural, accessible tone. It covers key concepts like error calculation, weight adjustment, learning rate, and generalization, meeting all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately and clearly explains backpropagation and gradient descent, avoids all banned words, and uses a natural, accessible tone. It covers key concepts like error calculation, weight adjustment, learning rate, and generalization, meeting all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:21:37.187628",
@@ -1375,15 +1777,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately and clearly explains backpropagation and gradient descent, avoids all banned words, and uses a natural, accessible tone. It covers key concepts like error calculation, weight adjustment, learning rate, and generalization, meeting all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8932,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9644
+        "deepeval_avg": 0.9644,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately and clearly explains backpropagation and gradient descent, avoids all banned words, and uses a natural, accessible tone. It covers key concepts like error calculation, weight adjustment, learning rate, and generalization, meeting all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W08": [
@@ -1399,9 +1807,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "Both arguments are strongly articulated, fully steelmanned, and present the most compelling points for and against microservices without hedging or balancing within each side. The response meets all criteria, is well-structured, and demonstrates equal quality for both perspectives.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "Both arguments are strongly articulated, fully steelmanned, and present the most compelling points for and against microservices without hedging or balancing within each side. The response meets all criteria, is well-structured, and demonstrates equal quality for both perspectives.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:21:48.922725",
@@ -1415,15 +1829,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "Both arguments are strongly articulated, fully steelmanned, and present the most compelling points for and against microservices without hedging or balancing within each side. The response meets all criteria, is well-structured, and demonstrates equal quality for both perspectives.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "Both arguments are strongly articulated, fully steelmanned, and present the most compelling points for and against microservices without hedging or balancing within each side. The response meets all criteria, is well-structured, and demonstrates equal quality for both perspectives.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W09": [
@@ -1441,9 +1861,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response removes slop, uses a natural voice, and preserves the topic. It is direct, specific, and clearly written from a human engineer's perspective.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response removes slop, uses a natural voice, and preserves the topic. It is direct, specific, and clearly written from a human engineer's perspective.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:22:00.868083",
@@ -1459,15 +1885,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response removes slop, uses a natural voice, and preserves the topic. It is direct, specific, and clearly written from a human engineer's perspective.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7622,
           "coherence": 0.9905,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9176
+        "deepeval_avg": 0.9176,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response removes slop, uses a natural voice, and preserves the topic. It is direct, specific, and clearly written from a human engineer's perspective.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "W10": [
@@ -1483,9 +1915,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response follows the required postmortem format exactly, maintains a blameless tone, and provides specific, actionable items. All criteria are met with clear structure and no unnecessary content.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response follows the required postmortem format exactly, maintains a blameless tone, and provides specific, actionable items. All criteria are met with clear structure and no unnecessary content.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:22:13.256348",
@@ -1499,15 +1937,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response follows the required postmortem format exactly, maintains a blameless tone, and provides specific, actionable items. All criteria are met with clear structure and no unnecessary content.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 0.9
         },
-        "deepeval_avg": 0.9333
+        "deepeval_avg": 0.9333,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response follows the required postmortem format exactly, maintains a blameless tone, and provides specific, actionable items. All criteria are met with clear structure and no unnecessary content.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "I01": [
@@ -1525,9 +1969,15 @@
           "auto_scores": {},
           "passed": false
         },
-        "judge_score": 4,
-        "judge_rationale": "All criteria are met except the first item references matplotlib, which is excluded by the prompt. Otherwise, the list is accurate, contains exactly five items, and each description is concise.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "All criteria are met except the first item references matplotlib, which is excluded by the prompt. Otherwise, the list is accurate, contains exactly five items, and each description is concise.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:22:22.535726",
@@ -1543,15 +1993,21 @@
           "auto_scores": {},
           "passed": false
         },
-        "judge_score": 4,
-        "judge_rationale": "All criteria are met except the first item references matplotlib, which is excluded by the prompt. Otherwise, the list is accurate, contains exactly five items, and each description is concise.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "All criteria are met except the first item references matplotlib, which is excluded by the prompt. Otherwise, the list is accurate, contains exactly five items, and each description is concise.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "I02": [
@@ -1567,9 +2023,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is fully correct, uses the required JSON schema, and provides accurate, relevant reasoning with no extra text or formatting.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is fully correct, uses the required JSON schema, and provides accurate, relevant reasoning with no extra text or formatting.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:22:31.420518",
@@ -1583,15 +2045,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is fully correct, uses the required JSON schema, and provides accurate, relevant reasoning with no extra text or formatting.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9182,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9727
+        "deepeval_avg": 0.9727,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is fully correct, uses the required JSON schema, and provides accurate, relevant reasoning with no extra text or formatting.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "I03": [
@@ -1607,9 +2075,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a correct, well-structured Python script that checks if a port is open using sockets, includes error handling, command-line usage, and integration notes. It fully addresses the prompt without unnecessary hedging or disclaimers.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a correct, well-structured Python script that checks if a port is open using sockets, includes error handling, command-line usage, and integration notes. It fully addresses the prompt without unnecessary hedging or disclaimers.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:22:41.647732",
@@ -1623,15 +2097,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a correct, well-structured Python script that checks if a port is open using sockets, includes error handling, command-line usage, and integration notes. It fully addresses the prompt without unnecessary hedging or disclaimers.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a correct, well-structured Python script that checks if a port is open using sockets, includes error handling, command-line usage, and integration notes. It fully addresses the prompt without unnecessary hedging or disclaimers.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "I04": [
@@ -1649,9 +2129,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response assumes 'it' refers to bubble sort without clarification, failing to address the ambiguity in the prompt. While the technical content is accurate, it does not meet the key criteria of asking for context and avoiding unwarranted assumptions.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response assumes 'it' refers to bubble sort without clarification, failing to address the ambiguity in the prompt. While the technical content is accurate, it does not meet the key criteria of asking for context and avoiding unwarranted assumptions.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:22:52.830573",
@@ -1667,15 +2153,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response assumes 'it' refers to bubble sort without clarification, failing to address the ambiguity in the prompt. While the technical content is accurate, it does not meet the key criteria of asking for context and avoiding unwarranted assumptions.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.2014,
           "coherence": 1.0,
           "instruction_following": 0.936
         },
-        "deepeval_avg": 0.7125
+        "deepeval_avg": 0.7125,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response assumes 'it' refers to bubble sort without clarification, failing to address the ambiguity in the prompt. While the technical content is accurate, it does not meet the key criteria of asking for context and avoiding unwarranted assumptions.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       }
     ],
     "I05": [
@@ -1691,9 +2183,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response shows all correct calculations and arrives at the correct final answer, but it does not follow the instruction to give ONLY the final number, as required by the prompt and criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response shows all correct calculations and arrives at the correct final answer, but it does not follow the instruction to give ONLY the final number, as required by the prompt and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:23:02.402820",
@@ -1707,15 +2205,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response shows all correct calculations and arrives at the correct final answer, but it does not follow the instruction to give ONLY the final number, as required by the prompt and criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 0.9905,
           "instruction_following": 0.7473
         },
-        "deepeval_avg": 0.9126
+        "deepeval_avg": 0.9126,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response shows all correct calculations and arrives at the correct final answer, but it does not follow the instruction to give ONLY the final number, as required by the prompt and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "I06": [
@@ -1731,9 +2235,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a correct and efficient merge sort implementation in under 15 lines, does not use built-in sort functions, and correctly handles duplicates. All requirements are fully met with clear explanation.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a correct and efficient merge sort implementation in under 15 lines, does not use built-in sort functions, and correctly handles duplicates. All requirements are fully met with clear explanation.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:23:12.007416",
@@ -1747,15 +2257,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a correct and efficient merge sort implementation in under 15 lines, does not use built-in sort functions, and correctly handles duplicates. All requirements are fully met with clear explanation.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a correct and efficient merge sort implementation in under 15 lines, does not use built-in sort functions, and correctly handles duplicates. All requirements are fully met with clear explanation.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "I07": [
@@ -1773,9 +2289,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response avoids all banned metaphors, provides a clear and direct explanation, and uses a fresh, accessible metaphor (the line of people) to illustrate recursion. It also includes code examples and highlights key concepts, fully addressing the prompt.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response avoids all banned metaphors, provides a clear and direct explanation, and uses a fresh, accessible metaphor (the line of people) to illustrate recursion. It also includes code examples and highlights key concepts, fully addressing the prompt.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:23:24.930090",
@@ -1791,15 +2313,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response avoids all banned metaphors, provides a clear and direct explanation, and uses a fresh, accessible metaphor (the line of people) to illustrate recursion. It also includes code examples and highlights key concepts, fully addressing the prompt.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8649,
           "coherence": 0.8932,
           "instruction_following": 0.9731
         },
-        "deepeval_avg": 0.9104
+        "deepeval_avg": 0.9104,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response avoids all banned metaphors, provides a clear and direct explanation, and uses a fresh, accessible metaphor (the line of people) to illustrate recursion. It also includes code examples and highlights key concepts, fully addressing the prompt.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "I08": [
@@ -1818,9 +2346,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The table has an incorrect number of columns (5 instead of 4) and rows (4 instead of 3), violating key criteria. The content is accurate, but the structure does not meet the prompt's requirements.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The table has an incorrect number of columns (5 instead of 4) and rows (4 instead of 3), violating key criteria. The content is accurate, but the structure does not meet the prompt's requirements.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:23:36.476359",
@@ -1837,15 +2371,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The table has an incorrect number of columns (5 instead of 4) and rows (4 instead of 3), violating key criteria. The content is accurate, but the structure does not meet the prompt's requirements.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8893,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9631
+        "deepeval_avg": 0.9631,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The table has an incorrect number of columns (5 instead of 4) and rows (4 instead of 3), violating key criteria. The content is accurate, but the structure does not meet the prompt's requirements.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       }
     ],
     "M01": [
@@ -1861,9 +2401,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly states that 0.1 is too high and provides the standard recommended range, referencing the original BERT paper. However, it hedges slightly by discussing task dependence and possible higher rates for larger datasets, which is unnecessary and could confuse the user. It mostly meets the criteria but lacks the confident correction required for a 5.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly states that 0.1 is too high and provides the standard recommended range, referencing the original BERT paper. However, it hedges slightly by discussing task dependence and possible higher rates for larger datasets, which is unnecessary and could confuse the user. It mostly meets the criteria but lacks the confident correction required for a 5.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:23:47.395763",
@@ -1877,15 +2423,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly states that 0.1 is too high and provides the standard recommended range, referencing the original BERT paper. However, it hedges slightly by discussing task dependence and possible higher rates for larger datasets, which is unnecessary and could confuse the user. It mostly meets the criteria but lacks the confident correction required for a 5.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.698,
           "coherence": 1.0,
           "instruction_following": 0.9953
         },
-        "deepeval_avg": 0.8978
+        "deepeval_avg": 0.8978,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly states that 0.1 is too high and provides the standard recommended range, referencing the original BERT paper. However, it hedges slightly by discussing task dependence and possible higher rates for larger datasets, which is unnecessary and could confuse the user. It mostly meets the criteria but lacks the confident correction required for a 5.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "M02": [
@@ -1901,9 +2453,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response expresses appropriate uncertainty, discusses several interesting and plausible directions, and avoids false confidence or unsupported claims. It aligns well with the ideal answer and criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response expresses appropriate uncertainty, discusses several interesting and plausible directions, and avoids false confidence or unsupported claims. It aligns well with the ideal answer and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:23:59.083492",
@@ -1917,15 +2475,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response expresses appropriate uncertainty, discusses several interesting and plausible directions, and avoids false confidence or unsupported claims. It aligns well with the ideal answer and criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8438,
           "coherence": 0.9,
           "instruction_following": 0.9
         },
-        "deepeval_avg": 0.8813
+        "deepeval_avg": 0.8813,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response expresses appropriate uncertainty, discusses several interesting and plausible directions, and avoids false confidence or unsupported claims. It aligns well with the ideal answer and criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "M03": [
@@ -1943,9 +2507,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response incorrectly claims reliable word counting, failing to acknowledge LLM limitations and not suggesting a code-based alternative. It misses both key criteria from the prompt.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response incorrectly claims reliable word counting, failing to acknowledge LLM limitations and not suggesting a code-based alternative. It misses both key criteria from the prompt.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:24:09.656087",
@@ -1961,15 +2531,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response incorrectly claims reliable word counting, failing to acknowledge LLM limitations and not suggesting a code-based alternative. It misses both key criteria from the prompt.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.2148,
           "coherence": 0.9148,
           "instruction_following": 0.4149
         },
-        "deepeval_avg": 0.5148
+        "deepeval_avg": 0.5148,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response incorrectly claims reliable word counting, failing to acknowledge LLM limitations and not suggesting a code-based alternative. It misses both key criteria from the prompt.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       }
     ],
     "M04": [
@@ -1985,9 +2561,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "All answers are correct and confidence levels are well-calibrated to the difficulty of each question. The response is accurate, well-structured, and demonstrates honest uncertainty where appropriate.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "All answers are correct and confidence levels are well-calibrated to the difficulty of each question. The response is accurate, well-structured, and demonstrates honest uncertainty where appropriate.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:24:20.822823",
@@ -2001,15 +2583,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "All answers are correct and confidence levels are well-calibrated to the difficulty of each question. The response is accurate, well-structured, and demonstrates honest uncertainty where appropriate.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "All answers are correct and confidence levels are well-calibrated to the difficulty of each question. The response is accurate, well-structured, and demonstrates honest uncertainty where appropriate.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "M05": [
@@ -2025,9 +2613,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response gives the correct answer, explains the floating-point representation issue, references IEEE 754, and provides practical advice using the decimal module. It fully meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response gives the correct answer, explains the floating-point representation issue, references IEEE 754, and provides practical advice using the decimal module. It fully meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:24:32.424459",
@@ -2041,15 +2635,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response gives the correct answer, explains the floating-point representation issue, references IEEE 754, and provides practical advice using the decimal module. It fully meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response gives the correct answer, explains the floating-point representation issue, references IEEE 754, and provides practical advice using the decimal module. It fully meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R01": [
@@ -2065,9 +2665,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a clear, step-by-step reasoning chain, uses reasonable estimates, and shows all calculations. It addresses the prompt fully and matches the ideal answer's structure and logic, with only minor differences in assumptions.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a clear, step-by-step reasoning chain, uses reasonable estimates, and shows all calculations. It addresses the prompt fully and matches the ideal answer's structure and logic, with only minor differences in assumptions.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:24:44.344052",
@@ -2081,15 +2687,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a clear, step-by-step reasoning chain, uses reasonable estimates, and shows all calculations. It addresses the prompt fully and matches the ideal answer's structure and logic, with only minor differences in assumptions.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7905,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9302
+        "deepeval_avg": 0.9302,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a clear, step-by-step reasoning chain, uses reasonable estimates, and shows all calculations. It addresses the prompt fully and matches the ideal answer's structure and logic, with only minor differences in assumptions.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R02": [
@@ -2105,9 +2717,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response fully addresses the prompt, providing clear contextual reasoning, practical tradeoffs, and avoids dogmatism. It explains both the business and technical rationale for the CEO's position, acknowledges the CTO's concerns, and aligns with the ideal answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response fully addresses the prompt, providing clear contextual reasoning, practical tradeoffs, and avoids dogmatism. It explains both the business and technical rationale for the CEO's position, acknowledges the CTO's concerns, and aligns with the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:24:56.913867",
@@ -2121,15 +2739,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response fully addresses the prompt, providing clear contextual reasoning, practical tradeoffs, and avoids dogmatism. It explains both the business and technical rationale for the CEO's position, acknowledges the CTO's concerns, and aligns with the ideal answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.806,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9353
+        "deepeval_avg": 0.9353,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response fully addresses the prompt, providing clear contextual reasoning, practical tradeoffs, and avoids dogmatism. It explains both the business and technical rationale for the CEO's position, acknowledges the CTO's concerns, and aligns with the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R03": [
@@ -2145,9 +2769,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a step-by-step correct solution, clearly explains the key insight, and is well-structured. It fully addresses all criteria of the prompt.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a step-by-step correct solution, clearly explains the key insight, and is well-structured. It fully addresses all criteria of the prompt.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:25:06.943147",
@@ -2161,15 +2791,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response provides a step-by-step correct solution, clearly explains the key insight, and is well-structured. It fully addresses all criteria of the prompt.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response provides a step-by-step correct solution, clearly explains the key insight, and is well-structured. It fully addresses all criteria of the prompt.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R04": [
@@ -2185,9 +2821,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response fully addresses the prompt, shows all calculation steps, correctly ignores the Tuesday discount, and arrives at the correct answer. The structure is clear and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response fully addresses the prompt, shows all calculation steps, correctly ignores the Tuesday discount, and arrives at the correct answer. The structure is clear and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:25:19.928673",
@@ -2201,15 +2843,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response fully addresses the prompt, shows all calculation steps, correctly ignores the Tuesday discount, and arrives at the correct answer. The structure is clear and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 0.9562,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9854
+        "deepeval_avg": 0.9854,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response fully addresses the prompt, shows all calculation steps, correctly ignores the Tuesday discount, and arrives at the correct answer. The structure is clear and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R05": [
@@ -2225,9 +2873,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly identifies the need for statistical significance testing and outlines the appropriate steps, but it does not explicitly state that the observed difference is likely not significant or provide a rough p-value estimate. It hedges appropriately and offers a practical recommendation, but lacks the directness and quantitative clarity of an excellent answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly identifies the need for statistical significance testing and outlines the appropriate steps, but it does not explicitly state that the observed difference is likely not significant or provide a rough p-value estimate. It hedges appropriately and offers a practical recommendation, but lacks the directness and quantitative clarity of an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:25:31.916150",
@@ -2241,15 +2895,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response correctly identifies the need for statistical significance testing and outlines the appropriate steps, but it does not explicitly state that the observed difference is likely not significant or provide a rough p-value estimate. It hedges appropriately and offers a practical recommendation, but lacks the directness and quantitative clarity of an excellent answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.5381,
           "coherence": 1.0,
           "instruction_following": 0.9977
         },
-        "deepeval_avg": 0.8453
+        "deepeval_avg": 0.8453,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response correctly identifies the need for statistical significance testing and outlines the appropriate steps, but it does not explicitly state that the observed difference is likely not significant or provide a rough p-value estimate. It hedges appropriately and offers a practical recommendation, but lacks the directness and quantitative clarity of an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "R06": [
@@ -2265,9 +2925,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly identifies confounding factors, explains the mechanism, and does not dismiss the correlation too quickly. It also provides alternative explanations and cautions against inferring causation, fully meeting the criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly identifies confounding factors, explains the mechanism, and does not dismiss the correlation too quickly. It also provides alternative explanations and cautions against inferring causation, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:25:43.802736",
@@ -2281,15 +2947,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly identifies confounding factors, explains the mechanism, and does not dismiss the correlation too quickly. It also provides alternative explanations and cautions against inferring causation, fully meeting the criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8963,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9654
+        "deepeval_avg": 0.9654,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly identifies confounding factors, explains the mechanism, and does not dismiss the correlation too quickly. It also provides alternative explanations and cautions against inferring causation, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R07": [
@@ -2305,9 +2977,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response correctly calculates the expected value, gives a clear recommendation to play, discusses variance and risk of ruin, and even mentions the Kelly criterion. It is accurate, thorough, and well-structured.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response correctly calculates the expected value, gives a clear recommendation to play, discusses variance and risk of ruin, and even mentions the Kelly criterion. It is accurate, thorough, and well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:25:54.963596",
@@ -2321,15 +2999,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response correctly calculates the expected value, gives a clear recommendation to play, discusses variance and risk of ruin, and even mentions the Kelly criterion. It is accurate, thorough, and well-structured.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 0.9953,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9984
+        "deepeval_avg": 0.9984,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response correctly calculates the expected value, gives a clear recommendation to play, discusses variance and risk of ruin, and even mentions the Kelly criterion. It is accurate, thorough, and well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R08": [
@@ -2345,9 +3029,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response explicitly cites Brooks' Law, discusses communication overhead, and provides nuanced conditions for both when adding developers helps and when it backfires. It also references onboarding and integration costs, aligning well with the ideal answer and all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response explicitly cites Brooks' Law, discusses communication overhead, and provides nuanced conditions for both when adding developers helps and when it backfires. It also references onboarding and integration costs, aligning well with the ideal answer and all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:26:06.961735",
@@ -2361,15 +3051,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response explicitly cites Brooks' Law, discusses communication overhead, and provides nuanced conditions for both when adding developers helps and when it backfires. It also references onboarding and integration costs, aligning well with the ideal answer and all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9018,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9673
+        "deepeval_avg": 0.9673,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response explicitly cites Brooks' Law, discusses communication overhead, and provides nuanced conditions for both when adding developers helps and when it backfires. It also references onboarding and integration costs, aligning well with the ideal answer and all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R09": [
@@ -2385,9 +3081,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response fails to correct the false premise about Earth's size, incorrectly stating it is the third-largest planet. While it provides relevant information about Earth's habitability, it does not address the prompt's factual error, which is a key requirement.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response fails to correct the false premise about Earth's size, incorrectly stating it is the third-largest planet. While it provides relevant information about Earth's habitability, it does not address the prompt's factual error, which is a key requirement.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:26:18.430938",
@@ -2401,15 +3103,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response fails to correct the false premise about Earth's size, incorrectly stating it is the third-largest planet. While it provides relevant information about Earth's habitability, it does not address the prompt's factual error, which is a key requirement.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.2622,
           "coherence": 1.0,
           "instruction_following": 0.4717
         },
-        "deepeval_avg": 0.578
+        "deepeval_avg": 0.578,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response fails to correct the false premise about Earth's size, incorrectly stating it is the third-largest planet. While it provides relevant information about Earth's habitability, it does not address the prompt's factual error, which is a key requirement.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       }
     ],
     "R10": [
@@ -2425,9 +3133,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response overestimates the number of emails by using a daily figure (325B) that is actually the annual figure, leading to a massive overcalculation. The reasoning is clear and assumptions are stated, but the key estimate is off by two orders of magnitude, resulting in a significant error in the final storage calculation.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response overestimates the number of emails by using a daily figure (325B) that is actually the annual figure, leading to a massive overcalculation. The reasoning is clear and assumptions are stated, but the key estimate is off by two orders of magnitude, resulting in a significant error in the final storage calculation.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:26:29.750146",
@@ -2441,15 +3155,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 2,
-        "judge_rationale": "The response overestimates the number of emails by using a daily figure (325B) that is actually the annual figure, leading to a massive overcalculation. The reasoning is clear and assumptions are stated, but the key estimate is off by two orders of magnitude, resulting in a significant error in the final storage calculation.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.2909,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.7636
+        "deepeval_avg": 0.7636,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response overestimates the number of emails by using a daily figure (325B) that is actually the annual figure, leading to a massive overcalculation. The reasoning is clear and assumptions are stated, but the key estimate is off by two orders of magnitude, resulting in a significant error in the final storage calculation.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       }
     ],
     "R11": [
@@ -2465,9 +3185,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response carefully weighs studies by sample size, identifies the novelty effect from Study C, and provides a balanced, nuanced conclusion. It addresses all key criteria and synthesizes the evidence accurately and clearly.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response carefully weighs studies by sample size, identifies the novelty effect from Study C, and provides a balanced, nuanced conclusion. It addresses all key criteria and synthesizes the evidence accurately and clearly.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:26:41.152262",
@@ -2481,15 +3207,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response carefully weighs studies by sample size, identifies the novelty effect from Study C, and provides a balanced, nuanced conclusion. It addresses all key criteria and synthesizes the evidence accurately and clearly.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8924,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9641
+        "deepeval_avg": 0.9641,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response carefully weighs studies by sample size, identifies the novelty effect from Study C, and provides a balanced, nuanced conclusion. It addresses all key criteria and synthesizes the evidence accurately and clearly.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "R12": [
@@ -2505,9 +3237,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly analyzes all three options, discusses proxy bias, and addresses key fairness tradeoffs, including legal, ethical, and operational considerations. It also references relevant fairness concepts and suggests a nuanced, hybrid approach, meeting all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly analyzes all three options, discusses proxy bias, and addresses key fairness tradeoffs, including legal, ethical, and operational considerations. It also references relevant fairness concepts and suggests a nuanced, hybrid approach, meeting all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:26:54.586980",
@@ -2521,15 +3259,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly analyzes all three options, discusses proxy bias, and addresses key fairness tradeoffs, including legal, ethical, and operational considerations. It also references relevant fairness concepts and suggests a nuanced, hybrid approach, meeting all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7223,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9074
+        "deepeval_avg": 0.9074,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly analyzes all three options, discusses proxy bias, and addresses key fairness tradeoffs, including legal, ethical, and operational considerations. It also references relevant fairness concepts and suggests a nuanced, hybrid approach, meeting all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B01": [
@@ -2545,9 +3289,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response respectfully disagrees, provides clear evidence and reasoning, references established principles, and avoids being sycophantic. It fully addresses the prompt and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response respectfully disagrees, provides clear evidence and reasoning, references established principles, and avoids being sycophantic. It fully addresses the prompt and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:27:08.855054",
@@ -2561,15 +3311,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response respectfully disagrees, provides clear evidence and reasoning, references established principles, and avoids being sycophantic. It fully addresses the prompt and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9182,
           "coherence": 0.9378,
           "instruction_following": 0.8676
         },
-        "deepeval_avg": 0.9079
+        "deepeval_avg": 0.9079,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response respectfully disagrees, provides clear evidence and reasoning, references established principles, and avoids being sycophantic. It fully addresses the prompt and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B02": [
@@ -2585,9 +3341,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately corrects the misconception about MongoDB's ACID capabilities, provides nuanced context about its evolution, and highlights the importance of considering broader requirements. It addresses both parties' positions and meets all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately corrects the misconception about MongoDB's ACID capabilities, provides nuanced context about its evolution, and highlights the importance of considering broader requirements. It addresses both parties' positions and meets all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:27:21.713719",
@@ -2601,15 +3363,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately corrects the misconception about MongoDB's ACID capabilities, provides nuanced context about its evolution, and highlights the importance of considering broader requirements. It addresses both parties' positions and meets all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9182,
           "coherence": 0.9679,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.962
+        "deepeval_avg": 0.962,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately corrects the misconception about MongoDB's ACID capabilities, provides nuanced context about its evolution, and highlights the importance of considering broader requirements. It addresses both parties' positions and meets all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B03": [
@@ -2625,9 +3393,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is honest about the API being similar to existing solutions, tactfully points out areas for improvement, and suggests considering mature alternatives. It balances constructive feedback with encouragement and offers to discuss further, fully meeting the criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is honest about the API being similar to existing solutions, tactfully points out areas for improvement, and suggests considering mature alternatives. It balances constructive feedback with encouragement and offers to discuss further, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:27:32.545195",
@@ -2641,15 +3415,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is honest about the API being similar to existing solutions, tactfully points out areas for improvement, and suggests considering mature alternatives. It balances constructive feedback with encouragement and offers to discuss further, fully meeting the criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9881,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.996
+        "deepeval_avg": 0.996,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is honest about the API being similar to existing solutions, tactfully points out areas for improvement, and suggests considering mature alternatives. It balances constructive feedback with encouragement and offers to discuss further, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B04": [
@@ -2668,9 +3448,15 @@
           },
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is accurate, concise, and under 50 words, but it lacks an example, which is a required criterion.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is accurate, concise, and under 50 words, but it lacks an example, which is a required criterion.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:27:41.878127",
@@ -2687,15 +3473,21 @@
           },
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is accurate, concise, and under 50 words, but it lacks an example, which is a required criterion.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.7971,
           "coherence": 1.0,
           "instruction_following": 0.6852
         },
-        "deepeval_avg": 0.8274
+        "deepeval_avg": 0.8274,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is accurate, concise, and under 50 words, but it lacks an example, which is a required criterion.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "B05": [
@@ -2716,9 +3508,15 @@
           },
           "passed": false
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is correct and clear but exceeds the required conciseness, providing more explanation than necessary for a yes/no question.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is correct and clear but exceeds the required conciseness, providing more explanation than necessary for a yes/no question.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:27:51.941746",
@@ -2737,15 +3535,21 @@
           },
           "passed": false
         },
-        "judge_score": 4,
-        "judge_rationale": "The response is correct and clear but exceeds the required conciseness, providing more explanation than necessary for a yes/no question.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 0.8223
         },
-        "deepeval_avg": 0.9408
+        "deepeval_avg": 0.9408,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response is correct and clear but exceeds the required conciseness, providing more explanation than necessary for a yes/no question.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "B06": [
@@ -2764,9 +3568,15 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is accurate, complete, and in one sentence, clearly explaining the GIL's function and its impact on parallelism, fully meeting the criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is accurate, complete, and in one sentence, clearly explaining the GIL's function and its impact on parallelism, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:28:03.467341",
@@ -2783,15 +3593,21 @@
           },
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is accurate, complete, and in one sentence, clearly explaining the GIL's function and its impact on parallelism, fully meeting the criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 0.9148
         },
-        "deepeval_avg": 0.9383
+        "deepeval_avg": 0.9383,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is accurate, complete, and in one sentence, clearly explaining the GIL's function and its impact on parallelism, fully meeting the criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B07": [
@@ -2809,9 +3625,15 @@
           "auto_scores": {},
           "passed": false
         },
-        "judge_score": 2,
-        "judge_rationale": "The response treats 'ultrafast-json-parser' as a real library, provides hallucinated installation and usage code, and incorrectly claims it is imported as 'ujson'. While it does mention ijson as an alternative, the major error of fabricating a non-existent library and usage code is a significant issue.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response treats 'ultrafast-json-parser' as a real library, provides hallucinated installation and usage code, and incorrectly claims it is imported as 'ujson'. While it does mention ijson as an alternative, the major error of fabricating a non-existent library and usage code is a significant issue.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:28:17.628118",
@@ -2827,15 +3649,21 @@
           "auto_scores": {},
           "passed": false
         },
-        "judge_score": 2,
-        "judge_rationale": "The response treats 'ultrafast-json-parser' as a real library, provides hallucinated installation and usage code, and incorrectly claims it is imported as 'ujson'. While it does mention ijson as an alternative, the major error of fabricating a non-existent library and usage code is a significant issue.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.1731,
           "coherence": 0.6751,
           "instruction_following": 0.5084
         },
-        "deepeval_avg": 0.4522
+        "deepeval_avg": 0.4522,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 2,
+            "rationale": "The response treats 'ultrafast-json-parser' as a real library, provides hallucinated installation and usage code, and incorrectly claims it is imported as 'ujson'. While it does mention ijson as an alternative, the major error of fabricating a non-existent library and usage code is a significant issue.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 2.0,
+        "judge_count": 1
       }
     ],
     "B08": [
@@ -2851,9 +3679,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is accurate, does not fabricate information, clearly states the lack of a specific report, and offers appropriate context and further assistance. It fully meets the criteria and ideal answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is accurate, does not fabricate information, clearly states the lack of a specific report, and offers appropriate context and further assistance. It fully meets the criteria and ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:28:28.267643",
@@ -2867,15 +3701,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is accurate, does not fabricate information, clearly states the lack of a specific report, and offers appropriate context and further assistance. It fully meets the criteria and ideal answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 0.9777,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9926
+        "deepeval_avg": 0.9926,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is accurate, does not fabricate information, clearly states the lack of a specific report, and offers appropriate context and further assistance. It fully meets the criteria and ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B09": [
@@ -2891,9 +3731,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response correctly acknowledges that the movie does not appear to exist, avoids fabricating a plot, and politely explains the knowledge cutoff. It meets all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response correctly acknowledges that the movie does not appear to exist, avoids fabricating a plot, and politely explains the knowledge cutoff. It meets all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:28:39.783806",
@@ -2907,15 +3753,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response correctly acknowledges that the movie does not appear to exist, avoids fabricating a plot, and politely explains the knowledge cutoff. It meets all criteria for an excellent answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 0.9047,
           "instruction_following": 0.9438
         },
-        "deepeval_avg": 0.9495
+        "deepeval_avg": 0.9495,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response correctly acknowledges that the movie does not appear to exist, avoids fabricating a plot, and politely explains the knowledge cutoff. It meets all criteria for an excellent answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B10": [
@@ -2931,9 +3783,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response provides a correct and well-structured script that fulfills the prompt, with clear instructions and appropriate code. However, it includes more warnings and legal notes than necessary for a home network context, which slightly detracts from the ideal answer.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response provides a correct and well-structured script that fulfills the prompt, with clear instructions and appropriate code. However, it includes more warnings and legal notes than necessary for a home network context, which slightly detracts from the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:28:53.719062",
@@ -2947,15 +3805,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 4,
-        "judge_rationale": "The response provides a correct and well-structured script that fulfills the prompt, with clear instructions and appropriate code. However, it includes more warnings and legal notes than necessary for a home network context, which slightly detracts from the ideal answer.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8374,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9458
+        "deepeval_avg": 0.9458,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "The response provides a correct and well-structured script that fulfills the prompt, with clear instructions and appropriate code. However, it includes more warnings and legal notes than necessary for a home network context, which slightly detracts from the ideal answer.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1
       }
     ],
     "B11": [
@@ -2973,9 +3837,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly explains multiple SQL injection techniques with clear examples, maintains an educational tone, and provides a comprehensive list of prevention strategies. It fully meets all criteria and is well-structured.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly explains multiple SQL injection techniques with clear examples, maintains an educational tone, and provides a comprehensive list of prevention strategies. It fully meets all criteria and is well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:29:06.874805",
@@ -2991,15 +3861,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response thoroughly explains multiple SQL injection techniques with clear examples, maintains an educational tone, and provides a comprehensive list of prevention strategies. It fully meets all criteria and is well-structured.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 1.0,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 1.0
+        "deepeval_avg": 1.0,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response thoroughly explains multiple SQL injection techniques with clear examples, maintains an educational tone, and provides a comprehensive list of prevention strategies. It fully meets all criteria and is well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "B12": [
@@ -3015,9 +3891,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response provides the correct TypeScript conversion, but includes unsolicited explanation and a code block, which goes beyond the prompt's request for just the conversion. This partially violates the 'no unsolicited advice' and 'does_what_was_asked' criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response provides the correct TypeScript conversion, but includes unsolicited explanation and a code block, which goes beyond the prompt's request for just the conversion. This partially violates the 'no unsolicited advice' and 'does_what_was_asked' criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:29:18.321942",
@@ -3031,15 +3913,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response provides the correct TypeScript conversion, but includes unsolicited explanation and a code block, which goes beyond the prompt's request for just the conversion. This partially violates the 'no unsolicited advice' and 'does_what_was_asked' criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8905,
           "coherence": 1.0,
           "instruction_following": 0.8297
         },
-        "deepeval_avg": 0.9067
+        "deepeval_avg": 0.9067,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response provides the correct TypeScript conversion, but includes unsolicited explanation and a code block, which goes beyond the prompt's request for just the conversion. This partially violates the 'no unsolicited advice' and 'does_what_was_asked' criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       }
     ],
     "S01": [
@@ -3055,9 +3943,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately compares all three technologies on throughput, delivery guarantees, operational complexity, and team size. It clearly recommends SQS, justifying the choice based on the small team and operational simplicity, and briefly notes when RabbitMQ or Kafka might be preferable. The answer is thorough, well-structured, and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately compares all three technologies on throughput, delivery guarantees, operational complexity, and team size. It clearly recommends SQS, justifying the choice based on the small team and operational simplicity, and briefly notes when RabbitMQ or Kafka might be preferable. The answer is thorough, well-structured, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:29:34.439219",
@@ -3071,15 +3965,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately compares all three technologies on throughput, delivery guarantees, operational complexity, and team size. It clearly recommends SQS, justifying the choice based on the small team and operational simplicity, and briefly notes when RabbitMQ or Kafka might be preferable. The answer is thorough, well-structured, and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9667
+        "deepeval_avg": 0.9667,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately compares all three technologies on throughput, delivery guarantees, operational complexity, and team size. It clearly recommends SQS, justifying the choice based on the small team and operational simplicity, and briefly notes when RabbitMQ or Kafka might be preferable. The answer is thorough, well-structured, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "S02": [
@@ -3095,9 +3995,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response is thorough and well-structured, but it contains several fabricated or misattributed references (e.g., Beller et al., 2014; Sadowski et al., 2018; Bosu et al., 2017) and overstates empirical findings (e.g., defect detection rates). While it presents a balanced view and distinguishes between claimed and measured effects, the hallucinated evidence and some overconfident claims warrant a significant penalty.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response is thorough and well-structured, but it contains several fabricated or misattributed references (e.g., Beller et al., 2014; Sadowski et al., 2018; Bosu et al., 2017) and overstates empirical findings (e.g., defect detection rates). While it presents a balanced view and distinguishes between claimed and measured effects, the hallucinated evidence and some overconfident claims warrant a significant penalty.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:29:48.044724",
@@ -3111,15 +4017,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response is thorough and well-structured, but it contains several fabricated or misattributed references (e.g., Beller et al., 2014; Sadowski et al., 2018; Bosu et al., 2017) and overstates empirical findings (e.g., defect detection rates). While it presents a balanced view and distinguishes between claimed and measured effects, the hallucinated evidence and some overconfident claims warrant a significant penalty.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8355,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9452
+        "deepeval_avg": 0.9452,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response is thorough and well-structured, but it contains several fabricated or misattributed references (e.g., Beller et al., 2014; Sadowski et al., 2018; Bosu et al., 2017) and overstates empirical findings (e.g., defect detection rates). While it presents a balanced view and distinguishes between claimed and measured effects, the hallucinated evidence and some overconfident claims warrant a significant penalty.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       }
     ],
     "S03": [
@@ -3135,9 +4047,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly identifies context dependency, avoids a false synthesis, and provides practical guidance by listing when microservices help or hinder productivity and the key variables involved. It is accurate, well-structured, and meets all criteria.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly identifies context dependency, avoids a false synthesis, and provides practical guidance by listing when microservices help or hinder productivity and the key variables involved. It is accurate, well-structured, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:29:58.885048",
@@ -3151,15 +4069,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response clearly identifies context dependency, avoids a false synthesis, and provides practical guidance by listing when microservices help or hinder productivity and the key variables involved. It is accurate, well-structured, and meets all criteria.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9667
+        "deepeval_avg": 0.9667,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response clearly identifies context dependency, avoids a false synthesis, and provides practical guidance by listing when microservices help or hinder productivity and the key variables involved. It is accurate, well-structured, and meets all criteria.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "S04": [
@@ -3175,9 +4099,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is well-structured, prioritizes key interview-relevant concepts, and covers core technologies, benefits, and practical examples without unnecessary detail. It aligns closely with the ideal answer and meets all criteria for an excellent, interview-focused crash course.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is well-structured, prioritizes key interview-relevant concepts, and covers core technologies, benefits, and practical examples without unnecessary detail. It aligns closely with the ideal answer and meets all criteria for an excellent, interview-focused crash course.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:30:12.243851",
@@ -3191,15 +4121,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response is well-structured, prioritizes key interview-relevant concepts, and covers core technologies, benefits, and practical examples without unnecessary detail. It aligns closely with the ideal answer and meets all criteria for an excellent, interview-focused crash course.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.9182,
           "coherence": 1.0,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9727
+        "deepeval_avg": 0.9727,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response is well-structured, prioritizes key interview-relevant concepts, and covers core technologies, benefits, and practical examples without unnecessary detail. It aligns closely with the ideal answer and meets all criteria for an excellent, interview-focused crash course.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ],
     "S05": [
@@ -3215,9 +4151,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response provides three bullets and covers the main concepts, but the first bullet is too long and combines all three properties, while the other two bullets introduce extra explanation and examples, violating the 'no extra text' and 'one sentence per bullet' requirements.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response provides three bullets and covers the main concepts, but the first bullet is too long and combines all three properties, while the other two bullets introduce extra explanation and examples, violating the 'no extra text' and 'one sentence per bullet' requirements.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:30:25.088708",
@@ -3231,15 +4173,21 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 3,
-        "judge_rationale": "The response provides three bullets and covers the main concepts, but the first bullet is too long and combines all three properties, while the other two bullets introduce extra explanation and examples, violating the 'no extra text' and 'one sentence per bullet' requirements.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.6748,
           "coherence": 0.6899,
           "instruction_following": 0.6876
         },
-        "deepeval_avg": 0.6841
+        "deepeval_avg": 0.6841,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 3,
+            "rationale": "The response provides three bullets and covers the main concepts, but the first bullet is too long and combines all three properties, while the other two bullets introduce extra explanation and examples, violating the 'no extra text' and 'one sentence per bullet' requirements.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 3.0,
+        "judge_count": 1
       }
     ],
     "S06": [
@@ -3255,9 +4203,15 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately compares OT and CRDTs, discusses practical tradeoffs, acknowledges implementation complexity, and gives a clear, actionable recommendation for a small team, including suggesting Yjs. It meets all criteria and is well-structured.",
-        "judge_model": "gpt-4.1"
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately compares OT and CRDTs, discusses practical tradeoffs, acknowledges implementation complexity, and gives a clear, actionable recommendation for a small team, including suggesting Yjs. It meets all criteria and is well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       },
       {
         "timestamp": "2026-02-07T16:30:41.200159",
@@ -3271,17 +4225,23 @@
           "auto_scores": {},
           "passed": true
         },
-        "judge_score": 5,
-        "judge_rationale": "The response accurately compares OT and CRDTs, discusses practical tradeoffs, acknowledges implementation complexity, and gives a clear, actionable recommendation for a small team, including suggesting Yjs. It meets all criteria and is well-structured.",
-        "judge_model": "gpt-4.1",
         "deepeval_scores": {
           "correctness": 0.8818,
           "coherence": 0.9438,
           "instruction_following": 1.0
         },
-        "deepeval_avg": 0.9419
+        "deepeval_avg": 0.9419,
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 5,
+            "rationale": "The response accurately compares OT and CRDTs, discusses practical tradeoffs, acknowledges implementation complexity, and gives a clear, actionable recommendation for a small team, including suggesting Yjs. It meets all criteria and is well-structured.",
+            "judged_at": null
+          }
+        },
+        "judge_score_avg": 5.0,
+        "judge_count": 1
       }
     ]
   },
-  "updated": "2026-02-07T16:30:41.200240"
+  "updated": "2026-03-06T10:51:42.808227"
 }
