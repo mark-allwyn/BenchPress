@@ -39,8 +39,9 @@ def load_all_results():
     return models
 
 
-def load_prompts():
-    with open(EVAL_FILE) as f:
+def load_prompts(eval_file=None):
+    path = eval_file or EVAL_FILE
+    with open(path) as f:
         return json.load(f)["prompts"]
 
 
@@ -650,7 +651,7 @@ def generate_html(stats):
     transform: translateX(-50%);
     margin-top: 6px;
     background: var(--surface2);
-    color: var(--text1);
+    color: var(--text);
     padding: 6px 10px;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -778,7 +779,7 @@ def generate_html(stats):
     left: 50%;
     transform: translateX(-50%);
     background: var(--surface2);
-    color: var(--text1);
+    color: var(--text);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -1736,6 +1737,8 @@ def _leaderboard_row(i, m):
 
     company = m.get('company', 'Unknown')
     company_clr = _company_color(company)
+    safe_name = html_mod.escape(m['name'])
+    safe_company = html_mod.escape(company)
 
     div_val = m.get("avg_divergence")
     div_str = f"{div_val:.3f}" if div_val is not None else "-"
@@ -1765,12 +1768,12 @@ def _leaderboard_row(i, m):
             detail_bars += f'<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem"><span style="min-width:120px;font-size:0.75rem;color:var(--text2)">{jn}</span><div style="flex:1;max-width:200px;height:6px;background:var(--border);border-radius:3px;overflow:hidden"><div style="width:{bar_pct:.0f}%;height:100%;background:{bar_color};border-radius:3px"></div></div><span style="font-size:0.75rem;font-weight:600;color:{bar_color};min-width:3rem">{jv:.2f}/5</span></div>'
     # Chevron hint for expandable rows (shown next to judge score)
     chevron = '<span style="font-size:0.55rem;color:var(--text2);margin-left:3px;vertical-align:middle;transition:transform 0.2s" title="Click to see per-judge scores">&#9660;</span>' if detail_bars else ''
-    detail_row = f'<tr class="judge-detail-row" data-parent="{m["name"]}" style="display:none;background:var(--surface2)"><td></td><td colspan="13" style="padding:0.6rem 0.75rem"><div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.4rem">Per-Judge Scores</div>{detail_bars}</td></tr>' if detail_bars else ''
+    detail_row = f'<tr class="judge-detail-row" data-parent="{safe_name}" style="display:none;background:var(--surface2)"><td></td><td colspan="13" style="padding:0.6rem 0.75rem"><div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.4rem">Per-Judge Scores</div>{detail_bars}</td></tr>' if detail_bars else ''
 
-    return f"""<tr class="model-row" data-rank="{i+1}" data-name="{m['name']}" data-company="{company}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-scored="{m['scored']}" data-de_scored="{m['de_scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}" data-divergence="{div_data}" style="cursor:pointer">
+    return f"""<tr class="model-row" data-rank="{i+1}" data-name="{safe_name}" data-company="{safe_company}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-scored="{m['scored']}" data-de_scored="{m['de_scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}" data-divergence="{div_data}" style="cursor:pointer">
       <td><span class="rank {rank_cls}">{i+1}</span></td>
-      <td style="font-weight:600">{m['name']}</td>
-      <td style="color:var(--text2);font-size:0.8rem"><span class="company-dot" style="background:{company_clr}"></span>{company}</td>
+      <td style="font-weight:600">{safe_name}</td>
+      <td style="color:var(--text2);font-size:0.8rem"><span class="company-dot" style="background:{company_clr}"></span>{safe_company}</td>
       <td class="num" style="font-weight:700;{comp_color}">{comp_str}</td>
       <td class="num {sc}" style="font-weight:600;white-space:nowrap" title="{judge_count} judge(s)">{m['avg_score']:.2f}/5{chevron}</td>
       <td class="num" style="font-weight:600;{de_color}">{de_str}</td>
@@ -3339,7 +3342,7 @@ def generate_methodology_html(stats):
   <h2>Multi-Judge Scoring</h2>
   <p>
     Each model response is scored by multiple independent LLM judges (configured in <code>config.yaml</code>),
-    each scoring on a 1-5 scale. The current judges are <strong>gpt-4.1</strong> and <strong>claude-sonnet-4.6</strong>.
+    each scoring on a 1-5 scale.{f' The current judges are {", ".join(f"<strong>{html_mod.escape(j)}</strong>" for j in stats.get("judge_models", []))}.' if stats.get("judge_models") else ''}
     Each judge receives the original prompt, the ideal answer, the scoring criteria, and any
     auto-check flags. It returns a score and a short rationale.
   </p>
@@ -4201,7 +4204,8 @@ def generate_dashboard(output_path=None):
     judges_cfg = config.get("judges", [])
     judge_models = [j["model"] for j in judges_cfg]
 
-    prompts = load_prompts()
+    eval_file = config.get("eval", {}).get("eval_file")
+    prompts = load_prompts(eval_file)
     composite_config = config.get("composite", {})
     models_cfg = config.get("models", {})
     stats = compute_stats(models, prompts, judge_models=judge_models, composite_config=composite_config, models_cfg=models_cfg)

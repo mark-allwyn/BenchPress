@@ -92,8 +92,9 @@ def list_evaluated_models() -> list[str]:
     return sorted(Path(f).stem for f in Path(RESULTS_DIR).glob("*.json") if f.stem != "comparison")
 
 
-def load_eval() -> list[dict]:
-    with open(EVAL_FILE) as f:
+def load_eval(eval_file: str = None) -> list[dict]:
+    path = eval_file or EVAL_FILE
+    with open(path) as f:
         return json.load(f)["prompts"]
 
 
@@ -137,7 +138,8 @@ def cmd_eval(args):
         sys.exit(1)
 
     model_cfg = models_cfg[model_name]
-    prompts = filter_prompts(load_eval(), args.ids, args.category, args.difficulty)
+    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
+    prompts = filter_prompts(load_eval(eval_file), args.ids, args.category, args.difficulty)
     if not prompts:
         print("No prompts match your filters.")
         sys.exit(1)
@@ -289,7 +291,9 @@ def cmd_eval(args):
 # ── compare command ──
 
 def cmd_compare(args):
-    prompts = filter_prompts(load_eval(), args.ids, args.category, args.difficulty)
+    config = load_config(args.config)
+    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
+    prompts = filter_prompts(load_eval(eval_file), args.ids, args.category, args.difficulty)
     prompts_by_id = {p["id"]: p for p in prompts}
     pids = [p["id"] for p in prompts]
 
@@ -311,7 +315,6 @@ def cmd_compare(args):
     col_w = max(len(n) for n in models) + 2
 
     # Load composite weights
-    config = load_config()
     comp_cfg = config.get("composite", {})
     judge_weight = comp_cfg.get("judge_weight", 0.5)
     deepeval_weight = comp_cfg.get("deepeval_weight", 0.5)
@@ -526,7 +529,8 @@ def cmd_rejudge(args):
         print("No models to rejudge.")
         return
 
-    prompts = load_eval()
+    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
+    prompts = load_eval(eval_file)
     prompts_by_id = {p["id"]: p for p in prompts}
     delay = config.get("eval", {}).get("delay_between_calls", 1.0)
 
@@ -664,7 +668,8 @@ def cmd_deepeval(args):
         print("No models to score.")
         return
 
-    prompts = load_eval()
+    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
+    prompts = load_eval(eval_file)
     prompts_by_id = {p["id"]: p for p in prompts}
 
     # Optional filtering

@@ -85,7 +85,7 @@ python run.py prompts --difficulty hard              # Filter prompts
 Each response is scored through three layers:
 
 1. **Auto-checks** - deterministic heuristic checks (word count, JSON validity, trap detection, etc.) that flag mechanical failures instantly
-2. **LLM judge** - a separate LLM scores each response 1-5 against the prompt's ideal answer and criteria
+2. **LLM judges** - multiple independent LLM judges each score responses 1-5 against the prompt's ideal answer and criteria
 3. **DeepEval G-Eval** - research-backed metrics (correctness, coherence, instruction following) scored 0-1
 
 The **composite score** merges judge and DeepEval into a single 0-1 metric: `composite = judge_weight * ((judge - 1) / 4) + deepeval_weight * deepeval_avg`. Weights default to 50/50, configurable in `config.yaml`.
@@ -121,9 +121,15 @@ Each model file stores run history per prompt:
         "input_tokens": 245,
         "output_tokens": 612,
         "auto_checks": { "flags": [], "passed": true },
-        "judge_score": 4,
-        "judge_rationale": "Mostly correct but missed edge case...",
-        "judge_model": "gpt-4.1",
+        "judge_scores": {
+          "gpt-4.1": {
+            "score": 4,
+            "rationale": "Mostly correct but missed edge case...",
+            "judged_at": "2026-02-06T10:01:00"
+          }
+        },
+        "judge_score_avg": 4.0,
+        "judge_count": 1,
         "deepeval_scores": { "correctness": 0.87, "coherence": 0.94, "instruction_following": 0.91 },
         "deepeval_avg": 0.9067
       }

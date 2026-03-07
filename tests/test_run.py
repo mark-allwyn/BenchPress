@@ -1,5 +1,6 @@
 """Tests for run.py - data layer, cmd_rejudge, cmd_eval, cmd_compare, cmd_migrate_judges."""
 
+import argparse
 import json
 import os
 import pytest
@@ -396,3 +397,97 @@ class TestCompositeScore:
         else:
             composite = None
         assert composite is None
+
+
+# ── load_eval with custom eval_file ──
+
+class TestLoadEval:
+    def test_default_path(self, tmp_path, monkeypatch):
+        import run
+        evals_dir = tmp_path / "evals"
+        evals_dir.mkdir()
+        ef = evals_dir / "default.json"
+        ef.write_text(json.dumps({"prompts": [{"id": "X01"}]}))
+        monkeypatch.setattr(run, "EVAL_FILE", str(ef))
+        result = run.load_eval()
+        assert len(result) == 1
+        assert result[0]["id"] == "X01"
+
+    def test_custom_eval_file(self, tmp_path):
+        import run
+        custom = tmp_path / "custom.json"
+        custom.write_text(json.dumps({"prompts": [{"id": "Y01"}, {"id": "Y02"}]}))
+        result = run.load_eval(str(custom))
+        assert len(result) == 2
+        assert result[0]["id"] == "Y01"
+
+    def test_custom_overrides_default(self, tmp_path, monkeypatch):
+        import run
+        # Default file
+        evals_dir = tmp_path / "evals"
+        evals_dir.mkdir()
+        default = evals_dir / "default.json"
+        default.write_text(json.dumps({"prompts": [{"id": "D01"}]}))
+        monkeypatch.setattr(run, "EVAL_FILE", str(default))
+        # Custom file
+        custom = tmp_path / "other.json"
+        custom.write_text(json.dumps({"prompts": [{"id": "O01"}, {"id": "O02"}]}))
+        result = run.load_eval(str(custom))
+        assert len(result) == 2
+        assert result[0]["id"] == "O01"
+
+
+# ── cmd_compare uses args.config ──
+
+class TestCmdCompareConfig:
+    def test_compare_uses_provided_config(self, tmp_path, tmp_results_dir, monkeypatch):
+        """cmd_compare should use args.config, not hardcoded config.yaml."""
+        import run
+
+        # Create a config file
+        config_file = tmp_path / "myconfig.yaml"
+        config_file.write_text(
+            "models: {}\njudges: []\ncomposite:\n  judge_weight: 0.6\n  deepeval_weight: 0.4\n"
+        )
+
+        # Create an eval file
+        evals_dir = tmp_path / "evals"
+        evals_dir.mkdir()
+        ef = evals_dir / "default.json"
+        ef.write_text(json.dumps({"prompts": [
+            {"id": "T01", "category": "coding", "subcategory": "test",
+             "difficulty": "easy", "prompt": "p", "ideal": "i", "criteria": [], "check_type": "reasoning"},
+        ]}))
+        monkeypatch.setattr(run, "EVAL_FILE", str(ef))
+
+        # Create a result file
+        model_data = {
+            "model_name": "test-model",
+            "created": "2026-01-01",
+            "runs": {
+                "T01": [{
+                    "timestamp": "2026-01-01",
+                    "api_model": "gpt-test",
+                    "content": "Hello",
+                    "latency_s": 1.0,
+                    "input_tokens": 10,
+                    "output_tokens": 5,
+                    "auto_checks": {"flags": [], "auto_scores": {}, "passed": True},
+                    "judge_scores": {"j1": {"score": 4, "rationale": "OK", "judged_at": "2026-01-01"}},
+                    "judge_score_avg": 4.0,
+                    "judge_count": 1,
+                }],
+            },
+        }
+        (tmp_results_dir / "test-model.json").write_text(json.dumps(model_data))
+
+        args = argparse.Namespace(
+            config=str(config_file),
+            models=[],
+            ids=None,
+            category=None,
+            difficulty=None,
+            save=False,
+        )
+        # Should not raise - previously it called load_config() with no args
+        run.cmd_compare(args)

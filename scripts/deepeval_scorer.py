@@ -88,10 +88,10 @@ def score_with_deepeval(prompt_meta: dict, response: str, config: dict) -> dict:
     deepeval_cfg = config.get("deepeval", {})
     enabled_metrics = deepeval_cfg.get("metrics", ["correctness", "coherence", "instruction_following"])
 
-    # Use judge model as evaluator, fallback to gpt-4.1
-    judge_cfg = config.get("judge", {})
+    # Use first configured judge model as evaluator, fallback to gpt-4.1
+    judges_cfg = config.get("judges", [])
     models_cfg = config.get("models", {})
-    judge_model_name = judge_cfg.get("model", "gpt-4.1")
+    judge_model_name = judges_cfg[0].get("model", "gpt-4.1") if judges_cfg else "gpt-4.1"
     evaluator_model = models_cfg.get(judge_model_name, {}).get("model", "gpt-4.1")
 
     _, LLMTestCase, _ = _lazy_imports()

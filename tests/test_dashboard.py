@@ -183,3 +183,36 @@ class TestComputeStats:
         lb = stats["leaderboard"]
         # Should be sorted by composite/score descending
         assert lb[0]["name"] == "high-model"
+
+
+class TestLeaderboardRowEscaping:
+    """Model names and companies with HTML special chars must be escaped."""
+
+    def test_html_special_chars_escaped(self, basic_prompts):
+        from scripts.dashboard import _leaderboard_row
+        model_entry = {
+            "name": '<script>alert("xss")</script>',
+            "company": 'Foo & "Bar"',
+            "avg_score": 3.5,
+            "composite_score": 0.6,
+            "deepeval_avg": 0.7,
+            "scored": 2,
+            "de_scored": 2,
+            "total": 2,
+            "errors": 0,
+            "flagged": 0,
+            "avg_latency": 1.0,
+            "avg_tokens": 100,
+            "efficiency": 0.5,
+            "avg_divergence": None,
+            "judge_std_dev": None,
+            "judge_averages": {},
+            "cat_scores": {},
+        }
+        html = _leaderboard_row(0, model_entry)
+        # Raw script tag should NOT appear
+        assert "<script>" not in html
+        # Escaped versions should appear
+        assert "&lt;script&gt;" in html
+        assert "&amp;" in html
+        assert "&quot;" in html
