@@ -4,23 +4,30 @@
 
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
-![Tests 168](https://img.shields.io/badge/tests-168-brightgreen)
-![Models 48](https://img.shields.io/badge/models-48-orange)
+![Tests 178](https://img.shields.io/badge/tests-178-brightgreen)
+![Models 49](https://img.shields.io/badge/models-49-orange)
 
-BenchPress runs 80 prompts across 8 categories against any LLM and scores every response through three independent layers: deterministic auto-checks, multi-judge LLM scoring (1-5), and DeepEval G-Eval metrics (0-1). Results persist as JSON, so when a new model drops, one command compares it against everything tested before.
+**Live dashboard:** [mark-allwyn.github.io/BenchPress](https://mark-allwyn.github.io/BenchPress/)
 
-The prompt set is deliberately opinionated - trap questions that tempt hallucination, false premises that reward pushback over agreement, constraint-heavy tasks that punish verbosity, and coding problems with no bug to find. The kind of stuff that separates models that are actually useful from models that just benchmark well.
+BenchPress runs two independent benchmark suites against any LLM:
+
+**Generalist** (80 prompts, 8 categories) - trap questions, false premises, constraint-heavy tasks, coding problems with no bug to find. Scored through three layers: deterministic auto-checks, multi-judge LLM scoring (1-5 normalised to 0-100), and DeepEval G-Eval metrics (correctness, coherence, instruction-following, 0-100).
+
+**Causal Reasoning v2.4** (100 questions, 20 bundles) - adversarial multiple-choice questions testing whether models truly understand causal inference or just pattern-match. Each bundle has 5 variants: base scenario, trap (the obvious answer is wrong), formal DAG reasoning with short elimination-style options, multi-step numeric, and analyst debate. Four rounds of structural hardening eliminated length bias and keyword tells. Scored deterministically, no LLM judge or DeepEval involvement.
+
+Both benchmarks display 0-100 and are reported side by side. They are never blended into a single number. Results persist as JSON, so when a new model drops, one command compares it against everything tested before.
 
 ![Dashboard](docs/screenshot.png)
 
 ## Features
 
-- **Three-layer scoring** - heuristic auto-checks, multi-judge LLM scoring, and DeepEval G-Eval metrics combined into a single composite score
-- **Multi-judge consensus** - multiple independent LLM judges score each response, with agreement tracking and divergence detection
-- **48 models, 12 companies** - Anthropic, OpenAI, Google, Meta, xAI, Mistral, Alibaba, Zhipu, Moonshot, MiniMax, Cohere, Amazon
-- **80 prompts, 8 categories** - coding, reasoning, writing, instruction following, behavioural traps, research, learning, meta-cognition
-- **19 automated checkers** - trap detection, sycophancy checks, constraint validation, hallucination flags, and more
-- **Interactive dashboard** - sortable leaderboard with per-category breakdowns, company views, and methodology docs
+- **Two benchmark suites** - Generalist (80 prompts, open-ended) and Causal Reasoning (100 multiple-choice, bundled)
+- **Three-layer scoring** (Generalist) - heuristic auto-checks, multi-judge LLM scoring, and DeepEval G-Eval metrics combined into a composite score
+- **Per-variant accuracy** (Causal) - 20 bundles × 5 variants each, exposing pattern-matching vs structural reasoning per model
+- **Multi-judge consensus** - multiple independent LLM judges score each response, with self-judging prevented and agreement/divergence tracking
+- **49 models, 12 companies** - Anthropic, OpenAI, Google, Meta, xAI, Mistral, Alibaba, Zhipu, Moonshot, MiniMax, Cohere, Amazon
+- **20 automated checkers** - trap detection, sycophancy checks, constraint validation, hallucination flags, multiple-choice scoring, and more
+- **Interactive dashboard** - sortable leaderboard with per-category breakdowns, company views, causal reasoning page, and methodology docs
 - **Any OpenAI-compatible API** - works with vLLM, Ollama, Together, Groq, HF Inference API, and others
 - **Append-only history** - re-runs append new entries, full history preserved per prompt
 
@@ -35,8 +42,11 @@ cp config.example.yaml config.yaml
 export ANTHROPIC_API_KEY=sk-...
 export OPENAI_API_KEY=sk-...
 
-# Run eval against a model
+# Run general eval against a model
 python run.py eval claude-sonnet-4
+
+# Run causal reasoning benchmark
+python run.py eval claude-sonnet-4 --benchmark causal
 
 # Compare everything
 python run.py compare
@@ -65,33 +75,34 @@ Weights default to 50/50, configurable in `config.yaml`. The dashboard auto-rege
 
 | Command | Description |
 |---|---|
-| `python run.py eval <model>` | Run all prompts against a model |
+| `python run.py eval <model>` | Run Generalist benchmark against a model |
+| `python run.py eval <model> --benchmark causal` | Run causal reasoning benchmark |
+| `python run.py eval <model> --benchmark all` | Run both benchmarks |
 | `python run.py eval <model> --ids C01 L02` | Run specific prompts |
 | `python run.py eval <model> --category coding` | Filter by category |
 | `python run.py eval <model> --rerun` | Re-run (appends, keeps history) |
 | `python run.py rejudge` | Re-judge all models with current judge |
-| `python run.py rejudge <model> --force` | Force re-judge even if already scored |
+| `python run.py rejudge --benchmark causal` | Re-judge causal benchmark |
 | `python run.py deepeval` | Score all models with DeepEval metrics |
-| `python run.py deepeval <model> --ids C01 --force` | Re-score specific prompts |
 | `python run.py compare` | Compare all models |
-| `python run.py compare <model1> <model2>` | Compare specific models |
-| `python run.py compare --category coding` | Compare by category |
+| `python run.py compare --benchmark causal` | Compare causal results |
 | `python run.py compare --save` | Save markdown report |
 | `python run.py dashboard` | Generate HTML dashboard |
 | `python run.py dashboard --open` | Generate and open in browser |
 | `python run.py models` | List evaluated models |
-| `python run.py prompts` | List eval prompts |
-| `python run.py prompts --difficulty hard` | Filter prompts by difficulty |
+| `python run.py prompts` | List Generalist eval prompts |
+| `python run.py prompts --benchmark causal` | List causal prompts |
 
 ## Models Evaluated
 
-48 models across 12 companies, tested on all 80 prompts.
+49 models across 12 companies. All ran on Generalist; 5 are excluded from Causal (retired APIs, paid-tier-only, broken HF model paths).
 
 <details>
 <summary>Full model list</summary>
 
 | Model | Company | Launched |
 |---|---|---|
+| claude-opus-4.7 | Anthropic | 2026-04-14 |
 | claude-opus-4.6 | Anthropic | 2026-01-28 |
 | claude-sonnet-4.6 | Anthropic | 2026-01-28 |
 | claude-opus-4.5 | Anthropic | 2025-11-01 |
@@ -100,11 +111,11 @@ Weights default to 50/50, configurable in `config.yaml`. The dashboard auto-rege
 | claude-sonnet-4 | Anthropic | 2025-05-14 |
 | claude-sonnet-3.7 | Anthropic | 2025-02-19 |
 | claude-haiku-3 | Anthropic | 2024-03-07 |
+| gpt-5.5 | OpenAI | 2026-04-23 |
 | gpt-5.4 | OpenAI | 2026-03-05 |
 | gpt-5.3 | OpenAI | 2026-03-03 |
 | gpt-5.2 | OpenAI | 2025-12-01 |
 | gpt-5.1 | OpenAI | 2025-11-01 |
-| gpt-5 | OpenAI | 2025-08-01 |
 | gpt-oss-120b | OpenAI | 2025-07-01 |
 | gpt-oss-20b | OpenAI | 2025-07-01 |
 | o4-mini | OpenAI | 2025-04-16 |
@@ -117,7 +128,6 @@ Weights default to 50/50, configurable in `config.yaml`. The dashboard auto-rege
 | gemini-3.1-pro | Google | 2026-01-01 |
 | gemini-3-pro | Google | 2025-09-01 |
 | gemini-3-flash | Google | 2025-09-01 |
-| gemini-2.5-pro | Google | 2025-03-25 |
 | gemini-2.5-flash | Google | 2025-05-20 |
 | gemma-3-27b | Google | 2025-03-12 |
 | grok-4.1-fast | xAI | 2025-10-01 |
@@ -140,12 +150,63 @@ Weights default to 50/50, configurable in `config.yaml`. The dashboard auto-rege
 | nova-2-lite | Amazon | 2025-06-01 |
 | nova-pro | Amazon | 2024-12-03 |
 | nova-lite | Amazon | 2024-12-03 |
+| nova-micro | Amazon | 2024-12-03 |
 
 </details>
 
+## Causal Reasoning Benchmark
+
+100 multiple-choice questions across 20 bundles, each covering a core causal-inference pitfall (confounding + selection, M-bias, Berkson's bias, time-varying confounding, transportability, etc). Every bundle has 5 variant types:
+
+| Variant | What it tests |
+|---|---|
+| **Base** | Narrative scenario combining 2-3 interacting causal issues |
+| **Trap** | Looks like the base concept applies but the obvious answer is wrong; tests when a principle does NOT apply |
+| **Transfer** | Formal DAG reasoning with short elimination-style answers (set notation, path counts, yes/no) |
+| **Numeric** | Multi-step calculation with tables and conditional probabilities |
+| **Analyst** | Two analysts debate - pick the most accurate assessment |
+
+Scoring dimensions:
+- **Raw accuracy** - % of 100 questions correct
+- **Variant accuracy** - per-variant accuracy across all 20 bundles (reveals which causal skill a model is weakest at)
+- **Bundle consistency** - how many of 5 variants correct per bundle (exposes pattern-matching vs genuine understanding)
+- **Invalid rate** - responses that don't produce a valid A/B/C/D answer
+
+Because answers are deterministic, this benchmark skips LLM-judge and DeepEval scoring. Set per-benchmark scoring in `config.yaml`:
+
+```yaml
+eval:
+  benchmark_scoring:
+    causal:
+      skip_judges: true
+      skip_deepeval: true
+```
+
+Run against the causal set:
+
+```bash
+python run.py eval <model-name> --benchmark causal
+```
+
+Causal questions are not published, to prevent models being tuned to this specific benchmark. Hardening design document: [`docs/plans/2026-04-10-causal-benchmark-v2-harder.md`](docs/plans/2026-04-10-causal-benchmark-v2-harder.md).
+
+### Hardening history
+
+The v2.4 transfer variant is the result of four iterations against a cheap baseline model (Claude Haiku 3). Each round exposed a structural tell that let models score high without reasoning:
+
+| Version | Change | Haiku transfer | Opus transfer |
+|---|---|---|---|
+| v2.0 | Initial release | 90% | 90% |
+| v2.1 | Content hardening (more distractors) | 90% | 90% |
+| v2.2 | Length normalisation | 90% | 90% |
+| v2.3 | Narrative replaced with paragraph-long DAG questions | 85% | **100%** (saturated) |
+| **v2.4** | **Elimination-style short options (set notation, counts)** | **40%** | **55%** |
+
+The key insight: when all 4 options are similar short length (20-80 chars), length-based heuristics fail and the question forces actual DAG traversal.
+
 ## Auto-Checks
 
-19 active checkers, plus 8 judge-only categories that rely entirely on LLM scoring:
+20 active checkers, plus 8 judge-only categories that rely entirely on LLM scoring:
 
 | Check | What it catches |
 |---|---|
@@ -168,6 +229,7 @@ Weights default to 50/50, configurable in `config.yaml`. The dashboard auto-rege
 | `table_format` | Wrong column/row count in table output |
 | `multi_step_verify` | Expected numeric answer not found |
 | `statistical_significance` | Overclaims statistical significance |
+| `multiple_choice` | Extracts answer letter and checks against correct answer |
 
 ## Configuration
 
@@ -193,7 +255,7 @@ Supported providers: `anthropic`, `openai`, `google`, `ollama`, `bedrock`, `cohe
 
 ### Adding Prompts
 
-Edit `evals/default.json`. Each prompt:
+Edit `evals/general.json` for general prompts or `evals/causal.json` for causal reasoning. Each general prompt:
 
 ```json
 {
@@ -256,19 +318,25 @@ llm-eval/
 ├── config.example.yaml          # Template - copy to config.yaml
 ├── requirements.txt
 ├── evals/
-│   └── default.json             # 80 eval prompts across 8 categories
+│   ├── general.json             # 80 general eval prompts across 8 categories
+│   └── causal.json              # 100 causal reasoning questions in 20 bundles
 ├── scripts/
 │   ├── providers.py             # Anthropic, OpenAI, Google, Ollama, Bedrock, Cohere, OpenAI-compatible
-│   ├── checks.py                # 19 automated response checkers
+│   ├── checks.py                # 20 automated response checkers
 │   ├── judge.py                 # LLM-as-judge scoring (1-5)
 │   ├── deepeval_scorer.py       # DeepEval G-Eval integration (0-1)
 │   └── dashboard.py             # HTML dashboard generation
-├── docs/                        # Generated dashboard pages (GitHub Pages)
-│   ├── index.html
-│   ├── categories.html
+├── docs/                        # Generated dashboard pages (GitHub Pages-ready)
+│   ├── index.html               # Overview: scatter, timeline, top 10s, link cards
+│   ├── generalist.html          # Generalist benchmark deep-dive
+│   ├── causal.html              # Causal reasoning benchmark deep-dive
 │   ├── companies.html
-│   ├── prompts.html
-│   └── methodology.html
+│   ├── categories.html
+│   ├── judges.html              # Judge audit (agreement, divergence, bias)
+│   ├── methodology.html
+│   ├── data.json                # Shared dataset, fetched on page load
+│   ├── causal-data.json
+│   ├── sitemap.xml, robots.txt, favicon.svg, og-card.png
 └── results/                     # Per-model JSON files (tracked in git)
 ```
 

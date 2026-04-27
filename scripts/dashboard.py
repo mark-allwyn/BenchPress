@@ -11,10 +11,181 @@ from pathlib import Path
 import yaml
 
 RESULTS_DIR = "results"
-EVAL_FILE = "evals/default.json"
+EVAL_FILE = "evals/general.json"
 DOCS_DIR = "docs"
 DASHBOARD_FILE = os.path.join(DOCS_DIR, "index.html")
 CONFIG_FILE = "config.yaml"
+
+# SEO base URL. Swap in a custom domain here + add docs/CNAME when moving off *.github.io.
+GITHUB_PAGES_BASE = "https://mark-allwyn.github.io/BenchPress"
+
+
+def _seo_head_html(page_slug: str, title: str, description: str) -> str:
+    """Return meta/og/twitter/canonical/JSON-LD block for <head> injection.
+
+    page_slug: e.g. "", "categories.html", "companies.html". Empty string = home.
+    Adds Dataset structured data for benchmark leaderboard pages so they're eligible
+    for Google's rich-results dataset listings.
+    """
+    url = f"{GITHUB_PAGES_BASE}/{page_slug}".rstrip('/')
+    og_image = f"{GITHUB_PAGES_BASE}/og-card.png"
+    esc_desc = html_mod.escape(description, quote=True)
+    esc_title = html_mod.escape(title, quote=True)
+
+    # Page-specific structured data: WebSite (default) + Dataset for leaderboard pages
+    ld_blocks = [
+        json.dumps({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "BenchPress",
+            "url": GITHUB_PAGES_BASE,
+            "description": description,
+        })
+    ]
+    if page_slug in ("index.html", "generalist.html", "causal.html"):
+        ds_name = ("BenchPress Generalist Benchmark" if page_slug == "generalist.html"
+                   else "BenchPress Causal Reasoning Benchmark" if page_slug == "causal.html"
+                   else "BenchPress LLM Evaluation Leaderboard")
+        ld_blocks.append(json.dumps({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "name": ds_name,
+            "description": description,
+            "url": url,
+            "creator": {"@type": "Person", "name": "Mark Stent"},
+            "keywords": "LLM, large language model, benchmark, leaderboard, evaluation, AI",
+            "license": "https://opensource.org/licenses/MIT",
+            "isAccessibleForFree": True,
+        }))
+
+    ld_html = "".join(
+        f'<script type="application/ld+json">{b}</script>\n' for b in ld_blocks
+    )
+
+    return (
+        f'<meta name="description" content="{esc_desc}">\n'
+        f'<meta name="robots" content="index, follow, max-image-preview:large">\n'
+        f'<link rel="canonical" href="{url}">\n'
+        f'<link rel="icon" type="image/svg+xml" href="favicon.svg">\n'
+        f'<link rel="apple-touch-icon" href="og-card.png">\n'
+        f'<meta property="og:title" content="{esc_title}">\n'
+        f'<meta property="og:description" content="{esc_desc}">\n'
+        f'<meta property="og:image" content="{og_image}">\n'
+        f'<meta property="og:image:width" content="1200">\n'
+        f'<meta property="og:image:height" content="630">\n'
+        f'<meta property="og:url" content="{url}">\n'
+        f'<meta property="og:type" content="website">\n'
+        f'<meta property="og:site_name" content="BenchPress">\n'
+        f'<meta name="twitter:card" content="summary_large_image">\n'
+        f'<meta name="twitter:title" content="{esc_title}">\n'
+        f'<meta name="twitter:description" content="{esc_desc}">\n'
+        f'<meta name="twitter:image" content="{og_image}">\n'
+        f'{ld_html}'
+    )
+
+
+# Per-page SEO text. Swap here when copy changes.
+SEO = {
+    "index.html": (
+        "BenchPress | LLM Leaderboard: Generalist + Causal Reasoning",
+        "Compare 49 frontier and open-weight LLMs across two independent benchmarks. "
+        "Generalist scores breadth across coding, reasoning, writing, and instruction-following. "
+        "Causal scores narrow causal-inference reasoning. Multi-judge plus DeepEval scoring, with side-by-side scatter and per-company timeline.",
+    ),
+    "categories.html": (
+        "BenchPress | LLM Performance by Category",
+        "Per-category LLM rankings across 8 categories (coding, reasoning, writing, instruction-following, "
+        "research, behavioural, meta-cognition, learning) with category heatmap and top-5 radar.",
+    ),
+    "companies.html": (
+        "BenchPress | LLM Rankings by Company",
+        "LLM rankings grouped by company (Anthropic, OpenAI, Google, Meta, xAI, Amazon, Alibaba, Mistral, Cohere, Moonshot, MiniMax, Zhipu) "
+        "with composite scores, frontier-progress timeline, and category-strengths heatmap.",
+    ),
+    "judges.html": (
+        "BenchPress | LLM-as-Judge Audit: Agreement and Bias",
+        "Multi-judge consistency for the four BenchPress judges: distributions, pairwise agreement, "
+        "category and difficulty bias, divergence with DeepEval, and biggest disagreements per prompt.",
+    ),
+    "methodology.html": (
+        "BenchPress | Evaluation Methodology",
+        "How BenchPress scores LLMs. Two benchmarks: Generalist (80 prompts, 8 categories, multi-judge plus DeepEval) "
+        "and Causal Reasoning (100 multiple-choice questions, 20 concept bundles, 5 variants). Composite scoring, "
+        "self-judging prevention, and reasoning-model handling explained.",
+    ),
+    "causal.html": (
+        "BenchPress | Causal Reasoning Benchmark Leaderboard",
+        "Specialised causal-inference benchmark: 100 multiple-choice questions across 20 concept bundles and 5 variants "
+        "(base, trap, transfer, numeric, analyst). Tests DAG reasoning, confounding, colliders, M-bias, and Simpson's paradox. "
+        "Per-variant accuracy, top-performer cards, and full leaderboard.",
+    ),
+    "generalist.html": (
+        "BenchPress | Generalist LLM Benchmark Leaderboard",
+        "Full breadth LLM leaderboard: 80 prompts across coding, reasoning, writing, instruction-following, "
+        "behavioural, learning, meta-cognition, and research. Composite score blends multi-judge LLM scoring "
+        "with DeepEval correctness, coherence, and instruction-following.",
+    ),
+}
+
+
+def _slug_seo(slug: str) -> str:
+    """Render the SEO head block for a page slug like 'index.html'."""
+    title, desc = SEO[slug]
+    return _seo_head_html(slug, title, desc)
+
+
+def write_seo_assets(out_dir: str) -> None:
+    """Write robots.txt, sitemap.xml, favicon.svg alongside the generated HTML."""
+    os.makedirs(out_dir, exist_ok=True)
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    robots = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        f"Sitemap: {GITHUB_PAGES_BASE}/sitemap.xml\n"
+    )
+    with open(os.path.join(out_dir, "robots.txt"), "w") as f:
+        f.write(robots)
+
+    pages = ["index.html", "generalist.html", "causal.html",
+             "companies.html", "categories.html", "judges.html",
+             "methodology.html"]
+    priorities = {"index.html": "1.0", "generalist.html": "0.95",
+                  "causal.html": "0.9", "companies.html": "0.7",
+                  "categories.html": "0.7", "judges.html": "0.6",
+                  "methodology.html": "0.8"}
+    urls_xml = ""
+    for p in pages:
+        loc = f"{GITHUB_PAGES_BASE}/{p}" if p != "index.html" else f"{GITHUB_PAGES_BASE}/"
+        urls_xml += (
+            f"  <url>\n"
+            f"    <loc>{loc}</loc>\n"
+            f"    <lastmod>{today}</lastmod>\n"
+            f"    <changefreq>weekly</changefreq>\n"
+            f"    <priority>{priorities[p]}</priority>\n"
+            f"  </url>\n"
+        )
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{urls_xml}"
+        '</urlset>\n'
+    )
+    with open(os.path.join(out_dir, "sitemap.xml"), "w") as f:
+        f.write(sitemap)
+
+    # Minimal inline SVG favicon: dark rounded square with a bar-chart mark.
+    favicon = (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">'
+        '<rect width="32" height="32" rx="6" fill="#0f1117"/>'
+        '<rect x="6" y="18" width="4" height="8" fill="#6c72ff"/>'
+        '<rect x="12" y="12" width="4" height="14" fill="#4ecdc4"/>'
+        '<rect x="18" y="8" width="4" height="18" fill="#22c55e"/>'
+        '<rect x="24" y="14" width="4" height="12" fill="#f59e0b"/>'
+        '</svg>'
+    )
+    with open(os.path.join(out_dir, "favicon.svg"), "w") as f:
+        f.write(favicon)
 
 
 def load_config():
@@ -26,10 +197,10 @@ def load_config():
 
 
 def load_all_results():
-    """Load all model result files."""
+    """Load all model result files. Skips comparison.json and *.pre-* historical backups."""
     models = {}
     for f in sorted(Path(RESULTS_DIR).glob("*.json")):
-        if f.stem == "comparison":
+        if f.stem == "comparison" or ".pre-" in f.stem:
             continue
         try:
             with open(f) as fh:
@@ -265,6 +436,7 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
             "name": name,
             "company": company,
             "launch_date": launch_date,
+            "last_updated": data.get("updated"),
             "avg_score": round(avg_s, 2),
             "scored": scored_count,
             "de_scored": de_scored,
@@ -499,8 +671,13 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
     }
 
 
-def generate_html(stats):
+def generate_html(stats, causal_stats=None):
     """Generate the full HTML dashboard."""
+    # Inject causal accuracy into leaderboard entries
+    if causal_stats:
+        causal_by_name = {m["name"]: m["accuracy"] for m in causal_stats["leaderboard"]}
+        for m in stats["leaderboard"]:
+            m["causal_accuracy"] = causal_by_name.get(m["name"])
     data_json = json.dumps(stats)
 
     return f"""<!DOCTYPE html>
@@ -509,7 +686,9 @@ def generate_html(stats):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BenchPress - LLM Evaluation Leaderboard</title>
+{_slug_seo("index.html")}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
 <style>
   :root {{
     --bg: #0f1117;
@@ -953,14 +1132,7 @@ def generate_html(stats):
   <div class="header-inner">
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
-      <nav class="nav">
-        <a href="index.html" class="nav-link active">Overview</a>
-        <a href="companies.html" class="nav-link">Companies</a>
-        <a href="categories.html" class="nav-link">By Category</a>
-        <a href="judges.html" class="nav-link">Judges</a>
-
-        <a href="methodology.html" class="nav-link">Methodology</a>
-      </nav>
+      {_nav_html("index.html", stats)}
     </div>
     <p class="byline">Opinionated in scope. Objective in execution.</p>
     <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judges: {", ".join(stats["judge_models"])}' if stats.get("judge_models") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
@@ -974,7 +1146,7 @@ def generate_html(stats):
   <div class="kpi">
     <div class="label">Top Model</div>
     <div class="value" style="font-size:1.3rem">{stats['leaderboard'][0]['name'] if stats['leaderboard'] else '-'}</div>
-    <div class="sub">{f"{stats['leaderboard'][0]['composite_score']:.2f}" if stats['leaderboard'] and stats['leaderboard'][0].get('composite_score') is not None else '-'} composite</div>
+    <div class="sub">{f"{stats['leaderboard'][0]['composite_score']*100:.0f}" if stats['leaderboard'] and stats['leaderboard'][0].get('composite_score') is not None else '-'} general</div>
   </div>
   <div class="kpi">
     <div class="label">Models Evaluated</div>
@@ -987,141 +1159,91 @@ def generate_html(stats):
     <div class="sub">{max(stats['leaderboard'], key=lambda m: m['efficiency'])['name'] if stats['leaderboard'] else '-'}</div>
   </div>
   <div class="kpi">
-    <div class="label">Total Flags</div>
-    <div class="value">{sum(m['flagged'] for m in stats['leaderboard'])}</div>
-    <div class="sub">across all models</div>
+    <div class="label">Top Causal Model</div>
+    <div class="value" style="font-size:1.3rem">{causal_stats['leaderboard'][0]['name'] if causal_stats and causal_stats.get('leaderboard') else '-'}</div>
+    <div class="sub">{f"{causal_stats['leaderboard'][0]['accuracy']*100:.0f}" if causal_stats and causal_stats.get('leaderboard') else '-'} causal</div>
   </div>
 </div>
 
-<!-- Judge Leniency Strip -->
-{_judge_leniency_strip(stats)}
+<!-- How to read -->
+<div class="card" style="background:var(--surface);border-left:3px solid var(--accent2)">
+  <h3 style="font-size:1rem;margin-bottom:0.5rem">How to read this dashboard</h3>
+  <p style="color:var(--text2);font-size:0.9rem;margin:0;line-height:1.6">
+    Two independent benchmarks, both scored 0–100 so they're directly comparable.
+    <strong style="color:var(--text)">General</strong> tests breadth: 80 prompts across 8 categories (coding, reasoning, writing, instruction-following, etc.), scored by 4 LLM judges plus DeepEval.
+    <strong style="color:var(--text)">Causal</strong> tests narrow causal-inference reasoning: 100 multiple-choice questions across 20 concept bundles.
+    A model can be strong on one and weak on the other; the scatter below shows the trade-off.
+  </p>
+</div>
 
-<!-- Leaderboard + Score Chart -->
-<div class="grid-full">
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
-      <h2 style="margin-bottom:0">Leaderboard <span class="info-tip" data-info="Ranked by composite score. Click column headers to re-sort. Click a row to expand per-judge scores.">?</span></h2>
-      <div style="display:flex;gap:0.5rem;align-items:center">
-      <button class="col-toggle" id="col-toggle-btn" onclick="this.closest('.card').querySelector('.table-scroll').classList.toggle('show-all-cols');this.textContent=this.textContent==='Show all columns'?'Hide columns':'Show all columns'">Show all columns</button>
-      <select id="company-filter" style="background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.75rem;font-size:0.8rem;cursor:pointer">
-        <option value="">All Companies</option>
-      </select>
-      </div>
-    </div>
-    <div class="table-scroll">
-      <table id="leaderboard-table">
-        <thead>
-          <tr>
-            <th style="width:3rem" data-sort="rank" data-type="num">#</th>
-            <th data-sort="name" data-type="str">Model</th>
-            <th data-sort="company" data-type="str">Company</th>
-            <th data-sort="composite" data-type="num" class="desc">Composite</th>
-            <th data-sort="score" data-type="num">Judge</th>
-            <th class="num" data-sort="deepeval" data-type="num">DeepEval</th>
-            <th class="num col-detail" data-sort="scored" data-type="num">Judged</th>
-            <th class="num col-detail" data-sort="de_scored" data-type="num">DE Scored</th>
-            <th class="num" data-sort="errors" data-type="num">Errors</th>
-            <th class="num" data-sort="flags" data-type="num">Flags</th>
-            <th class="num col-detail" data-sort="latency" data-type="num">Avg Latency</th>
-            <th class="num col-detail" data-sort="tokens" data-type="num">Avg Tokens</th>
-            <th class="num" data-sort="efficiency" data-type="num">Efficiency</th>
-            <th class="num col-detail" data-sort="divergence" data-type="num">Divergence</th>
-          </tr>
-        </thead>
-        <tbody>
-          {"".join(_leaderboard_row(i, m) for i, m in enumerate(stats['leaderboard']))}
-        </tbody>
-      </table>
-    </div>
+<!-- General × Causal scatter -->
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <h2 style="margin-bottom:0.25rem">General × Causal <span class="info-tip" data-info="X-axis: general benchmark composite (0–100). Y-axis: causal benchmark accuracy (0–100). Both axes use the same scale; top-right is best on both. Axes zoom to fit the data cluster.">?</span></h2>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0">Each dot is a model, coloured by company. Top-right is best on both. Models without causal data are not shown.</p>
+  </div>
+  <div style="height:480px;position:relative">
+    <canvas id="compositeCausalScatter"></canvas>
   </div>
 </div>
 
-<!-- DeepEval Breakdown -->
-{_deepeval_breakdown_card(stats['leaderboard'])}
+<!-- Company Progress Over Time (HERO 2) -->
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <h2 style="margin-bottom:0.25rem">Company Progress Over Time <span class="info-tip" data-info="Best composite per company at each model launch date. Lines show running maximum, the frontier of what each company has shipped.">?</span></h2>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0">Each company's best published model over time. Composite (0 to 100).</p>
+  </div>
+  <div style="height:440px;position:relative">
+    <canvas id="timelineChart"></canvas>
+  </div>
+</div>
 
-<!-- Charts row -->
-<div class="grid-2">
-  <div class="card">
-    <h2>Composite Scores <span class="info-tip" data-info="Weighted average of normalised judge score (0-1) and DeepEval average.">?</span></h2>
-    <div class="chart-container">
-      <canvas id="scoreChart"></canvas>
+<!-- Top-10 General + Top-10 Causal -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(420px, 1fr));gap:1rem;margin-bottom:1.5rem">
+  <div class="card" style="margin-bottom:0">
+    <div style="margin-bottom:1rem">
+      <h2 style="margin-bottom:0.25rem">Top 10 Generalist <span class="info-tip" data-info="Generalist benchmark composite (0 to 100): blend of LLM-judge score and DeepEval.">?</span></h2>
+      <p style="color:var(--text2);font-size:0.85rem;margin:0">Best 10 on the breadth benchmark.</p>
+    </div>
+    <div style="height:420px;position:relative">
+      <canvas id="topCompositeBar"></canvas>
     </div>
   </div>
-  <div class="card">
-    <h2>Efficiency <span class="info-tip" data-info="Quality per token: avg_score / log2(avg_tokens). Higher means better quality with fewer tokens.">?</span></h2>
-    <div class="chart-container">
-      <canvas id="efficiencyChart"></canvas>
+  <div class="card" style="margin-bottom:0">
+    <div style="margin-bottom:1rem">
+      <h2 style="margin-bottom:0.25rem">Top 10 Causal <span class="info-tip" data-info="Causal benchmark accuracy (0 to 100): 100 MC questions across 20 bundles × 5 variants.">?</span></h2>
+      <p style="color:var(--text2);font-size:0.85rem;margin:0">Best 10 on causal-inference reasoning.</p>
+    </div>
+    <div style="height:420px;position:relative">
+      <canvas id="topCausalBar"></canvas>
     </div>
   </div>
 </div>
 
-<!-- Difficulty + Agreement charts -->
-<div class="grid-2">
-  <div class="card">
-    <h2>Performance by Difficulty <span class="info-tip" data-info="Composite scores for easy, medium, and hard prompts across top 5 models.">?</span></h2>
-    <div class="chart-container">
-      <canvas id="difficultyChart"></canvas>
-    </div>
-  </div>
-  <div class="card">
-    <h2>Judge vs DeepEval Divergence <span class="info-tip" data-info="Per prompt: mean of complete judges' normalised scores (0-1) vs DeepEval average. Averaged across all prompts. Lower means judge and automated scores agree more.">?</span></h2>
-    <div class="chart-container">
-      <canvas id="agreementChart"></canvas>
-    </div>
-  </div>
-</div>
-
-<!-- Category breakdown (full width) -->
-<div class="grid-full">
-  <div class="card">
-    <h2>Category Breakdown <span class="info-tip" data-info="Composite score per category. Hover cells for judge and DeepEval breakdown.">?</span></h2>
-    <div class="table-scroll">
-      <table class="cat-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            {"".join(f'<th class="num">{m["name"]}</th>' for m in stats['leaderboard'])}
-          </tr>
-        </thead>
-        <tbody>
-          {"".join(_category_row(cat, stats['leaderboard']) for cat in stats['categories'])}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- Radar + Score Distribution -->
-<div class="grid-2">
-  <div class="card">
-    <h2>Category Radar - Top 5 <span class="info-tip" data-info="Composite scores by category for the top 5 models. Wider coverage means more consistent performance.">?</span></h2>
-    <div class="chart-container">
-      <canvas id="radarChart"></canvas>
-    </div>
-  </div>
-  <div class="card">
-    <h2>Score Distribution <span class="info-tip" data-info="LLM judge scores (1-5) per model. More green (5/5) means higher quality responses.">?</span></h2>
-    <div class="chart-container">
-      <canvas id="distChart"></canvas>
-    </div>
-  </div>
-</div>
-
-<!-- Flags -->
-<div class="grid-full">
-  <div class="card">
-    <h2>Auto-Check Flags ({len(stats['flags'])} prompts flagged) <span class="info-tip" data-info="Automated heuristic checks that flag potential issues like wrong answers, hallucinations, or format violations.">?</span></h2>
-    <div class="flags-list">
-      {"".join(_flag_item(f) for f in stats['flags'][:30])}
-      {f'<div style="padding:0.5rem;color:var(--text2);font-size:0.85rem">...and {len(stats["flags"])-30} more</div>' if len(stats['flags']) > 30 else ''}
-    </div>
-  </div>
+<!-- Link cards: where to dig in -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1rem;margin-bottom:1.5rem">
+  <a href="generalist.html" class="card" style="margin:0;text-decoration:none;color:var(--text);border-left:3px solid var(--accent2);transition:transform 0.15s">
+    <h3 style="margin-bottom:0.4rem">Generalist leaderboard &rarr;</h3>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0;line-height:1.5">Full {stats['total_models']}-model leaderboard, DeepEval breakdown, difficulty curve, distributions, flags.</p>
+  </a>
+  <a href="causal.html" class="card" style="margin:0;text-decoration:none;color:var(--text);border-left:3px solid var(--accent2);transition:transform 0.15s">
+    <h3 style="margin-bottom:0.4rem">Causal leaderboard &rarr;</h3>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0;line-height:1.5">Per-variant accuracy, bundle consistency heatmap, excluded models.</p>
+  </a>
+  <a href="companies.html" class="card" style="margin:0;text-decoration:none;color:var(--text);border-left:3px solid var(--accent2);transition:transform 0.15s">
+    <h3 style="margin-bottom:0.4rem">Browse by company &rarr;</h3>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0;line-height:1.5">Per-company tables, category strengths heatmap, frontier history.</p>
+  </a>
+  <a href="categories.html" class="card" style="margin:0;text-decoration:none;color:var(--text);border-left:3px solid var(--accent2);transition:transform 0.15s">
+    <h3 style="margin-bottom:0.4rem">Browse by category &rarr;</h3>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0;line-height:1.5">Coding, writing, reasoning, instruction-following, behavioural, and more.</p>
+  </a>
 </div>
 
 </div>
 
-<script>
-const DATA = {data_json};
+<script type="module">
+const DATA = await (await fetch('./data.json')).json();
 const lb = DATA.leaderboard;
 const cats = DATA.categories;
 
@@ -1154,132 +1276,256 @@ document.querySelectorAll('.table-scroll').forEach(el => {{
   window.addEventListener('resize', checkOverflow);
 }});
 
-// Composite score bar chart (0-1 scale)
-new Chart(document.getElementById('scoreChart'), {{
-  type: 'bar',
-  data: {{
-    labels: lb.map(m => m.name),
-    datasets: [{{
-      data: lb.map(m => m.composite_score || 0),
-      backgroundColor: lb.map(m => compositeColor(m.composite_score || 0) + 'cc'),
-      borderColor: lb.map(m => compositeColor(m.composite_score || 0)),
-      borderWidth: 1,
-      borderRadius: 4,
-    }}]
-  }},
-  options: {{
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {{ legend: {{ display: false }} }},
-    scales: {{
-      y: {{ min: 0, max: 1, ticks: {{ stepSize: 0.2 }} }},
-      x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}
-    }}
-  }}
+// scoreChart and agreementChart removed: scoreChart was redundant with the Top 10 bar.
+// agreementChart already lives on judges.html. Their JS is gone with the markup.
+
+// Charts inside <details> render at 0×0 if the details starts closed, so trigger
+// a resize when the details first opens. Chart.js auto-redraws on the resize event.
+document.querySelectorAll('details').forEach(d => {{
+  d.addEventListener('toggle', () => {{
+    if (d.open) window.dispatchEvent(new Event('resize'));
+  }});
 }});
 
-// Efficiency chart - sorted by efficiency descending
-const effSorted = [...lb].sort((a, b) => b.efficiency - a.efficiency);
-new Chart(document.getElementById('efficiencyChart'), {{
-  type: 'bar',
-  data: {{
-    labels: effSorted.map(m => m.name),
-    datasets: [{{
-      data: effSorted.map(m => m.efficiency),
-      backgroundColor: effSorted.map(m => {{
-        if (m.efficiency >= 0.50) return '#22c55ecc';
-        if (m.efficiency >= 0.45) return '#4ade80cc';
-        if (m.efficiency >= 0.40) return '#86efaccc';
-        if (m.efficiency >= 0.35) return '#eab308cc';
-        return '#f97316cc';
-      }}),
-      borderColor: effSorted.map(m => {{
-        if (m.efficiency >= 0.50) return '#22c55e';
-        if (m.efficiency >= 0.45) return '#4ade80';
-        if (m.efficiency >= 0.40) return '#86efac';
-        if (m.efficiency >= 0.35) return '#eab308';
-        return '#f97316';
-      }}),
-      borderWidth: 1,
-      borderRadius: 4,
-    }}]
-  }},
-  options: {{
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {{ legend: {{ display: false }} }},
-    scales: {{
-      y: {{ beginAtZero: true, title: {{ display: true, text: 'Efficiency', color: '#8b90a5' }} }},
-      x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}
+// Top-10 horizontal bar charts: composite-only and causal-only.
+// X-axis zooms to the visible range so small differences are legible.
+function topBar(canvasId, getScore, scoreFmt, axisLabel, axisMax) {{
+  const el = document.getElementById(canvasId);
+  if (!el) return;
+  const ranked = lb
+    .map(m => ({{ name: m.name, score: getScore(m) }}))
+    .filter(m => m.score != null)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10);
+  if (!ranked.length) return;
+  // Zoom: floor at 90% of the lowest visible value (rounded to a nice step)
+  const lo = ranked[ranked.length - 1].score;
+  const hi = ranked[0].score;
+  const span = hi - lo;
+  const pad = Math.max(span * 0.15, axisMax * 0.02);
+  const xMin = Math.max(0, lo - pad);
+  const xMax = Math.min(axisMax, hi + pad);
+  const view = ranked.slice().reverse(); // bottom-up
+  new Chart(el, {{
+    type: 'bar',
+    data: {{
+      labels: view.map(m => m.name),
+      datasets: [{{
+        data: view.map(m => m.score),
+        backgroundColor: view.map(m => compositeColor(m.score / axisMax) + 'cc'),
+        borderColor: view.map(m => compositeColor(m.score / axisMax)),
+        borderWidth: 1,
+        borderRadius: 4,
+      }}]
+    }},
+    options: {{
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {{
+        legend: {{ display: false }},
+        tooltip: {{ callbacks: {{ label: ctx => scoreFmt(ctx.raw) }} }},
+      }},
+      scales: {{
+        x: {{ min: xMin, max: xMax, title: {{ display: true, text: axisLabel + ' (zoomed)', color: '#8b90a5' }} }},
+        y: {{ ticks: {{ font: {{ size: 11 }} }} }}
+      }}
     }}
-  }}
-}});
+  }});
+}}
+topBar('topCompositeBar', m => m.composite_score != null ? m.composite_score * 100 : null, v => v.toFixed(0) + ' general', 'General (0–100)', 100);
+topBar('topCausalBar',    m => m.causal_accuracy != null ? m.causal_accuracy * 100 : null, v => v.toFixed(0) + ' causal', 'Causal accuracy (0–100)', 100);
 
-// Radar chart (top 5 models) - uses composite per-category scores (0-1 scale)
+// Company Progress Over Time (homepage hero 2). Same chart as the companies page.
+{_company_colors_js()}
+(function () {{
+  const canvas = document.getElementById('timelineChart');
+  if (!canvas) return;
+  const timeCompanies = {{}};
+  lb.forEach(m => {{
+    if (!m.launch_date || m.composite_score == null) return;
+    const c = m.company || 'Unknown';
+    if (!timeCompanies[c]) timeCompanies[c] = [];
+    timeCompanies[c].push({{ date: m.launch_date, score: m.composite_score, name: m.name }});
+  }});
+  const datasets = [];
+  Object.keys(timeCompanies).sort().forEach(company => {{
+    const points = timeCompanies[company].sort((a, b) => a.date.localeCompare(b.date));
+    let runMax = 0;
+    const data = points.map(p => {{
+      runMax = Math.max(runMax, p.score);
+      return {{ x: p.date, y: runMax * 100, modelName: p.name, rawScore: p.score }};
+    }});
+    datasets.push({{
+      label: company, data,
+      borderColor: companyColor(company), backgroundColor: companyColor(company) + '33',
+      borderWidth: 2, pointRadius: 4, pointHoverRadius: 6, tension: 0.1, fill: false,
+    }});
+  }});
+  let allScores = [];
+  datasets.forEach(ds => ds.data.forEach(pt => allScores.push(pt.y)));
+  const dataMin = allScores.length ? Math.min(...allScores) : 0;
+  const dataMax = allScores.length ? Math.max(...allScores) : 100;
+  const padding = (dataMax - dataMin) * 0.15 || 5;
+  const yMin = Math.max(0, Math.floor((dataMin - padding) / 5) * 5);
+  const yMax = Math.min(100, Math.ceil((dataMax + padding) / 5) * 5);
+  new Chart(canvas, {{
+    type: 'line',
+    data: {{ datasets }},
+    options: {{
+      responsive: true, maintainAspectRatio: false,
+      scales: {{
+        x: {{ type: 'time', time: {{ unit: 'month', tooltipFormat: 'MMM yyyy' }}, title: {{ display: true, text: 'Launch Date', color: '#8b90a5' }} }},
+        y: {{ min: yMin, max: yMax, ticks: {{ stepSize: 5 }}, title: {{ display: true, text: 'Composite (0 to 100)', color: '#8b90a5' }} }}
+      }},
+      plugins: {{
+        legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }},
+        tooltip: {{ callbacks: {{ label: ctx => ctx.dataset.label + ': ' + ctx.raw.modelName + ' (' + ctx.raw.y.toFixed(0) + ')' }} }}
+      }}
+    }}
+  }});
+}})();
+
+// Composite × Causal scatter, only models with both signals
+(function () {{
+  const scatterEl = document.getElementById('compositeCausalScatter');
+  if (!scatterEl) return;
+  // Both axes on a 0–100 scale so a 5-point move means the same on each axis
+  const points = lb
+    .filter(m => m.composite_score != null && m.causal_accuracy != null)
+    .map(m => ({{
+      x: m.composite_score * 100,
+      y: m.causal_accuracy * 100,
+      name: m.name,
+      company: m.company || 'Unknown',
+    }}));
+  const companies = [...new Set(points.map(p => p.company))].sort();
+  const companyColor = Object.fromEntries(companies.map((c, i) => [c, COLORS[i % COLORS.length]]));
+  const datasets = companies.map(c => ({{
+    label: c,
+    data: points.filter(p => p.company === c),
+    backgroundColor: companyColor[c] + 'cc',
+    borderColor: companyColor[c],
+    borderWidth: 1.5,
+    pointRadius: 6,
+    pointHoverRadius: 9,
+  }}));
+  // Zoom to a square data range (same scale on both axes) so distance is meaningful
+  const xs = points.map(p => p.x), ys = points.map(p => p.y);
+  const xLo = Math.min(...xs), xHi = Math.max(...xs);
+  const yLo = Math.min(...ys), yHi = Math.max(...ys);
+  const span = Math.max(xHi - xLo, yHi - yLo);
+  const xMid = (xLo + xHi) / 2, yMid = (yLo + yHi) / 2;
+  const half = span / 2 + Math.max(span * 0.08, 2);
+  const xMin = Math.max(0, xMid - half), xMax = Math.min(100, xMid + half);
+  const yMin = Math.max(0, yMid - half), yMax = Math.min(100, yMid + half);
+  new Chart(scatterEl, {{
+    type: 'scatter',
+    data: {{ datasets }},
+    options: {{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {{
+        legend: {{ position: 'right', labels: {{ boxWidth: 10, padding: 8, font: {{ size: 11 }} }} }},
+        tooltip: {{
+          callbacks: {{
+            label: ctx => `${{ctx.raw.name}} | general ${{ctx.raw.x.toFixed(0)}} | causal ${{ctx.raw.y.toFixed(0)}}`,
+            title: () => '',
+          }}
+        }}
+      }},
+      scales: {{
+        x: {{ title: {{ display: true, text: 'General benchmark (0–100)', color: '#8b90a5' }}, min: xMin, max: xMax }},
+        y: {{ title: {{ display: true, text: 'Causal benchmark (0–100)', color: '#8b90a5' }}, min: yMin, max: yMax }}
+      }}
+    }}
+  }});
+}})();
+
+// Efficiency chart (only renders if canvas present)
+(function () {{
+  const el = document.getElementById('efficiencyChart');
+  if (!el) return;
+  const effSorted = [...lb].sort((a, b) => b.efficiency - a.efficiency);
+  const colour = e => e >= 0.50 ? '#22c55e' : e >= 0.45 ? '#4ade80' : e >= 0.40 ? '#86efac' : e >= 0.35 ? '#eab308' : '#f97316';
+  new Chart(el, {{
+    type: 'bar',
+    data: {{
+      labels: effSorted.map(m => m.name),
+      datasets: [{{
+        data: effSorted.map(m => m.efficiency),
+        backgroundColor: effSorted.map(m => colour(m.efficiency) + 'cc'),
+        borderColor: effSorted.map(m => colour(m.efficiency)),
+        borderWidth: 1, borderRadius: 4,
+      }}]
+    }},
+    options: {{
+      responsive: true, maintainAspectRatio: false,
+      plugins: {{ legend: {{ display: false }} }},
+      scales: {{
+        y: {{ beginAtZero: true, title: {{ display: true, text: 'Efficiency', color: '#8b90a5' }} }},
+        x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}
+      }}
+    }}
+  }});
+}})();
+
+// Radar chart removed from homepage; lives on categories.html now.
 const top5 = lb.slice(0, 5);
-new Chart(document.getElementById('radarChart'), {{
-  type: 'radar',
-  data: {{
-    labels: cats.map(c => c.replace('_', ' ')),
-    datasets: top5.map((m, i) => ({{
-      label: m.name,
-      data: cats.map(c => (m.cat_composite && m.cat_composite[c]) || 0),
-      borderColor: COLORS[i],
-      backgroundColor: COLORS[i] + '22',
-      pointBackgroundColor: COLORS[i],
-      borderWidth: 2,
-      pointRadius: 3,
-    }}))
-  }},
-  options: {{
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {{
-      r: {{
-        min: 0,
-        max: 1,
-        ticks: {{ stepSize: 0.2, display: false }},
-        grid: {{ color: '#2e3345' }},
-        angleLines: {{ color: '#2e3345' }},
-        pointLabels: {{ font: {{ size: 11 }}, color: '#e4e7f0' }}
-      }}
+(function () {{
+  const radarEl = document.getElementById('radarChart');
+  if (!radarEl) return;
+  new Chart(radarEl, {{
+    type: 'radar',
+    data: {{
+      labels: cats.map(c => c.replace('_', ' ')),
+      datasets: top5.map((m, i) => ({{
+        label: m.name,
+        data: cats.map(c => ((m.cat_composite && m.cat_composite[c]) || 0) * 100),
+        borderColor: COLORS[i],
+        backgroundColor: COLORS[i] + '22',
+        pointBackgroundColor: COLORS[i],
+        borderWidth: 2,
+        pointRadius: 3,
+      }}))
     }},
-    plugins: {{
-      legend: {{
-        position: 'bottom',
-        labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }}
-      }}
+    options: {{
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {{
+        r: {{
+          min: 0, max: 100, ticks: {{ stepSize: 20, display: false }},
+          grid: {{ color: '#2e3345' }}, angleLines: {{ color: '#2e3345' }},
+          pointLabels: {{ font: {{ size: 11 }}, color: '#e4e7f0' }}
+        }}
+      }},
+      plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }} }}
     }}
-  }}
-}});
+  }});
+}})();
 
-// Score distribution stacked bar
-new Chart(document.getElementById('distChart'), {{
-  type: 'bar',
-  data: {{
-    labels: lb.map(m => m.name),
-    datasets: [5, 4, 3, 2, 1].map((score, si) => ({{
-      label: score + '/5',
-      data: lb.map(m => m.score_dist[score] || 0),
-      backgroundColor: ['#22c55e', '#86efac', '#eab308', '#f97316', '#ef4444'][si] + 'cc',
-      borderRadius: 2,
-    }}))
-  }},
-  options: {{
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {{
-      legend: {{
-        position: 'bottom',
-        labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }}
-      }}
+// Score distribution stacked bar (only renders if canvas present)
+(function () {{
+  const el = document.getElementById('distChart');
+  if (!el) return;
+  new Chart(el, {{
+    type: 'bar',
+    data: {{
+      labels: lb.map(m => m.name),
+      datasets: [5, 4, 3, 2, 1].map((score, si) => ({{
+        label: score + '/5',
+        data: lb.map(m => m.score_dist[score] || 0),
+        backgroundColor: ['#22c55e','#86efac','#eab308','#f97316','#ef4444'][si] + 'cc',
+        borderRadius: 2,
+      }}))
     }},
-    scales: {{
-      x: {{ stacked: true, ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }},
-      y: {{ stacked: true, beginAtZero: true }}
+    options: {{
+      responsive: true, maintainAspectRatio: false,
+      plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }} }},
+      scales: {{ x: {{ stacked: true, ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}, y: {{ stacked: true, beginAtZero: true }} }}
     }}
-  }}
-}});
+  }});
+}})();
 
 // Sortable leaderboard table
 (function() {{
@@ -1433,7 +1679,7 @@ function setParams(obj) {{
       labels: top5.map(m => m.name),
       datasets: diffs.map(d => ({{
         label: d.charAt(0).toUpperCase() + d.slice(1),
-        data: top5.map(m => (m.diff_composite && m.diff_composite[d]) || 0),
+        data: top5.map(m => ((m.diff_composite && m.diff_composite[d]) || 0) * 100),
         backgroundColor: diffColors[d] + 'cc',
         borderColor: diffColors[d],
         borderWidth: 1,
@@ -1450,7 +1696,7 @@ function setParams(obj) {{
         }}
       }},
       scales: {{
-        y: {{ min: 0, max: 1, ticks: {{ stepSize: 0.2 }} }},
+        y: {{ min: 0, max: 100, ticks: {{ stepSize: 20 }} }},
         x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}
       }}
     }}
@@ -1624,9 +1870,11 @@ def _nav_html(active_page, stats):
     """Generate the nav bar HTML with the active page highlighted."""
     pages = [
         ("index.html", "Overview"),
+        ("generalist.html", "Generalist"),
+        ("causal.html", "Causal"),
         ("companies.html", "Companies"),
         ("categories.html", "By Category"),
-        ("judges.html", "Judges"),
+        ("judges.html", "Judge Audit"),
         ("methodology.html", "Methodology"),
     ]
     links = []
@@ -1709,9 +1957,9 @@ def _deepeval_breakdown_card(leaderboard):
 
 def _leaderboard_row(i, m):
     rank_cls = f"rank-{i+1}" if i < 3 else "rank-n"
-    # Composite score (0-1 scale)
+    # Composite score is stored 0-1, displayed 0-100 to match other benchmark scales
     comp_val = m.get("composite_score")
-    comp_str = f"{comp_val:.2f}" if comp_val is not None else "-"
+    comp_str = f"{comp_val*100:.0f}" if comp_val is not None else "-"
     comp_data = f"{comp_val}" if comp_val is not None else "0"
     comp_color = _composite_color(comp_val)
 
@@ -1731,7 +1979,7 @@ def _leaderboard_row(i, m):
         flags_badge = '<span class="badge badge-ok">0</span>'
 
     de_val = m.get('deepeval_avg')
-    de_str = f"{de_val:.2f}" if de_val is not None else "-"
+    de_str = f"{de_val*100:.0f}" if de_val is not None else "-"
     de_data = f"{de_val}" if de_val is not None else "0"
     de_color = _deepeval_color(de_val)
 
@@ -1740,10 +1988,10 @@ def _leaderboard_row(i, m):
     safe_name = html_mod.escape(m['name'])
     safe_company = html_mod.escape(company)
 
-    div_val = m.get("avg_divergence")
-    div_str = f"{div_val:.3f}" if div_val is not None else "-"
-    div_data = f"{div_val}" if div_val is not None else "0"
-    div_color = _divergence_color(div_val)
+    causal_val = m.get("causal_accuracy")
+    causal_str = f"{causal_val*100:.0f}" if causal_val is not None else "-"
+    causal_data = f"{causal_val}" if causal_val is not None else "0"
+    causal_color = f"color:#22c55e" if causal_val and causal_val >= 0.8 else f"color:#eab308" if causal_val and causal_val >= 0.6 else f"color:#ef4444" if causal_val is not None else "color:var(--text2)"
 
     # Judge agreement indicator
     jsd = m.get("judge_std_dev")
@@ -1768,23 +2016,31 @@ def _leaderboard_row(i, m):
             detail_bars += f'<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem"><span style="min-width:120px;font-size:0.75rem;color:var(--text2)">{jn}</span><div style="flex:1;max-width:200px;height:6px;background:var(--border);border-radius:3px;overflow:hidden"><div style="width:{bar_pct:.0f}%;height:100%;background:{bar_color};border-radius:3px"></div></div><span style="font-size:0.75rem;font-weight:600;color:{bar_color};min-width:3rem">{jv:.2f}/5</span></div>'
     # Chevron hint for expandable rows (shown next to judge score)
     chevron = '<span style="font-size:0.55rem;color:var(--text2);margin-left:3px;vertical-align:middle;transition:transform 0.2s" title="Click to see per-judge scores">&#9660;</span>' if detail_bars else ''
-    detail_row = f'<tr class="judge-detail-row" data-parent="{safe_name}" style="display:none;background:var(--surface2)"><td></td><td colspan="13" style="padding:0.6rem 0.75rem"><div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.4rem">Per-Judge Scores</div>{detail_bars}</td></tr>' if detail_bars else ''
+    detail_row = f'<tr class="judge-detail-row" data-parent="{safe_name}" style="display:none;background:var(--surface2)"><td></td><td colspan="10" style="padding:0.6rem 0.75rem"><div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.4rem">Per-Judge Scores</div>{detail_bars}</td></tr>' if detail_bars else ''
 
-    return f"""<tr class="model-row" data-rank="{i+1}" data-name="{safe_name}" data-company="{safe_company}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-scored="{m['scored']}" data-de_scored="{m['de_scored']}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" data-efficiency="{m['efficiency']}" data-divergence="{div_data}" style="cursor:pointer">
+    # Per-row "as-of" date so users can see how fresh each evaluation is. Stored
+    # as ISO timestamp; render as "Apr 27" if available.
+    last_updated = m.get("last_updated")
+    asof_str = ""
+    if last_updated:
+        try:
+            from datetime import datetime as _dt
+            asof_str = f'<div style="font-size:0.7rem;color:var(--text2);font-weight:400;margin-top:1px">as of {_dt.fromisoformat(last_updated).strftime("%b %d, %Y")}</div>'
+        except (ValueError, TypeError):
+            pass
+
+    return f"""<tr class="model-row" data-rank="{i+1}" data-name="{safe_name}" data-company="{safe_company}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-causal="{causal_data}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" style="cursor:pointer">
       <td><span class="rank {rank_cls}">{i+1}</span></td>
-      <td style="font-weight:600">{safe_name}</td>
+      <td style="font-weight:600">{safe_name}{asof_str}</td>
       <td style="color:var(--text2);font-size:0.8rem"><span class="company-dot" style="background:{company_clr}"></span>{safe_company}</td>
       <td class="num" style="font-weight:700;{comp_color}">{comp_str}</td>
       <td class="num {sc}" style="font-weight:600;white-space:nowrap" title="{judge_count} judge(s)">{m['avg_score']:.2f}/5{chevron}</td>
       <td class="num" style="font-weight:600;{de_color}">{de_str}</td>
-      <td class="num col-detail">{m['scored']}/{m['total']}</td>
-      <td class="num col-detail">{m['de_scored']}/{m['total']}</td>
+      <td class="num" style="font-weight:600;{causal_color}">{causal_str}</td>
       <td class="num">{errors_badge}</td>
-      <td class="num">{flags_badge}</td>
+      <td class="num col-detail">{flags_badge}</td>
       <td class="num col-detail">{m['avg_latency']:.1f}s</td>
       <td class="num col-detail">{m['avg_tokens']:.0f}</td>
-      <td class="num" style="font-weight:600;{_efficiency_color(m['efficiency'])}">{m['efficiency']:.2f}</td>
-      <td class="num col-detail" style="font-weight:600;{div_color}">{div_str}</td>
     </tr>
     {detail_row}"""
 
@@ -1797,12 +2053,12 @@ def _category_row(cat, leaderboard):
         de = m.get("cat_deepeval", {}).get(cat)
         if comp is not None or s is not None:
             comp_color = _composite_color(comp)
-            comp_str = f"{comp:.2f}" if comp is not None else "-"
+            comp_str = f"{comp*100:.0f}" if comp is not None else "-"
             tip_parts = []
             if s is not None:
                 tip_parts.append(f"Judge: {s:.2f}/5")
             if de is not None:
-                tip_parts.append(f"DeepEval: {de:.2f}")
+                tip_parts.append(f"DeepEval: {de*100:.0f}")
             tip = " | ".join(tip_parts)
             cells += f'<td class="num" style="font-weight:600;{comp_color}" data-tip="{tip}">{comp_str}</td>'
         else:
@@ -1828,6 +2084,18 @@ def generate_categories_html(stats):
     data_json = json.dumps(stats)
     categories = stats["categories"]
 
+    # One-line summary of what each category measures, surfaced above each chart.
+    CATEGORY_DESCRIPTIONS = {
+        "coding": "Code review, debugging, implementation. Tests pattern recognition, language-specific knowledge, and ability to spot subtle bugs.",
+        "learning": "Explanatory writing on technical topics. Tests how well the model teaches a concept to a target audience.",
+        "writing": "Production writing (docs, summaries, explanations) with constraints on length, audience, and format.",
+        "instruction_following": "Strict format and constraint adherence: exact list lengths, ordered steps, banned words, structural rules.",
+        "meta": "Calibration and self-awareness: recognising false premises, hedging appropriately, knowing when to refuse.",
+        "reasoning": "Multi-step quantitative reasoning, Fermi estimation, logical deduction, statistical analysis.",
+        "behavioural": "Sycophancy resistance, calibration under social pressure, pushback against confident-but-wrong claims.",
+        "research": "Open-ended research and synthesis: comparisons, tradeoff analysis, design recommendations.",
+    }
+
     # Build winner cards
     winner_cards = ""
     for cat in categories:
@@ -1845,15 +2113,18 @@ def generate_categories_html(stats):
         winner_cards += f"""<div class="winner-card">
           <div class="winner-cat">{display_cat}</div>
           <div class="winner-name" style="color:{winner_clr}">{best or '-'}</div>
-          <div class="winner-score">{best_score:.2f}</div>
+          <div class="winner-score">{best_score*100:.0f}</div>
         </div>\n"""
 
-    # Build chart canvases
+    # Build chart canvases with one-line description above each.
     chart_sections = ""
     for cat in categories:
         display_cat = cat.replace("_", " ").title()
+        desc = CATEGORY_DESCRIPTIONS.get(cat, "")
+        desc_html = f'<p style="color:var(--text2);font-size:0.85rem;margin:-0.25rem 0 0.75rem;line-height:1.5">{html_mod.escape(desc)}</p>' if desc else ""
         chart_sections += f"""<div class="card">
       <h2>{display_cat}</h2>
+      {desc_html}
       <div class="chart-container-wide">
         <canvas id="chart-{cat}"></canvas>
       </div>
@@ -1865,6 +2136,7 @@ def generate_categories_html(stats):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BenchPress - By Category</title>
+{_slug_seo("categories.html")}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   :root {{
@@ -2031,14 +2303,7 @@ def generate_categories_html(stats):
   <div class="header-inner">
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Overview</a>
-        <a href="companies.html" class="nav-link">Companies</a>
-        <a href="categories.html" class="nav-link active">By Category</a>
-        <a href="judges.html" class="nav-link">Judges</a>
-
-        <a href="methodology.html" class="nav-link">Methodology</a>
-      </nav>
+      {_nav_html("categories.html", stats)}
     </div>
     <p class="byline">Opinionated in scope. Objective in execution.</p>
     <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judges: {", ".join(stats["judge_models"])}' if stats.get("judge_models") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
@@ -2052,6 +2317,34 @@ def generate_categories_html(stats):
   {winner_cards}
 </div>
 
+<!-- Category Heatmap: top 15 models only so the table stays readable -->
+<div class="card" style="margin-bottom:1.5rem">
+  <h2 style="margin-bottom:0.5rem">Category Heatmap (Top 15)</h2>
+  <p style="color:var(--text2);font-size:0.85rem;margin:0 0 1rem">Composite score (0 to 100) per category for the top 15 overall models. Full leaderboard is on the <a href="generalist.html" style="color:var(--accent2)">Generalist</a> page.</p>
+  <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:0.5rem;border-bottom:2px solid var(--border);text-transform:capitalize">Category</th>
+          {"".join(f'<th style="text-align:right;padding:0.5rem;border-bottom:2px solid var(--border);font-size:0.75rem;font-weight:500">{html_mod.escape(m["name"])}</th>' for m in stats['leaderboard'][:15])}
+        </tr>
+      </thead>
+      <tbody>
+        {"".join(_category_row(cat, stats['leaderboard'][:15]) for cat in stats['categories'])}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Category Radar: top 5 models -->
+<div class="card" style="margin-bottom:1.5rem">
+  <h2 style="margin-bottom:0.5rem">Top 5 Across Categories</h2>
+  <p style="color:var(--text2);font-size:0.85rem;margin:0 0 1rem">Composite score (0 to 100) per category for the top 5 overall models. Wider polygon = more consistent across categories.</p>
+  <div style="height:380px;position:relative">
+    <canvas id="catRadarChart"></canvas>
+  </div>
+</div>
+
 <!-- Per-category charts -->
 <div class="chart-grid">
   {chart_sections}
@@ -2059,8 +2352,8 @@ def generate_categories_html(stats):
 
 </div>
 
-<script>
-const DATA = {data_json};
+<script type="module">
+const DATA = await (await fetch('./data.json')).json();
 const lb = DATA.leaderboard;
 const cats = DATA.categories;
 
@@ -2083,11 +2376,44 @@ Chart.defaults.color = '#8b90a5';
 Chart.defaults.borderColor = '#2e3345';
 Chart.defaults.font.family = "'Inter', sans-serif";
 
+// Radar: top 5 models across categories
+(function () {{
+  const radarEl = document.getElementById('catRadarChart');
+  if (!radarEl) return;
+  const top5 = lb.slice(0, 5);
+  new Chart(radarEl, {{
+    type: 'radar',
+    data: {{
+      labels: cats.map(c => c.replace('_', ' ')),
+      datasets: top5.map((m, i) => ({{
+        label: m.name,
+        data: cats.map(c => ((m.cat_composite && m.cat_composite[c]) || 0) * 100),
+        borderColor: COLORS[i],
+        backgroundColor: COLORS[i] + '22',
+        pointBackgroundColor: COLORS[i],
+        borderWidth: 2,
+        pointRadius: 3,
+      }}))
+    }},
+    options: {{
+      responsive: true, maintainAspectRatio: false,
+      scales: {{
+        r: {{
+          min: 0, max: 100, ticks: {{ stepSize: 20, display: false }},
+          grid: {{ color: '#2e3345' }}, angleLines: {{ color: '#2e3345' }},
+          pointLabels: {{ font: {{ size: 11 }}, color: '#e4e7f0' }}
+        }}
+      }},
+      plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }} }}
+    }}
+  }});
+}})();
+
 cats.forEach(cat => {{
-  // Get models with composite scores for this category, sorted descending
+  // Per-category composite, displayed 0–100. Underlying compositeColor() expects 0–1.
   const entries = lb
     .filter(m => m.cat_composite && m.cat_composite[cat] != null)
-    .map(m => ({{ name: m.name, score: m.cat_composite[cat] }}))
+    .map(m => ({{ name: m.name, score: m.cat_composite[cat] * 100, raw: m.cat_composite[cat] }}))
     .sort((a, b) => b.score - a.score);
 
   const canvas = document.getElementById('chart-' + cat);
@@ -2099,8 +2425,8 @@ cats.forEach(cat => {{
       labels: entries.map(e => e.name),
       datasets: [{{
         data: entries.map(e => e.score),
-        backgroundColor: entries.map(e => compositeColor(e.score) + 'cc'),
-        borderColor: entries.map(e => compositeColor(e.score)),
+        backgroundColor: entries.map(e => compositeColor(e.raw) + 'cc'),
+        borderColor: entries.map(e => compositeColor(e.raw)),
         borderWidth: 1,
         borderRadius: 4,
       }}]
@@ -2111,7 +2437,7 @@ cats.forEach(cat => {{
       maintainAspectRatio: false,
       plugins: {{ legend: {{ display: false }} }},
       scales: {{
-        x: {{ min: 0, max: 1, ticks: {{ stepSize: 0.2 }} }},
+        x: {{ min: 0, max: 100, ticks: {{ stepSize: 20 }} }},
         y: {{ ticks: {{ font: {{ size: 12, weight: '600' }} }} }}
       }}
     }}
@@ -2138,15 +2464,15 @@ def generate_companies_html(stats):
         models = sorted(company_models[company], key=lambda x: x.get("composite_score") or 0, reverse=True)
         best = models[0]
         best_comp = best.get("composite_score")
-        best_str = f"{best_comp:.2f}" if best_comp is not None else "-"
+        best_str = f"{best_comp*100:.0f}" if best_comp is not None else "-"
 
         rows = ""
         for m in models:
             comp = m.get("composite_score")
-            comp_str = f"{comp:.2f}" if comp is not None else "-"
+            comp_str = f"{comp*100:.0f}" if comp is not None else "-"
             comp_color = _composite_color(comp)
             de_val = m.get("deepeval_avg")
-            de_str = f"{de_val:.2f}" if de_val is not None else "-"
+            de_str = f"{de_val*100:.0f}" if de_val is not None else "-"
             de_color = _deepeval_color(de_val)
             sc_color = _score_color(m["avg_score"])
             eff_color = _efficiency_color(m["efficiency"])
@@ -2187,6 +2513,7 @@ def generate_companies_html(stats):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BenchPress - Companies</title>
+{_slug_seo("companies.html")}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
 <style>
@@ -2448,14 +2775,7 @@ def generate_companies_html(stats):
   <div class="header-inner">
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Overview</a>
-        <a href="companies.html" class="nav-link active">Companies</a>
-        <a href="categories.html" class="nav-link">By Category</a>
-        <a href="judges.html" class="nav-link">Judges</a>
-
-        <a href="methodology.html" class="nav-link">Methodology</a>
-      </nav>
+      {_nav_html("companies.html", stats)}
     </div>
     <p class="byline">Opinionated in scope. Objective in execution.</p>
     <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judges: {", ".join(stats["judge_models"])}' if stats.get("judge_models") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
@@ -2505,8 +2825,8 @@ def generate_companies_html(stats):
 
 </div>
 
-<script>
-const DATA = {data_json};
+<script type="module">
+const DATA = await (await fetch('./data.json')).json();
 const lb = DATA.leaderboard;
 const cats = DATA.categories;
 
@@ -2561,8 +2881,8 @@ lb.forEach(m => {{
     card.innerHTML = `
       <div class="company-name">${{company}}</div>
       <div class="best-model" title="${{best.name}}" style="color:${{brandColor}}">${{best.name}}</div>
-      <div class="best-score" style="color:${{color}}">${{bestScore != null ? bestScore.toFixed(2) : '-'}}</div>
-      <div class="model-count">${{models.length}} model${{models.length !== 1 ? 's' : ''}} &middot; avg ${{avgComp.toFixed(2)}}</div>
+      <div class="best-score" style="color:${{color}}">${{bestScore != null ? (bestScore * 100).toFixed(0) : '-'}}</div>
+      <div class="model-count">${{models.length}} model${{models.length !== 1 ? 's' : ''}} &middot; avg ${{(avgComp * 100).toFixed(0)}}</div>
     `;
     container.appendChild(card);
   }});
@@ -2574,7 +2894,7 @@ lb.forEach(m => {{
   if (!canvas) return;
   const entries = Object.keys(byCompany).map(company => {{
     const best = byCompany[company].reduce((a, b) => ((a.composite_score || 0) >= (b.composite_score || 0) ? a : b));
-    return {{ company, score: best.composite_score || 0, model: best.name }};
+    return {{ company, score: (best.composite_score || 0) * 100, model: best.name }};
   }}).sort((a, b) => b.score - a.score);
 
   new Chart(canvas, {{
@@ -2598,13 +2918,13 @@ lb.forEach(m => {{
         tooltip: {{
           callbacks: {{
             label: function(ctx) {{
-              return entries[ctx.dataIndex].model + ': ' + ctx.raw.toFixed(2);
+              return entries[ctx.dataIndex].model + ': ' + ctx.raw.toFixed(0);
             }}
           }}
         }}
       }},
       scales: {{
-        x: {{ min: 0, max: 1, ticks: {{ stepSize: 0.2 }} }},
+        x: {{ min: 0, max: 100, ticks: {{ stepSize: 20 }} }},
         y: {{ ticks: {{ font: {{ size: 12, weight: '600' }} }} }}
       }}
     }}
@@ -2624,6 +2944,7 @@ lb.forEach(m => {{
     timeCompanies[c].push({{ date: m.launch_date, score: m.composite_score, name: m.name }});
   }});
 
+  // Score is stored 0-1, displayed 0-100 to match the rest of the dashboard.
   const datasets = [];
   const companyNames = Object.keys(timeCompanies).sort();
   companyNames.forEach((company, ci) => {{
@@ -2631,7 +2952,7 @@ lb.forEach(m => {{
     let runMax = 0;
     const data = points.map(p => {{
       runMax = Math.max(runMax, p.score);
-      return {{ x: p.date, y: runMax, modelName: p.name, rawScore: p.score }};
+      return {{ x: p.date, y: runMax * 100, modelName: p.name, rawScore: p.score }};
     }});
     datasets.push({{
       label: company,
@@ -2649,10 +2970,10 @@ lb.forEach(m => {{
   let allScores = [];
   datasets.forEach(ds => ds.data.forEach(pt => allScores.push(pt.y)));
   const dataMin = allScores.length ? Math.min(...allScores) : 0;
-  const dataMax = allScores.length ? Math.max(...allScores) : 1;
-  const padding = (dataMax - dataMin) * 0.15 || 0.05;
-  const yMin = Math.max(0, Math.floor((dataMin - padding) * 20) / 20);
-  const yMax = Math.min(1, Math.ceil((dataMax + padding) * 20) / 20);
+  const dataMax = allScores.length ? Math.max(...allScores) : 100;
+  const padding = (dataMax - dataMin) * 0.15 || 5;
+  const yMin = Math.max(0, Math.floor((dataMin - padding) / 5) * 5);
+  const yMax = Math.min(100, Math.ceil((dataMax + padding) / 5) * 5);
 
   new Chart(canvas, {{
     type: 'line',
@@ -2669,8 +2990,8 @@ lb.forEach(m => {{
         y: {{
           min: yMin,
           max: yMax,
-          ticks: {{ stepSize: 0.05 }},
-          title: {{ display: true, text: 'Composite Score', color: '#8b90a5' }},
+          ticks: {{ stepSize: 5 }},
+          title: {{ display: true, text: 'Composite (0 to 100)', color: '#8b90a5' }},
         }}
       }},
       plugins: {{
@@ -2682,7 +3003,7 @@ lb.forEach(m => {{
           callbacks: {{
             label: function(ctx) {{
               const pt = ctx.raw;
-              return ctx.dataset.label + ': ' + pt.modelName + ' (' + pt.y.toFixed(2) + ')';
+              return ctx.dataset.label + ': ' + pt.modelName + ' (' + pt.y.toFixed(0) + ')';
             }}
           }}
         }}
@@ -2743,7 +3064,7 @@ lb.forEach(m => {{
       if (s != null) {{
         const color = compositeColor(s);
         const bold = colWinners[cat] === company ? 'font-weight:800;' : 'font-weight:600;';
-        bodyHtml += '<td class="num" style="' + bold + 'color:' + color + ';background:' + color + '30;border-radius:4px">' + s.toFixed(2) + '</td>';
+        bodyHtml += '<td class="num" style="' + bold + 'color:' + color + ';background:' + color + '30;border-radius:4px">' + (s * 100).toFixed(0) + '</td>';
       }} else {{
         bodyHtml += '<td class="num" style="color:var(--text2)">-</td>';
       }}
@@ -2768,6 +3089,112 @@ def generate_methodology_html(stats):
     cats = Counter(p["category"] for p in prompts)
     diffs = Counter(p["difficulty"] for p in prompts)
     checks = Counter(p["check_type"] for p in prompts)
+
+    # Causal benchmark metadata (optional, tolerates missing file)
+    causal_meta = {}
+    causal_subcats = []
+    causal_version = ""
+    try:
+        causal_path = Path("evals/causal.json")
+        if causal_path.exists():
+            with open(causal_path) as f:
+                causal_data = json.load(f)
+            causal_meta = causal_data.get("meta", {})
+            causal_version = causal_meta.get("version", "")
+            seen = []
+            for p in causal_data.get("prompts", []):
+                sc = p.get("subcategory", "")
+                if sc and sc not in seen:
+                    seen.append(sc)
+            causal_subcats = seen
+    except Exception:
+        pass
+
+    causal_bundle_rows = "".join(
+        f"<li>{html_mod.escape(sc.replace('_', ' '))}</li>\n"
+        for sc in causal_subcats
+    )
+    causal_section_html = ""
+    if causal_subcats:
+        causal_section_html = f"""
+<!-- Causal benchmark -->
+<div class="section-divider" id="group-causal">Causal Reasoning Benchmark</div>
+
+<div class="card">
+  <h2>Overview</h2>
+  <p>
+    The causal benchmark is a separate 100-question suite focused on causal inference.
+    Twenty concept bundles (confounding, colliders, mediators, selection, time-varying
+    confounding, transportability, etc.) each have five variants that test the same
+    underlying concept from different angles. All questions are multiple choice with
+    deterministic scoring - no LLM judge or DeepEval involvement.
+  </p>
+  <p style="color:var(--text2)">
+    Current version: <code>{html_mod.escape(causal_version)}</code>. Questions are not published, to prevent models being tuned to this specific benchmark.
+    Live leaderboard at <a href="causal.html">Causal Reasoning &rarr;</a>.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Variant Types</h2>
+  <table>
+    <thead><tr><th>Variant</th><th>What it tests</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Base</strong></td><td>Narrative scenario combining 2-3 interacting causal issues (confounding + selection, mediator + attrition, etc.)</td></tr>
+      <tr><td><strong>Trap</strong></td><td>Looks like the base concept applies but the obvious answer is wrong; tests when a principle does NOT apply</td></tr>
+      <tr><td><strong>Transfer</strong></td><td>Formal DAG reasoning with short elimination-style options (set notation, path counts, yes/no with reason)</td></tr>
+      <tr><td><strong>Numeric</strong></td><td>Multi-step calculation with tables and conditional probabilities; can't be answered by intuition alone</td></tr>
+      <tr><td><strong>Analyst</strong></td><td>Two analysts debate the same scenario; identify which assessment is most accurate</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="card">
+  <h2>Scoring</h2>
+  <p>
+    Every question has one correct letter, so the causal benchmark is purely deterministic:
+    no LLM judges, no DeepEval. Just correct or incorrect, counted out of 100.
+  </p>
+  <p style="color:var(--text2);font-size:0.9rem">
+    A handful of models are excluded from this benchmark because they cannot be fairly evaluated
+    here (retired APIs, paid-tier-only providers, broken model paths). They still appear on the
+    Generalist leaderboard where they ran cleanly.
+  </p>
+  <h3>What the dashboard shows</h3>
+  <ul>
+    <li><strong>Accuracy</strong> - correct ÷ valid responses, excluding errors and invalid</li>
+    <li><strong>Score</strong> - correct out of 100, the absolute count regardless of failures</li>
+    <li><strong>Errors</strong> - API failures (rate limits, timeouts, server errors). An operational issue, not a capability signal.</li>
+    <li><strong>Invalid</strong> - the model returned successfully but with no extractable answer. Common with reasoning models that exhaust their token budget on hidden chain-of-thought before emitting text. A capability signal.</li>
+    <li><strong>Per-variant accuracy</strong> - which of the five reasoning angles the model handles best and worst</li>
+  </ul>
+</div>
+
+<details class="card" style="padding:1rem 1.25rem">
+  <summary style="cursor:pointer;list-style:none;font-weight:600;font-size:1rem;display:flex;justify-content:space-between;align-items:center">
+    <span>Hardening history (v2.0 to v2.4)</span>
+    <span style="color:var(--text2);font-size:0.8rem;font-weight:400">How the benchmark was iteratively hardened against gaming. Click to expand.</span>
+  </summary>
+  <div style="margin-top:1rem">
+    <p style="color:var(--text2);font-size:0.9rem">
+      The current version is the result of four structural-hardening iterations against
+      a cheap baseline (Claude Haiku 3). Each round discovered a new way the benchmark
+      could be gamed without causal reasoning.
+    </p>
+    <ul>
+      <li><strong>v2.0</strong> - initial 100-question release. Haiku 74%. Opus 4.7 at 82%. Low differentiation.</li>
+      <li><strong>v2.1</strong> - content hardening (sophisticated distractors). Haiku only moved to 70%. Investigation revealed a structural tell.</li>
+      <li><strong>v2.2</strong> - length normalization on transfer + analyst. "Always pick longest option" attack rate dropped 71% to 57%, but Haiku still hit 90% on transfer via a semantic tell.</li>
+      <li><strong>v2.3</strong> - narrative transfer replaced with paragraph-long DAG questions. Opus saturated at 100%, frontier differentiation lost.</li>
+      <li><strong>v2.4</strong> - transfer rewritten with elimination-style short options. Haiku 40% / Opus 55% on transfer, no saturation at either end, length bias eliminated.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:0.85rem">
+      Full design document: <a href="plans/2026-04-10-causal-benchmark-v2-harder.md">docs/plans/2026-04-10-causal-benchmark-v2-harder.md</a>.
+    </p>
+  </div>
+</details>
+"""
 
     category_descriptions = {
         "coding": "Bug detection (including trap prompts with no bug), code generation, debugging, architecture design, security review, refactoring, concurrency, ML implementation, and cross-language tasks. Medium to hard difficulty.",
@@ -2860,6 +3287,7 @@ def generate_methodology_html(stats):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BenchPress - Methodology</title>
+{_slug_seo("methodology.html")}
 <style>
   :root {{
     --bg: #0f1117;
@@ -3218,14 +3646,7 @@ def generate_methodology_html(stats):
   <div class="header-inner">
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Overview</a>
-        <a href="companies.html" class="nav-link">Companies</a>
-        <a href="categories.html" class="nav-link">By Category</a>
-        <a href="judges.html" class="nav-link">Judges</a>
-
-        <a href="methodology.html" class="nav-link active">Methodology</a>
-      </nav>
+      {_nav_html("methodology.html", stats)}
     </div>
     <p class="byline">Opinionated in scope. Objective in execution.</p>
     <div class="meta">{stats['total_models']} models &middot; {stats['total_prompts']} prompts &middot; {len(stats['categories'])} categories{f' &middot; Judges: {", ".join(stats["judge_models"])}' if stats.get("judge_models") else ''} &middot; Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
@@ -3234,15 +3655,12 @@ def generate_methodology_html(stats):
 
 <div class="container">
 
-<!-- Section Jump Nav -->
-<div style="position:sticky;top:0;z-index:10;background:var(--bg);padding:0.5rem 0;margin-bottom:1rem;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:0.4rem">
-  <a href="#section-focus" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Focus</a>
-  <a href="#section-pipeline" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Pipeline</a>
-  <a href="#section-scoring" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Scoring</a>
-  <a href="#section-deepeval" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">DeepEval</a>
-  <a href="#section-composite" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Composite</a>
-  <a href="#section-categories" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Categories</a>
-  <a href="#section-prompts" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Prompts</a>
+<!-- Section Jump Nav: grouped by benchmark / reference -->
+<div style="position:sticky;top:0;z-index:10;background:var(--bg);padding:0.6rem 0;margin-bottom:1rem;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:0.4rem;align-items:center">
+  <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-right:0.5rem">On this page</span>
+  <a href="#group-generalist" style="padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text2);text-decoration:none">Generalist scoring</a>
+  <a href="#group-causal" style="padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text2);text-decoration:none">Causal scoring</a>
+  <a href="#group-reference" style="padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text2);text-decoration:none">Reference data</a>
 </div>
 
 <!-- Quick stats -->
@@ -3264,6 +3682,21 @@ def generate_methodology_html(stats):
     <div class="label">Models Tested</div>
   </div>
 </div>
+
+<!-- TL;DR -->
+<div class="card" id="section-tldr" style="border-left:3px solid var(--accent2)">
+  <h2 style="margin-bottom:0.5rem">In short</h2>
+  <ul style="margin-left:1.25rem;line-height:1.7;color:var(--text)">
+    <li><strong>Two benchmarks run side by side.</strong> <a href="generalist.html" style="color:var(--accent2)">Generalist</a> (80 prompts, 8 categories) tests breadth. <a href="causal.html" style="color:var(--accent2)">Causal</a> (100 multiple-choice questions, 5 variants) tests narrow causal-inference reasoning. Both display 0 to 100. They are never blended.</li>
+    <li><strong>Generalist is scored by three layers.</strong> Auto-checks flag mechanical failures (format, hallucination, sycophancy). Four LLM judges score 1 to 5. DeepEval rates correctness, coherence, and instruction-following 0 to 1. Composite blends judge and DeepEval.</li>
+    <li><strong>Causal is deterministic.</strong> Multiple choice. No judges, no DeepEval. Accuracy = correct ÷ valid. Errors (API failures) and Invalid (empty/unextractable response) are reported separately.</li>
+    <li><strong>Self-judging is prevented.</strong> A judge LLM never scores responses from its own family (gpt-4.1 does not judge gpt-4o, etc.). See the <a href="judges.html" style="color:var(--accent2)">Judge Audit</a> for divergence and agreement evidence.</li>
+    <li><strong>Some models are excluded.</strong> Retired APIs, paid-tier-only providers, and broken model paths are excluded from causal so the leaderboard isn't padded with zeros. They still appear on the Generalist board where they ran cleanly.</li>
+  </ul>
+</div>
+
+<!-- Group: Generalist Benchmark -->
+<div class="section-divider" id="group-generalist">Generalist Benchmark</div>
 
 <!-- Focus -->
 <div class="card" id="section-focus">
@@ -3311,38 +3744,37 @@ def generate_methodology_html(stats):
   </ul>
 </div>
 
-<!-- Two-layer scoring -->
-<div class="grid-2">
-  <div class="card">
-    <h2>Auto-Checks (Layer 1)</h2>
-    <p>
-      Deterministic, heuristic checks that run instantly on every response.
-      These flag mechanical failures and feed into the judge as additional signal.
-    </p>
-    <table>
-      <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
-      <tbody>{auto_rows}</tbody>
-    </table>
+<!-- Two-layer scoring breakdown - collapsible reference data -->
+<details class="card" style="padding:1rem 1.25rem">
+  <summary style="cursor:pointer;list-style:none;font-weight:600;font-size:1rem;display:flex;justify-content:space-between;align-items:center">
+    <span>Check-type breakdown (Layers 1 and 2)</span>
+    <span style="color:var(--text2);font-size:0.8rem;font-weight:400">Tables of all auto-check and judge-only check types. Click to expand.</span>
+  </summary>
+  <div class="grid-2" style="margin-top:1rem">
+    <div>
+      <h3 style="margin-bottom:0.5rem">Auto-Checks (Layer 1)</h3>
+      <p style="color:var(--text2);font-size:0.85rem;margin-bottom:0.75rem">Deterministic, heuristic checks. Run instantly on every response and flag mechanical failures.</p>
+      <table>
+        <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
+        <tbody>{auto_rows}</tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="margin-bottom:0.5rem">Judge-Only (Layer 2)</h3>
+      <p style="color:var(--text2);font-size:0.85rem;margin-bottom:0.75rem">These check types have no automated heuristic. The LLM judge scores them entirely on quality and reasoning.</p>
+      <table>
+        <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
+        <tbody>{judge_rows}</tbody>
+      </table>
+    </div>
   </div>
-  <div class="card">
-    <h2>Judge-Only (Layer 2)</h2>
-    <p>
-      These check types have no automated heuristic - the LLM judge scores them
-      entirely on quality, reasoning, and adherence to criteria.
-    </p>
-    <table>
-      <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
-      <tbody>{judge_rows}</tbody>
-    </table>
-  </div>
-</div>
+</details>
 
 <!-- Judge scoring -->
 <div class="card" id="section-scoring">
   <h2>Multi-Judge Scoring</h2>
   <p>
-    Each model response is scored by multiple independent LLM judges (configured in <code>config.yaml</code>),
-    each scoring on a 1-5 scale.{f' The current judges are {", ".join(f"<strong>{html_mod.escape(j)}</strong>" for j in stats.get("judge_models", []))}.' if stats.get("judge_models") else ''}
+    Each model response is scored by multiple independent LLM judges, each rating it 1 to 5.{f' The current judges are {", ".join(f"<strong>{html_mod.escape(j)}</strong>" for j in stats.get("judge_models", []))}.' if stats.get("judge_models") else ''}
     Each judge receives the original prompt, the ideal answer, the scoring criteria, and any
     auto-check flags. It returns a score and a short rationale.
   </p>
@@ -3387,34 +3819,40 @@ def generate_methodology_html(stats):
   <h3>How it works</h3>
   <ul>
     <li>Each metric uses a chain-of-thought evaluation via the same judge model</li>
-    <li>Scores are 0-1 floats (DeepEval's native scale), independent of the 1-5 judge score</li>
-    <li>Both scoring systems coexist - DeepEval supplements rather than replaces the judge</li>
-    <li>Can be run retroactively on existing results: <code>python run.py deepeval</code></li>
+    <li>DeepEval's native scores are 0 to 1; the dashboard displays them as 0 to 100 for parity with the other panels</li>
+    <li>DeepEval supplements the LLM judge rather than replacing it. Both signals appear separately on the leaderboard so you can see when they agree.</li>
   </ul>
 </div>
 
 <!-- Composite score -->
 <div class="card" id="section-composite">
-  <h2>Composite Score</h2>
+  <h2>Composite Score (Generalist)</h2>
   <p>
-    The composite score merges the multi-judge average and DeepEval average into a single
-    0-1 metric for unified ranking. The judge score (mean of qualifying judges' averages)
-    is normalized from its 1-5 scale to 0-1 using <code>(judge_score - 1) / 4</code>,
-    then combined with the DeepEval average via a configurable weighted average.
-    Only judges with complete coverage (scored every prompt) contribute to the average.
+    The composite is the headline number on the Generalist leaderboard. It blends two signals
+    into one, displayed as 0 to 100. The dashboard computes everything internally on a
+    0 to 1 scale, then multiplies by 100 for display.
   </p>
   <div class="highlight">
     composite = judge_weight &times; normalized_judge + deepeval_weight &times; deepeval_avg
   </div>
+  <p style="color:var(--text2);font-size:0.9rem">
+    where <code>normalized_judge = (avg_judge_score - 1) / 4</code> rescales the 1 to 5 judge
+    average into 0 to 1, and <code>deepeval_avg</code> is the mean of correctness, coherence,
+    and instruction-following metrics. Only judges with complete coverage (scored every
+    prompt for that model) contribute to the average; partial-coverage judges are excluded
+    entirely to avoid biased subsets.
+  </p>
   <h3>Fallback behavior</h3>
   <ul>
-    <li><strong>Both scores available</strong> - weighted average (default: 50/50)</li>
-    <li><strong>Only judge score</strong> - composite = normalized judge score</li>
-    <li><strong>Only DeepEval score</strong> - composite = DeepEval average</li>
+    <li><strong>Both scores available</strong> - weighted average (default 50/50)</li>
+    <li><strong>Only judge score</strong> - composite = normalized judge</li>
+    <li><strong>Only DeepEval</strong> - composite = DeepEval average</li>
     <li><strong>Neither</strong> - no composite score</li>
   </ul>
-  <p>
-    Weights are configurable in <code>config.yaml</code> under the <code>composite:</code> section.
+  <p style="color:var(--text2);font-size:0.9rem;margin-top:0.5rem">
+    The Causal benchmark uses a <strong>different scoring scheme</strong> (deterministic multiple
+    choice, no judges, no DeepEval). The two scores are reported side by side on the leaderboard
+    but never blended.
   </p>
 </div>
 
@@ -3428,6 +3866,23 @@ def generate_methodology_html(stats):
     A concise, correct answer scores higher than an equally correct but bloated one.
   </p>
 </div>
+
+<!-- Reasoning model handling -->
+<div class="card" id="section-reasoning">
+  <h2>Reasoning Models</h2>
+  <p>
+    Reasoning-capable models (gpt-5.x, o3-mini, o4-mini, Gemini Pro reasoning) spend output
+    tokens on hidden chain-of-thought before emitting any visible answer. When the response
+    budget runs out before the model writes its final answer, the API returns success but
+    with empty text. The dashboard counts these as <strong>Invalid</strong> rather than
+    <strong>Errors</strong>, so a token-budget failure is distinguishable from an API failure.
+    This matters when comparing models: an "invalid" rate on a reasoning model is a real
+    capability signal, not a network problem.
+  </p>
+</div>
+
+<!-- Group: Reference data -->
+<div class="section-divider" id="group-reference">Reference Data</div>
 
 <!-- Prompt breakdown -->
 <div class="card" id="section-categories">
@@ -3455,29 +3910,37 @@ def generate_methodology_html(stats):
   </p>
 </div>
 
-<!-- Questions -->
-<div class="section-divider" id="section-prompts">Prompt Categories and Criteria</div>
+{causal_section_html}
 
-<div class="filter-toolbar">
-  <input type="text" id="search-input" placeholder="Search prompts...">
-  <select id="filter-category">
-    <option value="">All Categories</option>
-    {"".join(f'<option value="{c}">{c.replace("_", " ").title()}</option>' for c in sorted(cats))}
-  </select>
-  <select id="filter-difficulty">
-    <option value="">All Difficulties</option>
-    <option value="easy">Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
-  </select>
-  <select id="filter-check">
-    <option value="">All Check Types</option>
-    {"".join(f'<option value="{ct}">{ct.replace("_", " ").title()}</option>' for ct in sorted(checks))}
-  </select>
-  <span class="filter-count" id="filter-count">{len(prompts)} of {len(prompts)} shown</span>
-</div>
+<!-- Generalist prompt list collapsed by default to keep the page browsable -->
+<details class="card" id="section-prompts" style="padding:1rem 1.25rem">
+  <summary style="cursor:pointer;list-style:none;font-weight:600;font-size:1rem;display:flex;justify-content:space-between;align-items:center">
+    <span>Generalist prompt list ({len(prompts)})</span>
+    <span style="color:var(--text2);font-size:0.8rem;font-weight:400">All {len(prompts)} Generalist prompts, searchable. Causal questions are not published. Click to expand.</span>
+  </summary>
+  <div style="margin-top:1rem">
+    <div class="filter-toolbar">
+      <input type="text" id="search-input" placeholder="Search prompts...">
+      <select id="filter-category">
+        <option value="">All Categories</option>
+        {"".join(f'<option value="{c}">{c.replace("_", " ").title()}</option>' for c in sorted(cats))}
+      </select>
+      <select id="filter-difficulty">
+        <option value="">All Difficulties</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <select id="filter-check">
+        <option value="">All Check Types</option>
+        {"".join(f'<option value="{ct}">{ct.replace("_", " ").title()}</option>' for ct in sorted(checks))}
+      </select>
+      <span class="filter-count" id="filter-count">{len(prompts)} of {len(prompts)} shown</span>
+    </div>
 
-{questions_sections}
+    {questions_sections}
+  </div>
+</details>
 
 </div>
 
@@ -3547,6 +4010,7 @@ def generate_judges_html(stats):
     if not all_judges:
         return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><title>BenchPress - Judges</title>
+{_slug_seo("judges.html")}
 <style>body{{font-family:sans-serif;background:#0f1117;color:#e4e7f0;padding:3rem;text-align:center}}
 a{{color:#6c72ff}}</style></head>
 <body><h1>No judge data available yet</h1><p>Run evaluations with multiple judges to see analysis here.</p>
@@ -3662,6 +4126,7 @@ a{{color:#6c72ff}}</style></head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BenchPress - Judge Analysis</title>
+{_slug_seo("judges.html")}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   :root {{
@@ -3905,6 +4370,14 @@ a{{color:#6c72ff}}</style></head>
   {kpi_cards}
 </div>
 
+<!-- Bias disclosure -->
+<div class="card" style="border-left:3px solid var(--accent2);background:var(--surface)">
+  <h3 style="font-size:1rem;margin-bottom:0.5rem">A note on judge bias</h3>
+  <p style="color:var(--text2);font-size:0.9rem;margin:0;line-height:1.6">
+    The four judges ({", ".join(html_mod.escape(j) for j in all_judges)}) are themselves LLMs from companies whose models also appear on the leaderboard. This is a real conflict-of-interest concern. Two safeguards: (1) <strong>self-judging is prevented</strong>: a judge never scores its own family's responses (e.g. gpt-4.1 does not judge gpt-4.1, gpt-4o, etc.). (2) The <strong>Judge Agreement</strong> matrix and <strong>Biggest Disagreements</strong> table below let you inspect where judges disagree and decide whether bias is bounded for your use case.
+  </p>
+</div>
+
 <!-- Score Distributions -->
 <div class="grid-full">
   <div class="card">
@@ -3982,8 +4455,8 @@ a{{color:#6c72ff}}</style></head>
 
 </div>
 
-<script>
-const DATA = {data_json};
+<script type="module">
+const DATA = await (await fetch('./data.json')).json();
 const COLORS = [
   '#6c72ff', '#4ecdc4', '#f97316', '#22c55e', '#ec4899',
   '#eab308', '#8b5cf6', '#06b6d4', '#ef4444', '#84cc16'
@@ -4186,6 +4659,624 @@ const judges = Object.keys(DATA.judge_global || {{}}).sort();
 </html>"""
 
 
+def compute_causal_stats(models, prompts, models_cfg=None):
+    """Compute stats for the causal reasoning benchmark with bundle/variant structure."""
+    models_cfg = models_cfg or {}
+    if not prompts:
+        return None
+
+    bundles = sorted(set(p.get("bundle_id", "") for p in prompts))
+    variants = ["base", "trap", "transfer", "numeric", "analyst"]
+    bundle_pids = {b: [p["id"] for p in prompts if p.get("bundle_id") == b] for b in bundles}
+    variant_pids = {v: [p["id"] for p in prompts if p.get("variant") == v] for v in variants}
+
+    leaderboard = []
+    for name, data in models.items():
+        correct = 0
+        total_answered = 0
+        invalid = 0
+        errors = 0
+        variant_correct = {v: 0 for v in variants}
+        variant_total = {v: 0 for v in variants}
+        bundle_scores = {}
+
+        for p in prompts:
+            pid = p["id"]
+            runs = data.get("runs", {}).get(pid, [])
+            run = runs[-1] if runs else {}
+            if not run:
+                continue
+            if run.get("error"):
+                errors += 1
+                continue
+            total_answered += 1
+            auto = run.get("auto_checks", {}).get("auto_scores", {})
+            extracted = auto.get("extracted_answer")
+            if extracted is None:
+                invalid += 1
+                continue
+            is_correct = auto.get("correct", 0) == 1
+            if is_correct:
+                correct += 1
+            v = p.get("variant", "")
+            if v in variant_total:
+                variant_total[v] += 1
+                if is_correct:
+                    variant_correct[v] += 1
+            bid = p.get("bundle_id", "")
+            if bid:
+                bundle_scores.setdefault(bid, {"correct": 0, "total": 0})
+                bundle_scores[bid]["total"] += 1
+                if is_correct:
+                    bundle_scores[bid]["correct"] += 1
+
+        valid = total_answered - invalid
+        accuracy = round(correct / valid, 4) if valid else 0
+        variant_accuracy = {}
+        for v in variants:
+            variant_accuracy[v] = round(variant_correct[v] / variant_total[v], 4) if variant_total[v] else None
+        bundle_consistency = {}
+        for b in bundles:
+            bs = bundle_scores.get(b, {"correct": 0, "total": 0})
+            bundle_consistency[b] = {"correct": bs["correct"], "total": bs["total"]}
+
+        mcfg = models_cfg.get(name, {})
+        leaderboard.append({
+            "name": name,
+            "company": mcfg.get("company", "Unknown"),
+            "model_type": mcfg.get("type", "unknown"),
+            "accuracy": accuracy,
+            "correct": correct,
+            "valid": valid,
+            "total": total_answered,
+            "invalid": invalid,
+            "errors": errors,
+            "variant_accuracy": variant_accuracy,
+            "bundle_consistency": bundle_consistency,
+        })
+
+    leaderboard = [m for m in leaderboard if m["total"] > 0]
+    leaderboard.sort(key=lambda x: x["accuracy"], reverse=True)
+
+    return {
+        "leaderboard": leaderboard,
+        "bundles": bundles,
+        "variants": variants,
+        "total_prompts": len(prompts),
+        "total_models": len(leaderboard),
+        "generated": datetime.now().isoformat(),
+    }
+
+
+def generate_causal_html(causal_stats, stats):
+    """Generate the causal reasoning benchmark HTML page."""
+    if not causal_stats or not causal_stats["leaderboard"]:
+        return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>BenchPress - Causal</title></head><body><h1>Causal Reasoning</h1><p>No results yet. Run: <code>python run.py eval &lt;model&gt; --benchmark causal</code></p></body></html>'
+
+    lb = causal_stats["leaderboard"]
+    variants = causal_stats["variants"]
+    bundles = causal_stats["bundles"]
+    data_json = json.dumps(causal_stats)
+
+    # Leaderboard rows. Score now uses total_prompts as denominator so the fraction is comparable
+    # across models even when a model has errors or invalid responses.
+    total_prompts = causal_stats["total_prompts"]
+    rows = ""
+    for i, m in enumerate(lb):
+        pct = round(m["accuracy"] * 100, 1)
+        bar_color = "#22c55e" if pct >= 80 else "#eab308" if pct >= 60 else "#ef4444"
+        err_str = str(m.get("errors", 0)) if m.get("errors") else "0"
+        inv_str = str(m["invalid"]) if m["invalid"] else "0"
+        rows += f"""<tr>
+          <td style="text-align:center">{i+1}</td>
+          <td><strong>{html_mod.escape(m["name"])}</strong><br><span style="color:var(--text2);font-size:0.85em">{html_mod.escape(m["company"])}</span></td>
+          <td style="text-align:center"><strong>{pct}%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:{bar_color};height:100%;width:{pct}%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">{m["correct"]}/{total_prompts}</td>
+          <td style="text-align:center;{'color:#ef4444' if m.get('errors') else 'color:var(--text2)'}">{err_str}</td>
+          <td style="text-align:center;{'color:#eab308' if m['invalid'] else 'color:var(--text2)'}">{inv_str}</td>
+        </tr>"""
+
+    # Variant winner per type (top model on each variant) + variant heatmap (top 15)
+    VARIANT_DESCRIPTIONS = {
+        "base": "Narrative scenario combining 2-3 interacting causal issues. Tests recognising compound problems.",
+        "trap": "Looks like the base concept applies but the obvious answer is wrong. Tests resistance to pattern matching.",
+        "transfer": "Same reasoning translated into a formal DAG with short elimination-style options. Tests structural reasoning.",
+        "numeric": "Multi-step calculation with tables and conditional probabilities. Cannot be answered by intuition alone.",
+        "analyst": "Two analysts debate the scenario; identify which assessment is most accurate. Tests evaluating arguments.",
+    }
+    variant_winners = []
+    for v in variants:
+        best, best_acc = None, -1
+        for m in lb:
+            val = m["variant_accuracy"].get(v)
+            if val is not None and val > best_acc:
+                best_acc = val
+                best = m["name"]
+        variant_winners.append((v, best, best_acc))
+
+    variant_winner_cards = ""
+    for v, name, acc in variant_winners:
+        pct = round(acc * 100) if acc >= 0 else 0
+        color = "#22c55e" if pct >= 80 else "#eab308" if pct >= 60 else "#ef4444"
+        variant_winner_cards += f'''<div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1rem">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.3rem">{v.title()}</div>
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.15rem">{html_mod.escape(name) if name else '-'}</div>
+          <div style="font-size:1.4rem;font-weight:700;color:{color}">{pct}%</div>
+          <div style="font-size:0.75rem;color:var(--text2);margin-top:0.4rem;line-height:1.4">{VARIANT_DESCRIPTIONS[v]}</div>
+        </div>'''
+
+    # Variant heatmap (top 15 only): rows = top 15 models, cols = 5 variants
+    var_lb = lb[:15]
+    var_header = "".join(f'<th style="text-align:center;text-transform:capitalize;color:var(--text2);font-size:0.75rem">{v}</th>' for v in variants)
+    var_rows = ""
+    for m in var_lb:
+        cells = ""
+        for v in variants:
+            val = m["variant_accuracy"].get(v)
+            if val is not None:
+                pct = round(val * 100)
+                color = "#22c55e" if pct >= 80 else "#eab308" if pct >= 60 else "#ef4444"
+                cells += f'<td style="text-align:center;color:{color};background:{color}1a;font-weight:600">{pct}</td>'
+            else:
+                cells += '<td style="text-align:center;color:var(--text2)">-</td>'
+        var_rows += f'<tr><td><strong>{html_mod.escape(m["name"])}</strong></td>{cells}</tr>'
+
+    # Per-variant grouped bar chart data: top 10 models × 5 variants
+    chart_lb = lb[:10]
+    variant_chart_data = json.dumps({
+        "labels": [m["name"] for m in chart_lb],
+        "variants": variants,
+        "datasets": [
+            {
+                "label": v.title(),
+                "data": [round((m["variant_accuracy"].get(v) or 0) * 100) for m in chart_lb],
+            }
+            for v in variants
+        ],
+    })
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BenchPress - Causal Reasoning</title>
+{_slug_seo("causal.html")}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {{ --bg: #0a0a0a; --bg2: #1a1a1a; --bg3: #2a2a2a; --text: #e5e5e5; --text2: #a3a3a3; --accent: #3b82f6; --accent2: #60a5fa; --border: #333; --radius: 8px; }}
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }}
+  .header {{ background:var(--bg2); border-bottom:1px solid var(--border); padding:1.5rem 2rem; }}
+  .header-top {{ max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }}
+  .nav {{ display:flex; gap:0.5rem; flex-wrap:wrap; }}
+  .nav-link {{ color:var(--text2); text-decoration:none; padding:0.4rem 0.8rem; border-radius:var(--radius); font-size:0.9rem; transition:all 0.2s; }}
+  .nav-link:hover {{ color:var(--text); background:var(--bg3); }}
+  .nav-link.active {{ color:var(--accent2); background:var(--bg3); }}
+  .container {{ max-width:1400px; margin:0 auto; padding:2rem; }}
+  .card {{ background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-bottom:1.5rem; }}
+  .card h2 {{ margin-bottom:1rem; font-size:1.2rem; }}
+  table {{ width:100%; border-collapse:collapse; font-size:0.9rem; }}
+  th {{ background:var(--bg3); padding:0.6rem 0.8rem; text-align:left; font-weight:600; border-bottom:2px solid var(--border); }}
+  td {{ padding:0.5rem 0.8rem; border-bottom:1px solid var(--border); }}
+  tr:hover {{ background:var(--bg3); }}
+  .stats-grid {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1.5rem; }}
+  .stat-card {{ background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1rem; text-align:center; }}
+  .stat-card .value {{ font-size:1.8rem; font-weight:700; color:var(--accent2); }}
+  .stat-card .label {{ font-size:0.85rem; color:var(--text2); }}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- Causal Reasoning</span></h1>
+    {_nav_html("causal.html", stats)}
+  </div>
+</div>
+<div class="container">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="value">{causal_stats["total_prompts"]}</div><div class="label">Questions</div></div>
+    <div class="stat-card"><div class="value">{causal_stats["total_models"]}</div><div class="label">Models Tested</div></div>
+    <div class="stat-card"><div class="value">{round(lb[0]["accuracy"]*100, 1) if lb else 0}%</div><div class="label">Best Accuracy</div></div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--accent2)">
+    <h2 style="margin-bottom:0.5rem">About the causal benchmark</h2>
+    <p style="color:var(--text2);font-size:0.9rem;margin-bottom:0.75rem;line-height:1.6">
+      A standalone benchmark for causal-inference reasoning. <strong style="color:var(--text)">100 multiple-choice questions</strong> arranged as <strong style="color:var(--text)">20 concept bundles × 5 variants</strong>. Each bundle covers one causal-inference pitfall (e.g. confounding, M-bias, Simpson's paradox); the 5 variants stress-test the same concept different ways:
+    </p>
+    <ul style="color:var(--text2);font-size:0.88rem;margin-left:1.25rem;margin-bottom:0.75rem;line-height:1.7">
+      <li><strong style="color:var(--text)">Base.</strong> Narrative scenario combining 2 to 3 interacting causal issues.</li>
+      <li><strong style="color:var(--text)">Trap.</strong> Looks like the base concept applies but the obvious answer is wrong.</li>
+      <li><strong style="color:var(--text)">Transfer.</strong> Same reasoning translated into a formal DAG with short elimination-style options.</li>
+      <li><strong style="color:var(--text)">Numeric.</strong> Multi-step calculation with tables and conditional probabilities.</li>
+      <li><strong style="color:var(--text)">Analyst.</strong> Two analysts debate the scenario; pick the most accurate assessment.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0">
+      Scoring is purely deterministic (multiple choice, no LLM judges needed). <strong style="color:var(--text)">Accuracy</strong> = correct ÷ valid responses. <strong style="color:var(--text)">Errors</strong> are API failures; <strong style="color:var(--text)">Invalid</strong> is the model returning an empty or unextractable response. Both are reported separately.
+    </p>
+  </div>
+
+  <!-- Top performer per variant (cards explain what each variant tests) -->
+  <div class="card">
+    <h2 style="margin-bottom:0.5rem">Top performer per variant</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">Each variant tests the same causal-inference concept from a different angle. Best score on each is shown alongside what the variant tests.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.75rem">
+      {variant_winner_cards}
+    </div>
+  </div>
+
+  <!-- Per-variant grouped bar chart for the top 10 models -->
+  <div class="card">
+    <h2 style="margin-bottom:0.5rem">Per-variant accuracy (Top 10)</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">For the top 10 overall models, accuracy on each of the five variants. Bars that drop sharply on Trap or Transfer reveal where a model relies on pattern-matching over structural reasoning.</p>
+    <div style="height:420px;position:relative">
+      <canvas id="variantChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Variant heatmap (top 15 models × 5 variants) -->
+  <div class="card">
+    <h2 style="margin-bottom:0.5rem">Variant heatmap (Top 15)</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">Composite shading per variant for the top 15 overall models. Green ≥80, yellow ≥60, red below.</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th style="color:var(--text2);font-size:0.75rem">Model</th>{var_header}</tr></thead>
+        <tbody>{var_rows}</tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Full leaderboard (deep-dive) -->
+  <div class="card">
+    <h2>Accuracy leaderboard</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">All models with causal data. Score is correct out of 100. Errors and Invalid columns separate API failures from empty/unextractable responses.</p>
+    <table>
+      <thead><tr><th style="text-align:center;width:40px">#</th><th>Model</th><th style="text-align:center" title="Correct ÷ valid responses (excludes errors and invalid)">Accuracy</th><th style="text-align:center" title="Correct out of 100 questions">Score</th><th style="text-align:center" title="API failures (rate limit, 4xx/5xx, timeout): operational issue, not model capability">Errors</th><th style="text-align:center" title="Model returned a response but no extractable answer (reasoning model burned all tokens, returned empty)">Invalid</th></tr></thead>
+      <tbody>{rows}</tbody>
+    </table>
+  </div>
+</div>
+<script>
+const CAUSAL_DATA = {data_json};
+const VARIANT_CHART = {variant_chart_data};
+Chart.defaults.color = '#a3a3a3';
+Chart.defaults.borderColor = '#333';
+Chart.defaults.font.family = "-apple-system, sans-serif";
+
+(function () {{
+  const el = document.getElementById('variantChart');
+  if (!el) return;
+  const variantColors = {{ base:'#6c72ff', trap:'#ef4444', transfer:'#4ecdc4', numeric:'#eab308', analyst:'#f97316' }};
+  new Chart(el, {{
+    type: 'bar',
+    data: {{
+      labels: VARIANT_CHART.labels,
+      datasets: VARIANT_CHART.datasets.map(ds => ({{
+        label: ds.label,
+        data: ds.data,
+        backgroundColor: (variantColors[ds.label.toLowerCase()] || '#999') + 'cc',
+        borderColor: variantColors[ds.label.toLowerCase()] || '#999',
+        borderWidth: 1,
+        borderRadius: 4,
+      }})),
+    }},
+    options: {{
+      responsive: true, maintainAspectRatio: false,
+      plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }} }},
+      scales: {{
+        y: {{ min: 0, max: 100, ticks: {{ stepSize: 20 }}, title: {{ display: true, text: 'Accuracy (0 to 100)' }} }},
+        x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}
+      }}
+    }}
+  }});
+}})();
+</script>
+</body>
+</html>"""
+
+
+def generate_generalist_html(stats):
+    """Generate the Generalist benchmark detail page. Owns the full leaderboard,
+    DeepEval breakdown, difficulty curve, score distribution, efficiency chart,
+    and auto-check flags. Mirrors the structure of generate_causal_html()."""
+    data_json = json.dumps(stats)
+    lb = stats["leaderboard"]
+    total_models = stats["total_models"]
+    total_prompts = stats["total_prompts"]
+    cats = stats["categories"]
+
+    leaderboard_rows = "".join(_leaderboard_row(i, m) for i, m in enumerate(lb))
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenchPress - Generalist Benchmark</title>
+{_slug_seo("generalist.html")}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {{ --bg: #0f1117; --surface: #1a1d27; --surface2: #242836; --border: #2e3345; --text: #e4e7f0; --text2: #8b90a5; --accent: #6c72ff; --accent2: #4ecdc4; --green: #22c55e; --green-mid: #4ade80; --green-light: #86efac; --yellow: #eab308; --red: #ef4444; --orange: #f97316; }}
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+  body {{ font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }}
+  .header {{ background:linear-gradient(135deg,#1a1d27,#242836); border-bottom:1px solid var(--border); padding:1.5rem 2.5rem; }}
+  .header-inner {{ max-width:1440px; margin:0 auto; }}
+  .header-top {{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:0.25rem; }}
+  .header h1 {{ font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; }}
+  .header .byline {{ font-size:0.85rem; color:var(--text2); margin:0.2rem 0 0; }}
+  .header .meta {{ font-size:0.75rem; color:var(--text2); margin-top:0.5rem; }}
+  .nav {{ display:flex; gap:0.25rem; flex-wrap:wrap; }}
+  .nav-link {{ color:var(--text2); text-decoration:none; padding:0.45rem 0.85rem; border-radius:6px; font-size:0.85rem; transition:all 0.2s; }}
+  .nav-link:hover {{ color:var(--text); background:var(--surface2); }}
+  .nav-link.active {{ color:var(--text); background:var(--accent); }}
+  .container {{ max-width:1440px; margin:0 auto; padding:1.5rem 1rem; }}
+  .card {{ background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin-bottom:1.5rem; }}
+  .card h2 {{ font-size:1.1rem; margin-bottom:1rem; font-weight:600; }}
+  table {{ width:100%; border-collapse:collapse; font-size:0.85rem; }}
+  th {{ text-align:left; padding:0.6rem 0.5rem; border-bottom:2px solid var(--border); font-weight:600; cursor:pointer; user-select:none; color:var(--text2); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; }}
+  th.num {{ text-align:right; }}
+  th.desc::after {{ content:' ▼'; font-size:0.7em; }}
+  th.asc::after {{ content:' ▲'; font-size:0.7em; }}
+  td {{ padding:0.55rem 0.5rem; border-bottom:1px solid var(--border); }}
+  td.num {{ text-align:right; }}
+  tr.model-row:hover {{ background:var(--surface2); }}
+  .rank {{ display:inline-block; width:24px; height:24px; line-height:24px; text-align:center; border-radius:50%; font-size:0.75rem; font-weight:600; background:var(--surface2); color:var(--text2); }}
+  .rank-1 {{ background:#facc15; color:#0a0a0a; }}
+  .rank-2 {{ background:#cbd5e1; color:#0a0a0a; }}
+  .rank-3 {{ background:#fb923c; color:#0a0a0a; }}
+  .company-dot {{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:0.4rem; vertical-align:middle; }}
+  .badge {{ display:inline-block; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.7rem; font-weight:600; }}
+  .badge-error {{ background:#7f1d1d; color:#fca5a5; }}
+  .badge-flag {{ background:#854d0e; color:#fde68a; }}
+  .badge-ok {{ background:var(--surface2); color:var(--text2); }}
+  .info-tip {{ display:inline-block; width:14px; height:14px; line-height:14px; text-align:center; border-radius:50%; background:var(--surface2); color:var(--text2); font-size:0.65rem; cursor:help; position:relative; font-weight:400; }}
+  .info-tip:hover::after {{ content:attr(data-info); position:absolute; bottom:120%; left:50%; transform:translateX(-50%); background:#1a1d27; color:var(--text); padding:0.5rem 0.75rem; border:1px solid var(--border); border-radius:6px; width:280px; font-size:0.75rem; line-height:1.4; z-index:10; pointer-events:none; white-space:normal; text-transform:none; letter-spacing:0; font-weight:400; }}
+  .table-scroll {{ overflow-x:auto; -webkit-overflow-scrolling:touch; }}
+  .table-scroll .col-detail {{ display:none; }}
+  .table-scroll.show-all-cols .col-detail {{ display:table-cell; }}
+  .col-toggle {{ background:var(--surface2); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:0.4rem 0.75rem; font-size:0.75rem; cursor:pointer; }}
+  .chart-container {{ position:relative; height:340px; }}
+  details summary {{ list-style:none; }}
+  details summary::-webkit-details-marker {{ display:none; }}
+  .flags-list {{ max-height:480px; overflow-y:auto; padding-right:0.5rem; }}
+  .flag-item {{ padding:0.6rem 0.75rem; border-bottom:1px solid var(--border); font-size:0.8rem; }}
+  .flag-id {{ color:var(--accent2); font-weight:600; }}
+  .flag-sub {{ color:var(--text2); font-size:0.75rem; }}
+  .flag-models {{ margin-top:0.25rem; font-size:0.75rem; color:var(--text2); }}
+  .flag-models span {{ color:var(--yellow); }}
+  .grid-2 {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(380px, 1fr)); gap:1rem; }}
+  @media (max-width:640px) {{ .header {{ padding:1rem; }} .container {{ padding:1rem 0.75rem; }} .card {{ padding:1rem; }} }}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- Generalist</span></h1>
+      {_nav_html("generalist.html", stats)}
+    </div>
+    <p class="byline">The breadth benchmark.</p>
+    <div class="meta">{total_models} models · {total_prompts} prompts · {len(cats)} categories{f' · Judges: {", ".join(stats["judge_models"])}' if stats.get("judge_models") else ''} · Updated {datetime.fromisoformat(stats['generated']).strftime('%b %d, %Y %H:%M')}</div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="card" style="border-left:3px solid var(--accent2)">
+    <h2 style="margin-bottom:0.5rem">About the Generalist benchmark</h2>
+    <p style="color:var(--text2);font-size:0.9rem;margin-bottom:0.75rem;line-height:1.6">
+      <strong style="color:var(--text)">{total_prompts} prompts across {len(cats)} categories</strong> covering the everyday use of LLMs as a working tool: practical coding, writing, instruction following, reasoning, calibration, and behavioural pressure. Each response goes through three scoring layers:
+    </p>
+    <ul style="color:var(--text2);font-size:0.9rem;margin-left:1.25rem;line-height:1.7">
+      <li><strong style="color:var(--text)">Auto-checks.</strong> Deterministic heuristics for format, hallucination patterns, sycophancy. Surface as flags.</li>
+      <li><strong style="color:var(--text)">LLM judges.</strong> {len(stats.get("judge_models", []))} independent judges score every response 1 to 5, with self-judging prevented.</li>
+      <li><strong style="color:var(--text)">DeepEval G-Eval.</strong> Correctness, coherence, instruction-following on 0 to 1.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0.75rem 0 0">
+      The composite blends judge and DeepEval scores into a single 0 to 100 number. <a href="methodology.html" style="color:var(--accent2)">Methodology &rarr;</a>
+    </p>
+  </div>
+
+  <!-- Visual overview at the top: difficulty curve + score distribution -->
+  <div class="grid-2">
+    <div class="card" style="margin-bottom:0">
+      <h2>Performance by Difficulty <span class="info-tip" data-info="Composite (0 to 100) for easy, medium, and hard prompts across the top 5 models. Highlights where strong models start to falter.">?</span></h2>
+      <div class="chart-container"><canvas id="difficultyChart"></canvas></div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <h2>Score Distribution <span class="info-tip" data-info="LLM judge scores (1 to 5) per model. Greener stacks mean more 5/5 responses. Reveals which models cluster at the top vs spread across the scale.">?</span></h2>
+      <div class="chart-container"><canvas id="distChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Efficiency: quality vs verbosity tradeoff -->
+  <div class="card" style="margin-top:1rem">
+    <h2>Efficiency <span class="info-tip" data-info="Quality per token: avg judge score (1 to 5) / log2(avg_tokens). Higher means better quality per output token, useful for cost-aware selection.">?</span></h2>
+    <p style="color:var(--text2);font-size:0.85rem;margin:-0.5rem 0 1rem">A unitless metric. Higher means more quality per output token.</p>
+    <div class="chart-container"><canvas id="efficiencyChart"></canvas></div>
+  </div>
+
+  <!-- Full leaderboard (the deep-dive table) -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem">
+      <h2 style="margin-bottom:0">Leaderboard <span class="info-tip" data-info="Ranked by composite score. Click headers to re-sort. Click a row to expand per-judge scores.">?</span></h2>
+      <div style="display:flex;gap:0.5rem;align-items:center">
+        <button class="col-toggle" id="col-toggle-btn" onclick="this.closest('.card').querySelector('.table-scroll').classList.toggle('show-all-cols');this.textContent=this.textContent==='Show all columns'?'Hide columns':'Show all columns'">Show all columns</button>
+        <select id="company-filter" style="background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.75rem;font-size:0.8rem;cursor:pointer">
+          <option value="">All Companies</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:0.75rem;font-size:0.7rem;color:var(--text2)">
+      <span style="text-transform:uppercase;letter-spacing:0.05em">Score colour bands</span>
+      <span style="display:inline-flex;align-items:center;gap:0.3rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#22c55e"></span>≥95</span>
+      <span style="display:inline-flex;align-items:center;gap:0.3rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#4ade80"></span>≥90</span>
+      <span style="display:inline-flex;align-items:center;gap:0.3rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#86efac"></span>≥85</span>
+      <span style="display:inline-flex;align-items:center;gap:0.3rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#eab308"></span>≥80</span>
+      <span style="display:inline-flex;align-items:center;gap:0.3rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#f97316"></span>≥70</span>
+      <span style="display:inline-flex;align-items:center;gap:0.3rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#ef4444"></span>&lt;70</span>
+    </div>
+    <div class="table-scroll">
+      <table id="leaderboard-table">
+        <thead>
+          <tr>
+            <th style="width:3rem" data-sort="rank" data-type="num">#</th>
+            <th data-sort="name" data-type="str">Model</th>
+            <th data-sort="company" data-type="str">Company</th>
+            <th data-sort="composite" data-type="num" class="desc"><span class="info-tip" data-info="Composite (0 to 100). Weighted blend of LLM-judge score and DeepEval.">General</span></th>
+            <th data-sort="score" data-type="num"><span class="info-tip" data-info="Average across LLM judges, 1 to 5 scale.">Judge</span></th>
+            <th class="num" data-sort="deepeval" data-type="num"><span class="info-tip" data-info="DeepEval G-Eval (correctness, coherence, instruction-following) averaged into 0 to 100.">DeepEval</span></th>
+            <th class="num" data-sort="causal" data-type="num"><span class="info-tip" data-info="Causal benchmark accuracy (0 to 100). Independent of the general score.">Causal</span></th>
+            <th class="num" data-sort="errors" data-type="num"><span class="info-tip" data-info="API failures (rate limits, 4xx/5xx, timeouts).">Errors</span></th>
+            <th class="num col-detail" data-sort="flags" data-type="num"><span class="info-tip" data-info="Auto-check heuristic flags (sycophancy, hallucination, format violations).">Flags</span></th>
+            <th class="num col-detail" data-sort="latency" data-type="num">Avg Latency</th>
+            <th class="num col-detail" data-sort="tokens" data-type="num">Avg Tokens</th>
+          </tr>
+        </thead>
+        <tbody>{leaderboard_rows}</tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- DeepEval breakdown: secondary table data, lives below the leaderboard -->
+  {_deepeval_breakdown_card(lb)}
+
+  <details class="card" style="padding:0;margin-top:1rem">
+    <summary style="padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:1rem;font-weight:600">
+      <span>Auto-check flags ({len(stats['flags'])})</span>
+      <span style="color:var(--text2);font-size:0.8rem;font-weight:400">Heuristic checks that flagged a model response. Click to expand.</span>
+    </summary>
+    <div style="padding:0 1.5rem 1.5rem">
+      <div class="flags-list">
+        {"".join(_flag_item(f) for f in stats['flags'][:30])}
+        {f'<div style="padding:0.5rem;color:var(--text2);font-size:0.85rem">...and {len(stats["flags"])-30} more</div>' if len(stats['flags']) > 30 else ''}
+      </div>
+    </div>
+  </details>
+
+</div>
+
+<script type="module">
+const DATA = await (await fetch('./data.json')).json();
+const lb = DATA.leaderboard;
+const cats = DATA.categories;
+const COLORS = ['#6c72ff','#4ecdc4','#f97316','#22c55e','#ec4899','#eab308','#8b5cf6','#06b6d4','#ef4444','#84cc16'];
+function compositeColor(s) {{
+  if (s >= 0.95) return '#22c55e'; if (s >= 0.90) return '#4ade80';
+  if (s >= 0.85) return '#86efac'; if (s >= 0.80) return '#eab308';
+  if (s >= 0.70) return '#f97316'; return '#ef4444';
+}}
+Chart.defaults.color = '#8b90a5';
+Chart.defaults.borderColor = '#2e3345';
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+// Sortable leaderboard
+document.querySelectorAll('#leaderboard-table th[data-sort]').forEach(th => {{
+  th.addEventListener('click', () => {{
+    const tbody = document.querySelector('#leaderboard-table tbody');
+    const rows = [...tbody.querySelectorAll('tr.model-row')];
+    const detailRows = new Map();
+    [...tbody.querySelectorAll('tr.judge-detail-row')].forEach(d => {{
+      detailRows.set(d.dataset.parent, d);
+    }});
+    const key = th.dataset.sort, type = th.dataset.type;
+    const desc = th.classList.contains('desc') ? false : true;
+    document.querySelectorAll('#leaderboard-table th').forEach(t => t.classList.remove('asc','desc'));
+    th.classList.add(desc ? 'desc' : 'asc');
+    rows.sort((a, b) => {{
+      let va = a.dataset[key] ?? '', vb = b.dataset[key] ?? '';
+      if (type === 'num') {{ va = parseFloat(va) || 0; vb = parseFloat(vb) || 0; return desc ? vb - va : va - vb; }}
+      return desc ? vb.localeCompare(va) : va.localeCompare(vb);
+    }});
+    tbody.innerHTML = '';
+    rows.forEach(r => {{
+      tbody.appendChild(r);
+      const d = detailRows.get(r.dataset.name);
+      if (d) tbody.appendChild(d);
+    }});
+  }});
+}});
+
+// Click-to-expand judge detail rows
+document.querySelectorAll('tr.model-row').forEach(r => {{
+  r.addEventListener('click', () => {{
+    const detail = document.querySelector(`tr.judge-detail-row[data-parent="${{r.dataset.name}}"]`);
+    if (detail) detail.style.display = (detail.style.display === 'none' || !detail.style.display) ? 'table-row' : 'none';
+  }});
+}});
+
+// Company filter
+const companies = [...new Set(lb.map(m => m.company))].sort();
+const filterEl = document.getElementById('company-filter');
+companies.forEach(c => {{
+  const opt = document.createElement('option');
+  opt.value = c; opt.textContent = c;
+  filterEl.appendChild(opt);
+}});
+filterEl.addEventListener('change', e => {{
+  const v = e.target.value;
+  document.querySelectorAll('tr.model-row').forEach(r => {{
+    const show = !v || r.dataset.company === v;
+    r.style.display = show ? '' : 'none';
+    const d = document.querySelector(`tr.judge-detail-row[data-parent="${{r.dataset.name}}"]`);
+    if (d) d.style.display = 'none';
+  }});
+}});
+
+// Efficiency chart
+new Chart(document.getElementById('efficiencyChart'), {{
+  type: 'bar',
+  data: {{
+    labels: [...lb].sort((a,b) => b.efficiency - a.efficiency).map(m => m.name),
+    datasets: [{{
+      data: [...lb].sort((a,b) => b.efficiency - a.efficiency).map(m => m.efficiency),
+      backgroundColor: '#4ecdc4cc', borderColor: '#4ecdc4', borderWidth: 1, borderRadius: 4,
+    }}],
+  }},
+  options: {{ responsive: true, maintainAspectRatio: false, plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, title: {{ display: true, text: 'Efficiency (avg judge / log2 tokens)' }} }}, x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }} }} }}
+}});
+
+// Difficulty chart
+const top5 = lb.slice(0, 5);
+const diffs = ['easy','medium','hard'];
+const diffColors = {{ easy: '#22c55e', medium: '#eab308', hard: '#ef4444' }};
+new Chart(document.getElementById('difficultyChart'), {{
+  type: 'bar',
+  data: {{
+    labels: top5.map(m => m.name),
+    datasets: diffs.map(d => ({{
+      label: d.charAt(0).toUpperCase() + d.slice(1),
+      data: top5.map(m => ((m.diff_composite && m.diff_composite[d]) || 0) * 100),
+      backgroundColor: diffColors[d] + 'cc', borderColor: diffColors[d], borderWidth: 1, borderRadius: 4,
+    }})),
+  }},
+  options: {{ responsive: true, maintainAspectRatio: false, plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }} }}, scales: {{ y: {{ min: 0, max: 100, ticks: {{ stepSize: 20 }} }}, x: {{ ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }} }} }}
+}});
+
+// Score distribution chart
+new Chart(document.getElementById('distChart'), {{
+  type: 'bar',
+  data: {{
+    labels: lb.map(m => m.name),
+    datasets: [5,4,3,2,1].map((score, si) => ({{
+      label: score + '/5',
+      data: lb.map(m => m.score_dist[score] || 0),
+      backgroundColor: ['#22c55e','#86efac','#eab308','#f97316','#ef4444'][si] + 'cc',
+      borderRadius: 2,
+    }})),
+  }},
+  options: {{ responsive: true, maintainAspectRatio: false, plugins: {{ legend: {{ position: 'bottom', labels: {{ boxWidth: 12, padding: 12, font: {{ size: 11 }} }} }} }}, scales: {{ x: {{ stacked: true, ticks: {{ maxRotation: 45, font: {{ size: 11 }} }} }}, y: {{ stacked: true, beginAtZero: true }} }} }}
+}});
+
+// Re-render any chart that lives inside a <details> on first open
+document.querySelectorAll('details').forEach(d => {{
+  d.addEventListener('toggle', () => {{ if (d.open) window.dispatchEvent(new Event('resize')); }});
+}});
+</script>
+</body>
+</html>"""
+
+
 def generate_dashboard(output_path=None):
     """Main entry point - generate dashboard HTML files."""
     if output_path is None:
@@ -4204,19 +5295,53 @@ def generate_dashboard(output_path=None):
     judges_cfg = config.get("judges", [])
     judge_models = [j["model"] for j in judges_cfg]
 
-    eval_file = config.get("eval", {}).get("eval_file")
-    prompts = load_prompts(eval_file)
+    eval_cfg = config.get("eval", {})
+    benchmarks = eval_cfg.get("benchmarks", {})
+    general_file = benchmarks.get("general") if benchmarks else eval_cfg.get("eval_file")
+    prompts = load_prompts(general_file)
     composite_config = config.get("composite", {})
     models_cfg = config.get("models", {})
     stats = compute_stats(models, prompts, judge_models=judge_models, composite_config=composite_config, models_cfg=models_cfg)
+
+    # Causal benchmark (optional)
+    causal_file = benchmarks.get("causal") if benchmarks else None
+    causal_stats = None
+    if causal_file and Path(causal_file).exists():
+        causal_prompts = load_prompts(causal_file)
+        skip_causal = set(
+            (config.get("eval", {}).get("benchmark_scoring", {}).get("causal", {}) or {})
+            .get("skip_models", []) or []
+        )
+        causal_models = {n: d for n, d in models.items() if n not in skip_causal}
+        causal_stats = compute_causal_stats(causal_models, causal_prompts, models_cfg=models_cfg)
+        if causal_stats is not None:
+            # Annotate skipped models so the causal page can show them with reasons
+            causal_stats["skipped"] = sorted([m for m in skip_causal if m in models])
 
     # Ensure output directory exists
     out_dir = os.path.dirname(output_path)
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)
 
+    # Inject causal accuracy into leaderboard entries before serializing data.json,
+    # so all pages get a complete payload (otherwise causal_accuracy is missing for the
+    # other generators, which all run before generate_html).
+    if causal_stats:
+        causal_by_name = {m["name"]: m["accuracy"] for m in causal_stats["leaderboard"]}
+        for m in stats["leaderboard"]:
+            m["causal_accuracy"] = causal_by_name.get(m["name"])
+
+    # Shared dataset for the 5 leaderboard pages. Pages fetch this on load instead
+    # of inlining ~6 MB into every HTML file. Cuts each page from 6.8 MB to ~50 KB.
+    data_json_path = os.path.join(out_dir or ".", "data.json")
+    with open(data_json_path, "w") as f:
+        json.dump(stats, f)
+    causal_data_path = os.path.join(out_dir or ".", "causal-data.json")
+    with open(causal_data_path, "w") as f:
+        json.dump(causal_stats or {}, f)
+
     # Main dashboard
-    html = generate_html(stats)
+    html = generate_html(stats, causal_stats=causal_stats)
     with open(output_path, "w") as f:
         f.write(html)
 
@@ -4238,12 +5363,26 @@ def generate_dashboard(output_path=None):
     with open(meth_path, "w") as f:
         f.write(meth_html)
 
-
     # Judges page
     judges_path = os.path.join(out_dir or ".", "judges.html")
     judges_html = generate_judges_html(stats)
     with open(judges_path, "w") as f:
         f.write(judges_html)
+
+    # Causal reasoning page
+    causal_path = os.path.join(out_dir or ".", "causal.html")
+    causal_html = generate_causal_html(causal_stats, stats)
+    with open(causal_path, "w") as f:
+        f.write(causal_html)
+
+    # Generalist (general benchmark) detail page
+    gen_path = os.path.join(out_dir or ".", "generalist.html")
+    gen_html = generate_generalist_html(stats)
+    with open(gen_path, "w") as f:
+        f.write(gen_html)
+
+    # Static SEO assets: robots.txt, sitemap.xml, favicon.svg
+    write_seo_assets(out_dir or ".")
 
     return output_path
 

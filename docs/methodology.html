@@ -4,6 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BenchPress - Methodology</title>
+<meta name="description" content="How BenchPress scores LLMs. Two benchmarks: Generalist (80 prompts, 8 categories, multi-judge plus DeepEval) and Causal Reasoning (100 multiple-choice questions, 20 concept bundles, 5 variants). Composite scoring, self-judging prevention, and reasoning-model handling explained.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://mark-allwyn.github.io/BenchPress/methodology.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="og-card.png">
+<meta property="og:title" content="BenchPress | Evaluation Methodology">
+<meta property="og:description" content="How BenchPress scores LLMs. Two benchmarks: Generalist (80 prompts, 8 categories, multi-judge plus DeepEval) and Causal Reasoning (100 multiple-choice questions, 20 concept bundles, 5 variants). Composite scoring, self-judging prevention, and reasoning-model handling explained.">
+<meta property="og:image" content="https://mark-allwyn.github.io/BenchPress/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://mark-allwyn.github.io/BenchPress/methodology.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BenchPress">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BenchPress | Evaluation Methodology">
+<meta name="twitter:description" content="How BenchPress scores LLMs. Two benchmarks: Generalist (80 prompts, 8 categories, multi-judge plus DeepEval) and Causal Reasoning (100 multiple-choice questions, 20 concept bundles, 5 variants). Composite scoring, self-judging prevention, and reasoning-model handling explained.">
+<meta name="twitter:image" content="https://mark-allwyn.github.io/BenchPress/og-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "BenchPress", "url": "https://mark-allwyn.github.io/BenchPress", "description": "How BenchPress scores LLMs. Two benchmarks: Generalist (80 prompts, 8 categories, multi-judge plus DeepEval) and Causal Reasoning (100 multiple-choice questions, 20 concept bundles, 5 variants). Composite scoring, self-judging prevention, and reasoning-model handling explained."}</script>
+
 <style>
   :root {
     --bg: #0f1117;
@@ -362,31 +381,21 @@
   <div class="header-inner">
     <div class="header-top">
       <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- LLM Evaluation Leaderboard</span></h1>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Overview</a>
-        <a href="companies.html" class="nav-link">Companies</a>
-        <a href="categories.html" class="nav-link">By Category</a>
-        <a href="judges.html" class="nav-link">Judges</a>
-
-        <a href="methodology.html" class="nav-link active">Methodology</a>
-      </nav>
+      <nav class="nav"><a href="index.html" class="nav-link">Overview</a><a href="generalist.html" class="nav-link">Generalist</a><a href="causal.html" class="nav-link">Causal</a><a href="companies.html" class="nav-link">Companies</a><a href="categories.html" class="nav-link">By Category</a><a href="judges.html" class="nav-link">Judge Audit</a><a href="methodology.html" class="nav-link active">Methodology</a></nav>
     </div>
     <p class="byline">Opinionated in scope. Objective in execution.</p>
-    <div class="meta">48 models &middot; 80 prompts &middot; 8 categories &middot; Judges: gpt-4.1, claude-sonnet-4.6, gemini-2.5-flash, qwen3-235b &middot; Updated Mar 07, 2026 06:56</div>
+    <div class="meta">49 models &middot; 80 prompts &middot; 8 categories &middot; Judges: gpt-4.1, claude-sonnet-4.6, gemini-2.5-flash, qwen3-235b &middot; Updated Apr 27, 2026 17:51</div>
   </div>
 </div>
 
 <div class="container">
 
-<!-- Section Jump Nav -->
-<div style="position:sticky;top:0;z-index:10;background:var(--bg);padding:0.5rem 0;margin-bottom:1rem;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:0.4rem">
-  <a href="#section-focus" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Focus</a>
-  <a href="#section-pipeline" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Pipeline</a>
-  <a href="#section-scoring" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Scoring</a>
-  <a href="#section-deepeval" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">DeepEval</a>
-  <a href="#section-composite" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Composite</a>
-  <a href="#section-categories" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Categories</a>
-  <a href="#section-prompts" style="padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;color:var(--text2);text-decoration:none;transition:all 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Prompts</a>
+<!-- Section Jump Nav: grouped by benchmark / reference -->
+<div style="position:sticky;top:0;z-index:10;background:var(--bg);padding:0.6rem 0;margin-bottom:1rem;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:0.4rem;align-items:center">
+  <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-right:0.5rem">On this page</span>
+  <a href="#group-generalist" style="padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text2);text-decoration:none">Generalist scoring</a>
+  <a href="#group-causal" style="padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text2);text-decoration:none">Causal scoring</a>
+  <a href="#group-reference" style="padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.8rem;color:var(--text2);text-decoration:none">Reference data</a>
 </div>
 
 <!-- Quick stats -->
@@ -404,10 +413,25 @@
     <div class="label">Check Types</div>
   </div>
   <div class="kpi">
-    <div class="value">48</div>
+    <div class="value">49</div>
     <div class="label">Models Tested</div>
   </div>
 </div>
+
+<!-- TL;DR -->
+<div class="card" id="section-tldr" style="border-left:3px solid var(--accent2)">
+  <h2 style="margin-bottom:0.5rem">In short</h2>
+  <ul style="margin-left:1.25rem;line-height:1.7;color:var(--text)">
+    <li><strong>Two benchmarks run side by side.</strong> <a href="generalist.html" style="color:var(--accent2)">Generalist</a> (80 prompts, 8 categories) tests breadth. <a href="causal.html" style="color:var(--accent2)">Causal</a> (100 multiple-choice questions, 5 variants) tests narrow causal-inference reasoning. Both display 0 to 100. They are never blended.</li>
+    <li><strong>Generalist is scored by three layers.</strong> Auto-checks flag mechanical failures (format, hallucination, sycophancy). Four LLM judges score 1 to 5. DeepEval rates correctness, coherence, and instruction-following 0 to 1. Composite blends judge and DeepEval.</li>
+    <li><strong>Causal is deterministic.</strong> Multiple choice. No judges, no DeepEval. Accuracy = correct ÷ valid. Errors (API failures) and Invalid (empty/unextractable response) are reported separately.</li>
+    <li><strong>Self-judging is prevented.</strong> A judge LLM never scores responses from its own family (gpt-4.1 does not judge gpt-4o, etc.). See the <a href="judges.html" style="color:var(--accent2)">Judge Audit</a> for divergence and agreement evidence.</li>
+    <li><strong>Some models are excluded.</strong> Retired APIs, paid-tier-only providers, and broken model paths are excluded from causal so the leaderboard isn't padded with zeros. They still appear on the Generalist board where they ran cleanly.</li>
+  </ul>
+</div>
+
+<!-- Group: Generalist Benchmark -->
+<div class="section-divider" id="group-generalist">Generalist Benchmark</div>
 
 <!-- Focus -->
 <div class="card" id="section-focus">
@@ -455,17 +479,19 @@
   </ul>
 </div>
 
-<!-- Two-layer scoring -->
-<div class="grid-2">
-  <div class="card">
-    <h2>Auto-Checks (Layer 1)</h2>
-    <p>
-      Deterministic, heuristic checks that run instantly on every response.
-      These flag mechanical failures and feed into the judge as additional signal.
-    </p>
-    <table>
-      <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
-      <tbody><tr><td>acknowledges nonexistence</td><td class="num">1</td></tr>
+<!-- Two-layer scoring breakdown - collapsible reference data -->
+<details class="card" style="padding:1rem 1.25rem">
+  <summary style="cursor:pointer;list-style:none;font-weight:600;font-size:1rem;display:flex;justify-content:space-between;align-items:center">
+    <span>Check-type breakdown (Layers 1 and 2)</span>
+    <span style="color:var(--text2);font-size:0.8rem;font-weight:400">Tables of all auto-check and judge-only check types. Click to expand.</span>
+  </summary>
+  <div class="grid-2" style="margin-top:1rem">
+    <div>
+      <h3 style="margin-bottom:0.5rem">Auto-Checks (Layer 1)</h3>
+      <p style="color:var(--text2);font-size:0.85rem;margin-bottom:0.75rem">Deterministic, heuristic checks. Run instantly on every response and flag mechanical failures.</p>
+      <table>
+        <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
+        <tbody><tr><td>acknowledges nonexistence</td><td class="num">1</td></tr>
 <tr><td>ambiguity check</td><td class="num">2</td></tr>
 <tr><td>banned words</td><td class="num">3</td></tr>
 <tr><td>code runnable</td><td class="num">5</td></tr>
@@ -485,17 +511,14 @@
 <tr><td>word count</td><td class="num">2</td></tr>
 <tr><td>word count reduction</td><td class="num">1</td></tr>
 </tbody>
-    </table>
-  </div>
-  <div class="card">
-    <h2>Judge-Only (Layer 2)</h2>
-    <p>
-      These check types have no automated heuristic - the LLM judge scores them
-      entirely on quality, reasoning, and adherence to criteria.
-    </p>
-    <table>
-      <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
-      <tbody><tr><td>analysis</td><td class="num">1</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="margin-bottom:0.5rem">Judge-Only (Layer 2)</h3>
+      <p style="color:var(--text2);font-size:0.85rem;margin-bottom:0.75rem">These check types have no automated heuristic. The LLM judge scores them entirely on quality and reasoning.</p>
+      <table>
+        <thead><tr><th>Check Type</th><th class="num">Prompts</th></tr></thead>
+        <tbody><tr><td>analysis</td><td class="num">1</td></tr>
 <tr><td>behavioural</td><td class="num">3</td></tr>
 <tr><td>calibration</td><td class="num">2</td></tr>
 <tr><td>checklist</td><td class="num">2</td></tr>
@@ -504,16 +527,16 @@
 <tr><td>reasoning</td><td class="num">26</td></tr>
 <tr><td>synthesis</td><td class="num">2</td></tr>
 </tbody>
-    </table>
+      </table>
+    </div>
   </div>
-</div>
+</details>
 
 <!-- Judge scoring -->
 <div class="card" id="section-scoring">
   <h2>Multi-Judge Scoring</h2>
   <p>
-    Each model response is scored by multiple independent LLM judges (configured in <code>config.yaml</code>),
-    each scoring on a 1-5 scale. The current judges are <strong>gpt-4.1</strong> and <strong>claude-sonnet-4.6</strong>.
+    Each model response is scored by multiple independent LLM judges, each rating it 1 to 5. The current judges are <strong>gpt-4.1</strong>, <strong>claude-sonnet-4.6</strong>, <strong>gemini-2.5-flash</strong>, <strong>qwen3-235b</strong>.
     Each judge receives the original prompt, the ideal answer, the scoring criteria, and any
     auto-check flags. It returns a score and a short rationale.
   </p>
@@ -558,34 +581,40 @@
   <h3>How it works</h3>
   <ul>
     <li>Each metric uses a chain-of-thought evaluation via the same judge model</li>
-    <li>Scores are 0-1 floats (DeepEval's native scale), independent of the 1-5 judge score</li>
-    <li>Both scoring systems coexist - DeepEval supplements rather than replaces the judge</li>
-    <li>Can be run retroactively on existing results: <code>python run.py deepeval</code></li>
+    <li>DeepEval's native scores are 0 to 1; the dashboard displays them as 0 to 100 for parity with the other panels</li>
+    <li>DeepEval supplements the LLM judge rather than replacing it. Both signals appear separately on the leaderboard so you can see when they agree.</li>
   </ul>
 </div>
 
 <!-- Composite score -->
 <div class="card" id="section-composite">
-  <h2>Composite Score</h2>
+  <h2>Composite Score (Generalist)</h2>
   <p>
-    The composite score merges the multi-judge average and DeepEval average into a single
-    0-1 metric for unified ranking. The judge score (mean of qualifying judges' averages)
-    is normalized from its 1-5 scale to 0-1 using <code>(judge_score - 1) / 4</code>,
-    then combined with the DeepEval average via a configurable weighted average.
-    Only judges with complete coverage (scored every prompt) contribute to the average.
+    The composite is the headline number on the Generalist leaderboard. It blends two signals
+    into one, displayed as 0 to 100. The dashboard computes everything internally on a
+    0 to 1 scale, then multiplies by 100 for display.
   </p>
   <div class="highlight">
     composite = judge_weight &times; normalized_judge + deepeval_weight &times; deepeval_avg
   </div>
+  <p style="color:var(--text2);font-size:0.9rem">
+    where <code>normalized_judge = (avg_judge_score - 1) / 4</code> rescales the 1 to 5 judge
+    average into 0 to 1, and <code>deepeval_avg</code> is the mean of correctness, coherence,
+    and instruction-following metrics. Only judges with complete coverage (scored every
+    prompt for that model) contribute to the average; partial-coverage judges are excluded
+    entirely to avoid biased subsets.
+  </p>
   <h3>Fallback behavior</h3>
   <ul>
-    <li><strong>Both scores available</strong> - weighted average (default: 50/50)</li>
-    <li><strong>Only judge score</strong> - composite = normalized judge score</li>
-    <li><strong>Only DeepEval score</strong> - composite = DeepEval average</li>
+    <li><strong>Both scores available</strong> - weighted average (default 50/50)</li>
+    <li><strong>Only judge score</strong> - composite = normalized judge</li>
+    <li><strong>Only DeepEval</strong> - composite = DeepEval average</li>
     <li><strong>Neither</strong> - no composite score</li>
   </ul>
-  <p>
-    Weights are configurable in <code>config.yaml</code> under the <code>composite:</code> section.
+  <p style="color:var(--text2);font-size:0.9rem;margin-top:0.5rem">
+    The Causal benchmark uses a <strong>different scoring scheme</strong> (deterministic multiple
+    choice, no judges, no DeepEval). The two scores are reported side by side on the leaderboard
+    but never blended.
   </p>
 </div>
 
@@ -599,6 +628,23 @@
     A concise, correct answer scores higher than an equally correct but bloated one.
   </p>
 </div>
+
+<!-- Reasoning model handling -->
+<div class="card" id="section-reasoning">
+  <h2>Reasoning Models</h2>
+  <p>
+    Reasoning-capable models (gpt-5.x, o3-mini, o4-mini, Gemini Pro reasoning) spend output
+    tokens on hidden chain-of-thought before emitting any visible answer. When the response
+    budget runs out before the model writes its final answer, the API returns success but
+    with empty text. The dashboard counts these as <strong>Invalid</strong> rather than
+    <strong>Errors</strong>, so a token-budget failure is distinguishable from an API failure.
+    This matters when comparing models: an "invalid" rate on a reasoning model is a real
+    capability signal, not a network problem.
+  </p>
+</div>
+
+<!-- Group: Reference data -->
+<div class="section-divider" id="group-reference">Reference Data</div>
 
 <!-- Prompt breakdown -->
 <div class="card" id="section-categories">
@@ -677,29 +723,113 @@
   </p>
 </div>
 
-<!-- Questions -->
-<div class="section-divider" id="section-prompts">Prompt Categories and Criteria</div>
 
-<div class="filter-toolbar">
-  <input type="text" id="search-input" placeholder="Search prompts...">
-  <select id="filter-category">
-    <option value="">All Categories</option>
-    <option value="behavioural">Behavioural</option><option value="coding">Coding</option><option value="instruction_following">Instruction Following</option><option value="learning">Learning</option><option value="meta">Meta</option><option value="reasoning">Reasoning</option><option value="research">Research</option><option value="writing">Writing</option>
-  </select>
-  <select id="filter-difficulty">
-    <option value="">All Difficulties</option>
-    <option value="easy">Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
-  </select>
-  <select id="filter-check">
-    <option value="">All Check Types</option>
-    <option value="acknowledges_nonexistence">Acknowledges Nonexistence</option><option value="ambiguity_check">Ambiguity Check</option><option value="analysis">Analysis</option><option value="banned_words">Banned Words</option><option value="behavioural">Behavioural</option><option value="calibration">Calibration</option><option value="checklist">Checklist</option><option value="code_runnable">Code Runnable</option><option value="comparison">Comparison</option><option value="constraint_check">Constraint Check</option><option value="format_check">Format Check</option><option value="hallucination_api">Hallucination Api</option><option value="json_valid">Json Valid</option><option value="multi_step_verify">Multi Step Verify</option><option value="reasoning">Reasoning</option><option value="refusal_check">Refusal Check</option><option value="response_length">Response Length</option><option value="self_awareness">Self Awareness</option><option value="statistical_significance">Statistical Significance</option><option value="sycophancy_check">Sycophancy Check</option><option value="synthesis">Synthesis</option><option value="table_format">Table Format</option><option value="trap_common_error">Trap Common Error</option><option value="trap_no_bug">Trap No Bug</option><option value="trap_wrong_claim">Trap Wrong Claim</option><option value="word_count">Word Count</option><option value="word_count_reduction">Word Count Reduction</option>
-  </select>
-  <span class="filter-count" id="filter-count">80 of 80 shown</span>
+<!-- Causal benchmark -->
+<div class="section-divider" id="group-causal">Causal Reasoning Benchmark</div>
+
+<div class="card">
+  <h2>Overview</h2>
+  <p>
+    The causal benchmark is a separate 100-question suite focused on causal inference.
+    Twenty concept bundles (confounding, colliders, mediators, selection, time-varying
+    confounding, transportability, etc.) each have five variants that test the same
+    underlying concept from different angles. All questions are multiple choice with
+    deterministic scoring - no LLM judge or DeepEval involvement.
+  </p>
+  <p style="color:var(--text2)">
+    Current version: <code>2.4</code>. Questions are not published, to prevent models being tuned to this specific benchmark.
+    Live leaderboard at <a href="causal.html">Causal Reasoning &rarr;</a>.
+  </p>
 </div>
 
-<details class="category-section" open>
+<div class="card">
+  <h2>Variant Types</h2>
+  <table>
+    <thead><tr><th>Variant</th><th>What it tests</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Base</strong></td><td>Narrative scenario combining 2-3 interacting causal issues (confounding + selection, mediator + attrition, etc.)</td></tr>
+      <tr><td><strong>Trap</strong></td><td>Looks like the base concept applies but the obvious answer is wrong; tests when a principle does NOT apply</td></tr>
+      <tr><td><strong>Transfer</strong></td><td>Formal DAG reasoning with short elimination-style options (set notation, path counts, yes/no with reason)</td></tr>
+      <tr><td><strong>Numeric</strong></td><td>Multi-step calculation with tables and conditional probabilities; can't be answered by intuition alone</td></tr>
+      <tr><td><strong>Analyst</strong></td><td>Two analysts debate the same scenario; identify which assessment is most accurate</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="card">
+  <h2>Scoring</h2>
+  <p>
+    Every question has one correct letter, so the causal benchmark is purely deterministic:
+    no LLM judges, no DeepEval. Just correct or incorrect, counted out of 100.
+  </p>
+  <p style="color:var(--text2);font-size:0.9rem">
+    A handful of models are excluded from this benchmark because they cannot be fairly evaluated
+    here (retired APIs, paid-tier-only providers, broken model paths). They still appear on the
+    Generalist leaderboard where they ran cleanly.
+  </p>
+  <h3>What the dashboard shows</h3>
+  <ul>
+    <li><strong>Accuracy</strong> - correct ÷ valid responses, excluding errors and invalid</li>
+    <li><strong>Score</strong> - correct out of 100, the absolute count regardless of failures</li>
+    <li><strong>Errors</strong> - API failures (rate limits, timeouts, server errors). An operational issue, not a capability signal.</li>
+    <li><strong>Invalid</strong> - the model returned successfully but with no extractable answer. Common with reasoning models that exhaust their token budget on hidden chain-of-thought before emitting text. A capability signal.</li>
+    <li><strong>Per-variant accuracy</strong> - which of the five reasoning angles the model handles best and worst</li>
+  </ul>
+</div>
+
+<details class="card" style="padding:1rem 1.25rem">
+  <summary style="cursor:pointer;list-style:none;font-weight:600;font-size:1rem;display:flex;justify-content:space-between;align-items:center">
+    <span>Hardening history (v2.0 to v2.4)</span>
+    <span style="color:var(--text2);font-size:0.8rem;font-weight:400">How the benchmark was iteratively hardened against gaming. Click to expand.</span>
+  </summary>
+  <div style="margin-top:1rem">
+    <p style="color:var(--text2);font-size:0.9rem">
+      The current version is the result of four structural-hardening iterations against
+      a cheap baseline (Claude Haiku 3). Each round discovered a new way the benchmark
+      could be gamed without causal reasoning.
+    </p>
+    <ul>
+      <li><strong>v2.0</strong> - initial 100-question release. Haiku 74%. Opus 4.7 at 82%. Low differentiation.</li>
+      <li><strong>v2.1</strong> - content hardening (sophisticated distractors). Haiku only moved to 70%. Investigation revealed a structural tell.</li>
+      <li><strong>v2.2</strong> - length normalization on transfer + analyst. "Always pick longest option" attack rate dropped 71% to 57%, but Haiku still hit 90% on transfer via a semantic tell.</li>
+      <li><strong>v2.3</strong> - narrative transfer replaced with paragraph-long DAG questions. Opus saturated at 100%, frontier differentiation lost.</li>
+      <li><strong>v2.4</strong> - transfer rewritten with elimination-style short options. Haiku 40% / Opus 55% on transfer, no saturation at either end, length bias eliminated.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:0.85rem">
+      Full design document: <a href="plans/2026-04-10-causal-benchmark-v2-harder.md">docs/plans/2026-04-10-causal-benchmark-v2-harder.md</a>.
+    </p>
+  </div>
+</details>
+
+
+<!-- Generalist prompt list collapsed by default to keep the page browsable -->
+<details class="card" id="section-prompts" style="padding:1rem 1.25rem">
+  <summary style="cursor:pointer;list-style:none;font-weight:600;font-size:1rem;display:flex;justify-content:space-between;align-items:center">
+    <span>Generalist prompt list (80)</span>
+    <span style="color:var(--text2);font-size:0.8rem;font-weight:400">All 80 Generalist prompts, searchable. Causal questions are not published. Click to expand.</span>
+  </summary>
+  <div style="margin-top:1rem">
+    <div class="filter-toolbar">
+      <input type="text" id="search-input" placeholder="Search prompts...">
+      <select id="filter-category">
+        <option value="">All Categories</option>
+        <option value="behavioural">Behavioural</option><option value="coding">Coding</option><option value="instruction_following">Instruction Following</option><option value="learning">Learning</option><option value="meta">Meta</option><option value="reasoning">Reasoning</option><option value="research">Research</option><option value="writing">Writing</option>
+      </select>
+      <select id="filter-difficulty">
+        <option value="">All Difficulties</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <select id="filter-check">
+        <option value="">All Check Types</option>
+        <option value="acknowledges_nonexistence">Acknowledges Nonexistence</option><option value="ambiguity_check">Ambiguity Check</option><option value="analysis">Analysis</option><option value="banned_words">Banned Words</option><option value="behavioural">Behavioural</option><option value="calibration">Calibration</option><option value="checklist">Checklist</option><option value="code_runnable">Code Runnable</option><option value="comparison">Comparison</option><option value="constraint_check">Constraint Check</option><option value="format_check">Format Check</option><option value="hallucination_api">Hallucination Api</option><option value="json_valid">Json Valid</option><option value="multi_step_verify">Multi Step Verify</option><option value="reasoning">Reasoning</option><option value="refusal_check">Refusal Check</option><option value="response_length">Response Length</option><option value="self_awareness">Self Awareness</option><option value="statistical_significance">Statistical Significance</option><option value="sycophancy_check">Sycophancy Check</option><option value="synthesis">Synthesis</option><option value="table_format">Table Format</option><option value="trap_common_error">Trap Common Error</option><option value="trap_no_bug">Trap No Bug</option><option value="trap_wrong_claim">Trap Wrong Claim</option><option value="word_count">Word Count</option><option value="word_count_reduction">Word Count Reduction</option>
+      </select>
+      <span class="filter-count" id="filter-count">80 of 80 shown</span>
+    </div>
+
+    <details class="category-section" open>
       <summary class="category-toggle">Behavioural <span class="category-count">12 prompts</span></summary>
       <div class="prompt-card" data-category="behavioural" data-difficulty="medium" data-check="sycophancy_check">
           <div class="prompt-header">
@@ -1452,6 +1582,8 @@
 
     </details>
 
+  </div>
+</details>
 
 </div>
 

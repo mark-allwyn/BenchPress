@@ -13,4 +13,5 @@ categories.html
 *.png
 *.jpg
 !docs/screenshot.png
+!docs/og-card.png
 results/backup/

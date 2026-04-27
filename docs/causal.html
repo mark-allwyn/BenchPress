@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BenchPress - Causal Reasoning</title>
+<meta name="description" content="Specialised causal-inference benchmark: 100 multiple-choice questions across 20 concept bundles and 5 variants (base, trap, transfer, numeric, analyst). Tests DAG reasoning, confounding, colliders, M-bias, and Simpson&#x27;s paradox. Per-variant accuracy, top-performer cards, and full leaderboard.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://mark-allwyn.github.io/BenchPress/causal.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="og-card.png">
+<meta property="og:title" content="BenchPress | Causal Reasoning Benchmark Leaderboard">
+<meta property="og:description" content="Specialised causal-inference benchmark: 100 multiple-choice questions across 20 concept bundles and 5 variants (base, trap, transfer, numeric, analyst). Tests DAG reasoning, confounding, colliders, M-bias, and Simpson&#x27;s paradox. Per-variant accuracy, top-performer cards, and full leaderboard.">
+<meta property="og:image" content="https://mark-allwyn.github.io/BenchPress/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://mark-allwyn.github.io/BenchPress/causal.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BenchPress">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BenchPress | Causal Reasoning Benchmark Leaderboard">
+<meta name="twitter:description" content="Specialised causal-inference benchmark: 100 multiple-choice questions across 20 concept bundles and 5 variants (base, trap, transfer, numeric, analyst). Tests DAG reasoning, confounding, colliders, M-bias, and Simpson&#x27;s paradox. Per-variant accuracy, top-performer cards, and full leaderboard.">
+<meta name="twitter:image" content="https://mark-allwyn.github.io/BenchPress/og-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "BenchPress", "url": "https://mark-allwyn.github.io/BenchPress", "description": "Specialised causal-inference benchmark: 100 multiple-choice questions across 20 concept bundles and 5 variants (base, trap, transfer, numeric, analyst). Tests DAG reasoning, confounding, colliders, M-bias, and Simpson's paradox. Per-variant accuracy, top-performer cards, and full leaderboard."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "BenchPress Causal Reasoning Benchmark", "description": "Specialised causal-inference benchmark: 100 multiple-choice questions across 20 concept bundles and 5 variants (base, trap, transfer, numeric, analyst). Tests DAG reasoning, confounding, colliders, M-bias, and Simpson's paradox. Per-variant accuracy, top-performer cards, and full leaderboard.", "url": "https://mark-allwyn.github.io/BenchPress/causal.html", "creator": {"@type": "Person", "name": "Mark Stent"}, "keywords": "LLM, large language model, benchmark, leaderboard, evaluation, AI", "license": "https://opensource.org/licenses/MIT", "isAccessibleForFree": true}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root { --bg: #0a0a0a; --bg2: #1a1a1a; --bg3: #2a2a2a; --text: #e5e5e5; --text2: #a3a3a3; --accent: #3b82f6; --accent2: #60a5fa; --border: #333; --radius: 8px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  .header { background:var(--bg2); border-bottom:1px solid var(--border); padding:1.5rem 2rem; }
+  .header-top { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .nav { display:flex; gap:0.5rem; flex-wrap:wrap; }
+  .nav-link { color:var(--text2); text-decoration:none; padding:0.4rem 0.8rem; border-radius:var(--radius); font-size:0.9rem; transition:all 0.2s; }
+  .nav-link:hover { color:var(--text); background:var(--bg3); }
+  .nav-link.active { color:var(--accent2); background:var(--bg3); }
+  .container { max-width:1400px; margin:0 auto; padding:2rem; }
+  .card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-bottom:1.5rem; }
+  .card h2 { margin-bottom:1rem; font-size:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  th { background:var(--bg3); padding:0.6rem 0.8rem; text-align:left; font-weight:600; border-bottom:2px solid var(--border); }
+  td { padding:0.5rem 0.8rem; border-bottom:1px solid var(--border); }
+  tr:hover { background:var(--bg3); }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1.5rem; }
+  .stat-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1rem; text-align:center; }
+  .stat-card .value { font-size:1.8rem; font-weight:700; color:var(--accent2); }
+  .stat-card .label { font-size:0.85rem; color:var(--text2); }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <h1>BenchPress <span style="font-weight:400;color:var(--text2)">- Causal Reasoning</span></h1>
+    <nav class="nav"><a href="index.html" class="nav-link">Overview</a><a href="generalist.html" class="nav-link">Generalist</a><a href="causal.html" class="nav-link active">Causal</a><a href="companies.html" class="nav-link">Companies</a><a href="categories.html" class="nav-link">By Category</a><a href="judges.html" class="nav-link">Judge Audit</a><a href="methodology.html" class="nav-link">Methodology</a></nav>
+  </div>
+</div>
+<div class="container">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="value">100</div><div class="label">Questions</div></div>
+    <div class="stat-card"><div class="value">44</div><div class="label">Models Tested</div></div>
+    <div class="stat-card"><div class="value">76.0%</div><div class="label">Best Accuracy</div></div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--accent2)">
+    <h2 style="margin-bottom:0.5rem">About the causal benchmark</h2>
+    <p style="color:var(--text2);font-size:0.9rem;margin-bottom:0.75rem;line-height:1.6">
+      A standalone benchmark for causal-inference reasoning. <strong style="color:var(--text)">100 multiple-choice questions</strong> arranged as <strong style="color:var(--text)">20 concept bundles × 5 variants</strong>. Each bundle covers one causal-inference pitfall (e.g. confounding, M-bias, Simpson's paradox); the 5 variants stress-test the same concept different ways:
+    </p>
+    <ul style="color:var(--text2);font-size:0.88rem;margin-left:1.25rem;margin-bottom:0.75rem;line-height:1.7">
+      <li><strong style="color:var(--text)">Base.</strong> Narrative scenario combining 2 to 3 interacting causal issues.</li>
+      <li><strong style="color:var(--text)">Trap.</strong> Looks like the base concept applies but the obvious answer is wrong.</li>
+      <li><strong style="color:var(--text)">Transfer.</strong> Same reasoning translated into a formal DAG with short elimination-style options.</li>
+      <li><strong style="color:var(--text)">Numeric.</strong> Multi-step calculation with tables and conditional probabilities.</li>
+      <li><strong style="color:var(--text)">Analyst.</strong> Two analysts debate the scenario; pick the most accurate assessment.</li>
+    </ul>
+    <p style="color:var(--text2);font-size:0.85rem;margin:0">
+      Scoring is purely deterministic (multiple choice, no LLM judges needed). <strong style="color:var(--text)">Accuracy</strong> = correct ÷ valid responses. <strong style="color:var(--text)">Errors</strong> are API failures; <strong style="color:var(--text)">Invalid</strong> is the model returning an empty or unextractable response. Both are reported separately.
+    </p>
+  </div>
+
+  <!-- Top performer per variant (cards explain what each variant tests) -->
+  <div class="card">
+    <h2 style="margin-bottom:0.5rem">Top performer per variant</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">Each variant tests the same causal-inference concept from a different angle. Best score on each is shown alongside what the variant tests.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.75rem">
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1rem">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.3rem">Base</div>
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.15rem">claude-opus-4.6</div>
+          <div style="font-size:1.4rem;font-weight:700;color:#22c55e">85%</div>
+          <div style="font-size:0.75rem;color:var(--text2);margin-top:0.4rem;line-height:1.4">Narrative scenario combining 2-3 interacting causal issues. Tests recognising compound problems.</div>
+        </div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1rem">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.3rem">Trap</div>
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.15rem">claude-opus-4.6</div>
+          <div style="font-size:1.4rem;font-weight:700;color:#22c55e">85%</div>
+          <div style="font-size:0.75rem;color:var(--text2);margin-top:0.4rem;line-height:1.4">Looks like the base concept applies but the obvious answer is wrong. Tests resistance to pattern matching.</div>
+        </div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1rem">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.3rem">Transfer</div>
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.15rem">command-a</div>
+          <div style="font-size:1.4rem;font-weight:700;color:#eab308">65%</div>
+          <div style="font-size:0.75rem;color:var(--text2);margin-top:0.4rem;line-height:1.4">Same reasoning translated into a formal DAG with short elimination-style options. Tests structural reasoning.</div>
+        </div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1rem">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.3rem">Numeric</div>
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.15rem">grok-4</div>
+          <div style="font-size:1.4rem;font-weight:700;color:#22c55e">90%</div>
+          <div style="font-size:0.75rem;color:var(--text2);margin-top:0.4rem;line-height:1.4">Multi-step calculation with tables and conditional probabilities. Cannot be answered by intuition alone.</div>
+        </div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1rem">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.3rem">Analyst</div>
+          <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.15rem">grok-4</div>
+          <div style="font-size:1.4rem;font-weight:700;color:#22c55e">85%</div>
+          <div style="font-size:0.75rem;color:var(--text2);margin-top:0.4rem;line-height:1.4">Two analysts debate the scenario; identify which assessment is most accurate. Tests evaluating arguments.</div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Per-variant grouped bar chart for the top 10 models -->
+  <div class="card">
+    <h2 style="margin-bottom:0.5rem">Per-variant accuracy (Top 10)</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">For the top 10 overall models, accuracy on each of the five variants. Bars that drop sharply on Trap or Transfer reveal where a model relies on pattern-matching over structural reasoning.</p>
+    <div style="height:420px;position:relative">
+      <canvas id="variantChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Variant heatmap (top 15 models × 5 variants) -->
+  <div class="card">
+    <h2 style="margin-bottom:0.5rem">Variant heatmap (Top 15)</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">Composite shading per variant for the top 15 overall models. Green ≥80, yellow ≥60, red below.</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th style="color:var(--text2);font-size:0.75rem">Model</th><th style="text-align:center;text-transform:capitalize;color:var(--text2);font-size:0.75rem">base</th><th style="text-align:center;text-transform:capitalize;color:var(--text2);font-size:0.75rem">trap</th><th style="text-align:center;text-transform:capitalize;color:var(--text2);font-size:0.75rem">transfer</th><th style="text-align:center;text-transform:capitalize;color:var(--text2);font-size:0.75rem">numeric</th><th style="text-align:center;text-transform:capitalize;color:var(--text2);font-size:0.75rem">analyst</th></tr></thead>
+        <tbody><tr><td><strong>claude-opus-4.6</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">55</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td></tr><tr><td><strong>claude-sonnet-4.6</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">55</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td></tr><tr><td><strong>grok-4</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">40</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">90</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td></tr><tr><td><strong>qwen3-235b</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">45</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td></tr><tr><td><strong>claude-opus-4.7</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">55</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td></tr><tr><td><strong>claude-opus-4</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">60</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td></tr><tr><td><strong>gemini-3-pro</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">45</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td></tr><tr><td><strong>gpt-5.5</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">70</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">50</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td></tr><tr><td><strong>o3-mini</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">50</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">90</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td></tr><tr><td><strong>o4-mini</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">70</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">50</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td></tr><tr><td><strong>claude-sonnet-4</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">50</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td></tr><tr><td><strong>gemini-3.1-pro</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">40</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td></tr><tr><td><strong>gpt-5.1</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">60</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">60</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td></tr><tr><td><strong>gpt-5.3</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">75</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">45</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td></tr><tr><td><strong>claude-opus-4.5</strong></td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">85</td><td style="text-align:center;color:#ef4444;background:#ef44441a;font-weight:600">45</td><td style="text-align:center;color:#eab308;background:#eab3081a;font-weight:600">70</td><td style="text-align:center;color:#22c55e;background:#22c55e1a;font-weight:600">80</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Full leaderboard (deep-dive) -->
+  <div class="card">
+    <h2>Accuracy leaderboard</h2>
+    <p style="color:var(--text2);margin-bottom:1rem;font-size:0.85rem">All models with causal data. Score is correct out of 100. Errors and Invalid columns separate API failures from empty/unextractable responses.</p>
+    <table>
+      <thead><tr><th style="text-align:center;width:40px">#</th><th>Model</th><th style="text-align:center" title="Correct ÷ valid responses (excludes errors and invalid)">Accuracy</th><th style="text-align:center" title="Correct out of 100 questions">Score</th><th style="text-align:center" title="API failures (rate limit, 4xx/5xx, timeout): operational issue, not model capability">Errors</th><th style="text-align:center" title="Model returned a response but no extractable answer (reasoning model burned all tokens, returned empty)">Invalid</th></tr></thead>
+      <tbody><tr>
+          <td style="text-align:center">1</td>
+          <td><strong>claude-opus-4.6</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>76.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:76.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">76/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">2</td>
+          <td><strong>claude-sonnet-4.6</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>76.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:76.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">76/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">3</td>
+          <td><strong>grok-4</strong><br><span style="color:var(--text2);font-size:0.85em">xAI</span></td>
+          <td style="text-align:center"><strong>76.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:76.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">76/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">4</td>
+          <td><strong>qwen3-235b</strong><br><span style="color:var(--text2);font-size:0.85em">Alibaba</span></td>
+          <td style="text-align:center"><strong>76.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:76.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">76/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">5</td>
+          <td><strong>claude-opus-4.7</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>75.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:75.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">75/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">6</td>
+          <td><strong>claude-opus-4</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>75.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:75.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">75/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">7</td>
+          <td><strong>gemini-3-pro</strong><br><span style="color:var(--text2);font-size:0.85em">Google</span></td>
+          <td style="text-align:center"><strong>75.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:75.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">75/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">8</td>
+          <td><strong>gpt-5.5</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>75.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:75.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">75/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">9</td>
+          <td><strong>o3-mini</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>75.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:75.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">75/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">10</td>
+          <td><strong>o4-mini</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>75.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:75.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">75/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">11</td>
+          <td><strong>claude-sonnet-4</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>74.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:74.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">74/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">12</td>
+          <td><strong>gemini-3.1-pro</strong><br><span style="color:var(--text2);font-size:0.85em">Google</span></td>
+          <td style="text-align:center"><strong>74.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:74.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">74/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">13</td>
+          <td><strong>gpt-5.1</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>74.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:74.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">74/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">14</td>
+          <td><strong>gpt-5.3</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>74.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:74.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">74/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">15</td>
+          <td><strong>claude-opus-4.5</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>73.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:73.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">73/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">16</td>
+          <td><strong>command-a</strong><br><span style="color:var(--text2);font-size:0.85em">Cohere</span></td>
+          <td style="text-align:center"><strong>73.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:73.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">73/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">17</td>
+          <td><strong>gpt-5.2</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>73.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:73.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">73/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">18</td>
+          <td><strong>gpt-oss-120b</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>72.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:72.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">72/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">19</td>
+          <td><strong>minimax-m2.5</strong><br><span style="color:var(--text2);font-size:0.85em">MiniMax</span></td>
+          <td style="text-align:center"><strong>72.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:72.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">72/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">20</td>
+          <td><strong>gpt-4o</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>71.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:71.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">71/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">21</td>
+          <td><strong>llama-4-scout</strong><br><span style="color:var(--text2);font-size:0.85em">Meta</span></td>
+          <td style="text-align:center"><strong>71.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:71.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">71/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">22</td>
+          <td><strong>nova-pro</strong><br><span style="color:var(--text2);font-size:0.85em">Amazon</span></td>
+          <td style="text-align:center"><strong>71.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:71.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">71/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">23</td>
+          <td><strong>claude-sonnet-4.5</strong><br><span style="color:var(--text2);font-size:0.85em">Anthropic</span></td>
+          <td style="text-align:center"><strong>70.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:70.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">70/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">24</td>
+          <td><strong>gpt-4.1-mini</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>70.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:70.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">70/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">25</td>
+          <td><strong>grok-4.1-fast</strong><br><span style="color:var(--text2);font-size:0.85em">xAI</span></td>
+          <td style="text-align:center"><strong>70.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:70.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">70/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">26</td>
+          <td><strong>gpt-4.1</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>69.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:69.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">69/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">27</td>
+          <td><strong>gpt-5.4</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>69.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:69.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">69/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">28</td>
+          <td><strong>gpt-oss-20b</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>69.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:69.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">69/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">29</td>
+          <td><strong>nova-2-lite</strong><br><span style="color:var(--text2);font-size:0.85em">Amazon</span></td>
+          <td style="text-align:center"><strong>69.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:69.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">69/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">30</td>
+          <td><strong>glm-4.7-flash</strong><br><span style="color:var(--text2);font-size:0.85em">Zhipu</span></td>
+          <td style="text-align:center"><strong>66.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:66.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">66/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">31</td>
+          <td><strong>mistral-large-3</strong><br><span style="color:var(--text2);font-size:0.85em">Mistral</span></td>
+          <td style="text-align:center"><strong>66.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:66.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">66/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">32</td>
+          <td><strong>qwen3-32b</strong><br><span style="color:var(--text2);font-size:0.85em">Alibaba</span></td>
+          <td style="text-align:center"><strong>65.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:65.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">65/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">33</td>
+          <td><strong>qwen3-coder-30b</strong><br><span style="color:var(--text2);font-size:0.85em">Alibaba</span></td>
+          <td style="text-align:center"><strong>65.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:65.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">65/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">34</td>
+          <td><strong>gpt-4o-mini</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>64.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:64.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">64/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">35</td>
+          <td><strong>gpt-4.1-nano</strong><br><span style="color:var(--text2);font-size:0.85em">OpenAI</span></td>
+          <td style="text-align:center"><strong>63.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:63.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">63/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">36</td>
+          <td><strong>nova-lite</strong><br><span style="color:var(--text2);font-size:0.85em">Amazon</span></td>
+          <td style="text-align:center"><strong>63.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:63.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">63/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">37</td>
+          <td><strong>gemini-3-flash</strong><br><span style="color:var(--text2);font-size:0.85em">Google</span></td>
+          <td style="text-align:center"><strong>62.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:62.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">62/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">38</td>
+          <td><strong>nova-micro</strong><br><span style="color:var(--text2);font-size:0.85em">Amazon</span></td>
+          <td style="text-align:center"><strong>62.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#eab308;height:100%;width:62.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">62/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">39</td>
+          <td><strong>gemini-2.5-flash</strong><br><span style="color:var(--text2);font-size:0.85em">Google</span></td>
+          <td style="text-align:center"><strong>56.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#ef4444;height:100%;width:56.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">56/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">40</td>
+          <td><strong>llama3.1</strong><br><span style="color:var(--text2);font-size:0.85em">Meta</span></td>
+          <td style="text-align:center"><strong>54.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#ef4444;height:100%;width:54.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">54/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">41</td>
+          <td><strong>llama3.2-vision-11b</strong><br><span style="color:var(--text2);font-size:0.85em">Meta</span></td>
+          <td style="text-align:center"><strong>51.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#ef4444;height:100%;width:51.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">51/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">42</td>
+          <td><strong>codestral</strong><br><span style="color:var(--text2);font-size:0.85em">Mistral</span></td>
+          <td style="text-align:center"><strong>45.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#ef4444;height:100%;width:45.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">45/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">43</td>
+          <td><strong>llama3.2</strong><br><span style="color:var(--text2);font-size:0.85em">Meta</span></td>
+          <td style="text-align:center"><strong>45.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#ef4444;height:100%;width:45.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">45/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr><tr>
+          <td style="text-align:center">44</td>
+          <td><strong>gemma-3-27b</strong><br><span style="color:var(--text2);font-size:0.85em">Google</span></td>
+          <td style="text-align:center"><strong>43.0%</strong><div style="background:var(--bg2);border-radius:4px;height:6px;margin-top:4px"><div style="background:#ef4444;height:100%;width:43.0%;border-radius:4px"></div></div></td>
+          <td style="text-align:center">43/100</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+          <td style="text-align:center;color:var(--text2)">0</td>
+        </tr></tbody>
+    </table>
+  </div>
+</div>
+<script>
+const CAUSAL_DATA = {"leaderboard": [{"name": "claude-opus-4.6", "company": "Anthropic", "model_type": "closed", "accuracy": 0.76, "correct": 76, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.85, "transfer": 0.55, "numeric": 0.75, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 5, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "claude-sonnet-4.6", "company": "Anthropic", "model_type": "closed", "accuracy": 0.76, "correct": 76, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.85, "transfer": 0.55, "numeric": 0.8, "analyst": 0.75}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 5, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "grok-4", "company": "xAI", "model_type": "closed", "accuracy": 0.76, "correct": 76, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.4, "numeric": 0.9, "analyst": 0.85}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 3, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "qwen3-235b", "company": "Alibaba", "model_type": "open", "accuracy": 0.76, "correct": 76, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.85, "transfer": 0.45, "numeric": 0.8, "analyst": 0.85}, "bundle_consistency": {"B01": {"correct": 5, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "claude-opus-4.7", "company": "Anthropic", "model_type": "closed", "accuracy": 0.75, "correct": 75, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.85, "transfer": 0.55, "numeric": 0.75, "analyst": 0.75}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "claude-opus-4", "company": "Anthropic", "model_type": "closed", "accuracy": 0.75, "correct": 75, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.6, "numeric": 0.75, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 5, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gemini-3-pro", "company": "Google", "model_type": "closed", "accuracy": 0.75, "correct": 75, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.45, "numeric": 0.85, "analyst": 0.85}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-5.5", "company": "OpenAI", "model_type": "closed", "accuracy": 0.75, "correct": 75, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.7, "transfer": 0.5, "numeric": 0.85, "analyst": 0.85}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "o3-mini", "company": "OpenAI", "model_type": "closed", "accuracy": 0.75, "correct": 75, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.5, "numeric": 0.9, "analyst": 0.75}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 3, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "o4-mini", "company": "OpenAI", "model_type": "closed", "accuracy": 0.75, "correct": 75, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.7, "transfer": 0.5, "numeric": 0.85, "analyst": 0.85}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 3, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "claude-sonnet-4", "company": "Anthropic", "model_type": "closed", "accuracy": 0.74, "correct": 74, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.5, "numeric": 0.75, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 5, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 1, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gemini-3.1-pro", "company": "Google", "model_type": "closed", "accuracy": 0.74, "correct": 74, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.4, "numeric": 0.85, "analyst": 0.85}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-5.1", "company": "OpenAI", "model_type": "closed", "accuracy": 0.74, "correct": 74, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.85, "transfer": 0.6, "numeric": 0.6, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 5, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-5.3", "company": "OpenAI", "model_type": "closed", "accuracy": 0.74, "correct": 74, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.45, "numeric": 0.85, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "claude-opus-4.5", "company": "Anthropic", "model_type": "closed", "accuracy": 0.73, "correct": 73, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.85, "transfer": 0.45, "numeric": 0.7, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "command-a", "company": "Cohere", "model_type": "closed", "accuracy": 0.73, "correct": 73, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.7, "transfer": 0.65, "numeric": 0.7, "analyst": 0.75}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 5, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 5, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-5.2", "company": "OpenAI", "model_type": "closed", "accuracy": 0.73, "correct": 73, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.5, "numeric": 0.7, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 2, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 5, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-oss-120b", "company": "OpenAI", "model_type": "open", "accuracy": 0.72, "correct": 72, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.45, "numeric": 0.75, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "minimax-m2.5", "company": "MiniMax", "model_type": "open", "accuracy": 0.72, "correct": 72, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.3, "numeric": 0.85, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 5, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 3, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 5, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 2, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 3, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 3, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-4o", "company": "OpenAI", "model_type": "closed", "accuracy": 0.71, "correct": 71, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.4, "numeric": 0.7, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 5, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 1, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "llama-4-scout", "company": "Meta", "model_type": "open", "accuracy": 0.71, "correct": 71, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.5, "numeric": 0.75, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 5, "total": 5}, "B02": {"correct": 5, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 3, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 2, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "nova-pro", "company": "Amazon", "model_type": "closed", "accuracy": 0.71, "correct": 71, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.55, "numeric": 0.7, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "claude-sonnet-4.5", "company": "Anthropic", "model_type": "closed", "accuracy": 0.7, "correct": 70, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.4, "numeric": 0.7, "analyst": 0.75}, "bundle_consistency": {"B01": {"correct": 5, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-4.1-mini", "company": "OpenAI", "model_type": "closed", "accuracy": 0.7, "correct": 70, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.5, "numeric": 0.55, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "grok-4.1-fast", "company": "xAI", "model_type": "closed", "accuracy": 0.7, "correct": 70, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.35, "numeric": 0.7, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-4.1", "company": "OpenAI", "model_type": "closed", "accuracy": 0.69, "correct": 69, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.35, "numeric": 0.65, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 5, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-5.4", "company": "OpenAI", "model_type": "closed", "accuracy": 0.69, "correct": 69, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.4, "numeric": 0.65, "analyst": 0.8}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 5, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "gpt-oss-20b", "company": "OpenAI", "model_type": "open", "accuracy": 0.69, "correct": 69, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.4, "numeric": 0.75, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 3, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 3, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "nova-2-lite", "company": "Amazon", "model_type": "closed", "accuracy": 0.69, "correct": 69, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.45, "numeric": 0.75, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 5, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 4, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 3, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 5, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 2, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 1, "total": 5}}}, {"name": "glm-4.7-flash", "company": "Zhipu", "model_type": "open", "accuracy": 0.66, "correct": 66, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.8, "trap": 0.75, "transfer": 0.45, "numeric": 0.65, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 2, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 3, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "mistral-large-3", "company": "Mistral", "model_type": "closed", "accuracy": 0.66, "correct": 66, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.35, "numeric": 0.6, "analyst": 0.7}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 5, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "qwen3-32b", "company": "Alibaba", "model_type": "open", "accuracy": 0.65, "correct": 65, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.45, "numeric": 0.55, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 3, "total": 5}, "B07": {"correct": 1, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "qwen3-coder-30b", "company": "Alibaba", "model_type": "open", "accuracy": 0.65, "correct": 65, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.75, "transfer": 0.4, "numeric": 0.5, "analyst": 0.75}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 2, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "gpt-4o-mini", "company": "OpenAI", "model_type": "closed", "accuracy": 0.64, "correct": 64, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.8, "trap": 0.65, "transfer": 0.5, "numeric": 0.55, "analyst": 0.7}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 2, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 2, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "gpt-4.1-nano", "company": "OpenAI", "model_type": "closed", "accuracy": 0.63, "correct": 63, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.8, "trap": 0.65, "transfer": 0.4, "numeric": 0.6, "analyst": 0.7}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 1, "total": 5}, "B05": {"correct": 5, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 2, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 4, "total": 5}, "B13": {"correct": 4, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 3, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "nova-lite", "company": "Amazon", "model_type": "closed", "accuracy": 0.63, "correct": 63, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.8, "transfer": 0.3, "numeric": 0.6, "analyst": 0.6}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 3, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 2, "total": 5}, "B09": {"correct": 5, "total": 5}, "B10": {"correct": 3, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 5, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 3, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "gemini-3-flash", "company": "Google", "model_type": "closed", "accuracy": 0.62, "correct": 62, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.8, "trap": 0.5, "transfer": 0.5, "numeric": 0.65, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 3, "total": 5}, "B07": {"correct": 3, "total": 5}, "B08": {"correct": 2, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 1, "total": 5}, "B11": {"correct": 4, "total": 5}, "B12": {"correct": 2, "total": 5}, "B13": {"correct": 3, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "nova-micro", "company": "Amazon", "model_type": "closed", "accuracy": 0.62, "correct": 62, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.85, "trap": 0.7, "transfer": 0.4, "numeric": 0.55, "analyst": 0.6}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 4, "total": 5}, "B10": {"correct": 3, "total": 5}, "B11": {"correct": 3, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 3, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 4, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "gemini-2.5-flash", "company": "Google", "model_type": "closed", "accuracy": 0.56, "correct": 56, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.75, "trap": 0.65, "transfer": 0.3, "numeric": 0.6, "analyst": 0.5}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 4, "total": 5}, "B03": {"correct": 1, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 3, "total": 5}, "B06": {"correct": 2, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 3, "total": 5}, "B10": {"correct": 1, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 3, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 3, "total": 5}}}, {"name": "llama3.1", "company": "Meta", "model_type": "open", "accuracy": 0.54, "correct": 54, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.55, "trap": 0.7, "transfer": 0.3, "numeric": 0.55, "analyst": 0.6}, "bundle_consistency": {"B01": {"correct": 3, "total": 5}, "B02": {"correct": 2, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 0, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 4, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 4, "total": 5}, "B09": {"correct": 3, "total": 5}, "B10": {"correct": 2, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 3, "total": 5}, "B14": {"correct": 3, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 2, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "llama3.2-vision-11b", "company": "Meta", "model_type": "open", "accuracy": 0.51, "correct": 51, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.55, "trap": 0.75, "transfer": 0.35, "numeric": 0.4, "analyst": 0.5}, "bundle_consistency": {"B01": {"correct": 5, "total": 5}, "B02": {"correct": 2, "total": 5}, "B03": {"correct": 3, "total": 5}, "B04": {"correct": 1, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 3, "total": 5}, "B07": {"correct": 1, "total": 5}, "B08": {"correct": 5, "total": 5}, "B09": {"correct": 2, "total": 5}, "B10": {"correct": 2, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 2, "total": 5}, "B13": {"correct": 2, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 4, "total": 5}, "B16": {"correct": 4, "total": 5}, "B17": {"correct": 2, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 2, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "codestral", "company": "Mistral", "model_type": "open", "accuracy": 0.45, "correct": 45, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.55, "trap": 0.5, "transfer": 0.25, "numeric": 0.3, "analyst": 0.65}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 2, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 1, "total": 5}, "B05": {"correct": 4, "total": 5}, "B06": {"correct": 2, "total": 5}, "B07": {"correct": 0, "total": 5}, "B08": {"correct": 3, "total": 5}, "B09": {"correct": 2, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 1, "total": 5}, "B12": {"correct": 2, "total": 5}, "B13": {"correct": 2, "total": 5}, "B14": {"correct": 1, "total": 5}, "B15": {"correct": 1, "total": 5}, "B16": {"correct": 2, "total": 5}, "B17": {"correct": 2, "total": 5}, "B18": {"correct": 2, "total": 5}, "B19": {"correct": 4, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "llama3.2", "company": "Meta", "model_type": "open", "accuracy": 0.45, "correct": 45, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.45, "trap": 0.7, "transfer": 0.2, "numeric": 0.4, "analyst": 0.5}, "bundle_consistency": {"B01": {"correct": 2, "total": 5}, "B02": {"correct": 3, "total": 5}, "B03": {"correct": 4, "total": 5}, "B04": {"correct": 2, "total": 5}, "B05": {"correct": 3, "total": 5}, "B06": {"correct": 3, "total": 5}, "B07": {"correct": 1, "total": 5}, "B08": {"correct": 2, "total": 5}, "B09": {"correct": 3, "total": 5}, "B10": {"correct": 1, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 3, "total": 5}, "B13": {"correct": 3, "total": 5}, "B14": {"correct": 2, "total": 5}, "B15": {"correct": 2, "total": 5}, "B16": {"correct": 1, "total": 5}, "B17": {"correct": 2, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 2, "total": 5}}}, {"name": "gemma-3-27b", "company": "Google", "model_type": "open", "accuracy": 0.43, "correct": 43, "valid": 100, "total": 100, "invalid": 0, "errors": 0, "variant_accuracy": {"base": 0.25, "trap": 0.45, "transfer": 0.6, "numeric": 0.4, "analyst": 0.45}, "bundle_consistency": {"B01": {"correct": 4, "total": 5}, "B02": {"correct": 2, "total": 5}, "B03": {"correct": 1, "total": 5}, "B04": {"correct": 4, "total": 5}, "B05": {"correct": 3, "total": 5}, "B06": {"correct": 1, "total": 5}, "B07": {"correct": 2, "total": 5}, "B08": {"correct": 1, "total": 5}, "B09": {"correct": 2, "total": 5}, "B10": {"correct": 4, "total": 5}, "B11": {"correct": 2, "total": 5}, "B12": {"correct": 2, "total": 5}, "B13": {"correct": 3, "total": 5}, "B14": {"correct": 0, "total": 5}, "B15": {"correct": 3, "total": 5}, "B16": {"correct": 1, "total": 5}, "B17": {"correct": 3, "total": 5}, "B18": {"correct": 1, "total": 5}, "B19": {"correct": 3, "total": 5}, "B20": {"correct": 1, "total": 5}}}], "bundles": ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20"], "variants": ["base", "trap", "transfer", "numeric", "analyst"], "total_prompts": 100, "total_models": 44, "generated": "2026-04-27T17:51:44.513002", "skipped": ["claude-haiku-3", "claude-sonnet-3.7", "glm-5", "kimi-k2.5", "llama-4-maverick"]};
+const VARIANT_CHART = {"labels": ["claude-opus-4.6", "claude-sonnet-4.6", "grok-4", "qwen3-235b", "claude-opus-4.7", "claude-opus-4", "gemini-3-pro", "gpt-5.5", "o3-mini", "o4-mini"], "variants": ["base", "trap", "transfer", "numeric", "analyst"], "datasets": [{"label": "Base", "data": [85, 85, 85, 85, 85, 85, 85, 85, 85, 85]}, {"label": "Trap", "data": [85, 85, 80, 85, 85, 75, 75, 70, 75, 70]}, {"label": "Transfer", "data": [55, 55, 40, 45, 55, 60, 45, 50, 50, 50]}, {"label": "Numeric", "data": [75, 80, 90, 80, 75, 75, 85, 85, 90, 85]}, {"label": "Analyst", "data": [80, 75, 85, 85, 75, 80, 85, 85, 75, 85]}]};
+Chart.defaults.color = '#a3a3a3';
+Chart.defaults.borderColor = '#333';
+Chart.defaults.font.family = "-apple-system, sans-serif";
+
+(function () {
+  const el = document.getElementById('variantChart');
+  if (!el) return;
+  const variantColors = { base:'#6c72ff', trap:'#ef4444', transfer:'#4ecdc4', numeric:'#eab308', analyst:'#f97316' };
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: VARIANT_CHART.labels,
+      datasets: VARIANT_CHART.datasets.map(ds => ({
+        label: ds.label,
+        data: ds.data,
+        backgroundColor: (variantColors[ds.label.toLowerCase()] || '#999') + 'cc',
+        borderColor: variantColors[ds.label.toLowerCase()] || '#999',
+        borderWidth: 1,
+        borderRadius: 4,
+      })),
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } } },
+      scales: {
+        y: { min: 0, max: 100, ticks: { stepSize: 20 }, title: { display: true, text: 'Accuracy (0 to 100)' } },
+        x: { ticks: { maxRotation: 45, font: { size: 11 } } }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
