@@ -17,7 +17,7 @@ BenchPress runs two independent benchmark suites against any LLM:
 
 Both benchmarks display 0-100 and are reported side by side. They are never blended into a single number. Results persist as JSON, so when a new model drops, one command compares it against everything tested before.
 
-![Dashboard](docs/screenshot.png)
+![Dashboard](docs/screenshot.png?v=2)
 
 ## Features
 
