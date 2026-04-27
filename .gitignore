@@ -1,5 +1,6 @@
 .env
 config.yaml
+evals/causal.json
 results/*.log
 __pycache__/
 *.pyc
