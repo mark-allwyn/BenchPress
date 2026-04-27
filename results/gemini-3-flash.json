@@ -7244,7 +7244,2512 @@
         "judge_score_avg": 5.0,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:15:46.594993",
+        "api_model": "gemini-3-flash-preview",
+        "content": "\nThe correct answer is D.\n\nHere is the reasoning:\n1.  **Confounding (Experience):** Participants had 2.3 more years of prior work experience. Since experience is a strong predictor of employment, this baseline difference likely inflates the observed employment rate of participants relative to non-participants, creating an upward bias in the 17-point gap.\n2.  **Selection Bias (Attrition/Relocation):** The outcome is only observed for those who stayed in-state. Non-participants were more likely to relocate. In labor economics, workers who relocate are often those more motivated or employable (searching more broadly for opportunities). If the \"most employable\" non-participants left the state and were therefore excluded from the 41% figure, the",
+        "latency_s": 22.67,
+        "input_tokens": 294,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:15:53.948687",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 6.32,
+        "input_tokens": 354,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:14.178225",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The total effect of $T$ on $Y$ is the sum of the effects along all directed paths from $T$ to $Y$. In this DAG, these paths are $T \\to Y$ and $T \\to M \\to Y$.\n\nTo identify the total effect, we must block all non-causal (backdoor) paths between $T$ and $Y$ without opening any new non-causal paths. The backdoor paths are:\n1. $T \\leftarrow L \\to Y$\n2. $T \\leftarrow U_1 \\to L \\to Y$\n\nConditioning on $L$ would block both of these paths. However, the analysis is already conditioning on $S = 1$. In the DAG, $S$ is a collider on",
+        "latency_s": 19.2,
+        "input_tokens": 113,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:23.445612",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 8.21,
+        "input_tokens": 382,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:30.576882",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 6.06,
+        "input_tokens": 420,
+        "output_tokens": null,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:36.117162",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 4.47,
+        "input_tokens": 320,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:59.940762",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The most serious concern with the multiple imputation (MI) approach in this scenario is that it likely violates the **Missing At Random (MAR)** assumption. MI typically assumes that the missing values can be predicted using the observed covariates in the model (treatment arm, baseline pain, age, sex, and BMI).\n\nHowever, the reasons for dropout differ significantly between the two arms and are directly related to the outcome (pain):\n1.  **Placebo Arm:** 28% dropout, primarily due to **pain flare-ups**. These individuals likely had higher pain levels than the \"completers\" in the placebo arm.\n2.  **Drug Arm:** 15% dropout, primarily due to **side effects** while pain was **relatively controlled**.\n\nBecause the MI model borrows information from",
+        "latency_s": 22.75,
+        "input_tokens": 437,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "C"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:18:51.052870",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The most serious concern in this scenario is a violation of the **Missing at Random (MAR)** assumption, which is required for multiple imputation (MI) to provide unbiased estimates.\n\n1.  **The MAR Assumption:** MI assumes that the probability of missing data depends only on the observed variables included in the imputation model (baseline pain, age, sex, BMI, and treatment arm). If the reason for dropout is related to the unobserved outcome itself (e.g., a pain flare-up that occurred after the last measurement), the data are **Missing Not at Random (MNAR)**.\n2.  **Placebo Arm Bias:** The prompt states that placebo dropouts left because their pain \"flared.\" These individuals likely would have had high pain scores at month 12. However, the MI model imputes their scores based on placebo **completers** with similar baseline characteristics. Since the completers did not experience the same flares (otherwise, they likely would have dropped out as well), their month-12 pain scores are likely lower than those of the dropouts would have been. This makes the imputed values for the placebo arm \"too optimistic\" (i.e., showing less pain than actually occurred).\n3.  **Drug Arm Bias:** Drug dropouts left due to side effects while their pain was \"relatively controlled.\" Their pain scores were likely similar to those of the drug completers, meaning the imputation for the drug arm is likely more accurate.\n4.  **Impact on Treatment Effect:** The drug's advantage is calculated as the difference between the placebo arm's pain and",
+        "latency_s": 40.5,
+        "input_tokens": 437,
+        "output_tokens": 327,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:21.070366",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The target effect is the indirect chain $T \\rightarrow M_1 \\rightarrow M_2 \\rightarrow Y$. To identify this effect, we must block all non-causal (biasing) paths between the variables in the chain without blocking the chain itself.\n\n1.  **Selection Bias ($R=1$):** The analysis is restricted to $R=1$. In the DAG, $R$ is a collider for $U$, $Y$, and $X$ ($U \\rightarrow R$, $Y \\rightarrow R$, $X \\rightarrow R$). Conditioning on a collider opens non-causal paths between its parents. Thus, $R=1$ opens the following associations:\n    *   $U \\text{--} Y$\n    *   $U \\text{",
+        "latency_s": 20.05,
+        "input_tokens": 129,
+        "output_tokens": 164,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:39.288556",
+        "api_model": "gemini-3-flash-preview",
+        "content": "ATo find the full-sample (ITT) mean pain scores, we use the weighted average of the completers and the dropouts for each group, based on the sensitivity assumption that dropouts had pain scores 2 points higher than their group's completer mean.\n\n1.  **Drug Group:**\n    *   Completers ($N=190$): Mean = 3.2\n    *   Dropouts ($N=10$): Mean = 3.2 + 2 = 5.2\n    *   ITT Mean = $\\frac{(190 \\times 3.2) + (10 \\times 5.2)}{200} = \\frac{608 + 52}{20",
+        "latency_s": 17.18,
+        "input_tokens": 381,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:46.860151",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 6.5,
+        "input_tokens": 423,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:51.554483",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 3.63,
+        "input_tokens": 295,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:57.719161",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 5.09,
+        "input_tokens": 404,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:18:16.426797",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The d-connecting paths between A and B under the conditioning set {C1, D} are:\n\n1.  **A \u2192 C1 \u2190 B**: This path has a collider at C1. Since C1 is in the conditioning set, this path is **open**.\n2.  **A \u2192 C2 \u2192 D \u2190 B**: This path has a collider at D. Since D is in the conditioning set and the non-collider C2 is not in the conditioning set, this path is **open**.\n3.  **A \u2192 C2 \u2190 U \u2192 B**: This path has a collider at C2. While C2 is not in the conditioning set, its descendant D is. Since the non-collider U is not in the conditioning set, this path is **",
+        "latency_s": 17.63,
+        "input_tokens": 108,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:18:37.582731",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The university admission criteria ($Math + Music \\ge 120$) creates a negative correlation between Math and Music scores among admitted students, a phenomenon known as **Berkson's Paradox** or **collider bias**. Even though the two aptitudes are independent in the general population, knowing a student is admitted means that if they have a low score in one subject, they must have a high score in the other to meet the threshold.\n\nThe scholarship criteria ($GPA > 3.5$) is equivalent to:\n$2.0 + 0.01(Math) + 0.01(Music) + noise > 3.5$\n$0.01(Math + Music) + noise > 1.5$\n$Math + Music",
+        "latency_s": 20.12,
+        "input_tokens": 455,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:18:57.542135",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct assessment is **D**.\n\n**Analyst 1** argues that because both admission ($A$) and scholarship ($S$) are common effects of math ($M$) and music ($W$), conditioning on both is equivalent to conditioning on a single joint collider ($A \\cap S$). While mathematically true that the joint event is a common effect, this perspective oversimplifies the causal structure by ignoring the distinct mechanisms and the nature of the variables involved.\n\n**Analyst 2** provides a more precise structural explanation. In causal inference (specifically DAG theory), there is a significant distinction between conditioning on a **collider** (a direct common effect) and conditioning on a **descendant of a collider**. \n1.  **Admission ($A$)** acts as a direct collider ($M \\to A \\leftarrow W$). Conditioning on $A$ induces Berkson\u2019s Paradox (a negative correlation).\n2.  **Scholarship ($S$)** is a descendant of **GPA**, which is itself a collider ($M \\to GPA \\leftarrow W$). \n3.  Conditioning on a descendant of a collider (like $S$ or $GPA$) induces a correlation between the parents, but the magnitude of this bias is typically attenuated by the \"noise\" or the strength of the functional relationship between the collider and its descendant. \n\nAnalyst 2 correctly identifies that these are structurally distinct sources of bias. The \"amplification\" observed when moving from the admitted group to the scholarship group is not merely a \"selection-intensity effect\" on a single mechanism (as Analyst 1 claims), but the result of layering a second, noisier selection mechanism (conditioning on a descendant of a second collider) onto the first. Analyst 2\u2019s recognition that functional form and error structure govern the induced dependence is a fundamental principle of structural causal modeling.",
+        "latency_s": 18.94,
+        "input_tokens": 405,
+        "output_tokens": 377,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:04.116561",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 5.53,
+        "input_tokens": 354,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:29.418194",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The most defensible assessment is **A**.\n\n**Reasoning:**\n1.  **Mediator Bias (Bad Control):** In causal inference, traffic volume is a \"mediator\"\u2014a variable on the causal pathway between the treatment (congestion tax) and the outcome (air quality). The primary mechanism by which a congestion tax improves air quality is by reducing the number of vehicles in the zone.\n2.  **Blocking the Causal Pathway:** When the researchers add traffic volume as a control, they are essentially asking: \"What is the effect of the tax on pollution, *holding traffic volume constant*?\" This removes the portion of the tax's effect that comes from reducing traffic, leaving only secondary effects (like changes in driving patterns or fleet composition).\n3.  ",
+        "latency_s": 24.27,
+        "input_tokens": 377,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:51.042137",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The total effect of $T$ on $Y_1$ is identified by blocking all backdoor paths between $T$ and $Y_1$. A backdoor path is any path that starts with an arrow into $T$ ($T \\leftarrow \\dots \\rightarrow Y_1$).\n\n1.  **Identify Backdoor Paths:**\n    In the given DAG, the only arrow pointing into $T$ is $G \\to T$. Therefore, all backdoor paths must start with $T \\leftarrow G$.\n    *   Path 1: $T \\leftarrow G \\to Y_1$\n    *   Path 2: $T \\leftarrow G \\leftarrow U \\to W \\to Y_1$\n    *   Path 3: $T \\leftarrow G",
+        "latency_s": 20.6,
+        "input_tokens": 129,
+        "output_tokens": 160,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:56.903485",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 4.82,
+        "input_tokens": 668,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:20.687237",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct assessment is **A**.\n\n**Analyst 1** correctly identifies the situation as a **SUTVA (Stable Unit Treatment Value Assumption)** violation, specifically the \"no interference\" (or \"no spillover\") component. In a Difference-in-Differences (DiD) framework, SUTVA requires that the treatment status of one unit does not affect the outcome of other units. Because the congestion tax in the downtown area (treated) physically causes diesel trucks to reroute into the suburbs (control), the treatment is directly altering the PM2.5 levels in the control group. This \"contamination\" of the control group biases the DiD estimate because the control group no longer represents a valid counterfactual for what would have happened downtown in the absence of the tax.\n\n**Analyst ",
+        "latency_s": 22.76,
+        "input_tokens": 387,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:25.678292",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 3.97,
+        "input_tokens": 335,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:31.212448",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 4.51,
+        "input_tokens": 380,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:40.261654",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 8.03,
+        "input_tokens": 152,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:46.154568",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 4.88,
+        "input_tokens": 456,
+        "output_tokens": null,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:55.531839",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 8.36,
+        "input_tokens": 403,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:00.886437",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 4.34,
+        "input_tokens": 271,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:06.328798",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 4.43,
+        "input_tokens": 258,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:48.664718",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG is defined by the following edges:\n1.  $T \\rightarrow S$\n2.  $X \\rightarrow S$\n3.  $U \\rightarrow S$\n4.  $U \\rightarrow Y$\n5.  $T \\rightarrow Y$\n6.  $X \\rightarrow Y$\n7.  $S \\rightarrow F$\n8.  $F \\rightarrow Y$\n\nWe are conditioning on $S = 1$. We need to identify all open paths from $T$ to $Y$ and count the non-causal (biasing) ones.\n\n**1. Identify all simple paths from $T$ to $Y$:**\n*   Path 1: $T \\rightarrow Y$ (Causal",
+        "latency_s": 41.32,
+        "input_tokens": 110,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "D"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:19:28.775758",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG is defined by the following edges:\n1.  $T \\to S$\n2.  $X \\to S$\n3.  $U \\to S$\n4.  $U \\to Y$\n5.  $T \\to Y$\n6.  $X \\to Y$\n7.  $S \\to F$\n8.  $F \\to Y$\n\nWe are conditioning on $S = 1$. A path is open if every collider on the path is conditioned on (or has a descendant that is conditioned on) and no non-collider on the path is conditioned on.\n\n**Causal paths from $T$ to $Y$:**\n1.  $T \\to Y$ (Direct)\n2.  $T \\to S \\to F \\to Y$ (Indirect)\n\n**Non-causal (biasing) paths from $T$ to $Y$:**\nTo find non-causal paths, we look for paths that are not directed from $T$ to $Y$. Conditioning on $S$ opens paths through $S$ because $S$ is a collider for several pairs of nodes.\n1.  $T \\to S \\leftarrow X \\to Y$:\n    *   $S$ is a collider on this path.\n    *   Conditioning on $S$ opens the path.\n    *   This is a non-causal path.\n2.  $T \\to S \\leftarrow U \\to Y$:\n    *   ",
+        "latency_s": 35.7,
+        "input_tokens": 110,
+        "output_tokens": 327,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:02.352942",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A\n\nThe analyst's conclusion is likely biased due to **selection bias** and **conditioning on a post-treatment variable**. \n\n1.  **Differential Attrition:** The training group lost 40% of its participants, while the control group lost only 10%. This suggests that the training itself (perhaps due to its difficulty or time commitment) caused people to drop out. Those who remained in the training group (the 60%) are likely more motivated, capable, or stable than the average participant.\n2.  **Post-treatment Bias:** \"Engagement\" is measured after the program begins. Because the training group underwent a much more rigorous \"selection\" process (the 40% dropout), the 144 \"high engagers\" in the training group represent a different slice of the population than the 144 \"high engagers\" in the control group. \n3.  **Overstatement:** The \"high engagers\" in the training group are the \"survivors\" of a high-attrition environment. They are likely to have higher employment rates regardless of the training. Comparing them to \"high engagers\" in a control group that faced very little attrition creates an \"apples-to-oranges\" comparison that likely inflates the perceived benefit of the program.\n\nStatement A correctly identifies that the surviving members of the training group are a more highly selected group, making the 10-point gap an unreliable causal estimate.",
+        "latency_s": 12.65,
+        "input_tokens": 454,
+        "output_tokens": 304,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:17.762701",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **B**.\n\n**Analyst 1** provides a more defensible position based on modern causal inference principles. Their argument highlights several critical issues that arise with high differential attrition (45% vs. 80%):\n\n1.  **MNAR vs. MAR:** Analyst 2 assumes that missingness is \"Missing At Random\" (MAR) conditional on baseline scores. However, in an RCT where the treatment itself influences the likelihood of staying in the study (differential attrition), it is highly probable that the reasons for dropping out are related to unobserved traits (e.g., motivation, resilience, or side effects) that also correlate with the outcome. This situation is \"Missing Not At Random\" (MNAR). Baseline adjustment cannot account for these unobserved differences between the treatment and control completers.\n2.  **Collider Bias:** Analyst 1 correctly identifies a common pitfall. When analysts try to \"fix\" the lack of balance in a selected subset (the completers) by adding post-randomization variables (variables measured after the treatment began), they often condition on a **collider**. Because these variables are affected by both the treatment and the unobserved traits that influence selection/outcomes, conditioning on them opens a non-causal pathway that can amplify rather than reduce bias.\n3.  **Failure of the \"Standard Fix\":** While Analyst 2 is correct that baseline adjustment is a \"standard\" practice, it is not a \"fix\" that \"recovers the ATE\" in the presence of such severe differential attrition. Analyst 2\u2019s claim that baseline scores satisfy the ignorability condition is an assumption that is frequently violated in educational interventions where the treatment itself changes the composition of the surviving group.\n\nAnalyst 1\u2019s skepticism regarding the sufficiency of baseline adjustment and their warning about collider bias align with rigorous methodological standards for handling missing data and selection bias.",
+        "latency_s": 14.38,
+        "input_tokens": 393,
+        "output_tokens": 391,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:22.068077",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 3.29,
+        "input_tokens": 233,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:28.641616",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 5.55,
+        "input_tokens": 365,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:49.990679",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The controlled direct effect (CDE) of $T$ on $Y$ (fixing mediators $M_1$ and $M_2$) is identified if we can block all back-door paths from the set of variables $\\{T, M_1, M_2\\}$ to $Y$.\n\n1.  **Identify the set of variables to be fixed:** To find the effect of $T$ on $Y$ not through the chain $M_1 \\to M_2$, we must fix both $M_1$ and $M_2$. Thus, our set $S = \\{T, M_1, M_2\\}$.\n2.  **Identify back-door paths from $S$ to $Y$:** A back-door path is",
+        "latency_s": 20.33,
+        "input_tokens": 132,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:13.305820",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The analyst's conclusion is likely flawed due to **Simpson's Paradox** and **confounding by department (income)**.\n\n1.  **Confounding by Department:** Department income is a major confounder. High-income departments (X) have both a higher participation rate (67%) and a lower baseline cardiac event rate (5%). Low-income departments (Z) have a lower participation rate (14%) and a higher baseline cardiac event rate (14%).\n2.  **Overestimation of Total Effect:** When pooling the data, the overall cardiac event rate for participants is ~5.3%, while for non-participants it is ~10.8%. This suggests a 5.5% benefit. However, within each department, the actual benefit is only 2",
+        "latency_s": 22.28,
+        "input_tokens": 450,
+        "output_tokens": 164,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:37.404450",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct position is **B**.\n\nAnalyst 1 correctly identifies that mediators (vocabulary and comprehension) should not be controlled for when estimating a total effect, as doing so would block the causal pathways and lead to overcontrolling bias. They also correctly identify school funding as a confounder. However, Analyst 1's claim that controlling for funding alone provides the \"correct specification\" for identifying the total causal effect is overly optimistic in an observational (non-randomised) setting.\n\nAnalyst 2's position is more defensible because it acknowledges the fundamental limitation of observational studies: the **backdoor criterion** can only be satisfied if all confounders are measured and included in the model. In a real-world scenario where a programme is not randomly assigned, it is highly probable that other unmeasured",
+        "latency_s": 23.07,
+        "input_tokens": 371,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:04.355419",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The most defensible interpretation is A.\n\nThe scenario describes two distinct types of bias affecting the study's results:\n\n1.  **Confounding by Indication:** Because the surgical intervention was preferentially offered to patients with more advanced disease, the surgery group was inherently \"sicker\" than the conservative management group at the start. This naturally leads to worse survival outcomes for the surgery group, regardless of the treatment's actual effectiveness.\n2.  **Differential Attrition (Selection Bias):** The fact that sicker patients were more likely to be lost to follow-up introduces another layer of bias. Since the surgery group contained more sicker patients, it likely experienced a higher rate of attrition among its most vulnerable members. In survival analysis, losing the sickest patients (who are the most",
+        "latency_s": 25.9,
+        "input_tokens": 262,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:15.079089",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **B**.\n\n**Analysis:**\nThe Rosenbaum bounds sensitivity analysis is a method used to assess how much an **unmeasured baseline confounder** (a variable that existed before treatment assignment) would have to influence the odds of receiving treatment to change the statistical significance of the results. While a Gamma of 1.8 suggests the findings are robust to such baseline selection bias, it does not account for **post-treatment selection bias** or **differential attrition**.\n\nIn this study, there is a significant discrepancy in early attrition (34% in the surgical group vs. 14% in the chemotherapy group). If \"lost to follow-up\" occurs differentially\u2014for instance, if surgical patients who were doing poorly were more likely to drop out or if the reasons for early death create a \"survivor bias\" among those remaining\u2014the balance achieved by the initial propensity-score matching is lost. Rosenbaum bounds cannot \"fix\" or \"test\" the bias introduced by events occurring after the treatment has begun. Therefore, the reviewer's claim that the sensitivity analysis strengthens the causal claim is misleading because it ignores a major threat to internal validity: the differential loss of subjects during the follow-up period.\n\n*   **A** is incorrect because Rosenbaum bounds do not address post-treatment attrition.\n*   **C** is incorrect because while operative mortality is a causal effect, \"lost to follow-up\" is a source of bias that can invalidate the comparison of the remaining survivors.\n*   **D** is a technical critique of Rosenbaum bounds (the assumption of additive effects), but it is secondary to the more fundamental problem of differential attrition in this specific scenario.",
+        "latency_s": 9.7,
+        "input_tokens": 400,
+        "output_tokens": 347,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:37.205754",
+        "api_model": "gemini-3-flash-preview",
+        "content": " R | T, S)?\n        *   There is a direct arrow Y -> R.\n        *   So, Y is not independent of R given {T, S}.\n\n    *   What if the question is not about recoverability, but about something else?\n    *   \"Which set identifies the total effect of T on Y under this restriction?\"\n    *   If the restriction R=1 is *part* of the effect we want to measure? No, that doesn't make sense. The \"total effect of T on Y\" is a population-level concept.\n\n    *   Let me re-read the DAG one more time.\n    *   U1 -> I, I -> T, I -> Y\n    *   T -> Y\n",
+        "latency_s": 21.1,
+        "input_tokens": 128,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:57.448004",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **A**.\n\n**Analysis:**\n1.  **Confounding by Indication:** This occurs when the treatment assignment is related to the baseline severity of the condition. In this data, the Aggressive treatment group was heavily weighted toward severe patients (170/300, or 56.7%), while the Conservative group was heavily weighted toward mild patients (150/300, or 50%). Because severe patients have a much lower survival rate (60%) than mild patients (90\u201393%), the aggregate survival rate for the Aggressive group is naturally lower, regardless of the treatment's effectiveness.\n2.  **Simpson's Paradox:** The analyst's conclusion that aggressive treatment \"reduces survival by 1",
+        "latency_s": 19.22,
+        "input_tokens": 520,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:20.994814",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **D**.\n\n**Analysis:**\n\n1.  **Analyst 1's Error:** Analyst 1 argues that balancing baseline severity (via propensity scores) automatically balances the attrition distribution. This is factually incorrect based on the provided data. The prompt states that 35% of the intensive-regimen patients were lost compared to 10% of the standard-care patients. Even if the distribution of severity ($S$) is balanced across treatment arms ($T$) at baseline, the attrition rate remains differential between the arms ($T \\to C$). Furthermore, balancing baseline covariates does not account for the bias introduced by the fact that the remaining (uncensored) patients may no longer be representative of the original balanced population if censoring is related to the outcome.\n\n2",
+        "latency_s": 22.52,
+        "input_tokens": 378,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:28.130501",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 6.11,
+        "input_tokens": 241,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:50.621396",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **B**.\n\nThe researchers are attempting to estimate the total effect of a policy change (switching to test-optional admissions) on graduation rates. In causal inference, when evaluating the effect of a treatment or policy, it is problematic to condition on \"post-treatment\" variables\u2014variables that are themselves affected by the policy. \n\nIn this scenario, the **financial-aid package** and **first-year course load** are determined *after* the admission decision and may be influenced by the new policy. For example, the university might redistribute merit aid differently in the absence of SAT scores, or students admitted under the new policy might be advised into different course loads. By including these variables in the outcome equation, the researchers are only measuring the *direct* effect of the policy change that",
+        "latency_s": 21.47,
+        "input_tokens": 370,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:11.191313",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG provided is:\n1.  $X \\rightarrow T$\n2.  $X \\rightarrow Y$\n3.  $T \\rightarrow Z$\n4.  $Y \\rightarrow Z$\n5.  $T \\rightarrow W$\n6.  $W \\rightarrow Y$\n7.  $U \\rightarrow W$\n8.  $U \\rightarrow Y$\n9.  $T \\rightarrow Y$\n\n**1. Identify the Causal Paths from $T$ to $Y$:**\n*   $T \\rightarrow Y$ (Direct effect)\n*   $T \\rightarrow W \\rightarrow Y$ (Indirect effect)\n\n**2. Identify the Non-Causal (Backdoor/Selection) Paths between $T",
+        "latency_s": 19.55,
+        "input_tokens": 110,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "A"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:19:36.889792",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 6.09,
+        "input_tokens": 110,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:19.165254",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 6.95,
+        "input_tokens": 491,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:25.630291",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 5.45,
+        "input_tokens": 345,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:32.253595",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 5.6,
+        "input_tokens": 303,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:54.196887",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The biostatistician's conclusion is based on a \"vote-counting\" approach (B outperforms A in two out of three campuses). However, this approach is statistically and clinically flawed when the strata (campuses) are of different sizes and represent different levels of clinical complexity.\n\n1.  **Sample Size and Weight of Evidence**: Campus 1 is the largest stratum, with 2,000 cases, which is more than Campus 2 (800) and Campus 3 (400) combined (1,200). In a weighted analysis (such as a Mantel-Haenszel test), the results from Campus 1 would carry the most weight. Since Technique A performs better at Campus 1 (14% vs. 16%),",
+        "latency_s": 20.91,
+        "input_tokens": 406,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:13.157809",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG is given as:\n- $G \\to T, G \\to Y$\n- $U \\to G, U \\to C$\n- $C \\to T, C \\to Y$\n- $T \\to Y$\n- $G \\to C$\n\nTo identify the total effect of $T$ on $Y$, we must block all backdoor paths from $T$ to $Y$. A backdoor path is any path that starts with an arrow pointing into $T$. In this DAG, the arrows into $T$ are $G \\to T$ and $C \\to T$.\n\nThe backdoor paths are:\n1. $T \\leftarrow G \\to Y$\n2. $T \\leftarrow G \\to C \\to Y$\n",
+        "latency_s": 17.93,
+        "input_tokens": 101,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:33.351665",
+        "api_model": "gemini-3-flash-preview",
+        "content": "?\n        *   \"Drug P is genuinely worse across all three age groups\"\n        *   Young: 10% > 7.8% (P is worse)\n        *   Middle: 20% < 22% (P is *better*)\n        *   Elderly: 40% > 30% (P is worse)\n        *   Since P is better in the middle group, A is definitely false.\n\n    *   Is there any chance the answer is C?\n        *   \"Drug P is better within every single age group\"\n        *   Young: 10% > 7.8% (P is worse)\n        *   Middle: 20% < 22% (",
+        "latency_s": 19.15,
+        "input_tokens": 392,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:42.713348",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **D**.\n\n**Analysis:**\n\n*   **Analyst 1** is not fully defensible because they interpret the data as a standard Simpson\u2019s paradox that justifies a \"universal preference\" for Treatment A. However, the data shows **effect modification** (heterogeneity): Treatment A is better in high-severity clinics but worse in the low-severity clinic (Clinic 4). A weighted average (standardization) might show A is better on average across the pooled population, but it does not support a \"universal\" preference, as patients in Clinic 4 (low severity) fare better with Treatment B.\n*   **Analyst 2** is not fully defensible because they rely on an unproven assumption. While residual confounding is a possible explanation for why A appears better in high-severity clinics, Analyst 2 asserts \"almost certainly\" that finer stratification would reveal B to be superior everywhere. This is a speculative claim that assumes the observed benefit of A is an artifact rather than a genuine treatment effect for high-severity patients.\n\nBecause Analyst 1 ignores the specific evidence of A's failure in the low-severity stratum to claim universality, and Analyst 2 dismisses the observed data in favor of a hypothetical \"true\" pattern without evidence, neither position is scientifically robust.",
+        "latency_s": 8.35,
+        "input_tokens": 402,
+        "output_tokens": 267,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:48.290082",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 4.54,
+        "input_tokens": 252,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:58.538240",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The most well-founded response is **A**.\n\n**Reasoning:**\nBerkson's bias occurs when conditioning on a collider (in this case, hospitalization) creates a spurious association between two independent variables that both influence the probability of being in the sample. \n\nWhile the researchers attempted to use trauma patients as a \"quasi-random\" control group (reasoning that the *occurrence* of a fracture or laceration is independent of G or S), the study still conditions on **hospital admission**. Even for acute trauma, the clinical decision to admit a patient to the hospital\u2014rather than treating and discharging them from the Emergency Department\u2014is often influenced by the patient's overall health, existing comorbidities, and the perceived risk of complications. \n\nIf smoking (S) or the genetic variant (G) (perhaps through associated subclinical conditions) increases the likelihood of admission following an injury, the collider pathway remains active. Therefore, the trauma-admitted population is still non-randomly selected with respect to G and S, potentially preserving the spurious association between G and lung cancer (L) that the researchers sought to eliminate.\n\n*   **B** addresses generalizability (external validity), but the primary concern in the prompt is internal validity (bias).\n*   **C** accepts the reviewer's flawed assumption that admission is independent of health status.\n*   **D** focuses on statistical power, which is a separate issue from the systematic bias (Berkson's) being discussed.",
+        "latency_s": 9.22,
+        "input_tokens": 382,
+        "output_tokens": 305,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:16.290779",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The d-connecting paths between A and B, given that we are conditioning on S (S = 1), are as follows:\n\n1.  **A \u2192 H \u2190 B**: H is a collider. Since its descendant S is conditioned on, the collider H is open.\n2.  **A \u2192 S \u2190 H \u2190 B**: S is a collider and is conditioned on, so it is open. H is not a collider in this path (B \u2192 H \u2192 S).\n3.  **A \u2192 K \u2190 U \u2192 B**: K is a collider. Since its descendant S is conditioned on, the collider K is open. U is a fork (K \u2190 U \u2192 B), which is open.\n4.  **A \u2192 S \u2190 K \u2190 U \u2192 B**: S is",
+        "latency_s": 16.73,
+        "input_tokens": 101,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:34.370265",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is D.\n\nTo find the number of hospitalized patients with both diseases and the association between the diseases in the hospital sample, we follow these steps:\n\n1.  **Calculate the distribution of diseases in the general population (N = 100,000):**\n    *   Prevalence of Disease A (P(A)) = 0.10, Prevalence of Disease B (P(B)) = 0.10.\n    *   Since they are independent, P(A \u2229 B) = 0.10 * 0.10 = 0.01.\n    *   N(A \u2229 B) = 0.01 * 100,000 = 1,00",
+        "latency_s": 17.05,
+        "input_tokens": 258,
+        "output_tokens": 164,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:54.033625",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The debate centers on the effect of conditioning on a more restrictive subgroup (ICU patients) within a sample already subject to selection bias (hospitalized patients).\n\n1.  **Initial Association**: Both analysts correctly identify the initial negative association between hypertension and asthma as Berkson's bias. This occurs because hospital admission ($S_1$) is a common effect (collider) of both conditions (or their severities). Conditioning on $S_1=1$ induces a spurious negative correlation.\n\n2.  **ICU Subgroup**: Analyst 1 argues that the \"clinical homogeneity\" of the ICU subgroup mitigates this bias. This is a common misconception. In DAG (Directed Acyclic Graph) theory, restricting a sample to a more extreme common effect (ICU admission, $S_2$)",
+        "latency_s": 18.63,
+        "input_tokens": 369,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:14.498286",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The provided DAG structure is:\n1.  $P1 \\rightarrow T$\n2.  $P1 \\rightarrow U$\n3.  $P2 \\rightarrow U$\n4.  $P2 \\rightarrow Y$\n5.  $T \\rightarrow Y$\n\nTo determine the effect of adjusting for $U$, we analyze the paths between the treatment ($T$) and the outcome ($Y$):\n- **Causal Path:** $T \\rightarrow Y$ (the direct effect we want to measure).\n- **Backdoor Path:** $T \\leftarrow P1 \\rightarrow U \\leftarrow P2 \\rightarrow Y$.\n\nIn the backdoor path, $U$ is a **collider** because two arrows point into it ($P1 \\rightarrow",
+        "latency_s": 19.38,
+        "input_tokens": 338,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:24.513928",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG described is:\n1.  $W \\rightarrow T$\n2.  $W \\rightarrow L$\n3.  $N \\rightarrow L$\n4.  $N \\rightarrow Y$\n5.  $T \\rightarrow Y$\n\nTo identify the causal effect of $T$ on $Y$, we look for backdoor paths between $T$ and $Y$. A backdoor path is a non-causal path that begins with an arrow pointing into $T$.\nThe only potential backdoor path is: $T \\leftarrow W \\rightarrow L \\leftarrow N \\rightarrow Y$.\n\nIn this path, $L$ is a **collider** because two arrows point into it ($W \\rightarrow L$ and $N \\rightarrow L$). According to the rules of $d$-separation, a collider naturally blocks the path it is on. Therefore, the path $T \\leftarrow W \\rightarrow L \\leftarrow N \\rightarrow Y$ is already blocked, and there are no other backdoor paths from $T$ to $Y$ (since $W$ does not cause $Y$ directly and $N$ does not cause $T$ directly).\n\nWhen the economist adjusts for $L$, she is conditioning on a collider. Conditioning on a collider **opens** the path that was previously blocked. This creates a spurious (non-causal) association between $W$ and $N$, which in turn creates a spurious association between $T$ and $Y$ through the path $T \\leftarrow W \\dots N \\rightarrow Y$. This is a classic example of **M-bias**, where adjusting for a pre-treatment variable that is a collider induces bias rather than removing it.\n\n*   **A** is incorrect because $L$ is a collider, not a confounder.\n*   **B** is correct as it accurately describes the opening of the non-causal path via the collider $L$.\n*   **C** is incorrect because adjusting for a collider induces systematic bias, not just a loss of precision.\n*   **D** is incorrect because $L$ is not a proxy for a confounder (since there was no confounding to begin with), and the adjustment introduces bias.\n\nB",
+        "latency_s": 8.98,
+        "input_tokens": 401,
+        "output_tokens": 458,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:44.067981",
+        "api_model": "gemini-3-flash-preview",
+        "content": "thoughtThe DAG provided is:\n1.  $U_1 \\rightarrow T$\n2.  $U_1 \\rightarrow C_1$\n3.  $U_2 \\rightarrow C_1$\n4.  $U_2 \\rightarrow Y$\n5.  $U_3 \\rightarrow C_2$\n6.  $U_3 \\rightarrow T$\n7.  $C_2 \\rightarrow Y$\n8.  $C_3 \\rightarrow T$\n9.  $C_3 \\rightarrow Y$\n10. $T \\rightarrow Y$\n\nTo find the minimal sufficient adjustment set for the total effect of $T$ on $Y$, we identify all backdoor paths from $T$",
+        "latency_s": 18.54,
+        "input_tokens": 132,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "C"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:20:13.881990",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct minimal sufficient adjustment set for the total effect of T on Y is determined by identifying all backdoor paths from T to Y and finding the smallest set of measured covariates that blocks them without opening any new paths.\n\n1.  **Identify all backdoor paths from T to Y:**\n    A backdoor path is any path from T to Y that starts with an arrow pointing into T.\n    *   **Path 1:** T \u2190 U3 \u2192 C2 \u2192 Y\n    *   **Path 2:** T \u2190 C3 \u2192 Y\n    *   **Path 3:** T \u2190 U1 \u2192 C1 \u2190 U2 \u2192 Y\n\n2.  **Analyze each path:**\n    *   **Path 1 (T \u2190 U3 \u2192 C2 \u2192 Y):** This path is open because it contains no colliders. To block it, we must adjust for a non-collider on the path. Since U3 is unmeasured, we must adjust for **C2**.\n    *   **Path 2 (T \u2190 C3 \u2192 Y):** This path is open because it contains no colliders. To block it, we must adjust for **C3**.\n    *   **Path 3 (T \u2190 U1 \u2192 C1 \u2190 U2 \u2192 Y):** This path contains a collider at **C1** (U1 \u2192 C1 \u2190 U2). A path with a collider is naturally blocked. If we were to adjust for C1, we would open this path, requiring us to then adjust for U1 or U2 (which are unmeasured) to block",
+        "latency_s": 34.97,
+        "input_tokens": 132,
+        "output_tokens": 328,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:04.236589",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The structural equations are:\n1. $T = 0.6P_1 + e_T$\n2. $C = -0.5P_1 + 0.5P_2 + e_C$\n3. $Y = 0.7P_2 + e_Y$\n\n**Unadjusted Regression:**\nIn the unadjusted model, we look for an association between $T$ and $Y$. $T$ is determined by $P_1$, and $Y$ is determined by $P_2$. Since $P_1$ and $P_2$ are independent, $T$ and $Y$ are independent. The path $T \\leftarrow P_1 \\rightarrow C \\leftarrow P_2 \\rightarrow",
+        "latency_s": 19.14,
+        "input_tokens": 352,
+        "output_tokens": 160,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:24.853733",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The provided DAG is $U_1 \\to T$, $U_1 \\to C$, $U_2 \\to C$, $U_2 \\to Y$, and $T \\to Y$. To determine whether to adjust for $C$ when estimating the effect of $T$ on $Y$, we analyze the backdoor paths:\n\n1.  **Identify Backdoor Paths:** A backdoor path is any non-causal path between $T$ and $Y$ that begins with an arrow into $T$. In this DAG, the only such path is $T \\leftarrow U_1 \\to C \\leftarrow U_2 \\to Y$.\n2.  **Check if Paths are Open:** In the path $T \\leftarrow U_1 \\to C \\leftarrow U",
+        "latency_s": 19.58,
+        "input_tokens": 464,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:30.051398",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 4.16,
+        "input_tokens": 308,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:36.111277",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 5.02,
+        "input_tokens": 393,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:56.493223",
+        "api_model": "gemini-3-flash-preview",
+        "content": " (S, T)$ might be violated if we condition on $T$.\n    However, the exclusion restriction is often stated as: $Z$ has no *direct* effect on $Y$, and all *indirect* effects of $Z$ on $Y$ are through $T$.\n    The condition $Z \\perp Y \\mid (S, T)$ is a way to test this, but the collider $T$ makes it tricky.\n    Actually, the standard IV definition (in terms of potential outcomes) is:\n    1. $Z \\perp Y(t, z) \\mid S$ (Exchangeability and Exclusion Restriction)\n    2. $Z \\not\\perp T \\mid S$ (Relevance)\n    Where $Y(t,",
+        "latency_s": 19.34,
+        "input_tokens": 122,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:15.581441",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The true Complier Average Causal Effect (CACE) can be derived by decomposing the Intention-to-Treat (ITT) effect. The ITT effect is the difference in average outcomes between the treatment and control groups:\n$ITT = \\bar{Y}_{Z=1} - \\bar{Y}_{Z=0} = 72 - 68 = 4$.\n\nThe ITT is also a weighted average of the causal effects of assignment on the two subgroups: compliers (C) and noncompliers (NC).\n$ITT = P(C) \\cdot (\\text{Effect on Compliers}) + P(NC) \\cdot (\\text{Effect on Noncompliers})$\n\nFrom the data:\n- $P(C) = \\frac{",
+        "latency_s": 18.07,
+        "input_tokens": 394,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:26.693794",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct assessment is **A**.\n\nIn the Instrumental Variables (IV) framework (specifically the Angrist, Imbens, and Rubin framework for LATE), the **Exclusion Restriction** states that the instrument ($Z$, assignment) has no effect on the outcome ($Y$) other than through its effect on the treatment received ($D$). Mathematically, this is expressed as $Y_i(z, d) = Y_i(d)$ for all individuals $i$.\n\nAnalyst 1's argument is a common misconception. While the LATE (Local Average Treatment Effect) is the parameter of interest for the complier subpopulation, the **Wald estimator** ($\\frac{E[Y|Z=1] - E[Y|Z=0]}{E[D|Z=1] - E[D|Z=0]}$) only identifies this effect if the exclusion restriction holds for the **entire population**, including never-takers.\n\nIf assignment to surgery ($Z=1$) causes anxiety that affects recovery ($Y$) for never-takers, then for that group, $Y_i(Z=1, D=0) \\neq Y_i(Z=0, D=0)$. In the Wald numerator (the Intent-to-Treat effect on the outcome), the term for never-takers does not cancel out:\n$$ITT_Y = P(\\text{compliers}) \\cdot \\text{Effect}_{\\text{compliers}} + P(\\text{never-takers}) \\cdot (E[Y|Z=1, \\text{NT}] - E[Y|Z=0, \\text{NT}])$$\nBecause the second term is non-zero due to the anxiety pathway, the Wald estimator becomes biased and no longer identifies the LATE. Analyst 2 correctly identifies that exclusion is a population-level assumption and that a direct effect of assignment on the outcome (like consent-induced anxiety) violates this assumption.\n\nConclusion: **A**",
+        "latency_s": 10.09,
+        "input_tokens": 438,
+        "output_tokens": 415,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:31:31.765570",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 4.0,
+        "input_tokens": 327,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:56.847257",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **B**.\n\n**Analysis:**\nThe researchers' redesign aims to eliminate **interference** (also known as a violation of the Stable Unit Treatment Value Assumption, or SUTVA), which occurs when the treatment of one unit affects the outcome of another. While the 50-meter buffer strips likely succeed in preventing the physical transfer of fertilizer (addressing the colleague's concern), they introduce a new problem: **edge effects**.\n\n1.  **Edge Effects:** Fallow land (the buffer strips) creates a different microclimate compared to the interior of a dense crop field. Plots adjacent to these strips may receive more sunlight, have different wind exposure, or have less competition for soil moisture and nutrients from one side.\n2.  **Confounding Bias:** If the experimental",
+        "latency_s": 24.03,
+        "input_tokens": 342,
+        "output_tokens": 164,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:32:15.573446",
+        "api_model": "gemini-3-flash-preview",
+        "content": "To identify the direct effect of $T_i$ on $Y_i$, we must block all backdoor paths between $T_i$ and $Y_i$ without opening any new ones (colliders).\n\n1.  **Identify Backdoor Paths from $T_i$ to $Y_i$:**\n    *   $T_i \\leftarrow X_i \\to Y_i$\n    *   $T_i \\leftarrow U \\to T_j \\to Y_i$\n\n2.  **Evaluate the Adjustment Sets:**\n    *   **Path 1 ($T_i \\leftarrow X_i \\to Y_i$):** This path is blocked by conditioning on $X_i$.\n    *   **Path",
+        "latency_s": 17.65,
+        "input_tokens": 124,
+        "output_tokens": 160,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "A"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:20:50.878333",
+        "api_model": "gemini-3-flash-preview",
+        "content": "i$\n        *   $T_i \\leftarrow X_i \\to Y_i$\n        *   Are there any others?\n        *   $T_i \\leftarrow U \\to T_j \\leftarrow X_j \\to Y_j \\dots$ (No)\n        *   $T_i \\to Y_j \\leftarrow T_j \\to Y_i$ (Not a backdoor path)\n        *   $T_i \\to Y_j \\leftarrow X_j \\to T_j \\to Y_i$ (Not a backdoor path)\n\n    *   Wait, let me think about the \"direct effect\" part again.\n        *   If we want the direct effect of $T_i$ on $Y_i$, we must block all paths from $T_i$ to $Y_i$ *except* the direct edge $T_i \\to Y_i$.\n        *   Are there any other *directed* paths from $T_i$ to $Y_i$?\n            *   $T_i \\to Y_i$ (Direct)\n            *   $T_i \\to Y_j \\to \\dots$ (No, no edge out of $Y_j$)\n            *   $T_i \\to \\dots \\to T_j \\to Y_i$? (No, no directed path from $T_i$ to $T_j$)\n        *   So the only directed path is $T_i",
+        "latency_s": 34.97,
+        "input_tokens": 124,
+        "output_tokens": 326,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:32:36.180853",
+        "api_model": "gemini-3-flash-preview",
+        "content": "Based on the data provided, we can calculate the weighted-average spillover effect on the control villages by comparing their malaria incidence to the external baseline incidence (the no-treatment counterfactual).\n\n1.  **Identify the incidence in the control subgroups:**\n    *   High-density border control villages (40 villages): 55 per 1,000 person-years.\n    *   Geographically isolated control villages (60 villages): 85 per 1,000 person-years.\n\n2.  **Calculate the weighted-average incidence for all control villages:**\n    *   Weighted Average Incidence = [(Number of border villages \u00d7 Incidence) + (Number of isolated villages \u00d7 Incidence)] / Total control villages\n    *   Weighted Average",
+        "latency_s": 19.56,
+        "input_tokens": 400,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:32:59.751655",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The debate centers on how to interpret treatment effects in the presence of spillovers (externalities), a classic problem in causal inference and development economics (notably the Miguel and Kremer deworming study).\n\n1.  **Analyst 1** argues that the naive treatment-control difference ($E[Y|T=1] - E[Y|T=0]$) is a \"conservative lower bound\" of the total impact. Mathematically, if spillovers are positive (i.e., they improve outcomes in the control group), the control group's outcome is better than it would be in a \"pure\" control state. This reduces the observed difference between treatment and control, making the naive estimate smaller than the true total effect (the difference between a fully treated population and a",
+        "latency_s": 22.53,
+        "input_tokens": 411,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:33:04.913297",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 4.12,
+        "input_tokens": 314,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:33:30.055184",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The epidemiologist's proposal to use the matrix method with group-specific parameters is mathematically sound for correcting **differential misclassification of a single variable** (in this case, the exposure). If the sensitivity and specificity for both the case and non-case groups are known accurately, the matrix method can indeed recover the true counts of the 2x2 table (exposure vs. outcome).\n\nHowever, the assessment of whether this will \"recover the true exposure-outcome association\" must consider the broader context of the data source (electronic health records). The prompt notes that the differential capture is due to the **diagnostic workup process** for dementia. In epidemiology, this is a classic scenario for **correlated measurement errors** or **surveillance bias**. If the diagnostic workup for the outcome (",
+        "latency_s": 24.1,
+        "input_tokens": 381,
+        "output_tokens": 159,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:33:35.444872",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 4.36,
+        "input_tokens": 142,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:33:46.905315",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D\n\nTo find the observed exposure prevalence and odds ratio, we calculate the number of individuals classified as exposed in each group based on the provided sensitivity and specificity.\n\n**1. Cases (Total = 1,000, True Exposed = 300, True Unexposed = 700):**\n*   Sensitivity = 95%: True exposed classified as exposed = $300 \\times 0.95 = 285$\n*   Specificity = 85%: True unexposed classified as unexposed = $700 \\times 0.85 = 595$\n*   True unexposed classified as exposed (False Positives) = $700 - 595 = 105$\n*   Total observed exposed cases ($A_{obs}$) = $285 + 105 = 390$\n*   Total observed unexposed cases ($B_{obs}$) = $1,000 - 390 = 610$\n*   Observed prevalence in cases = $390 / 1,000 = 39\\%$\n\n**2. Controls (Total = 1,000, True Exposed = 300, True Unexposed = 700):**\n*   Sensitivity = 80%: True exposed classified as exposed = $300 \\times 0.80 = 240$\n*   Specificity = 95%: True unexposed classified as unexposed = $700 \\times 0.95 = 665$\n*   True unexposed classified as exposed (False Positives) = $700 - 665 = 35$\n*   Total observed exposed controls ($C_{obs}$) = $240 + 35 = 275$\n*   Total observed unexposed controls ($D_{obs}$) = $1,000 - 275 = 725$\n*   Observed prevalence in controls = $275 / 1,000 = 27.5\\% \\approx 28\\%$\n\n**3. Observed Odds Ratio ($OR_{obs}$):**\n*   $OR_{obs} = \\frac{A_{obs} / B_{obs}}{C_{obs} / D_{obs}} = \\frac{390 / 610}{275 / 725} \\approx \\frac{0.6393}{0.3793} \\approx 1.685$\n\nRounding the results:\n*   Observed prevalence: Cases $\\approx 39\\%$, Controls $\\approx 28\\%$\n*   Observed OR $\\approx 1.70$\n\nThis demonstrates that differential misclassification can create a spurious association (OR = 1.70) where the true association is null (OR = 1.0).",
+        "latency_s": 10.41,
+        "input_tokens": 290,
+        "output_tokens": 634,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:34:09.897706",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct assessment is C.\n\nAnalyst 1 relies on a common but oversimplified assumption in epidemiology that recall bias (a form of differential misclassification) always inflates the odds ratio (OR). While it is true that if cases have higher sensitivity and lower specificity than controls, the OR will be inflated, this specific pattern of misclassification is not guaranteed by the mere presence of \"recall incentives.\"\n\nAnalyst 2 correctly points out that:\n1.  **Direction of Bias:** Differential misclassification of a binary exposure can bias the OR in either direction (toward or away from the null). The direction and magnitude of the bias depend on the specific values of sensitivity and specificity in both the case and control groups.\n2.  **Recall Incentives vs. Actual Misclassification:** The fact that",
+        "latency_s": 21.95,
+        "input_tokens": 419,
+        "output_tokens": 164,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:34:15.469987",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 4.53,
+        "input_tokens": 242,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:34:21.876904",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 5.37,
+        "input_tokens": 268,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:34:32.416750",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B",
+        "latency_s": 9.5,
+        "input_tokens": 169,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:34:39.800927",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 6.35,
+        "input_tokens": 441,
+        "output_tokens": null,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:34:45.186251",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 4.35,
+        "input_tokens": 428,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:34:50.933450",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 4.7,
+        "input_tokens": 286,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:34:58.230364",
+        "api_model": "gemini-3-flash-preview",
+        "content": "D",
+        "latency_s": 6.25,
+        "input_tokens": 402,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:35:21.066618",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG provided is:\n1. $X \\to T, X \\to Y$\n2. $S \\to T, S \\to Y$\n3. $U \\to S, U \\to Y$\n4. $T \\to Y$\n5. $X \\to S$\n\nThe analysis described involves a common methodological error in epidemiology: **immortal time bias** (or more generally, selection bias). By classifying person-time before treatment initiation ($T$) as \"untreated\" and conditioning on survival to initiation ($S=1$) for the treated group, the analysis creates a selection mechanism.\n\nIn the DAG:\n- $S$ is a parent of $T$ (survival is required for treatment).\n- $U$ is an",
+        "latency_s": 21.81,
+        "input_tokens": 132,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:35:42.268873",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **B**.\n\nHere is the step-by-step calculation:\n\n1.  **Identify the Immortal Time:** The 8 months it takes for the 800 statin users to fill their 6th prescription is \"immortal time\" because, by definition, no events could have occurred during this period for them to remain in the \"statin user\" group.\n2.  **Calculate the Original (Biased) Rates:**\n    *   Statin user rate: $96 \\text{ events} / (800 \\text{ patients} \\times 60 \\text{ months}) = 96 / 48,000 = 2.0$ per 1,000 person-months.\n",
+        "latency_s": 20.13,
+        "input_tokens": 428,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:36:07.028222",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The study design described suffers from two distinct types of bias.\n\n1.  **Immortal Time Bias (Analyst 1):** Because \"users\" are defined as those who filled 4+ prescriptions, they must survive long enough to receive those prescriptions. If follow-up begins at diagnosis, the time between diagnosis and the 4th prescription is \"immortal\" because the patient must be alive to reach that status. Analyst 1's landmark approach (starting follow-up at the 4th prescription and matching with a control alive at that time) is a standard method to eliminate this bias.\n\n2.  **Informative Censoring (Analyst 2):** Even after fixing immortal time bias, a new problem arises if the study censors patients who discontinue the medication.",
+        "latency_s": 23.68,
+        "input_tokens": 387,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:36:13.492841",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 5.4,
+        "input_tokens": 290,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:36:26.142653",
+        "api_model": "gemini-3-flash-preview",
+        "content": "B\n\nThe researchers' claim that the ecological fallacy is eliminated simply by changing the unit of analysis to the individual is incorrect. While the outcome (asthma) and some covariates (income, age) are measured at the individual level, the exposure (PM2.5) remains a group-level (tract-level) average. \n\nThis design, often called a \"semi-individual\" or \"multilevel\" study, still suffers from a form of ecological bias. Because every child in a given census tract is assigned the same exposure value, the model cannot account for within-tract variation in PM2.5 (e.g., a child living next to a highway versus a child living near a park in the same tract). Furthermore, the tract-level PM2.5 measure may act as a proxy for other unmeasured tract-level variables (like neighborhood-level poverty or proximity to industrial zones) that are associated with asthma, leading to confounding that is characteristic of ecological studies. Therefore, the regression coefficient for PM2.5 may still reflect group-level associations rather than a true individual-level exposure-response relationship.",
+        "latency_s": 11.56,
+        "input_tokens": 324,
+        "output_tokens": 230,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:36:38.873859",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C\n\nThe correct statement is **C**.\n\n**Reasoning:**\n1.  **Confounding by $U_g$:** In the provided DAG, $U_g$ is an unmeasured group-level variable that influences both the individual treatment $T_i$ and the individual outcome $Y_i$. When these are aggregated, $U_g$ remains a confounder for the relationship between the group means $T_{g\\_mean}$ and $Y_{g\\_mean}$. Because $U_g$ is unmeasured and not adjusted for, the group-level slope will be biased.\n2.  **Omitted Variable $C_g$:** $C_g$ is a group-level variable that affects $Y_{g\\_mean}$. If $C_g$ is correlated with $T_{g\\_mean}$ (which is often the case in observational group-level data, even if not explicitly drawn as a path), its omission contributes to bias.\n3.  **Ecological Fallacy:** Statement A is incorrect because group-level associations (ecological effects) often differ from individual-level causal effects due to aggregation bias and confounding. Statement D is a classic misconception; group-level analysis is frequently biased for individual-level effects. Statement B is incorrect because even if $C_g$ were independent, the unmeasured $U_g$ still acts as a confounder.",
+        "latency_s": 11.64,
+        "input_tokens": 168,
+        "output_tokens": 291,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:36:58.448944",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **C**.\n\nTo determine the result of the ecological analysis, we first calculate the overall heart disease (HD) rate for each region:\n\n1.  **Region A:** $(0.60 \\times 0.08) + (0.40 \\times 0.12) = 0.048 + 0.048 = 9.6\\%$\n2.  **Region B:** $(0.40 \\times 0.10) + (0.60 \\times 0.14) = 0.040 + 0.084 = 12.4\\%$\n3.  **Region C:** $(0.80 \\times 0.06",
+        "latency_s": 18.49,
+        "input_tokens": 421,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:37:22.743067",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct assessment is **C**.\n\nBoth analysts identify well-recognized statistical and methodological issues that complicate the interpretation of these correlations:\n\n1.  **Analyst 1** correctly identifies the **ecological fallacy**, where aggregate-level correlations (district-level) are often much stronger than individual-level correlations because the aggregation conflates the variable of interest (class size) with powerful confounding factors at the same level (e.g., district wealth, tax base, and socioeconomic composition). They also correctly mention the **Modifiable Areal Unit Problem (MAUP)**, which notes that the results of aggregate analyses are sensitive to how the boundaries of the units (districts) are drawn.\n\n2.  **Analyst 2** correctly identifies **within-district sorting** (selection bias). In many districts",
+        "latency_s": 23.23,
+        "input_tokens": 445,
+        "output_tokens": 164,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:37:27.887779",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 4.06,
+        "input_tokens": 292,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:37:53.200235",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **B**.\n\n**Explanation:**\nThis scenario describes a common pitfall in clinical trial analysis: subgrouping by the same variable used for study inclusion (baseline LDL > 160 mg/dL).\n\n1.  **Regression to the Mean (RTM):** When patients are selected based on an extreme value (like high LDL), their subsequent measurements will, on average, be closer to the population mean simply due to statistical variation and measurement noise.\n2.  **Differential RTM in Subgroups:** While the randomized control group accounts for RTM in the *overall* sample, subdividing the sample by the baseline value creates subgroups with different \"strengths\" of RTM. The more extreme subgroup (>190 mg/dL) will naturally experience a much larger",
+        "latency_s": 24.23,
+        "input_tokens": 459,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:38:12.992320",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG provided is:\n1.  True $\\rightarrow$ Y0\n2.  e0 $\\rightarrow$ Y0\n3.  True $\\rightarrow$ Y1\n4.  e1 $\\rightarrow$ Y1\n5.  Y0 $\\rightarrow$ T\n6.  T $\\rightarrow$ Y1\n7.  U $\\rightarrow$ True\n8.  U $\\rightarrow$ T\n\nWe want to identify the non-causal paths from T to Y1 after conditioning on Y0 (due to selection and adjustment).\n\n**Step 1: Identify all non-causal paths from T to Y1.**\n-   Path 1: T $\\leftarrow$ Y0 $\\leftarrow$ True $\\rightarrow$ Y1\n-   Path 2:",
+        "latency_s": 18.71,
+        "input_tokens": 138,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "A"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:21:30.123193",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The DAG provided is:\n1.  True $\\rightarrow$ Y0\n2.  e0 $\\rightarrow$ Y0\n3.  True $\\rightarrow$ Y1\n4.  e1 $\\rightarrow$ Y1\n5.  Y0 $\\rightarrow$ T\n6.  T $\\rightarrow$ Y1\n7.  U $\\rightarrow$ True\n8.  U $\\rightarrow$ T\n\nTo find the non-causal paths from T to Y1, we look for all paths between T and Y1 that do not follow the direction of the arrows (excluding the causal path T $\\rightarrow$ Y1):\n-   **Path 1:** T $\\leftarrow$ Y0 $\\leftarrow$ True $\\rightarrow$ Y1\n-   **Path 2:** T $\\leftarrow$ U $\\rightarrow$ True $\\rightarrow$ Y1\n\nNow, we consider the effect of conditioning on Y0 (due to both selection and adjustment):\n-   **Path 1 (T $\\leftarrow$ Y0 $\\leftarrow$ True $\\rightarrow$ Y1):** In this path, Y0 is a non-collider (it is a mediator between True and T). Conditioning on a non-collider **closes** the path.\n-   **Path 2 (T $\\leftarrow$ U $\\rightarrow$ True $\\rightarrow$ Y1):** This path does not pass through Y0. The nodes on this path are U and True. Neither is a collider (U is a common cause of T and True; True is a common cause of Y0 and Y1, but on",
+        "latency_s": 37.21,
+        "input_tokens": 138,
+        "output_tokens": 326,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:38:20.491201",
+        "api_model": "gemini-3-flash-preview",
+        "content": "A",
+        "latency_s": 6.45,
+        "input_tokens": 381,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:38:43.961391",
+        "api_model": "gemini-3-flash-preview",
+        "content": "Based on the information provided, Analyst 1 correctly identifies the significant role of **Regression to the Mean (RTM)**. Given a test-retest reliability ($r$) of 0.70, a population mean ($\\mu$) of 200, and a selected group mean ($X$) of 260, the expected RTM is $(1 - 0.70) \\times (260 - 200) = 18$ mg/dL. This accounts for the vast majority of the observed 20 mg/dL drop.\n\nAnalyst 2, however, provides a more comprehensive critique by addressing the **stratified analysis** (the 28 mg/dL vs. 12 mg/dL findings). Stratifying by weight",
+        "latency_s": 22.42,
+        "input_tokens": 503,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:38:49.033580",
+        "api_model": "gemini-3-flash-preview",
+        "content": "C",
+        "latency_s": 4.04,
+        "input_tokens": 326,
+        "output_tokens": 1,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:38:57.536243",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The correct answer is **C**.\n\n**Analysis:**\nThe researchers are attempting to \"transport\" the results of an RCT from an academic setting to a community-oncology setting using Inverse Odds of Sampling Weights (IOSW). For this method to provide an unbiased estimate of the treatment effect in the target population, a key assumption must be met: **exchangeability** (or ignorability) of trial participation. This means that all factors that both differ between the trial and target populations and modify the treatment effect (effect modifiers) must be included in the weighting model.\n\nThe reviewer points out that several factors\u2014specialized supportive care, monitoring intensity, and prior-line treatment history\u2014differ between the two populations. If these unmeasured factors are also effect modifiers (which is highly plausible for immunotherapy), the IOSW procedure will fail to account for them. Consequently, the reweighted estimate (HR = 0.74) remains biased because it only corrects for distributional differences in the *measured* covariates (age, sex, ECOG, etc.), leaving the influence of the *unmeasured* effect modifiers unaddressed.\n\n*   **A** is incorrect because it assumes the adjustment was sufficient, ignoring the reviewer's valid point about unmeasured factors.\n*   **B** is incorrect because while reweighting does increase variance (widening the CI), the primary threat to the validity of the transportability claim is systematic bias from unmeasured modifiers.\n*   **D** refers to the \"positivity\" or \"overlap\" assumption. While extreme weights can cause instability, the reviewer\u2019s specific concern is about the *omission* of key variables, not necessarily the lack of overlap in the variables that *were* measured.",
+        "latency_s": 7.47,
+        "input_tokens": 458,
+        "output_tokens": 353,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:39:18.486779",
+        "api_model": "gemini-3-flash-preview",
+        "content": " T)$ still fails because of $U$.\n    *   If transportability fails, then D is the most logical answer.\n\n    *   Let's think if there's any reason $U$ wouldn't matter.\n    *   If we are transporting the *effect* $P(y | do(t))$, we need to relate $P^*(y | do(t))$ (target) to $P(y | do(t), S=s)$ (source).\n    *   The standard formula is $P^*(y | do(t)) = \\sum_v P(y | do(t), S=s, v) P^*(v)$.\n    *   This formula is valid if $(Y \\perp S | V, do(T))$.",
+        "latency_s": 19.91,
+        "input_tokens": 159,
+        "output_tokens": 163,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:39:36.896523",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The transported estimate is calculated by reweighting the subgroup-specific treatment effects from the trial using the proportions of those subgroups in the target population.\n\n1.  **Identify the subgroup-specific effects and target population proportions:**\n    *   Young, No degree: Effect = +12, Target % = 25% (0.25)\n    *   Young, Degree: Effect = +4, Target % = 15% (0.15)\n    *   Older, No degree: Effect = +8, Target % = 35% (0.35)\n    *   Older, Degree: Effect = +2, Target % = 25% (0.25)\n\n2.  **Calculate the weighted average for",
+        "latency_s": 17.38,
+        "input_tokens": 451,
+        "output_tokens": 162,
+        "auto_checks": {
+          "flags": [
+            "FAIL_COULD_NOT_EXTRACT_ANSWER"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": null,
+            "correct_answer": "C"
+          },
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T13:22:06.115434",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The transported estimate is calculated by reweighting the subgroup-specific treatment effects from the trial using the proportions of those subgroups in the target population.\n\n1.  **Identify the subgroup-specific treatment effects:**\n    *   Young, No degree: +12 pp\n    *   Young, Degree: +4 pp\n    *   Older, No degree: +8 pp\n    *   Older, Degree: +2 pp\n\n2.  **Identify the target population proportions:**\n    *   Young, No degree: 25% (0.25)\n    *   Young, Degree: 15% (0.15)\n    *   Older, No degree: 35% (0.35)\n    *   Older, Degree: 25% (0.25)\n\n3.  **Calculate the transported estimate:**\n    *   (0.25 * 12) + (0.15 * 4) + (0.35 * 8) + (0.25 * 2)\n    *   = 3.0 + 0.6 + 2.8 + 0.5\n    *   = 6.9 percentage points\n\n4.  **Evaluate the options:**\n    *   **A. 7.7 pp:** This is the original trial estimate.\n    *   **B. 9.2 pp:** This suggests an increase, but the calculation shows a decrease.\n    *   **C. 7",
+        "latency_s": 33.97,
+        "input_tokens": 451,
+        "output_tokens": 326,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:39:48.270228",
+        "api_model": "gemini-3-flash-preview",
+        "content": "The most defensible assessment is **B**.\n\n**Analysis:**\nThe debate centers on the **transportability** of causal effects from a trial population to a target population. \n\n1.  **Analyst 1** relies on the standard identification assumption for transportability: that all variables that both (a) differ in distribution between the trial and target populations and (b) modify the treatment effect (effect modifiers) have been measured and included in the model. While Analyst 1 correctly describes how Inverse-Odds-of-Sampling Weights (IOSW) work under these assumptions, the assumption that four patient-level demographics (age, sex, depression severity, insurance) capture all effect modification is highly optimistic and likely false.\n\n2.  **Analyst 2** correctly identifies a major threat to transportability: **unmeasured effect modifiers**, particularly those at the **setting level**. In community mental-health settings, factors such as therapist experience, fidelity to the treatment protocol, and patient social-support networks are known to influence the effectiveness of depression treatments. If these factors differ between the RCT sites (which often have high fidelity and highly trained staff) and the community setting, the IOSW estimate will be biased.\n\n3.  **Option B** is the most defensible because it acknowledges the validity of Analyst 2's critique and proposes the standard methodological remedy: **sensitivity analysis**. Since the assumption of \"ignorability\" (no unmeasured effect modifiers) is unverifiable, researchers should quantify how strong an unmeasured modifier would have to be to significantly change the study's conclusions.\n\n4.  **Other options:**\n    *   **A** is incorrect because setting-level factors are rarely uniform and frequently induce effect modification.\n    *   **C** is incorrect because IOSW *can* handle differences if they are measured, and the factors listed by Analyst 2 are indeed plausible effect modifiers, not just mediators.\n    *   **D** is incorrect because while Analyst 1's logic is internally consistent, Analyst 2's critique addresses the *validity* of the assumptions in a real-world context, which is the primary concern in transportability.\n\nConclusion: B",
+        "latency_s": 10.34,
+        "input_tokens": 398,
+        "output_tokens": 451,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-07T06:56:31.937509"
+  "updated": "2026-04-27T13:22:06.115467"
 }

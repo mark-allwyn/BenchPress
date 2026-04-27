@@ -5453,7 +5453,2309 @@
         "judge_score_avg": 5.0,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:15.784859",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.24,
+        "input_tokens": 310,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:22.317924",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe core issue is differential measurement error between treatment and control groups. If the job-training program with relocation assistance causes some participants to move out-of-state for employment, those successful participants disappear from the in-state UI records (appearing as \"unemployed\" in the data) while matched controls who remain in-state have their employment status fully captured. This creates a systematic undercount of treatment group successes, meaning the observed 11 percentage point advantage likely understates the true employment effect. The fact that all participants received the relocation module equally doesn't matter - what matters is that the treatment created differential propensities to move out-of-state compared to controls, leading to differential measurement coverage.\n\nA",
+        "latency_s": 5.48,
+        "input_tokens": 382,
+        "output_tokens": 153,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:33.510166",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find minimal sufficient adjustment sets to identify the total effect of T on Y, conditioning on S = 1.\n\nFirst, let me identify the paths from T to Y:\n1. T \u2192 Y (direct)\n2. T \u2192 M \u2192 Y (through M)\n\nNow I need to identify confounding paths (backdoor paths) from T to Y:\n1. T \u2190 U1 \u2192 L \u2192 Y\n2. T \u2190 L \u2192 Y\n\nSince we're conditioning on S = 1, I need to consider if this affects the analysis. Looking at the paths to S:\n- U2 \u2192 S\n- T \u2192 S  \n- Y \u2192 S\n\nConditioning on S = 1 creates potential collider bias since S is a collider (T \u2192 S \u2190 Y).\n\nTo block the backdoor paths:\n- T \u2190 U1 \u2192 L \u2192 Y: Need to block this path\n- T \u2190 L \u2192 Y: Need to block this path\n\nBoth paths can be blocked by conditioning on L.\n\nHowever, I need to check if conditioning on L creates any issues given that we're already conditioning on S = 1.\n\nThe minimal sufficient adjustment sets need to:\n1. Block all backdoor paths from T to Y\n2. Not block any causal paths from T to Y\n3. Not create collider bias\n\nPotential adjustment sets:\n- {L}: This blocks both backdoor paths T \u2190 U1 \u2192 L \u2192 Y and T \u2190 L \u2192 Y\n\nSince L blocks all backdoor paths and doesn't create additional bias, {L} is a valid minimal sufficient adjustment set.\n\nLet me verify there are no other minimal sets:\n- {} (empty set): Doesn't block the backdoor paths\n- Any superset of {L} wouldn't be minimal\n\nTherefore, there is exactly 1 minimal sufficient adjustment set: {L}.\n\nB",
+        "latency_s": 10.16,
+        "input_tokens": 127,
+        "output_tokens": 414,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:39.902456",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the employment rates if we could observe everyone, including those who left the state.\n\nGiven information:\n- Participants: 300 total (270 stayed, 30 left)\n- Non-participants: 300 total (210 stayed, 90 left)\n- In-state employment: 162/270 = 60% for participants, 105/210 = 50% for non-participants\n- Out-of-state employment rate: 72% for both groups\n\nFor Participants:\n- In-state employed: 162\n- Out-of-state employed: 30 \u00d7 0.72 = 21.6\n- Total employed: 162 + 21.6 = 183.6\n- Overall rate: 183.6/300 = 61.2%\n\nFor Non-participants:\n- In-state employed: 105\n- Out-of-state employed: 90 \u00d7 0.72 = 64.8\n- Total employed: 105 + 64.8 = 169.8\n- Overall rate: 169.8/300 = 56.6%\n\nThe gap would be 61.2% - 56.6% = 4.6 percentage points.\n\nThe original in-state-only gap was 60% - 50% = 10 percentage points.\n\nThe new gap (4.6 points) is roughly half the original gap (10 points), suggesting differential attrition substantially inflated the original estimate.\n\nC",
+        "latency_s": 5.35,
+        "input_tokens": 380,
+        "output_tokens": 348,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:47.240639",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe key issue here is that conditioning on outcome observability (being in-state) creates a post-treatment selection mechanism. Even with perfect pre-treatment matching, participants and controls who remain in-state may differ systematically because the treatment itself affected migration patterns. This creates a collider bias structure where treatment \u2192 migration \u2192 outcome observability, and conditioning on outcome observability opens a backdoor path that cannot be closed by pre-treatment methods.\n\nAnalyst 1 correctly identifies that this post-treatment selection is a distinct causal pathway that standard Rosenbaum bounds (which address pre-treatment confounding) do not cover. The migration-induced selection operates through a different mechanism than baseline unmeasured confounders.\n\nAnalyst 2's view that this can be absorbed into standard sensitivity analysis for unmeasured confounding conflates two different bias mechanisms operating at different temporal points in the causal structure.",
+        "latency_s": 6.29,
+        "input_tokens": 470,
+        "output_tokens": 194,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:53.754138",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe analysis suffers from two major methodological flaws that both bias the estimate downward:\n\n1. **Over-controlling bias**: Controlling for month-6 exercise frequency removes part of the drug's genuine causal effect, since the drug likely enables increased exercise by reducing early pain, which then contributes to further pain reduction.\n\n2. **Selection bias from differential dropout**: Restricting analysis to completers when 15% of placebo patients (citing worsening pain) vs. only 5% of drug patients dropped out creates a healthier, less representative placebo comparison group.\n\nBoth mechanisms work in the same direction to underestimate the drug's true total causal effect, making the 8% estimate likely a substantial understatement of the drug's genuine benefit.\n\nA",
+        "latency_s": 5.46,
+        "input_tokens": 343,
+        "output_tokens": 171,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:55.879004",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.07,
+        "input_tokens": 481,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:07.874117",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to identify the biasing paths for the indirect effect T \u2192 M1 \u2192 M2 \u2192 Y when restricting analysis to R = 1.\n\nFirst, let me map out the DAG:\n- T \u2192 M1, T \u2192 Y\n- M1 \u2192 M2\n- M2 \u2192 Y\n- U \u2192 M2, U \u2192 R\n- Y \u2192 R, X \u2192 R\n- X \u2192 M1, X \u2192 Y\n\nThe target indirect path is: T \u2192 M1 \u2192 M2 \u2192 Y\n\nSince we're conditioning on R = 1, I need to identify biasing paths that go through the collider R or other confounding paths.\n\nBiasing paths from T to Y (not through the desired mediator chain):\n1. T \u2192 Y (direct path - this is a biasing path for the indirect effect)\n2. T \u2192 M1 \u2190 X \u2192 Y (backdoor path through X)\n3. Paths involving the collider R: Since we condition on R = 1, this opens paths through R\n\nLooking at paths through R:\n- T \u2192 Y \u2192 R \u2190 U \u2192 M2 (this creates a biasing path T \u2192 Y \u2192 R \u2190 U \u2192 M2, but M2 is part of our mediator chain)\n- T \u2192 Y \u2192 R \u2190 X (creates connection between T and X)\n\nThe main biasing paths I need to block:\n1. T \u2192 Y (direct effect)\n2. T \u2192 M1 \u2190 X \u2192 Y (confounding through X)\n\nHowever, I cannot block the direct path T \u2192 Y by conditioning on Y (that would block the outcome). I also cannot block M2 since that's part of the mediator chain.\n\nConditioning on X would block the backdoor path T \u2192 M1 \u2190 X \u2192 Y.\n\nBut there's still the issue with the collider R and the direct path T \u2192 Y.\n\nSince we cannot block all biasing paths without interfering with the mediator chain (particularly the direct effect T \u2192 Y cannot be blocked by conditioning), no valid adjustment set exists.\n\nD",
+        "latency_s": 10.95,
+        "input_tokens": 144,
+        "output_tokens": 465,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:14.786858",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the ITT means under the sensitivity analysis assumption that dropouts had pain scores 2 points higher than their group's completer mean.\n\nGiven data:\n- Drug group: 200 total, 10 dropouts, 190 completers with mean = 3.2\n- Placebo group: 200 total, 40 dropouts, 160 completers with mean = 4.5\n\nUnder the sensitivity analysis:\n- Drug dropouts assumed pain score = 3.2 + 2 = 5.2\n- Placebo dropouts assumed pain score = 4.5 + 2 = 6.5\n\nCalculating ITT means:\n\nDrug group ITT mean:\n= (190 \u00d7 3.2 + 10 \u00d7 5.2) \u00f7 200\n= (608 + 52) \u00f7 200\n= 660 \u00f7 200\n= 3.30\n\nPlacebo group ITT mean:\n= (160 \u00d7 4.5 + 40 \u00d7 6.5) \u00f7 200\n= (720 + 260) \u00f7 200\n= 980 \u00f7 200\n= 4.90\n\nITT difference = 4.90 - 3.30 = 1.60 points\n\nThe completer-only difference was 4.5 - 3.2 = 1.3 points.\n\nThe ITT difference (1.60) is larger than the completer difference (1.3), suggesting that differential attrition (20% vs 5%) masked some of the drug's benefit.\n\nA",
+        "latency_s": 5.87,
+        "input_tokens": 386,
+        "output_tokens": 387,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:17.718740",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.88,
+        "input_tokens": 471,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:23.925542",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe scenario describes a classic case of collider bias that becomes amplified through multiple layers of conditioning.\n\nFirst, admission status is a \"collider\" - a common effect of both math and music aptitude. When we condition on admission (only looking at admitted students), we create a spurious negative correlation between math and music scores even if they're independent in the general population.\n\nSecond, scholarship status is another collider, being influenced by first-year GPA, which itself depends on both math and music aptitude. Further conditioning on scholarship status creates an additional layer of collider-induced bias, which explains why the negative correlation becomes even stronger in the scholarship subsample.\n\nThis is a textbook example of how successive conditioning on colliders amplifies spurious associations, making the artificial relationship appear stronger with each additional restriction.\n\nB",
+        "latency_s": 5.16,
+        "input_tokens": 321,
+        "output_tokens": 176,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:30.024206",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D\n\nThe researcher's reasoning is flawed because scholarship recipients represent a doubly-selected sample. Even though M and W are independent in the population, scholarship status is itself a collider (caused by both high M and high W). When she conditions on scholarship recipients, she's inducing the same type of spurious negative correlation that occurs when conditioning on any collider - those with lower M among scholarship recipients will tend to have higher W to compensate, and vice versa. This is a statistical artifact of the selection process, not a genuine trade-off among high-ability students.",
+        "latency_s": 5.06,
+        "input_tokens": 434,
+        "output_tokens": 123,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:37.685940",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find d-connecting paths between A and B when conditioning on C1 = 1 and D = 1.\n\nLet me identify all possible paths between A and B:\n\n1. A \u2192 C1 \u2190 B\n2. A \u2192 C2 \u2190 U \u2192 B\n3. A \u2192 C2 \u2192 D \u2190 B\n4. A \u2192 C1 \u2192 C2 \u2190 U \u2192 B\n5. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n\nNow I'll check which paths are d-connecting (open) when conditioning on C1 = 1 and D = 1:\n\nPath 1: A \u2192 C1 \u2190 B\n- C1 is a collider and we're conditioning on it\n- This path is OPEN\n\nPath 2: A \u2192 C2 \u2190 U \u2192 B\n- C2 is a collider and we're not conditioning on it\n- This path is BLOCKED\n\nPath 3: A \u2192 C2 \u2192 D \u2190 B\n- D is a collider and we're conditioning on it\n- This path is OPEN\n\nPath 4: A \u2192 C1 \u2192 C2 \u2190 U \u2192 B\n- C1 is conditioned on (not a collider on this path)\n- C2 is a collider and not conditioned on\n- This path is BLOCKED\n\nPath 5: A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n- C1 is conditioned on (not a collider on this path)\n- D is a collider and conditioned on\n- This path is OPEN\n\nTherefore, 3 paths are open: paths 1, 3, and 5.\n\nD",
+        "latency_s": 6.61,
+        "input_tokens": 122,
+        "output_tokens": 388,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:47.644221",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze how the scholarship filter affects the correlation between Math and Music scores.\n\nFirst, let me understand the setup:\n- Initial admission requires Math + Music \u2265 120\n- In the general population, Math and Music are independent (correlation = 0)\n- Among admitted students, there will be negative correlation due to collider bias (students with high math can have lower music and still get in, and vice versa)\n\nNow for scholarships:\n- Requires GPA > 3.5\n- GPA = 2.0 + 0.01\u00d7Math + 0.01\u00d7Music + noise\n- This means GPA > 3.5 requires: 0.01\u00d7Math + 0.01\u00d7Music + noise > 1.5\n- Or: Math + Music > 150 - 100\u00d7noise\n\nThe key insight is that the scholarship criterion effectively creates another constraint on Math + Music (adjusted for noise). Since noise has mean 0, on average this creates another floor constraint: Math + Music needs to be higher than in the admitted pool.\n\nWhen we have two floor constraints:\n1. Math + Music \u2265 120 (admission)\n2. Math + Music \u2265 ~150 (scholarship, on average)\n\nThe second constraint is more restrictive and creates an even stronger negative correlation. Students need even higher totals, so the trade-off between Math and Music becomes more pronounced.\n\nThis means among scholarship recipients, the correlation will be MORE negative than among all admitted students, because we're imposing an even stricter constraint on the sum.\n\nB",
+        "latency_s": 8.92,
+        "input_tokens": 462,
+        "output_tokens": 353,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:49.736458",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.04,
+        "input_tokens": 452,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:54.788240",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D\n\nThe strongest concern is that the congestion tax caused a simultaneous improvement in the treatment group (downtown) and worsening in the control group (suburbs). Electric buses replaced diesel buses downtown while diesel freight trucks were rerouted to suburban corridors. This means the treatment improved air quality downtown while simultaneously degrading air quality in the control area (suburbs), which would artificially inflate the difference-in-differences estimate beyond what the true causal effect of the tax would be if measured against a truly unaffected control group.",
+        "latency_s": 4.02,
+        "input_tokens": 378,
+        "output_tokens": 112,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:01.030530",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D\n\nThe key issue is that the critics specifically mentioned that the tax \"changed the vehicle mix at those locations\" - meaning the composition of traffic types changed, not just the volume. While controlling for traffic counts captures quantity changes, it doesn't address the compositional shift (e.g., more trucks vs. cars) that could have different per-vehicle emission rates. This compositional change could bias the control group's pollution levels in ways that simple traffic volume counts cannot capture, making the 13% estimate potentially unreliable despite the parallel pre-trends and significant traffic coefficient.",
+        "latency_s": 5.21,
+        "input_tokens": 399,
+        "output_tokens": 121,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:10.655468",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find the adjustment set that identifies the total effect of T on Y1 using only post-period data.\n\nLet me trace the paths from T to Y1:\n\n1. Direct path: T \u2192 Y1\n2. Backdoor paths through confounders:\n   - T \u2190 G \u2190 U \u2192 W \u2192 Y1\n   - T \u2190 G \u2190 P \u2192 Y0 (this doesn't lead to Y1, so not a backdoor path)\n\nSince we can only use post-period data, Y0 (pre-period outcome) cannot be used.\n\nFor the backdoor path T \u2190 G \u2190 U \u2192 W \u2192 Y1:\n- U is unmeasured, so we cannot condition on it\n- We can condition on G to block this path\n- We could also condition on W, but conditioning on G is sufficient\n\nLooking at the options:\n- A. {G, Y0}: Contains pre-period data (Y0), so not allowed\n- B. {G, W}: Both are post-period, G blocks the backdoor path\n- C. {G, W, P}: All post-period, but P is not necessary since G already blocks the path\n- D. {G, P}: Both post-period, G blocks the backdoor path, P is not necessary but doesn't hurt\n\nThe minimal sufficient adjustment set using only post-period data would be {G}, but since that's not an option, both B and D would work. However, D is more parsimonious than B since W is not needed once we condition on G.\n\nD",
+        "latency_s": 8.59,
+        "input_tokens": 141,
+        "output_tokens": 351,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:18.890448",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the expected PM2.5 readings based on fleet composition changes.\n\nGiven:\n- Diesel vehicles produce 50 mcg/m3 per unit traffic\n- Petrol vehicles produce 25 mcg/m3 per unit traffic\n\nPre-tax composition:\n- Downtown: 60% diesel, 40% petrol\n- Suburban: 40% diesel, 60% petrol\n\nPost-tax composition:\n- Downtown: 30% diesel, 70% petrol  \n- Suburban: 55% diesel, 45% petrol\n\nExpected readings from composition alone:\n\nDowntown post-tax expected:\n30% \u00d7 50 + 70% \u00d7 25 = 15 + 17.5 = 32.5 mcg/m3\n\nSuburban post-tax expected:\n55% \u00d7 50 + 45% \u00d7 25 = 27.5 + 11.25 = 38.75 mcg/m3\n\nLet me verify the pre-tax readings match:\nDowntown pre-tax: 60% \u00d7 50 + 40% \u00d7 25 = 30 + 10 = 40 mcg/m3 \u2713\nSuburban pre-tax: 40% \u00d7 50 + 60% \u00d7 25 = 20 + 15 = 35 mcg/m3 \u2713\n\nCompositional DiD:\n(32.5 - 40) - (38.75 - 35) = -7.5 - 3.75 = -11.25\n\nThis means fleet-mix changes alone would predict an 11.25 point reduction, which is larger than the observed 6-point DiD reduction.\n\nA",
+        "latency_s": 7.2,
+        "input_tokens": 680,
+        "output_tokens": 403,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:24.849298",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nBoth analysts identify real and distinct problems with the standard DiD approach. Analyst 1 correctly identifies a SUTVA violation - the treatment of downtown units (congestion tax) directly affects the outcomes of suburban control units through physical rerouting of trucks. Analyst 2 correctly identifies that the treatment fundamentally changes the composition of vehicles in both areas, violating the parallel trends assumption that relies on the pre-treatment relationship continuing.\n\nThese are complementary rather than competing frameworks. The rerouting mechanism simultaneously creates spillovers to control units AND changes the composition of pollution sources in ways that break the identifying assumption that pre-treatment trends would have continued. Both issues need to be addressed for valid causal inference.",
+        "latency_s": 4.91,
+        "input_tokens": 428,
+        "output_tokens": 153,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:27.203026",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.3,
+        "input_tokens": 358,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:31.072155",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C\n\nThe exclusion restriction requires that the instrument (prominent placement) affects the outcome (workouts) only through its effect on the treatment (AI coach activation). However, the motivational banner appeared for all users in the prominent-placement group regardless of whether they activated the coach, creating a direct pathway from the instrument to the outcome that bypasses the treatment variable. This violates the exclusion restriction and biases the IV estimate.",
+        "latency_s": 2.82,
+        "input_tokens": 407,
+        "output_tokens": 91,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:39.211286",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze whether {E, B} is a valid adjustment set for the total effect of T on Y.\n\nFirst, let me identify the paths from T to Y:\n1. T \u2192 Y (direct)\n2. T \u2192 B \u2192 Y (through mediator B)\n\nNow let me identify backdoor paths from T to Y:\n1. T \u2190 U1 \u2192 E \u2192 Y\n2. T \u2190 E \u2192 Y\n\nFor a valid adjustment set to estimate the total effect of T on Y, I need to:\n- Block all backdoor paths\n- NOT block any causal paths from T to Y\n\nAnalyzing the adjustment set {E, B}:\n\nBlocking backdoor paths:\n- T \u2190 U1 \u2192 E \u2192 Y: Blocked by conditioning on E \u2713\n- T \u2190 E \u2192 Y: Blocked by conditioning on E \u2713\n\nHowever, B is a post-treatment variable (mediator) on the causal path T \u2192 B \u2192 Y. Conditioning on B would block this mediating path, which means we wouldn't capture the total effect of T on Y.\n\nAdditionally, conditioning on B opens a collider path through U2: T \u2192 B \u2190 U2 \u2192 Y, which creates a spurious association between T and Y through U2.\n\nThe issue is that B is a post-treatment mediator, and conditioning on it blocks part of the causal effect we want to measure, while also potentially introducing bias through U2.\n\nA",
+        "latency_s": 7.09,
+        "input_tokens": 178,
+        "output_tokens": 327,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:47.966210",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the corrected increases for each segment by adjusting for the logging artifact.\n\nSegment 1 (AI coach early adopters):\n- Raw increase: 7.2 - 4.8 = 2.4 workouts/week\n- 40% is from logging changes, so 60% is genuine increase\n- Corrected increase: 2.4 \u00d7 0.60 = 1.44 workouts/week\n\nSegment 2 (AI coach late adopters):\n- Raw increase: 5.5 - 3.5 = 2.0 workouts/week\n- 30% is from logging changes, so 70% is genuine increase\n- Corrected increase: 2.0 \u00d7 0.70 = 1.40 workouts/week\n\nSegment 3 (Never adopted):\n- Increase: 2.4 - 2.1 = 0.3 workouts/week (no logging artifact)\n\nNow comparing the options:\n\nThe corrected increases are 1.44 and 1.40, which are very similar. Segment 3 increased by 0.3 without the AI coach, suggesting secular trends or other factors. The net effect attributable to the AI coach would be approximately:\n- Segment 1: 1.44 - 0.3 = 1.14\n- Segment 2: 1.40 - 0.3 = 1.10\n\nThis suggests the maximum attributable AI coach effect is about 1.1 workouts per week, net of secular trends.\n\nC",
+        "latency_s": 7.6,
+        "input_tokens": 515,
+        "output_tokens": 371,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:50.246328",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.23,
+        "input_tokens": 455,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:53.579877",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 2.28,
+        "input_tokens": 297,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:59.394366",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe key issue is that stratifying by a post-baseline variable (coping score measured at month 6) that is affected by treatment creates collider bias. Even though IPCW may successfully address the differential dropout problem by reweighting completers to resemble the original randomized population, the subsequent stratification by a post-treatment variable that is influenced by the treatment introduces bias. This is because coping score is a collider - it's affected by treatment and also predicts the outcome, so conditioning on it (through stratification) opens up non-causal paths and distorts the treatment effect estimate.\n\nA",
+        "latency_s": 4.77,
+        "input_tokens": 295,
+        "output_tokens": 134,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:07.145950",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find all paths from T to Y and determine which non-causal (backdoor) paths remain open after conditioning on S = 1.\n\nFirst, let me identify all paths from T to Y:\n\n1. T \u2192 Y (direct causal path)\n2. T \u2192 S \u2190 X \u2192 Y (backdoor path through S and X)\n3. T \u2192 S \u2190 U \u2192 Y (backdoor path through S and U)\n4. T \u2192 S \u2192 F \u2192 Y (causal path through S and F)\n\nNow I need to check which paths are open after conditioning on S = 1:\n\nPath 1: T \u2192 Y\n- This is a direct causal path, always open\n- This is causal, not biasing\n\nPath 2: T \u2192 S \u2190 X \u2192 Y\n- After conditioning on S, this path becomes: T \u2192 S \u2190 X \u2192 Y\n- Conditioning on S (a collider on this path) opens this path\n- This is a backdoor/non-causal path from T to Y\n- This path is OPEN and BIASING\n\nPath 3: T \u2192 S \u2190 U \u2192 Y  \n- After conditioning on S, this path becomes: T \u2192 S \u2190 U \u2192 Y\n- Conditioning on S (a collider on this path) opens this path\n- This is a backdoor/non-causal path from T to Y\n- This path is OPEN and BIASING\n\nPath 4: T \u2192 S \u2192 F \u2192 Y\n- After conditioning on S, this path is blocked at S\n- This path is CLOSED\n\nTherefore, there are 2 non-causal (biasing) paths that are open after conditioning on S.\n\nC",
+        "latency_s": 6.7,
+        "input_tokens": 121,
+        "output_tokens": 381,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:12.328923",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe key issue here is differential attrition combined with post-treatment conditioning. The training group lost 40% of participants while the control group lost only 10%. This creates a selection bias problem - the remaining \"high engagers\" in the training group are likely a much more positively selected subset compared to the \"high engagers\" remaining in the control group. When you condition on engagement status among these differentially-selected survivors, you're comparing groups that are no longer comparable due to the selection process, which compounds the bias and likely overstates the treatment effect.",
+        "latency_s": 4.14,
+        "input_tokens": 454,
+        "output_tokens": 122,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:14.545322",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.17,
+        "input_tokens": 447,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:17.074542",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.48,
+        "input_tokens": 263,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:22.151105",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe critique in option A is most accurate. When conditioning on the mediator M (fitness), any unmeasured common causes of M and Y that are not fully captured by S will create bias in the direct effect estimate. This is because conditioning on M opens up backdoor paths through these unmeasured confounders (like genetic factors or chronic diseases that affect both fitness and healthcare costs), even though the main pathway T \u2192 M \u2192 Y is blocked. This is a fundamental issue in mediation analysis that goes beyond simply controlling for measured confounders of the treatment-outcome relationship.",
+        "latency_s": 4.02,
+        "input_tokens": 417,
+        "output_tokens": 123,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:33.147543",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find the minimal observed set that identifies the controlled direct effect of T on Y not through the chain M1 \u2192 M2.\n\nThe controlled direct effect of T on Y not through M1 \u2192 M2 means I want to block the path T \u2192 M1 \u2192 M2 \u2192 Y while keeping other paths from T to Y open.\n\nLet me identify all paths from T to Y:\n1. T \u2192 Y (direct path - want to keep this)\n2. T \u2192 M1 \u2192 M2 \u2192 Y (want to block this specific chain)\n\nTo block the path T \u2192 M1 \u2192 M2 \u2192 Y, I need to condition on either M1 or M2.\n\nNow I need to check for confounding. The backdoor paths from T to Y are:\n- T \u2190 X \u2192 Y (confounded by X)\n\nSo I need to control for X to handle confounding.\n\nIf I condition on {X, M1}:\n- This blocks T \u2192 M1 \u2192 M2 \u2192 Y (by conditioning on M1)\n- This controls for the confounder X\n- This leaves T \u2192 Y open\n\nIf I condition on {X, M2}:\n- This blocks T \u2192 M1 \u2192 M2 \u2192 Y (by conditioning on M2)\n- This controls for the confounder X\n- But M2 is affected by U (unmeasured), and U \u2192 M1 \u2190 T creates a potential issue\n- Also M2 \u2190 W, so we might need W as well\n\nLet me check option C: {X, M2, W}\n- Controls for X (confounder)\n- Controls for M2 (blocks the chain T \u2192 M1 \u2192 M2 \u2192 Y)\n- Controls for W (which affects M2)\n- But this might be more than minimal\n\nChecking option A: {X, M1}\n- Controls for X (handles T \u2190 X \u2192 Y confounding)\n- Controls for M1 (blocks T \u2192 M1 \u2192 M2 \u2192 Y)\n- This seems minimal and sufficient\n\nA",
+        "latency_s": 9.94,
+        "input_tokens": 145,
+        "output_tokens": 470,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:42.551768",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "Looking at this step by step:\n\n1. **Within each department**, participants consistently have lower cardiac event rates than non-participants (3% vs 5%, 7% vs 9%, 11% vs 14% - about 2-3 percentage point reductions).\n\n2. **The key confounding issue**: When pooling departments, the analyst is mixing groups with vastly different baseline risk levels:\n   - High-income dept: 3-5% event rates\n   - Medium-income dept: 7-9% event rates  \n   - Low-income dept: 11-14% event rates\n\n3. **The bias mechanism**: \n   - High-income participants get large fitness gains (8 units) AND have low event rates (3%)\n   - Low-income participants get smaller fitness gains (6 units) AND have high event rates (11%)\n   - This creates a spurious correlation between fitness and events that's actually driven by income/department differences\n\n4. **What happens when controlling for fitness**: The analyst is trying to partial out fitness effects, but the fitness variable is confounded with department income. This makes it appear that fitness explains all the program benefit, when actually the department-level differences in baseline risk are driving the apparent fitness-outcome relationship.\n\nThe consistent 2-3 percentage point benefit within each department suggests a real direct effect beyond fitness, but pooling without adjusting for income/department masks this.\n\n**C**",
+        "latency_s": 8.33,
+        "input_tokens": 488,
+        "output_tokens": 317,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:44.984379",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.36,
+        "input_tokens": 417,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:51.386740",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe scenario involves two distinct but interacting biases. Confounding by indication means sicker patients (who would naturally have worse outcomes) were preferentially assigned to surgery, biasing results against the surgical intervention. Differential attrition compounds this problem because patients with more advanced disease - who are already overrepresented in the surgical group - are more likely to be lost to follow-up. This creates a complex interaction where the sicker surgical patients are both more likely to have poor outcomes AND more likely to drop out before those outcomes are measured. These biases work together in ways that neither would produce independently, creating a distorted comparison that cannot be attributed to either bias alone.",
+        "latency_s": 5.36,
+        "input_tokens": 285,
+        "output_tokens": 144,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:57.460619",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe Rosenbaum bounds analysis only addresses sensitivity to unmeasured baseline confounders that could have influenced treatment assignment. However, it does not address the substantial differential attrition occurring after treatment initiation (34% vs 14% early dropout). This differential post-treatment attrition creates a different type of bias: if the reasons patients drop out early differ systematically between treatment arms in ways that correlate with long-term survival potential, then the patients being compared at 5 years are no longer from the originally balanced matched cohorts. The survivors at 5 years may represent different selected subpopulations from each treatment arm, undermining the causal interpretation regardless of how robust the analysis is to baseline unmeasured confounding.",
+        "latency_s": 5.02,
+        "input_tokens": 459,
+        "output_tokens": 160,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:10.066002",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find a valid adjustment set to identify the total effect of T on Y when restricting to R = 1.\n\nLet me analyze the causal structure:\n- U1 \u2192 I, I \u2192 T, I \u2192 Y, T \u2192 Y\n- U2 \u2192 R, Y \u2192 R, T \u2192 R\n- S \u2192 I, S \u2192 Y\n\nThe paths from T to Y are:\n1. T \u2192 Y (direct)\n2. T \u2192 R \u2190 Y (collider path, blocked)\n3. T \u2190 I \u2190 U1 \u2192 I \u2192 Y (blocked by collider at I)\n\nWait, let me reconsider the structure. From the description:\n- U1 \u2192 I \u2192 T \u2192 Y\n- U1 \u2192 I \u2192 Y  \n- T \u2192 Y\n- T \u2192 R \u2190 Y \u2190 U2\n- T \u2192 R \u2190 U2\n- S \u2192 I, S \u2192 Y\n\nBackdoor paths from T to Y:\n1. T \u2190 I \u2190 U1 \u2192 ... (need to trace this)\n2. T \u2190 I \u2190 S \u2192 Y\n\nSince we're conditioning on R = 1, we're conditioning on a collider (R \u2190 T, R \u2190 Y, R \u2190 U2), which opens paths through R.\n\nFor backdoor criterion, I need to block all backdoor paths from T to Y:\n- T \u2190 I \u2190 S \u2192 Y (blocked by adjusting for I or S)\n- T \u2190 I \u2190 U1 (U1 unmeasured, but I can adjust for I)\n\nSince R is a collider and we're conditioning on it, this creates additional confounding. The path T \u2192 R \u2190 Y means conditioning on R = 1 creates a spurious association.\n\nLooking at the options:\n- Need to adjust for confounders while accounting for selection bias from R = 1\n- {I, S} would block the backdoor path T \u2190 I \u2190 S \u2192 Y\n- But conditioning on R = 1 creates selection bias\n\nGiven the selection on collider R and unmeasured confounders, identification becomes problematic.\n\nD",
+        "latency_s": 11.54,
+        "input_tokens": 141,
+        "output_tokens": 484,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:12.718622",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A",
+        "latency_s": 1.6,
+        "input_tokens": 520,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:15.309039",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.53,
+        "input_tokens": 445,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:19.308590",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe strongest concern is that restricting to admitted students creates collider bias (since admission depends on both test score submission and other student qualities), and then controlling for post-admission variables like GPA and major introduces additional post-treatment bias. This creates a compounding of statistical problems that severely threatens causal inference.",
+        "latency_s": 2.93,
+        "input_tokens": 266,
+        "output_tokens": 68,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:25.196659",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe concern in option B is most justified. Financial aid package and first-year course load are post-treatment variables that could be mediators of the policy effect. The test-optional policy may influence how financial aid is distributed or what course loads students take, which in turn affects graduation rates. By conditioning on these variables in the outcome equation, the researchers may be controlling away part of the causal pathway through which the policy affects graduation rates, leading to an underestimate of the total effect. This is a classic \"bad controls\" problem that the Heckman correction for selection into admission cannot address, since it only corrects for compositional changes in who gets admitted, not for how the policy affects post-admission pathways to graduation.",
+        "latency_s": 4.82,
+        "input_tokens": 408,
+        "output_tokens": 156,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:35.373567",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze which variables, when controlled for, would introduce NEW bias beyond the selection bias already present from conditioning on Z=1.\n\nFirst, let me identify the selection bias from Z=1. Since Z is a collider (T\u2192Z\u2190Y), conditioning on Z=1 opens a backdoor path between T and Y through Z, creating selection bias.\n\nNow I need to check each variable to see if controlling for it introduces additional bias:\n\nFor X: X is a common cause of T and Y (X\u2192T, X\u2192Y). Controlling for X would actually help block confounding, not introduce new bias.\n\nFor W: W is on the causal path T\u2192W\u2192Y, so controlling for W would block this legitimate causal pathway from T to Y. However, more importantly, W is a collider on the path U\u2192W\u2190T. If we don't control for W, this path is blocked. But if we control for W, we open up this path, potentially introducing bias through U (which affects Y directly: U\u2192Y).\n\nFor Z: We're already conditioning on Z=1 by selection, so additionally controlling for Z doesn't introduce NEW bias - the bias is already there.\n\nThe key insight is that controlling for W opens the collider W (on path U\u2192W\u2190T) and creates a new backdoor path involving the unmeasured confounder U, introducing bias beyond what already exists from selection on Z.\n\nA",
+        "latency_s": 9.11,
+        "input_tokens": 121,
+        "output_tokens": 315,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:41.200816",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe key issue is that non-submitters had a much lower admission rate (22% vs 35%), meaning they had to clear a higher bar to be admitted. This creates a selection bias where admitted non-submitters likely have stronger unmeasured qualities. When you control for post-admission variables like GPA and major choice, you're controlling for \"colliders\" - variables that are influenced by both the treatment (test submission status) and unmeasured confounders (student ability/motivation). This creates collider bias that makes it impossible to isolate the true policy effect from the selection effect.",
+        "latency_s": 4.79,
+        "input_tokens": 503,
+        "output_tokens": 129,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:43.483413",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.2,
+        "input_tokens": 378,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:45.913472",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.36,
+        "input_tokens": 346,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:48.190499",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.2,
+        "input_tokens": 453,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:58.285695",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find the minimal adjustment sets to identify the total effect of T on Y in this DAG.\n\nLet me first map out the structure:\n- U (unmeasured) \u2192 G, C\n- G (observed) \u2192 T, Y, C\n- C (observed) \u2192 T, Y\n- T \u2192 Y\n\nTo identify the total effect of T on Y, I need to block all backdoor paths from T to Y while not blocking any causal paths from T to Y.\n\nThe direct path T \u2192 Y should remain open.\n\nLet me identify backdoor paths from T to Y:\n1. T \u2190 G \u2192 Y\n2. T \u2190 G \u2190 U \u2192 C \u2192 Y\n3. T \u2190 C \u2192 Y\n4. T \u2190 C \u2190 U \u2192 G \u2192 Y\n\nNow I need to find minimal sets that block all these backdoor paths:\n\nOption 1: Adjust for {G}\n- Blocks T \u2190 G \u2192 Y \u2713\n- Blocks T \u2190 G \u2190 U \u2192 C \u2192 Y \u2713 (blocks at G)\n- Does NOT block T \u2190 C \u2192 Y \u2717\n- Does NOT block T \u2190 C \u2190 U \u2192 G \u2192 Y \u2717\n\nOption 2: Adjust for {C}\n- Does NOT block T \u2190 G \u2192 Y \u2717\n- Does NOT block T \u2190 G \u2190 U \u2192 C \u2192 Y \u2717\n- Blocks T \u2190 C \u2192 Y \u2713\n- Blocks T \u2190 C \u2190 U \u2192 G \u2192 Y \u2713 (blocks at C)\n\nOption 3: Adjust for {G, C}\n- Blocks T \u2190 G \u2192 Y \u2713\n- Blocks T \u2190 G \u2190 U \u2192 C \u2192 Y \u2713\n- Blocks T \u2190 C \u2192 Y \u2713\n- Blocks T \u2190 C \u2190 U \u2192 G \u2192 Y \u2713\n\nSince {G, C} blocks all backdoor paths, this is a valid adjustment set.\n\nNeither {G} alone nor {C} alone blocks all backdoor paths, so they are not valid.\n\nSince we need both G and C, and this is the minimal set that works, there is exactly 1 minimal adjustment set.\n\nB",
+        "latency_s": 9.03,
+        "input_tokens": 111,
+        "output_tokens": 503,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:06.809181",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to compare the adverse event rates within each age group and analyze the overall pattern.\n\nWithin-group comparisons:\n\nAge 18-40:\n- Drug P: 10%\n- Drug Q: 7.8%\nDrug Q is slightly better.\n\nAge 41-65:\n- Drug P: 20%\n- Drug Q: 22%\nDrug P is slightly better.\n\nAge 66+:\n- Drug P: 40%\n- Drug Q: 30%\nDrug Q is better.\n\nNow I need to examine the patient distribution:\n\nDrug P patients by age:\n- Young: 20/400 = 5%\n- Middle: 150/400 = 37.5%\n- Elderly: 230/400 = 57.5%\n\nDrug Q patients by age:\n- Young: 180/400 = 45%\n- Middle: 150/400 = 37.5%\n- Elderly: 70/400 = 17.5%\n\nThe key insight is that Drug P was prescribed predominantly to elderly patients (57.5% vs 17.5%), while Drug Q was prescribed more to younger patients (45% vs 5%). Since elderly patients have much higher adverse event rates regardless of drug (40% and 30%), this compositional difference inflates Drug P's aggregate rate.\n\nWithin age groups, the drugs perform similarly - Drug Q is better in 2 groups, Drug P is better in 1 group, but the differences are relatively modest compared to the large aggregate difference.\n\nB",
+        "latency_s": 7.46,
+        "input_tokens": 394,
+        "output_tokens": 347,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:09.052095",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.19,
+        "input_tokens": 466,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:15.265257",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe statement in option B is least supported because it incorrectly interprets the observed negative correlation as evidence of a \"genuine protective effect\" when the scenario clearly describes a collider bias situation. \n\nThe researchers are studying hospitalized patients, where both obesity and depression independently increase admission probability, making hospital admission a collider. This creates selection bias that can produce spurious associations that don't reflect true causal relationships. The fact that the association becomes even stronger when further restricting to complicated cases (another collider) suggests this is indeed bias amplification rather than a genuine protective effect.\n\nA large sample size and statistical significance don't validate causal interpretations when the study design introduces systematic bias through conditioning on colliders.",
+        "latency_s": 5.14,
+        "input_tokens": 279,
+        "output_tokens": 152,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:22.105560",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe key insight is that even within trauma patients, there's still a collider bias operating. While the initial trauma/injury itself may be independent of G and S, the decision to admit (versus discharge) trauma patients from the ED can still depend on both G and S. Patients with genetic variants associated with comorbidities or who are smokers may be more likely to be admitted for observation due to clinical concerns about complications, even for the same level of trauma. This creates a collider pathway: G \u2192 admission decision \u2190 S, conditional on having trauma. So conditioning on hospitalization (admission) still introduces bias even within the trauma subgroup.\n\nA",
+        "latency_s": 5.77,
+        "input_tokens": 418,
+        "output_tokens": 141,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:30.192199",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find the number of open d-connecting paths between A and B after conditioning on S = 1.\n\nFirst, let me identify all possible paths between A and B:\n\n1. A \u2192 H \u2190 B\n2. A \u2192 S \u2190 H \u2190 B\n3. A \u2192 S \u2190 K \u2190 U \u2192 B\n4. A \u2192 K \u2190 U \u2192 B\n\nNow I need to check which paths are d-connecting (open) after conditioning on S = 1.\n\nPath 1: A \u2192 H \u2190 B\n- This is a collider at H\n- H is not conditioned on, and none of its descendants are conditioned on\n- This path is BLOCKED\n\nPath 2: A \u2192 S \u2190 H \u2190 B\n- There's a collider at S, and we're conditioning on S = 1\n- This opens the collider at S\n- There's also a collider at H, but H is not conditioned on\n- The collider at H blocks this path\n- This path is BLOCKED\n\nPath 3: A \u2192 S \u2190 K \u2190 U \u2192 B\n- There's a collider at S, and we're conditioning on S = 1\n- This opens the collider at S\n- There's a collider at K, but K is not conditioned on\n- However, K has a descendant S which is conditioned on, so the collider at K is opened\n- This path is OPEN\n\nPath 4: A \u2192 K \u2190 U \u2192 B\n- There's a collider at K\n- K is not conditioned on, but its descendant S is conditioned on\n- This opens the collider at K\n- This path is OPEN\n\nTherefore, there are 2 open d-connecting paths between A and B after conditioning on S = 1.\n\nC",
+        "latency_s": 7.01,
+        "input_tokens": 112,
+        "output_tokens": 407,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:38.939134",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the number of hospitalized patients with both diseases and determine the association between diseases A and B in the hospital sample.\n\nFirst, let me determine the population distribution among 100,000 people:\n- Both diseases: 0.1 \u00d7 0.1 \u00d7 100,000 = 1,000 people\n- Only Disease A: 0.1 \u00d7 0.9 \u00d7 100,000 = 9,000 people  \n- Only Disease B: 0.9 \u00d7 0.1 \u00d7 100,000 = 9,000 people\n- Neither disease: 0.9 \u00d7 0.9 \u00d7 100,000 = 81,000 people\n\nNext, I'll calculate hospitalizations for each group:\n- Both diseases: 1,000 \u00d7 0.4 = 400 hospitalized\n- Only Disease A: 9,000 \u00d7 0.2 = 1,800 hospitalized\n- Only Disease B: 9,000 \u00d7 0.2 = 1,800 hospitalized\n- Neither disease: 81,000 \u00d7 0.05 = 4,050 hospitalized\n\nTotal hospitalized: 400 + 1,800 + 1,800 + 4,050 = 8,050\n\nNow I'll find the prevalence of each disease among hospitalized patients:\n- Disease A prevalence in hospital = (400 + 1,800) / 8,050 = 2,200 / 8,050 \u2248 0.273\n- Disease B prevalence in hospital = (400 + 1,800) / 8,050 = 2,200 / 8,050 \u2248 0.273\n\nIf diseases were independent in the hospital sample, expected joint prevalence would be:\n0.273 \u00d7 0.273 \u2248 0.0745\n\nObserved joint prevalence in hospital sample:\n400 / 8,050 \u2248 0.0497\n\nRatio = Observed / Expected = 0.0497 / 0.0745 \u2248 0.67\n\nThe answer shows about 400 patients have both diseases, and the ratio is approximately 0.67, indicating a spurious negative association.\n\nD",
+        "latency_s": 7.68,
+        "input_tokens": 261,
+        "output_tokens": 536,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:41.446389",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.43,
+        "input_tokens": 458,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:48.784038",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "Looking at this DAG, I need to trace the paths between T and Y and understand what happens when we condition on U.\n\nThe DAG shows:\n- P1 \u2192 T\n- P1 \u2192 U  \n- P2 \u2192 U\n- P2 \u2192 Y\n- T \u2192 Y\n\nLet me identify the paths from T to Y:\n\n1. Direct path: T \u2192 Y (causal path we want to estimate)\n2. Backdoor path: T \u2190 P1 \u2192 U \u2190 P2 \u2192 Y\n\nIn the backdoor path T \u2190 P1 \u2192 U \u2190 P2 \u2192 Y, U is a collider because it has two arrows pointing into it (from P1 and P2). \n\nInitially, this backdoor path is blocked because U is a collider, and colliders naturally block paths unless we condition on them.\n\nWhen we adjust for (condition on) U, we open this previously blocked collider path. This creates a spurious association between T and Y through the path T \u2190 P1 \u2192 U \u2190 P2 \u2192 Y that wasn't there before conditioning.\n\nThis means adjusting for U introduces bias rather than reducing it, because it opens a non-causal path between T and Y.\n\nC",
+        "latency_s": 6.26,
+        "input_tokens": 378,
+        "output_tokens": 279,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:56.869131",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "Looking at this DAG structure:\n- W -> T, W -> L\n- N -> L, N -> Y  \n- T -> Y\n\nI need to identify what happens when we control for L.\n\nFirst, let me check if there are any backdoor paths from T to Y that need blocking:\nThe only potential backdoor path would be T \u2190 W \u2192 L \u2190 N \u2192 Y\n\nHowever, this path is already blocked at L because L is a collider (both W and N point into it). In causal graphs, colliders naturally block paths - no adjustment is needed.\n\nNow, what happens when we condition on L?\nWhen we control for the collider L, we open the previously blocked path T \u2190 W \u2192 L \u2190 N \u2192 Y. This creates a spurious association between T and Y through this non-causal pathway.\n\nBefore adjustment: The path T \u2190 W \u2192 L \u2190 N \u2192 Y was blocked (no bias from this source)\nAfter adjustment: The path T \u2190 W \u2192 L \u2190 N \u2192 Y becomes open (introduces bias)\n\nSince L is a collider and there were no open backdoor paths requiring adjustment, controlling for L is harmful - it introduces bias rather than removing it.\n\nB",
+        "latency_s": 7.01,
+        "input_tokens": 433,
+        "output_tokens": 269,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:06.221181",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find the minimal sufficient adjustment set for the total effect of T on Y.\n\nFirst, let me identify all paths from T to Y:\n1. T \u2192 Y (direct causal path)\n2. T \u2190 U1 \u2192 C1 \u2190 U2 \u2192 Y (backdoor path)\n3. T \u2190 U3 \u2192 C2 \u2192 Y (backdoor path)\n4. T \u2190 C3 \u2192 Y (backdoor path)\n\nNow I need to identify which backdoor paths need to be blocked:\n\nPath 2: T \u2190 U1 \u2192 C1 \u2190 U2 \u2192 Y\nThis path has a collider at C1 (U1 \u2192 C1 \u2190 U2), so it's already blocked and doesn't need adjustment.\n\nPath 3: T \u2190 U3 \u2192 C2 \u2192 Y\nThis is an open backdoor path that needs to be blocked. I can block it by conditioning on C2.\n\nPath 4: T \u2190 C3 \u2192 Y\nThis is an open backdoor path that needs to be blocked. I can block it by conditioning on C3.\n\nSo I need to condition on both C2 and C3 to block all backdoor paths.\n\nChecking if {C2, C3} is sufficient:\n- Blocks path 3: T \u2190 U3 \u2192 C2 \u2192 Y \u2713 (conditioning on C2)\n- Blocks path 4: T \u2190 C3 \u2192 Y \u2713 (conditioning on C3)\n- Path 2 is already blocked by collider at C1 \u2713\n\nChecking if this is minimal:\n- Can't remove C2: Path 3 would remain open\n- Can't remove C3: Path 4 would remain open\n\nTherefore, {C2, C3} is the minimal sufficient adjustment set.\n\nC",
+        "latency_s": 8.27,
+        "input_tokens": 151,
+        "output_tokens": 425,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:16.110207",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze the causal structure and the effect of conditioning on the collider C.\n\nGiven structure:\n- T = 0.6*P1 + eT\n- C = -0.5*P1 + 0.5*P2 + eC  \n- Y = 0.7*P2 + eY\n- True causal effect of T on Y is zero\n\nFirst, let me identify the causal structure:\n- P1 affects T and C\n- P2 affects C and Y\n- C is a collider (P1 \u2192 C \u2190 P2)\n- There's a path: T \u2190 P1 \u2192 C \u2190 P2 \u2192 Y\n\nFor the unadjusted regression:\nThere's no direct causal path from T to Y, and no backdoor confounding path (P1 doesn't affect Y directly, and P2 doesn't affect T directly). The path T \u2190 P1 \u2192 C \u2190 P2 \u2192 Y is blocked at the collider C. So the unadjusted regression should give a coefficient near zero.\n\nFor the adjusted regression (conditioning on C):\nWhen we condition on collider C, we open the path T \u2190 P1 \u2192 C \u2190 P2 \u2192 Y. This creates a spurious association between T and Y through the opened collider path.\n\nNow I need to determine the sign of this spurious association:\n- T increases with P1 (coefficient +0.6)\n- C decreases with P1 (coefficient -0.5) and increases with P2 (coefficient +0.5)\n- Y increases with P2 (coefficient +0.7)\n\nWhen conditioning on C, if T is high (due to high P1), then for C to remain at the same conditioned value, P2 must be higher (to compensate for P1's negative effect on C). Higher P2 leads to higher Y. This creates a positive spurious association between T and Y.\n\nThe answer is B.\n\nB",
+        "latency_s": 8.82,
+        "input_tokens": 398,
+        "output_tokens": 458,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:25.814514",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "Looking at this DAG, I need to trace the causal paths carefully.\n\nGiven: U1 -> T, U1 -> C, U2 -> C, U2 -> Y, T -> Y\nNo direct edges: U1 -> Y or U2 -> T\n\nLet me check for backdoor paths from T to Y:\n\nThe potential backdoor path would be: T <- U1 -> C <- U2 -> Y\n\nHowever, this path is naturally blocked at C because C is a collider (has arrows coming into it from both U1 and U2). Since there are no other backdoor paths (U1 doesn't connect to Y, and U2 doesn't connect to T), the crude T-Y association is already unbiased.\n\nAnalyst 1 is correct that:\n- No backdoor path is open initially\n- The crude association is unbiased\n- Conditioning on C (the collider) would open the blocked path T <- U1 -> C <- U2 -> Y\n- This creates bias where none existed before\n\nAnalyst 2's proxy reasoning would apply if there were open backdoor paths that needed to be controlled for. However, in this specific DAG, there are no open backdoor paths to begin with.\n\nThe key insight is that proxy adjustment is useful when you have confounding that you can't fully control for, but here there is no confounding in the crude association.\n\nC",
+        "latency_s": 8.64,
+        "input_tokens": 524,
+        "output_tokens": 317,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:31.088940",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe exclusion restriction requires that the instrument (random assignment) affects the outcome only through its effect on the treatment received. Here, assignment to surgery causes anxiety in those who refuse, and this anxiety independently worsens health outcomes regardless of which treatment they actually receive. This creates a direct pathway from assignment to outcomes that bypasses the actual treatment received, violating the exclusion restriction and potentially biasing the IV estimate.",
+        "latency_s": 4.24,
+        "input_tokens": 329,
+        "output_tokens": 89,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:35.170339",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe exclusion restriction requires that the instrument (random assignment) affects the outcome only through the treatment of interest (CBT receipt). Since all CBT-assigned patients receive text messages regardless of whether they attend sessions, the assignment affects depression outcomes through a direct pathway that bypasses actual CBT receipt. This violates the exclusion restriction fundamental to valid instrumental variable estimation, even though the other IV assumptions may hold.",
+        "latency_s": 3.04,
+        "input_tokens": 436,
+        "output_tokens": 88,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:44.789049",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to check the conditions for Z to be a valid instrument for T in estimating the causal effect of T on Y.\n\nFor Z to be a valid instrument, it must satisfy:\n1. Relevance: Z affects T\n2. Independence: Z is independent of unobserved confounders of T\u2192Y\n3. Exclusion restriction: Z affects Y only through T (no direct path Z\u2192Y except through T)\n\nLet me analyze the DAG:\n- Z \u2192 T \u2713 (relevance satisfied)\n- Z \u2192 W \u2192 Y (Z has a path to Y not through T)\n- U1 \u2192 Z and U1 \u2192 Y (Z shares confounder U1 with Y)\n- U2 \u2192 T and U2 \u2192 Y (T and Y share confounder U2)\n\nThe exclusion restriction is violated because Z \u2192 W \u2192 Y creates a direct path from Z to Y that doesn't go through T.\n\nEven if we condition on W to block the Z \u2192 W \u2192 Y path, we still have the problem that U1 \u2192 Z and U1 \u2192 Y, meaning Z and Y share the unobserved confounder U1, violating the independence condition.\n\nWe cannot condition on U1 since it's unobserved.\n\nConditioning on X doesn't help because:\n- X \u2192 Z and X \u2192 T, so X is a common cause of Z and T\n- This doesn't solve the U1 or exclusion restriction problems\n\nNo observed conditioning set can make Z a valid instrument because:\n1. The Z \u2192 W \u2192 Y path violates exclusion restriction\n2. U1 confounds the Z-Y relationship and cannot be controlled for\n\nD",
+        "latency_s": 8.55,
+        "input_tokens": 137,
+        "output_tokens": 381,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:01.834037",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to work through this step-by-step to find the true CACE when the exclusion restriction is violated.\n\nGiven information:\n- 500 treatment, 500 control\n- Treatment arm: 350 compliers, 150 noncompliers\n- Average outcome treatment arm: 72\n- Average outcome control arm: 68\n- Average outcome among 350 compliers: 78\n- Standard Wald estimate: (72-68)/(350/500-0) = 4/0.7 = 5.7\n- Critic says: noncompliers experienced 4-point worse outcome due to stress from assignment\n\nFirst, let me find the average outcome among noncompliers in the treatment arm:\n- Treatment arm average = (350 \u00d7 78 + 150 \u00d7 noncomplier_outcome)/500 = 72\n- 350 \u00d7 78 + 150 \u00d7 noncomplier_outcome = 36,000\n- 27,300 + 150 \u00d7 noncomplier_outcome = 36,000\n- 150 \u00d7 noncomplier_outcome = 8,700\n- Noncomplier outcome = 58\n\nNow, if the critic is correct, these noncompliers would have had outcome 58 + 4 = 62 under control assignment (without the stress effect).\n\nThe true ITT effect should account for this:\n- Observed treatment arm average: 72\n- But noncompliers were harmed by 4 points due to assignment stress\n- Adjusted treatment arm average: (350 \u00d7 78 + 150 \u00d7 62)/500 = (27,300 + 9,300)/500 = 73.2\n\nHowever, this isn't the right approach. Let me reconsider.\n\nThe key insight is that if noncompliers were harmed by assignment itself, this affects the overall treatment arm mean, making it lower than it would be if only the complier treatment effect existed.\n\nThe observed treatment arm mean (72) includes:\n- Compliers getting benefit from actual treatment\n- Noncompliers getting harmed by assignment stress (-4 points)\n\nIf we remove the exclusion restriction violation effect:\n- Noncompliers should have the same outcome as controls (68) rather than 58\n- Adjusted treatment arm mean = (350 \u00d7 78 + 150 \u00d7 68)/500 = (27,300 + 10,200)/500 = 75\n\nThe true CACE would be based on this corrected comparison, but since CACE specifically looks at compliers, and we know compliers average 78 while controls average 68, the CACE is still about 78 - 68 = 10.\n\nWait, let me reconsider the Wald estimator framework more carefully.\n\nThe standard Wald estimate assumes the exclusion restriction holds. When it's violated, the ITT effect (4) includes both the complier treatment effect AND the noncomplier assignment effect.\n\nIf noncompliers are harmed by 4 points due to assignment, this reduces the overall treatment group mean. The true complier effect is larger than the Wald estimate suggests.\n\nLooking at the math: the noncomplier stress effect suppressed the treatment arm average, so correcting for this reveals a larger complier treatment effect.\n\nC",
+        "latency_s": 15.97,
+        "input_tokens": 416,
+        "output_tokens": 761,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:08.745938",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe exclusion restriction in instrumental variables analysis requires that the instrument (randomization) affects the outcome only through its effect on the treatment received. This must hold at the population level for all units, not just for compliers.\n\nAnalyst 2 is correct that consent-induced anxiety creates a direct pathway from assignment to outcome that bypasses actual treatment receipt. This violates the exclusion restriction because the instrument (assignment to surgery) affects outcomes through two channels: (1) actual treatment received, and (2) anxiety from the consent process itself.\n\nAnalyst 1's error is fundamental - the exclusion restriction cannot be \"automatically satisfied for the identified complier subpopulation\" simply because we're targeting compliers. The exclusion restriction is an assumption about how the instrument operates, and it must hold for the entire randomized population to ensure valid identification of the LATE.\n\nThe anxiety pathway affects all surgery-assigned patients regardless of whether they comply, creating bias in the Wald estimator even when other IV assumptions hold.",
+        "latency_s": 5.87,
+        "input_tokens": 499,
+        "output_tokens": 218,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:14.854515",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe key issue here is spillover effects (also called interference or SUTVA violations). When treated villages reduce mosquito density through net distribution, this also benefits nearby control villages by reducing their malaria incidence. This means:\n\n- Treated villages show improvement (nets work)\n- Control villages also show some improvement (due to spillover from nearby treated villages)\n- The measured difference between treatment and control groups (40%) is smaller than it would be if control villages had experienced no spillover\n\nTherefore, the 40% estimate understates the true total effect of the program, because the control group's outcomes have been artificially improved by spillover effects, compressing the treatment-control difference.\n\nA",
+        "latency_s": 5.08,
+        "input_tokens": 359,
+        "output_tokens": 151,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:17.187372",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.3,
+        "input_tokens": 375,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:30.839963",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to find an adjustment set to identify the direct effect of Ti on Yi.\n\nLet me trace the paths from Ti to Yi:\n\n1. Ti \u2192 Yi (direct path - this is what I want to identify)\n2. Ti \u2190 U \u2192 Tj \u2192 Yi (backdoor path through U)\n3. Ti \u2190 U \u2192 Tj \u2190 Xj (this doesn't lead to Yi, so not relevant)\n\nThe problematic path is: Ti \u2190 U \u2192 Tj \u2192 Yi\n\nThis creates a backdoor path that confounds the relationship between Ti and Yi.\n\nTo block this backdoor path, I need to condition on variables that will block it:\n- I could condition on Tj (which blocks the path Ti \u2190 U \u2192 Tj \u2192 Yi)\n- I could condition on U (but U is unmeasured)\n\nHowever, I also need to be careful about introducing new biases. Let me check if conditioning on Tj creates any issues:\n\nIf I condition on Tj, I need to make sure I'm not opening any collider paths or creating other confounding.\n\nLooking at Tj, it has parents U and Xj. If I condition on Tj without conditioning on its parents, I might create bias. But since U is unmeasured, I can condition on Xj.\n\nFor Ti, it has parents U and Xi. Since U affects both Ti and Tj, and I'm looking at the effect of Ti on Yi, I should condition on Xi to control for the measured confounder of Ti.\n\nSo I need: {Xi, Tj} to:\n- Xi controls for measured confounding of Ti\n- Tj blocks the backdoor path Ti \u2190 U \u2192 Tj \u2192 Yi\n\nLet me verify this blocks all backdoor paths:\n- Ti \u2190 U \u2192 Tj \u2192 Yi: blocked by conditioning on Tj \u2713\n- Any other backdoor paths? No other paths from Ti to Yi exist.\n\nConditioning on Xj as well (option A) would be unnecessarily restrictive but wouldn't hurt. However, the minimal sufficient set is {Xi, Tj}.\n\nB",
+        "latency_s": 12.61,
+        "input_tokens": 148,
+        "output_tokens": 464,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:37.769919",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the spillover effect by comparing the control villages' incidence to the external baseline.\n\nGiven information:\n- External baseline (no vaccination program): 90 per 1,000\n- Control villages: 40 share borders with treated villages (55 per 1,000), 60 are isolated (85 per 1,000)\n\nFirst, I'll calculate the weighted average incidence in control villages:\n- 40 villages with 55 per 1,000\n- 60 villages with 85 per 1,000\n- Total control villages: 100\n\nWeighted average = (40 \u00d7 55 + 60 \u00d7 85) / 100\n= (2,200 + 5,100) / 100\n= 7,300 / 100\n= 73 per 1,000\n\nThe spillover effect is the difference between the external baseline and the observed control village incidence:\nSpillover effect = 90 - 73 = 17 cases per 1,000 prevented\n\nThis represents: 17/90 = 0.189 \u2248 19% of baseline incidence\n\nThe spillover effect is positive (reducing incidence) because even the control villages benefit from reduced transmission due to vaccination in nearby treated villages.\n\nC",
+        "latency_s": 5.89,
+        "input_tokens": 405,
+        "output_tokens": 295,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:45.538764",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D\n\nThe key issue is that when spillover effects are heterogeneous (varying by geographic density and distance), the naive treatment-control comparison doesn't have a clean interpretation as a bound on any well-defined causal parameter. \n\nControl schools experience different amounts of spillover depending on their proximity to treated schools - some controls near many treated schools get substantial indirect benefits, while isolated controls get little to none. This means the \"control\" group is actually a mixture of units experiencing different treatment intensities through spillover.\n\nWithout knowing the spillover function or making structural assumptions about how effects vary with distance/density, we can't interpret the naive estimate as a meaningful bound on the total effect. The estimate conflates direct treatment effects with heterogeneous indirect effects in a way that doesn't correspond to any single policy-relevant parameter.\n\nAnalyst 1's \"lower bound\" interpretation assumes homogeneous spillover, which contradicts the described heterogeneity. Analyst 2 correctly identifies that the heterogeneous spillover makes the naive estimate uninterpretable without additional modeling structure.",
+        "latency_s": 6.73,
+        "input_tokens": 448,
+        "output_tokens": 229,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:50.422397",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe statement in option B is least defensible because it incorrectly suggests that small overall misclassification rates produce negligible bias regardless of whether the error is differential or nondifferential. This is false - even small rates of differential misclassification can produce substantial bias in either direction (toward or away from the null), while nondifferential misclassification generally attenuates associations toward the null. The magnitude and direction of bias from differential misclassification depends on the pattern of misclassification, not just the overall rate.",
+        "latency_s": 3.85,
+        "input_tokens": 370,
+        "output_tokens": 119,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:56.075312",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D\n\nThe matrix-method correction can indeed handle differential misclassification when group-specific parameters are known (making B incorrect). While the correction would address the differential sensitivity described, the fundamental issue is that the diagnostic workup process that leads to more thorough medication review in dementia cases (improving statin capture from 92% to 99%) likely affects the measurement quality of other variables as well. This creates correlated measurement errors across multiple variables that a single-variable correction cannot address, leaving residual bias even after correcting for the statin misclassification.",
+        "latency_s": 4.6,
+        "input_tokens": 417,
+        "output_tokens": 121,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:06.233432",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze the bias sources in the observed association between T* and Y* adjusted for X.\n\nGiven DAG structure:\n- T \u2192 T*, Y \u2192 Y* (measurement error)\n- T \u2192 Y (true causal effect)\n- U \u2192 T, U \u2192 Y (unmeasured confounder)\n- T \u2192 Y* (differential outcome misclassification)\n- Y \u2192 T* (differential treatment misclassification)\n- X \u2192 T, X \u2192 Y (measured confounder)\n\nSources of bias in the T*-Y* association:\n\n1. **Unmeasured confounding (U)**: U affects both T and Y, creating a backdoor path T \u2190 U \u2192 Y. Even adjusting for X doesn't block this path since U is unmeasured.\n\n2. **Differential misclassification**: \n   - T \u2192 Y* creates bias because treatment directly affects the observed outcome beyond its effect through the true outcome\n   - Y \u2192 T* creates bias because the true outcome affects the observed treatment\n\n3. **X adjustment**: X blocks the path T \u2190 X \u2192 Y, but this doesn't eliminate the other bias sources.\n\nThe observed T*-Y* association adjusted for X will be biased by:\n- The unmeasured confounder U (creates T \u2190 U \u2192 Y path)\n- Differential misclassification (T \u2192 Y* and Y \u2192 T* create additional associations)\n\nEven with perfect measurement of X and proper adjustment, both U and the differential misclassification remain as bias sources.\n\nC",
+        "latency_s": 9.12,
+        "input_tokens": 160,
+        "output_tokens": 345,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:15.308257",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the observed exposure prevalence in cases and controls, then determine the observed odds ratio.\n\nGiven information:\n- True exposure prevalence: 30% in both cases and controls\n- True OR = 1.0 (no association)\n- Cases: Sensitivity = 95%, Specificity = 85%\n- Controls: Sensitivity = 80%, Specificity = 95%\n\nFor Cases (n=1,000):\n- Truly exposed: 1,000 \u00d7 0.30 = 300\n- Truly unexposed: 1,000 \u00d7 0.70 = 700\n\nObserved exposed in cases:\n- True positives: 300 \u00d7 0.95 = 285\n- False positives: 700 \u00d7 (1-0.85) = 700 \u00d7 0.15 = 105\n- Total observed exposed: 285 + 105 = 390\n- Observed exposure prevalence in cases: 390/1,000 = 39%\n\nFor Controls (n=1,000):\n- Truly exposed: 1,000 \u00d7 0.30 = 300\n- Truly unexposed: 1,000 \u00d7 0.70 = 700\n\nObserved exposed in controls:\n- True positives: 300 \u00d7 0.80 = 240\n- False positives: 700 \u00d7 (1-0.95) = 700 \u00d7 0.05 = 35\n- Total observed exposed: 240 + 35 = 275\n- Observed exposure prevalence in controls: 275/1,000 = 27.5% \u2248 28%\n\nObserved OR calculation:\n- Cases exposed: 390, unexposed: 610\n- Controls exposed: 275, unexposed: 725\n- OR = (390 \u00d7 725)/(610 \u00d7 275) = 282,750/167,750 \u2248 1.69 \u2248 1.70\n\nThe observed prevalences are ~39% in cases and ~28% in controls, with an observed OR of ~1.70.\n\nA",
+        "latency_s": 8.01,
+        "input_tokens": 291,
+        "output_tokens": 493,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:17.577900",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.24,
+        "input_tokens": 483,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:31:23.894608",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nThe strongest concern is that CD4 count is both a mediator (on the causal pathway from ART to outcome) and a collider (affected by past treatment). Adjusting for current CD4 count blocks the beneficial pathway through which ART works (by improving CD4 counts, which reduces infection risk) while simultaneously introducing time-dependent confounding bias. This creates a classic case where standard regression adjustment fails because the covariate is affected by prior treatment - a situation requiring specialized methods like marginal structural models or g-estimation.",
+        "latency_s": 5.28,
+        "input_tokens": 275,
+        "output_tokens": 118,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:29.135154",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B\n\nExtreme weights in IPTW indicate practical violations of the positivity assumption - meaning some treatment patterns are nearly deterministic given the observed covariate history. This creates a quasi-experimental violation where we have little overlap between treated and untreated groups with similar covariate patterns. While the MSM framework remains theoretically appropriate for handling time-varying confounding affected by prior treatment, the practical positivity violation makes estimates highly unstable and sensitive to modeling choices, as evidenced by the substantial change when weights are truncated.",
+        "latency_s": 4.19,
+        "input_tokens": 310,
+        "output_tokens": 114,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:38.436468",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze this DAG step by step to determine if adjusting for {L0, L1} gives an unbiased estimate of the joint effect of (T0, T1) on Y.\n\nLet me trace the paths and identify the issues:\n\n1. The DAG structure:\n   - L0 \u2192 T0, L0 \u2192 Y\n   - T0 \u2192 L1, L1 \u2192 T1\n   - T0 \u2192 Y, T1 \u2192 Y\n   - L1 \u2192 Y\n   - U \u2192 L1, U \u2192 Y\n\n2. For the joint effect of (T0, T1) on Y, I need to consider what happens when adjusting for {L0, L1}.\n\n3. Key issues with L1:\n   - L1 is a mediator of T0 (T0 \u2192 L1 \u2192 Y and T0 \u2192 L1 \u2192 T1 \u2192 Y)\n   - L1 is affected by unmeasured confounder U (U \u2192 L1, U \u2192 Y)\n\n4. When we condition on L1:\n   - We're conditioning on a mediator of T0, which can bias the estimate of T0's effect\n   - We're also conditioning on a collider-like structure where T0 \u2192 L1 \u2190 U, and since U also affects Y, this opens a backdoor path between T0 and Y through U\n\n5. The problem is not just that U is unmeasured, but that L1 serves dual problematic roles: it's both a mediator and creates collider bias through the unmeasured confounder U.\n\nThe answer is B - the bias occurs because L1 is both a mediator of T0 and creates collider bias via the unmeasured U.\n\nB",
+        "latency_s": 8.26,
+        "input_tokens": 203,
+        "output_tokens": 403,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:43.736745",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C\n\nThe key issue here is that the biomarker level in Period 2 is affected by Drug X treatment in Period 1 (\"Drug X raised it\"). When the naive analysis adjusts for current biomarker level across all periods, it's conditioning on a post-treatment variable (a mediator). This simultaneously blocks part of the causal pathway through which Drug X works and can induce collider bias, leading to an overestimate of the treatment effect. The marginal structural model with IPTW is designed to handle time-varying confounding and avoids conditioning on post-treatment variables, making it less biased in this longitudinal setting.",
+        "latency_s": 4.21,
+        "input_tokens": 484,
+        "output_tokens": 141,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:57.490175",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 12.7,
+        "input_tokens": 488,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:32:03.116216",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C\n\nThe statement in option C is LEAST supported because it incorrectly assumes that applying the same criterion uniformly makes the classification adequate. The fundamental flaw is that the classification creates immortal time bias - patients must survive long enough to accumulate 12 prescriptions to be classified as \"metformin users,\" while follow-up begins at diagnosis for both groups. This means the \"metformin users\" have a built-in survival advantage that has nothing to do with the drug's protective effects. The uniformity of the criterion doesn't address this temporal mismatch between exposure classification and follow-up start time.",
+        "latency_s": 4.56,
+        "input_tokens": 318,
+        "output_tokens": 132,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:32:05.434288",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "D",
+        "latency_s": 1.24,
+        "input_tokens": 460,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:32:15.757749",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze this DAG and determine what adjustment set recovers the total effect of T on Y given the analysis conditions.\n\nGiven DAG:\n- X \u2192 T, X \u2192 Y, X \u2192 S\n- S \u2192 T, S \u2192 Y\n- U \u2192 S, U \u2192 Y\n- T \u2192 Y\n\nThe analysis:\n- Classifies person-time before T as 'untreated'\n- Conditions implicitly on S = 1 among treated\n\nThis creates a selection bias problem. When we condition on S = 1 (survived to initiation), we're conditioning on a collider path that includes U \u2192 S \u2190 X, which opens a backdoor path between U and the analysis.\n\nThe backdoor paths from T to Y are:\n1. T \u2190 X \u2192 Y\n2. T \u2190 S \u2190 U \u2192 Y\n3. T \u2190 S \u2190 X \u2192 Y\n\nSince we're conditioning on S = 1, we need to account for the selection bias this creates. The path T \u2190 S \u2190 U \u2192 Y remains problematic because U is unmeasured.\n\nTo block all backdoor paths, we would need:\n- X to block T \u2190 X \u2192 Y and T \u2190 S \u2190 X \u2192 Y\n- U to block T \u2190 S \u2190 U \u2192 Y\n\nSince U is unmeasured, we cannot recover the total effect with any observed adjustment set.\n\nD",
+        "latency_s": 9.25,
+        "input_tokens": 148,
+        "output_tokens": 313,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:32:22.300216",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the corrected rate ratio by properly excluding immortal time from the statin users.\n\nCurrent (incorrect) calculation for statin users:\n- Events: 96\n- Person-time: 800 \u00d7 60 months = 48,000 person-months\n- Rate: 96/48,000 = 2.0 per 1,000 person-months\n\nCorrected calculation for statin users:\n- Events: 96 (unchanged - these occurred after the immortal period)\n- Person-time: 800 \u00d7 (60 - 8) months = 800 \u00d7 52 months = 41,600 person-months\n- Corrected rate: 96/41,600 = 2.31 per 1,000 person-months\n\nNon-users (unchanged):\n- Rate: 2.5 per 1,000 person-months\n\nCorrected rate ratio: 2.31/2.5 = 0.92\n\nThe correction removes the 8-month immortal time period from each statin user's denominator, which reduces the total person-time and increases their event rate from 2.0 to 2.31 per 1,000 person-months, making it closer to the non-user rate.\n\nB",
+        "latency_s": 5.46,
+        "input_tokens": 442,
+        "output_tokens": 297,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:32:27.809600",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C\n\nThe landmark approach correctly addresses immortal time bias by ensuring both groups survive to the same time point (4th prescription date). However, this doesn't eliminate the informative censoring problem that occurs after the landmark time. Patients may still discontinue beta-blockers due to worsening heart failure, and censoring these patients creates bias since discontinuation is related to prognosis. These are two distinct methodological issues that require separate solutions - the landmark design fixes the immortal time bias, while additional methods (like IPCW) are needed to address the informative censoring that occurs post-landmark.",
+        "latency_s": 4.45,
+        "input_tokens": 431,
+        "output_tokens": 131,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:32:33.333952",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe strongest concern is the ecological fallacy - inferring individual-level relationships from group-level data. The policy brief is making claims about individual diabetes risk based on correlations observed at geographic aggregate levels (counties and districts). The strengthening correlation when moving from 150 counties to 40 districts is a classic example of how aggregation can inflate correlations by reducing variability within units, but this says nothing reliable about the individual-level relationship between fast-food consumption and diabetes risk. Individual-level associations can differ dramatically in both magnitude and direction from ecological correlations.",
+        "latency_s": 4.46,
+        "input_tokens": 307,
+        "output_tokens": 122,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:32:35.598474",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.2,
+        "input_tokens": 361,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:32:44.535103",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze this DAG and determine what happens when regressing Yg_mean on Tg_mean adjusting for Xg.\n\nLet me trace through the causal paths:\n\n1. Individual level: Ti \u2192 Yi, but there's confounding by Ug (Ug \u2192 Ti and Ug \u2192 Yi)\n\n2. Group level: The analyst regresses Yg_mean on Tg_mean adjusting for Xg\n\n3. Key relationships:\n   - Ti \u2192 Tg_mean and Yi \u2192 Yg_mean (group means depend on individual values)\n   - Ug \u2192 Ti and Ug \u2192 Yi (individual-level confounding)\n   - Cg \u2192 Yg_mean (group-level confounder, omitted from the regression)\n   - Xg \u2192 Tg_mean and Xg \u2192 Yg_mean (group-level variables, Xg is adjusted for)\n\nNow let me evaluate each option:\n\nA. False - Group-level aggregation doesn't automatically preserve individual causal effects due to confounding and aggregation bias.\n\nB. False - Even if Cg is independent of Tg_mean, there's still the issue of individual-level confounding by Ug propagating to the group level.\n\nC. True - Two sources of bias: (1) Ug confounds the individual Ti \u2192 Yi relationship, and this confounding propagates to the group level through the aggregation process, and (2) Cg is a group-level confounder that affects Yg_mean but is omitted from the regression.\n\nD. False - Group-level analysis is not always unbiased for individual effects, especially when there's individual-level confounding and omitted group-level confounders.\n\nC",
+        "latency_s": 7.86,
+        "input_tokens": 210,
+        "output_tokens": 405,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:32:52.685253",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the overall heart disease rate for each region and then assess what an ecological analysis would find.\n\nLet me calculate the overall heart disease rate for each region:\n\nRegion A (n=5,000):\n- 60% exercise regularly (3,000 people): 8% heart disease = 240 cases\n- 40% don't exercise (2,000 people): 12% heart disease = 240 cases\n- Overall heart disease rate: (240 + 240)/5,000 = 9.6%\n\nRegion B (n=3,000):\n- 40% exercise regularly (1,200 people): 10% heart disease = 120 cases\n- 60% don't exercise (1,800 people): 14% heart disease = 252 cases\n- Overall heart disease rate: (120 + 252)/3,000 = 12.4%\n\nRegion C (n=4,000):\n- 80% exercise regularly (3,200 people): 6% heart disease = 192 cases\n- 20% don't exercise (800 people): 9% heart disease = 72 cases\n- Overall heart disease rate: (192 + 72)/4,000 = 6.6%\n\nRegion D (n=8,000):\n- 30% exercise regularly (2,400 people): 11% heart disease = 264 cases\n- 70% don't exercise (5,600 people): 13% heart disease = 728 cases\n- Overall heart disease rate: (264 + 728)/8,000 = 12.4%\n\nNow looking at the ecological relationship:\n- Region C: 80% exercise, 6.6% heart disease\n- Region A: 60% exercise, 9.6% heart disease  \n- Region B: 40% exercise, 12.4% heart disease\n- Region D: 30% exercise, 12.4% heart disease\n\nThis shows a clear negative correlation between exercise prevalence and heart disease rates at the ecological level, with Region C having the highest exercise rate and lowest heart disease rate, while Regions B and D have lower exercise rates and higher heart disease rates.\n\nC",
+        "latency_s": 7.07,
+        "input_tokens": 429,
+        "output_tokens": 497,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:33:01.817276",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C\n\nBoth analysts correctly identify real and distinct sources of bias operating at different levels of analysis. Analyst 1 is right that ecological fallacy can inflate district-level correlations when district wealth confounds the relationship, and that aggregation can mask important heterogeneity. Analyst 2 is right that within-district sorting (parents selecting into smaller classes) can bias individual-level estimates, and that district-level analysis may capture policy-relevant average effects.\n\nHowever, neither correlation provides a clean estimate of the causal effect of class size. The district-level correlation conflates class size effects with unobserved district characteristics, while the individual-level correlation is contaminated by selection processes within districts. Simply choosing one level over the other doesn't solve the fundamental identification problem - both require additional design features (instrumental variables, randomization, regression discontinuity, etc.) to credibly isolate causal effects from confounding processes operating at their respective levels of analysis.",
+        "latency_s": 8.05,
+        "input_tokens": 474,
+        "output_tokens": 205,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:33:07.452322",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "A\n\nThe strongest concern is that patients were selected based on extreme baseline SBP values (>160 mmHg), which creates a strong potential for regression to the mean. This statistical artifact occurs when subjects are selected for extreme measurements - their follow-up values tend to be closer to the population mean simply due to natural variation, independent of any intervention effect. Adjusting for BMI change cannot address this fundamental selection bias because regression to the mean operates independently of actual physiological changes like weight loss. Without a control group or accounting for this selection effect, it's impossible to determine how much of the 14 mmHg decline represents true intervention benefit versus this statistical artifact.",
+        "latency_s": 4.56,
+        "input_tokens": 320,
+        "output_tokens": 142,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:33:10.708780",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 2.19,
+        "input_tokens": 502,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:33:20.927626",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to analyze the non-causal paths from T to Y1 after conditioning on Y0 and selecting on Y0 > c.\n\nFirst, let me identify the causal path:\n- T \u2192 Y1 (this is the causal path we want to estimate)\n\nNow I need to find non-causal paths from T to Y1:\n\n1. T \u2190 U \u2192 True \u2192 Y1\n2. T \u2190 U \u2192 True \u2192 Y0 \u2192 Y1 (but this path goes through Y0)\n\nAfter conditioning on Y0:\n- Any path through Y0 is blocked by conditioning on Y0\n- So path 2 is blocked\n\nFor path 1: T \u2190 U \u2192 True \u2192 Y1\n- This path doesn't go through Y0, so conditioning on Y0 doesn't block it\n- Selection on Y0 > c creates a collider bias, but let me check if this affects this path\n\nSelection on Y0 > c:\n- Y0 is influenced by True and e0\n- Selecting on Y0 > c conditions on a collider (Y0 \u2190 True \u2192 Y1 and Y0 \u2190 e0)\n- This selection doesn't create new paths between T and Y1 that weren't already there\n\nThe path T \u2190 U \u2192 True \u2192 Y1 remains open because:\n- U \u2192 True is open\n- True \u2192 Y1 is open\n- We haven't conditioned on any colliders on this path\n\nTherefore, there is 1 non-causal path open (via U \u2192 True).\n\nC",
+        "latency_s": 9.18,
+        "input_tokens": 159,
+        "output_tokens": 355,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:33:26.633782",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "Looking at this regression to the mean problem, I need to apply the given formula.\n\nGiven information:\n- Selected group's observed mean: 32\n- Population mean: 60\n- Reliability: 0.64\n- Formula: retest mean moves toward population mean by a fraction equal to (1 - reliability)\n\nThe fraction of regression = 1 - 0.64 = 0.36\n\nThis means the retest mean moves 36% of the way from the observed mean (32) toward the population mean (60).\n\nThe gap between observed mean and population mean = 60 - 32 = 28\n\nAmount of regression = 0.36 \u00d7 28 = 10.08\n\nExpected retest mean = 32 + 10.08 = 42.08 \u2248 42.1\n\nThis matches exactly with option A's calculation: 32 + 0.36 \u00d7 (60 - 32) = 42.1\n\nA",
+        "latency_s": 4.63,
+        "input_tokens": 389,
+        "output_tokens": 222,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:33:28.855775",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.15,
+        "input_tokens": 539,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:33:31.205476",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.28,
+        "input_tokens": 353,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:33:33.302763",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "C",
+        "latency_s": 1.02,
+        "input_tokens": 519,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:33:42.042047",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to determine what variables must satisfy S-admissibility for transporting the site-specific effect of T on Y to a target population.\n\nGiven DAG:\n- S \u2192 X, X \u2192 T, X \u2192 Y\n- T \u2192 Y\n- S \u2192 W, W \u2192 Y\n- U \u2192 S, U \u2192 Y\n- Z \u2192 T, Z \u2192 Y\n\nThe site-specific effect is identified in-site with {X, Z}.\n\nFor transportability, I need to check S-admissibility: variables must be independent of Y given T and the transported adjustment set, when S is set to the target population value.\n\nThe key insight is that for transportability to work, the variables in the transported adjustment set must satisfy the S-admissibility condition. This means they must be independent of Y given T when we condition on S being in the target population.\n\nLooking at the paths from S to Y:\n- S \u2192 X \u2192 Y\n- S \u2192 W \u2192 Y\n- S \u2190 U \u2192 Y\n\nFor transportability with adjustment set {X, Z}:\n- X is affected by S (S \u2192 X), so X needs to satisfy S-admissibility\n- Z is not affected by S in this DAG\n- W is affected by S (S \u2192 W) and affects Y (W \u2192 Y), but W is not observed in the target population\n\nThe critical issue is that W creates a path S \u2192 W \u2192 Y. Since W is unobserved in the target population but is needed to block this path from S to Y, transportability fails.\n\nD",
+        "latency_s": 7.67,
+        "input_tokens": 172,
+        "output_tokens": 342,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:33:49.971449",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "I need to calculate the transported estimate using the target population proportions as weights.\n\nUsing target population proportions:\n- Young, No degree: 25% weight, +12 pp effect\n- Young, Degree: 15% weight, +4 pp effect  \n- Older, No degree: 35% weight, +8 pp effect\n- Older, Degree: 25% weight, +2 pp effect\n\nTransported estimate = 0.25(12) + 0.15(4) + 0.35(8) + 0.25(2)\n= 3.0 + 0.6 + 2.8 + 0.5\n= 6.9 percentage points\n\nLooking at the options, 6.9 is closest to the calculation shown in option C (which shows 7.6, but let me verify their math):\n\nOption C calculation: 0.25(12) + 0.15(4) + 0.35(8) + 0.25(2) = 3.0 + 0.6 + 2.8 + 0.5 = 6.9\n\nThe description in C mentions the result should be 7.6, but their actual calculation gives 6.9. However, C is the only option that shows the correct reweighting calculation method and acknowledges that the target population has a higher share of older degree-holders (who have lower treatment effects), leading to a decrease from the original 7.7.\n\nC",
+        "latency_s": 6.85,
+        "input_tokens": 469,
+        "output_tokens": 344,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:33:52.709525",
+        "api_model": "claude-sonnet-4-20250514",
+        "content": "B",
+        "latency_s": 1.66,
+        "input_tokens": 461,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T19:21:02.927071"
+  "updated": "2026-04-22T13:33:52.709690"
 }

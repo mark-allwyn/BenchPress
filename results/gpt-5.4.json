@@ -3633,7 +3633,2438 @@
         },
         "deepeval_avg": 1.0
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:20.084671",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.19,
+        "input_tokens": 287,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:22.100838",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.99,
+        "input_tokens": 338,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:23.944690",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.83,
+        "input_tokens": 118,
+        "output_tokens": 10,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:26.766136",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 1.81,
+        "input_tokens": 337,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:28.570436",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.79,
+        "input_tokens": 409,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:30.374027",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.79,
+        "input_tokens": 315,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:32.185808",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.79,
+        "input_tokens": 437,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:34.254079",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.05,
+        "input_tokens": 132,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:36.097360",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.83,
+        "input_tokens": 353,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:37.904708",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.8,
+        "input_tokens": 418,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:39.936977",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 1.02,
+        "input_tokens": 294,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:41.877086",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.92,
+        "input_tokens": 396,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:43.737050",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.84,
+        "input_tokens": 113,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:45.656478",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.91,
+        "input_tokens": 424,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:47.599890",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.93,
+        "input_tokens": 405,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:49.550121",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.93,
+        "input_tokens": 349,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:51.606826",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 1.04,
+        "input_tokens": 367,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:53.476741",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.85,
+        "input_tokens": 127,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:55.611799",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.12,
+        "input_tokens": 606,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:57.492968",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.87,
+        "input_tokens": 392,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:59.511393",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.97,
+        "input_tokens": 332,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:01.371215",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.84,
+        "input_tokens": 374,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:03.238523",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.86,
+        "input_tokens": 159,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:05.101000",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.84,
+        "input_tokens": 433,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:06.850000",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.74,
+        "input_tokens": 405,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:08.855595",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.99,
+        "input_tokens": 265,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:10.813131",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.94,
+        "input_tokens": 260,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:12.787918",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.96,
+        "input_tokens": 115,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:14.732258",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.93,
+        "input_tokens": 399,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:16.567692",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.82,
+        "input_tokens": 408,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:18.326880",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.75,
+        "input_tokens": 237,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:20.224764",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.88,
+        "input_tokens": 374,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:22.109489",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.87,
+        "input_tokens": 135,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:23.908696",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.78,
+        "input_tokens": 433,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:25.690396",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.77,
+        "input_tokens": 381,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:27.596245",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.89,
+        "input_tokens": 265,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:29.444754",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.84,
+        "input_tokens": 397,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:32.084055",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.62,
+        "input_tokens": 132,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:33.939342",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.84,
+        "input_tokens": 452,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:36.003398",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.05,
+        "input_tokens": 381,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:37.944553",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.93,
+        "input_tokens": 245,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:39.860530",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.89,
+        "input_tokens": 365,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:41.734394",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.86,
+        "input_tokens": 115,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:43.609909",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.86,
+        "input_tokens": 448,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:45.547691",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.92,
+        "input_tokens": 345,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:47.404971",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.82,
+        "input_tokens": 293,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:49.461348",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.04,
+        "input_tokens": 419,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:51.364322",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.89,
+        "input_tokens": 108,
+        "output_tokens": 10,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:53.223872",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.84,
+        "input_tokens": 351,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:55.129767",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.89,
+        "input_tokens": 404,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:56.928595",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.79,
+        "input_tokens": 253,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:58.667426",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.72,
+        "input_tokens": 386,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:00.714106",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.03,
+        "input_tokens": 106,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:02.464241",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.74,
+        "input_tokens": 241,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:04.941678",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 1.46,
+        "input_tokens": 371,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:06.943310",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.99,
+        "input_tokens": 343,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:08.700010",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.75,
+        "input_tokens": 401,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:10.937811",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.22,
+        "input_tokens": 132,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:12.756011",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.8,
+        "input_tokens": 363,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:14.552317",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.78,
+        "input_tokens": 463,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:16.470767",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.9,
+        "input_tokens": 305,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:18.489311",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 1.0,
+        "input_tokens": 397,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:20.460368",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.95,
+        "input_tokens": 124,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:22.399762",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.92,
+        "input_tokens": 373,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:24.648908",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 1.23,
+        "input_tokens": 430,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:26.441150",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.77,
+        "input_tokens": 319,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:28.359359",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.91,
+        "input_tokens": 340,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:30.124198",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.73,
+        "input_tokens": 134,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:31.859214",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.72,
+        "input_tokens": 360,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:33.801067",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.93,
+        "input_tokens": 406,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:35.571330",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.75,
+        "input_tokens": 317,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:37.404524",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.81,
+        "input_tokens": 372,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:39.227001",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.8,
+        "input_tokens": 144,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:41.022584",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.78,
+        "input_tokens": 274,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:42.841551",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.8,
+        "input_tokens": 411,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:44.751590",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.9,
+        "input_tokens": 249,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:46.790918",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 1.01,
+        "input_tokens": 280,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:48.702833",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.9,
+        "input_tokens": 176,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:50.611122",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.89,
+        "input_tokens": 423,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:52.545678",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.92,
+        "input_tokens": 444,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:54.875380",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 1.31,
+        "input_tokens": 277,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:56.806191",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.91,
+        "input_tokens": 400,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:58.992467",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 1.18,
+        "input_tokens": 134,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:00.929061",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.92,
+        "input_tokens": 388,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:03.389154",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 1.45,
+        "input_tokens": 385,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:05.205482",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.8,
+        "input_tokens": 275,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:07.116146",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.89,
+        "input_tokens": 315,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:08.993624",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.86,
+        "input_tokens": 161,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:10.940479",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.93,
+        "input_tokens": 390,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:13.181264",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 1.22,
+        "input_tokens": 422,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:15.651271",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 1.46,
+        "input_tokens": 285,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:17.532140",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.86,
+        "input_tokens": 430,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:19.819672",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 1.27,
+        "input_tokens": 140,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:21.812500",
+        "api_model": "gpt-5.4",
+        "content": "A",
+        "latency_s": 0.98,
+        "input_tokens": 351,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:23.572131",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.75,
+        "input_tokens": 475,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:25.549508",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.96,
+        "input_tokens": 321,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:27.444380",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 0.88,
+        "input_tokens": 456,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:29.388586",
+        "api_model": "gpt-5.4",
+        "content": "D",
+        "latency_s": 0.92,
+        "input_tokens": 163,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:31.426307",
+        "api_model": "gpt-5.4",
+        "content": "C",
+        "latency_s": 1.02,
+        "input_tokens": 438,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:33.280690",
+        "api_model": "gpt-5.4",
+        "content": "B",
+        "latency_s": 0.84,
+        "input_tokens": 395,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T21:24:40.919480"
+  "updated": "2026-04-22T13:24:33.280730"
 }

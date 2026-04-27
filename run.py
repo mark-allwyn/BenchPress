@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-llm-eval — personal LLM benchmark harness.
+llm-eval - personal LLM benchmark harness.
 
 Results are stored per-model as persistent JSON files in results/.
 Run new models over time and compare them against your historical data.
@@ -47,7 +47,7 @@ from scripts.dashboard import generate_dashboard
 
 
 RESULTS_DIR = "results"
-EVAL_FILE = "evals/default.json"
+EVAL_FILE = "evals/general.json"
 
 
 # ── Data layer ──
@@ -98,6 +98,51 @@ def load_eval(eval_file: str = None) -> list[dict]:
         return json.load(f)["prompts"]
 
 
+def resolve_eval_file(config: dict, benchmark: str = None) -> str:
+    """Resolve a benchmark name to an eval file path."""
+    eval_cfg = config.get("eval", {})
+    benchmarks = eval_cfg.get("benchmarks", {})
+    if not benchmarks:
+        return eval_cfg.get("eval_file", EVAL_FILE)
+    name = benchmark or eval_cfg.get("default_benchmark", "general")
+    if name not in benchmarks:
+        print(f"Unknown benchmark '{name}'. Available: {', '.join(benchmarks.keys())}")
+        sys.exit(1)
+    return benchmarks[name]
+
+
+def benchmark_scoring_flags(config: dict, benchmark: str = None) -> dict:
+    """Return {skip_judges, skip_deepeval, skip_models} for a named benchmark (defaults False/[])."""
+    eval_cfg = config.get("eval", {})
+    name = benchmark or eval_cfg.get("default_benchmark", "general")
+    scoring = eval_cfg.get("benchmark_scoring", {}).get(name, {})
+    return {
+        "skip_judges": bool(scoring.get("skip_judges", False)),
+        "skip_deepeval": bool(scoring.get("skip_deepeval", False)),
+        "skip_models": list(scoring.get("skip_models", []) or []),
+    }
+
+
+def resolve_all_eval_files(config: dict, benchmark: str = None) -> list[str]:
+    """Resolve benchmark name to list of eval file paths. 'all' returns all benchmarks."""
+    eval_cfg = config.get("eval", {})
+    benchmarks = eval_cfg.get("benchmarks", {})
+    if not benchmarks:
+        return [eval_cfg.get("eval_file", EVAL_FILE)]
+    if benchmark == "all":
+        return list(benchmarks.values())
+    return [resolve_eval_file(config, benchmark)]
+
+
+def load_benchmark_prompts(config: dict, benchmark: str = None) -> list[dict]:
+    """Load prompts from one or all benchmarks."""
+    files = resolve_all_eval_files(config, benchmark)
+    prompts = []
+    for f in files:
+        prompts.extend(load_eval(f))
+    return prompts
+
+
 def load_config(path: str = "config.yaml") -> dict:
     if not Path(path).exists():
         print(f"Config not found: {path}")
@@ -138,8 +183,15 @@ def cmd_eval(args):
         sys.exit(1)
 
     model_cfg = models_cfg[model_name]
-    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
-    prompts = filter_prompts(load_eval(eval_file), args.ids, args.category, args.difficulty)
+    benchmark = getattr(args, "benchmark", None)
+
+    skip_models = benchmark_scoring_flags(config, benchmark)["skip_models"]
+    if model_name in skip_models:
+        print(f"Skipping {model_name}: excluded from '{benchmark}' benchmark via "
+              f"eval.benchmark_scoring.{benchmark}.skip_models in config.yaml.")
+        return
+
+    prompts = filter_prompts(load_benchmark_prompts(config, benchmark), args.ids, args.category, args.difficulty)
     if not prompts:
         print("No prompts match your filters.")
         sys.exit(1)
@@ -165,8 +217,12 @@ def cmd_eval(args):
     params = model_cfg.get("params", {})
     delay = config.get("eval", {}).get("delay_between_calls", 1.0)
 
-    # Set up LLM judges
-    judges_cfg = config.get("judges", [])
+    scoring_flags = benchmark_scoring_flags(config, benchmark)
+    skip_judges = scoring_flags["skip_judges"]
+    skip_deepeval = scoring_flags["skip_deepeval"]
+
+    # Set up LLM judges (skip if benchmark is deterministic)
+    judges_cfg = [] if skip_judges else config.get("judges", [])
     judge_providers = {}
     for jcfg in judges_cfg:
         jname = jcfg.get("model")
@@ -191,7 +247,7 @@ def cmd_eval(args):
 
     for i, pmeta in enumerate(prompts, 1):
         pid = pmeta["id"]
-        print(f"  [{i}/{len(prompts)}] {pid} — {pmeta['subcategory']}...", end=" ", flush=True)
+        print(f"  [{i}/{len(prompts)}] {pid} - {pmeta['subcategory']}...", end=" ", flush=True)
 
         t0 = time.time()
         try:
@@ -229,9 +285,9 @@ def cmd_eval(args):
                 entry["judge_score_avg"] = round(sum(valid) / len(valid), 2) if valid else None
                 entry["judge_count"] = len(valid)
 
-            # DeepEval scoring (inline during eval if enabled)
+            # DeepEval scoring (inline during eval if enabled and benchmark allows)
             deepeval_cfg = config.get("deepeval", {})
-            if deepeval_cfg.get("enabled"):
+            if deepeval_cfg.get("enabled") and not skip_deepeval:
                 try:
                     from scripts.deepeval_scorer import score_with_deepeval
                     de = score_with_deepeval(pmeta, content, config)
@@ -292,8 +348,8 @@ def cmd_eval(args):
 
 def cmd_compare(args):
     config = load_config(args.config)
-    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
-    prompts = filter_prompts(load_eval(eval_file), args.ids, args.category, args.difficulty)
+    benchmark = getattr(args, "benchmark", None)
+    prompts = filter_prompts(load_benchmark_prompts(config, benchmark), args.ids, args.category, args.difficulty)
     prompts_by_id = {p["id"]: p for p in prompts}
     pids = [p["id"] for p in prompts]
 
@@ -320,7 +376,7 @@ def cmd_compare(args):
     deepeval_weight = comp_cfg.get("deepeval_weight", 0.5)
 
     print(f"\n{'='*80}")
-    print(f"  MODEL COMPARISON — {len(pids)} prompts")
+    print(f"  MODEL COMPARISON - {len(pids)} prompts")
     print(f"{'='*80}\n")
 
     header = f"{'Model':<{col_w}} {'Composite':>10} {'Score':>9} {'Scored':>7} {'Flagged':>8} {'Latency':>8} {'Tokens':>8}"
@@ -368,8 +424,8 @@ def cmd_compare(args):
     leaderboard.sort(key=lambda x: (x[2] > 0, x[7] or 0), reverse=True)
 
     for name, avg_s, scored, total, flagged, avg_l, avg_t, composite in leaderboard:
-        s = f"{avg_s:.2f}/5" if scored else "  —  "
-        c = f"{composite:.2f}" if composite is not None else "  —  "
+        s = f"{avg_s:.2f}/5" if scored else "  -  "
+        c = f"{composite:.2f}" if composite is not None else "  -  "
         print(f"{name:<{col_w}} {c:>10} {s:>9} {scored:>3}/{total:<3} {flagged:>8} {avg_l:>7.1f}s {avg_t:>7.0f}")
 
     # Category breakdown
@@ -395,7 +451,7 @@ def cmd_compare(args):
                     for pid in cat_pids
                     if latest_run(data, pid) and latest_run(data, pid).get("judge_score_avg") is not None
                 ]
-                row += f" {(f'{sum(sc)/len(sc):.2f}' if sc else '—'):>{cw}}"
+                row += f" {(f'{sum(sc)/len(sc):.2f}' if sc else ', '):>{cw}}"
             print(row)
 
     # Flags
@@ -418,7 +474,7 @@ def cmd_compare(args):
                 print(f"    {name}: {', '.join(fl)}")
 
     if not any_flags:
-        print("  None — all passed auto-checks ✓")
+        print("  None - all passed auto-checks ✓")
 
     if args.save:
         os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -447,7 +503,9 @@ def cmd_models(args):
 
 
 def cmd_prompts(args):
-    prompts = filter_prompts(load_eval(), args.ids, args.category, args.difficulty)
+    config = load_config(args.config)
+    benchmark = getattr(args, "benchmark", None)
+    prompts = filter_prompts(load_benchmark_prompts(config, benchmark), args.ids, args.category, args.difficulty)
     print(f"\nEval prompts ({len(prompts)}):\n")
     print(f"  {'ID':<6} {'Category':<24} {'Diff':<8} Prompt")
     print(f"  {'─'*80}")
@@ -473,12 +531,12 @@ def _save_comparison_md(path, leaderboard, models, prompts, prompts_by_id):
     lines.append("\n## Per-Prompt Detail\n")
     for p in prompts:
         pid = p["id"]
-        lines.append(f"### {pid} — {p['subcategory']} ({p['difficulty']})\n")
+        lines.append(f"### {pid} - {p['subcategory']} ({p['difficulty']})\n")
         for name, *_ in leaderboard:
             run = latest_run(models[name], pid)
             if not run:
                 continue
-            score = run.get("judge_score_avg", "—")
+            score = run.get("judge_score_avg", ", ")
             fl = run.get("auto_checks", {}).get("flags", [])
             flag_str = f" ⚠ {', '.join(fl)}" if fl else ""
             judge_details = ""
@@ -494,6 +552,11 @@ def _save_comparison_md(path, leaderboard, models, prompts, prompts_by_id):
 def cmd_rejudge(args):
     config = load_config(args.config)
     models_cfg = config.get("models", {})
+
+    benchmark_arg = getattr(args, "benchmark", None)
+    if benchmark_scoring_flags(config, benchmark_arg)["skip_judges"]:
+        print(f"Benchmark '{benchmark_arg or config.get('eval',{}).get('default_benchmark','general')}' has skip_judges=true; nothing to rejudge.")
+        return
 
     # Set up judge providers from judges array
     judges_cfg = config.get("judges", [])
@@ -529,8 +592,8 @@ def cmd_rejudge(args):
         print("No models to rejudge.")
         return
 
-    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
-    prompts = load_eval(eval_file)
+    benchmark = getattr(args, "benchmark", None)
+    prompts = load_benchmark_prompts(config, benchmark)
     prompts_by_id = {p["id"]: p for p in prompts}
     delay = config.get("eval", {}).get("delay_between_calls", 1.0)
 
@@ -668,8 +731,12 @@ def cmd_deepeval(args):
         print("No models to score.")
         return
 
-    eval_file = config.get("eval", {}).get("eval_file", EVAL_FILE)
-    prompts = load_eval(eval_file)
+    benchmark = getattr(args, "benchmark", None)
+    if benchmark_scoring_flags(config, benchmark)["skip_deepeval"]:
+        print(f"Benchmark '{benchmark or config.get('eval',{}).get('default_benchmark','general')}' has skip_deepeval=true; nothing to score.")
+        return
+
+    prompts = load_benchmark_prompts(config, benchmark)
     prompts_by_id = {p["id"]: p for p in prompts}
 
     # Optional filtering
@@ -865,6 +932,7 @@ def main():
     p.add_argument("--ids", nargs="+")
     p.add_argument("--category", nargs="+")
     p.add_argument("--difficulty", nargs="+")
+    p.add_argument("--benchmark", default=None, help="Benchmark: general, causal, or all (default: general)")
     p.add_argument("--rerun", action="store_true", help="Re-run already evaluated prompts")
 
     p = sub.add_parser("compare", help="Compare models")
@@ -872,6 +940,7 @@ def main():
     p.add_argument("--ids", nargs="+")
     p.add_argument("--category", nargs="+")
     p.add_argument("--difficulty", nargs="+")
+    p.add_argument("--benchmark", default=None, help="Benchmark: general, causal, or all (default: general)")
     p.add_argument("--save", action="store_true")
 
     p = sub.add_parser("models", help="List evaluated models")
@@ -880,16 +949,19 @@ def main():
     p.add_argument("--ids", nargs="+")
     p.add_argument("--category", nargs="+")
     p.add_argument("--difficulty", nargs="+")
+    p.add_argument("--benchmark", default=None, help="Benchmark: general, causal, or all (default: general)")
 
     p = sub.add_parser("rejudge", help="Re-score existing responses with current judge")
     p.add_argument("models", nargs="*", help="Models to rejudge (default: all)")
     p.add_argument("--judge", default=None, help="Target a specific judge model (default: all configured judges)")
     p.add_argument("--force", action="store_true", help="Rejudge even if already scored by current judge")
+    p.add_argument("--benchmark", default=None, help="Benchmark: general, causal, or all (default: general)")
 
     p = sub.add_parser("deepeval", help="Score stored responses with DeepEval metrics")
     p.add_argument("models", nargs="*", help="Models to score (default: all)")
     p.add_argument("--ids", nargs="+", help="Only score specific prompt IDs")
     p.add_argument("--force", action="store_true", help="Re-score even if already has DeepEval scores")
+    p.add_argument("--benchmark", default=None, help="Benchmark: general, causal, or all (default: general)")
 
     p = sub.add_parser("migrate-judges", help="Migrate results from single-judge to multi-judge format")
 

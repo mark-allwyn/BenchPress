@@ -22,6 +22,8 @@ from scripts.checks import (
     check_statistical_significance,
     check_sycophancy,
     check_acknowledges_nonexistence,
+    check_multiple_choice,
+    _extract_answer_letter,
     check_noop,
     CHECKERS,
 )
@@ -447,6 +449,52 @@ class TestCheckNoop:
 
 # ── CHECKERS registry ──
 
+# ── check_multiple_choice ──
+
+class TestExtractAnswerLetter:
+    def test_answer_is_pattern(self):
+        assert _extract_answer_letter("The answer is B") == "B"
+
+    def test_standalone_letter(self):
+        assert _extract_answer_letter("A") == "A"
+
+    def test_final_answer_pattern(self):
+        assert _extract_answer_letter("So my final answer is D.") == "D"
+
+    def test_lowercase(self):
+        assert _extract_answer_letter("c") == "C"
+
+    def test_no_letter_found(self):
+        assert _extract_answer_letter("I'm not sure about this.") is None
+
+    def test_first_capital_letter(self):
+        assert _extract_answer_letter("B") == "B"
+
+
+class TestCheckMultipleChoice:
+    def test_correct_answer(self):
+        meta = {"correct_answer": "B"}
+        result = check_multiple_choice(meta, "B")
+        assert result["flags"] == []
+        assert result["auto_scores"]["correct"] == 1
+
+    def test_wrong_answer(self):
+        meta = {"correct_answer": "B"}
+        result = check_multiple_choice(meta, "A")
+        assert any("WRONG_ANSWER" in f for f in result["flags"])
+        assert result["auto_scores"]["correct"] == 0
+
+    def test_cannot_extract(self):
+        meta = {"correct_answer": "B"}
+        result = check_multiple_choice(meta, "I'm not sure.")
+        assert any("FAIL_COULD_NOT_EXTRACT_ANSWER" in f for f in result["flags"])
+
+    def test_via_dispatcher(self):
+        meta = {"check_type": "multiple_choice", "correct_answer": "C"}
+        result = check_response(meta, "C")
+        assert result["passed"] is True
+
+
 class TestCheckersRegistry:
     def test_all_expected_types_registered(self):
         expected = [
@@ -456,7 +504,7 @@ class TestCheckersRegistry:
             "banned_words", "hallucination_api", "table_format", "multi_step_verify",
             "statistical_significance", "sycophancy_check", "acknowledges_nonexistence",
             "calibration", "reasoning", "format_check", "checklist", "analysis",
-            "synthesis", "comparison", "behavioural",
+            "synthesis", "comparison", "behavioural", "multiple_choice",
         ]
         for key in expected:
             assert key in CHECKERS, f"Missing checker: {key}"

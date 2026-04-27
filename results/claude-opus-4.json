@@ -6884,7 +6884,2386 @@
         "judge_score_avg": 5.0,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:15:25.462093",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.54,
+        "input_tokens": 310,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:15:27.846452",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.36,
+        "input_tokens": 382,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:15:38.541390",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG with conditioning on S = 1, I need to find minimal sufficient adjustment sets for the total effect of T on Y.\n\nFirst, let me identify the paths from T to Y:\n1. T \u2192 Y (direct)\n2. T \u2192 M \u2192 Y\n3. T \u2192 S \u2190 Y (through collider S)\n\nSince we condition on S = 1, this opens the collider path T \u2192 S \u2190 Y, creating a backdoor path.\n\nNow for backdoor paths from T to Y:\n1. T \u2190 L \u2192 Y\n2. T \u2190 U1 \u2192 L \u2192 Y\n3. T \u2192 S \u2190 Y (opened by conditioning on S)\n4. T \u2192 S \u2190 U2 \u2192 S \u2190 Y (opened by conditioning on S)\n\nTo identify the causal effect, I need to block all backdoor paths while not blocking any causal paths.\n\nThe causal paths (T \u2192 Y and T \u2192 M \u2192 Y) must not be blocked, so I cannot condition on M.\n\nTo block backdoor paths:\n- Paths 1 and 2 can be blocked by conditioning on L\n- Path 3 (T \u2192 S \u2190 Y) cannot be blocked by conditioning on any observed variable\n- Path 4 involves U2 which is unobserved\n\nSince the backdoor path T \u2192 S \u2190 Y (opened by conditioning on S) cannot be blocked by any observed variable, there are no valid adjustment sets.\n\nA",
+        "latency_s": 9.67,
+        "input_tokens": 127,
+        "output_tokens": 331,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:15:47.019420",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me calculate the employment rates if we could observe everyone.\n\nFor participants:\n- In-state: 162 employed out of 270 (60%)\n- Left state: 30 people \u00d7 72% = 21.6 employed\n- Total: 162 + 21.6 = 183.6 employed out of 300\n- Rate: 183.6/300 = 61.2%\n\nFor non-participants:\n- In-state: 105 employed out of 210 (50%)\n- Left state: 90 people \u00d7 72% = 64.8 employed\n- Total: 105 + 64.8 = 169.8 employed out of 300\n- Rate: 169.8/300 = 56.6%\n\nGap: 61.2% - 56.6% = 4.6 percentage points\n\nThe original in-state-only gap was 60% - 50% = 10 percentage points.\n\nThe true gap (4.6 points) is roughly half the in-state-only gap (10 points), suggesting differential attrition substantially inflated the original estimate.\n\nC",
+        "latency_s": 7.45,
+        "input_tokens": 380,
+        "output_tokens": 269,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:15:49.870539",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.83,
+        "input_tokens": 470,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:15:52.302758",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.4,
+        "input_tokens": 343,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:15:54.684807",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.36,
+        "input_tokens": 481,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:06.237846",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this problem, I need to identify biasing paths for the indirect effect T \u2192 M1 \u2192 M2 \u2192 Y when conditioning on R = 1.\n\nFirst, let me identify what creates biasing paths. When we condition on R = 1, we're conditioning on a collider that has parents Y, X, and U. This creates associations between these parents.\n\nThe key biasing paths I can identify are:\n1. T \u2192 M1 \u2190 X (since X \u2192 M1)\n2. Paths created by conditioning on R that connect T to Y through backdoors\n\nFor the indirect effect T \u2192 M1 \u2192 M2 \u2192 Y, I need to block biasing paths without blocking any part of this mediator chain.\n\nLet me check each option:\n\nA. {X}: This blocks T \u2192 M1 \u2190 X, which is a biasing path. It doesn't block the mediator chain T \u2192 M1 \u2192 M2 \u2192 Y.\n\nB. {X, M2}: This would block the mediator chain at M2, which violates the requirement.\n\nC. {X, U}: While this blocks some paths, conditioning on U (which is unmeasured) is not feasible.\n\nD. No valid set exists: This would only be true if we couldn't block all biasing paths without blocking the mediator chain.\n\nSince {X} blocks the confounding path T \u2192 M1 \u2190 X without interfering with the mediator chain, and this appears to be the main identifiable biasing path that can be blocked, the answer is:\n\nA",
+        "latency_s": 10.52,
+        "input_tokens": 144,
+        "output_tokens": 349,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:13.538043",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me calculate the ITT means for each group.\n\nDrug group:\n- 190 completers with mean = 3.2\n- 10 dropouts assumed to have score = 3.2 + 2 = 5.2\n- ITT mean = (190 \u00d7 3.2 + 10 \u00d7 5.2) / 200 = (608 + 52) / 200 = 660 / 200 = 3.30\n\nPlacebo group:\n- 160 completers with mean = 4.5\n- 40 dropouts assumed to have score = 4.5 + 2 = 6.5\n- ITT mean = (160 \u00d7 4.5 + 40 \u00d7 6.5) / 200 = (720 + 260) / 200 = 980 / 200 = 4.90\n\nITT difference = 4.90 - 3.30 = 1.60\n\nCompleter-only difference = 4.5 - 3.2 = 1.30\n\nThe ITT difference (1.60) is larger than the completer-only difference (1.30), suggesting differential attrition masked some of the drug's benefit.\n\nA",
+        "latency_s": 6.27,
+        "input_tokens": 386,
+        "output_tokens": 296,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:17.228010",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 2.66,
+        "input_tokens": 471,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:19.699178",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.45,
+        "input_tokens": 321,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:22.734359",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 2.0,
+        "input_tokens": 434,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:33.095685",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to find all paths between A and B and check which are d-connecting (open) when conditioning on C1 = 1 and D = 1.\n\nFirst, let me identify all paths between A and B:\n1. A \u2192 C1 \u2190 B\n2. A \u2192 C2 \u2190 U \u2192 B  \n3. A \u2192 C2 \u2192 D \u2190 B\n4. A \u2192 C1 \u2192 C2 \u2190 U \u2192 B\n5. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n\nNow I'll check each path using d-separation rules:\n- A path is blocked if it contains a chain/fork with a conditioned non-collider\n- A path is blocked if it contains a collider that is not conditioned (and has no conditioned descendants)\n\nPath 1: A \u2192 C1 \u2190 B\n- C1 is a collider that we condition on \u2192 OPEN\n\nPath 2: A \u2192 C2 \u2190 U \u2192 B\n- C2 is a collider with conditioned descendant D \u2192 OPEN\n\nPath 3: A \u2192 C2 \u2192 D \u2190 B  \n- C2 is a non-collider, D is a collider we condition on\n- Since neither blocks the path \u2192 OPEN\n\nPath 4: A \u2192 C1 \u2192 C2 \u2190 U \u2192 B\n- C1 is a conditioned non-collider \u2192 BLOCKED\n\nPath 5: A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n- C1 is a conditioned non-collider \u2192 BLOCKED\n\nThree paths are open: paths 1, 2, and 3.\n\nD",
+        "latency_s": 9.33,
+        "input_tokens": 122,
+        "output_tokens": 386,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:43.769394",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this problem, I need to analyze how the scholarship filter (GPA > 3.5) affects the correlation between Math and Music scores among admitted students.\n\nKey observations:\n1. Admission requires Math + Music \u2265 120 (creates negative correlation via collider bias)\n2. GPA = 2.0 + 0.01\u00d7Math + 0.01\u00d7Music + noise(0, 0.15)\n3. Scholarship requires GPA > 3.5\n\nSince GPA = 2.0 + 0.01\u00d7(Math + Music) + noise, getting a scholarship essentially requires:\nMath + Music > 150 - 100\u00d7noise\n\nThe scholarship threshold creates another constraint on Math + Music, similar to the admission constraint but at a higher level (around 150 instead of 120).\n\nWhen we have two sequential filters both constraining the same sum (Math + Music), the second filter intensifies the collider bias created by the first. Among scholarship recipients, there's even less room for both Math and Music to be high simultaneously, strengthening the negative correlation.\n\nOption D's claim that selection is \"primarily on noise\" is incorrect - while noise matters, the systematic component (Math + Music) dominates given the relatively small noise SD of 0.15.\n\nB",
+        "latency_s": 9.63,
+        "input_tokens": 462,
+        "output_tokens": 290,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:45.997587",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.21,
+        "input_tokens": 452,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:48.852768",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.82,
+        "input_tokens": 378,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:51.047335",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.17,
+        "input_tokens": 399,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:01.398512",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to find the adjustment set that blocks all backdoor paths from T to Y1 while using only post-period data.\n\nThe backdoor paths from T to Y1 are:\n1. T \u2190 G \u2192 Y1\n2. T \u2190 G \u2190 U \u2192 W \u2192 Y1\n3. T \u2190 G \u2190 P \u2192 Y0 \u2192 Y1 (if Y0 \u2192 Y1 exists, which seems implied)\n\nSince we can only use post-period data, Y0 is not available for adjustment.\n\nLet me check each option:\n\nA. {G, Y0} - Uses Y0, which is pre-period data (not allowed)\n\nB. {G, W} - \n   - Blocks T \u2190 G \u2192 Y1 (by conditioning on G)\n   - Blocks T \u2190 G \u2190 U \u2192 W \u2192 Y1 (by conditioning on W)\n   - Cannot block paths through P without Y0\n\nC. {G, W, P} - \n   - Blocks T \u2190 G \u2192 Y1 (by conditioning on G)\n   - Blocks T \u2190 G \u2190 U \u2192 W \u2192 Y1 (by conditioning on W)\n   - Blocks T \u2190 G \u2190 P \u2192 Y0 \u2192 Y1 (by conditioning on P)\n\nD. {G, P} - \n   - Blocks T \u2190 G \u2192 Y1 (by conditioning on G)\n   - Cannot block T \u2190 G \u2190 U \u2192 W \u2192 Y1 (no conditioning on W)\n\nOnly option C blocks all backdoor paths using post-period data only.\n\nC",
+        "latency_s": 9.34,
+        "input_tokens": 141,
+        "output_tokens": 374,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:09.324914",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me calculate the expected PM2.5 readings based on fleet composition changes.\n\nGiven:\n- Diesel vehicles: 50 mcg/m\u00b3 per unit traffic\n- Petrol vehicles: 25 mcg/m\u00b3 per unit traffic\n\nPre-tax baseline:\n- Downtown: 60% diesel, 40% petrol = 0.6(50) + 0.4(25) = 30 + 10 = 40 mcg/m\u00b3\n- Suburban: 40% diesel, 60% petrol = 0.4(50) + 0.6(25) = 20 + 15 = 35 mcg/m\u00b3\n\nPost-tax expected (from composition change alone):\n- Downtown: 30% diesel, 70% petrol = 0.3(50) + 0.7(25) = 15 + 17.5 = 32.5 mcg/m\u00b3\n- Suburban: 55% diesel, 45% petrol = 0.55(50) + 0.45(25) = 27.5 + 11.25 = 38.75 mcg/m\u00b3\n\nCompositional DiD:\n(32.5 - 40) - (38.75 - 35) = -7.5 - 3.75 = -11.25\n\nThis matches option D exactly.\n\nD",
+        "latency_s": 6.9,
+        "input_tokens": 680,
+        "output_tokens": 330,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:12.449221",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 2.1,
+        "input_tokens": 428,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:15.624453",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 2.15,
+        "input_tokens": 358,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:17.971537",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.33,
+        "input_tokens": 407,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:20.303023",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.3,
+        "input_tokens": 178,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:29.375731",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me calculate the corrected increases for each segment.\n\nSegment 1:\n- Total increase: 7.2 - 4.8 = 2.4 workouts/week\n- 40% is from logging artifact: 2.4 \u00d7 0.40 = 0.96\n- Corrected increase: 2.4 - 0.96 = 1.44 workouts/week\n\nSegment 2:\n- Total increase: 5.5 - 3.5 = 2.0 workouts/week\n- 30% is from logging artifact: 2.0 \u00d7 0.30 = 0.60\n- Corrected increase: 2.0 - 0.60 = 1.40 workouts/week\n\nSegment 3:\n- Increase: 2.4 - 2.1 = 0.3 workouts/week (no AI coach, so no logging artifact)\n\nThe corrected increases for Segments 1 and 2 are 1.44 and 1.40 respectively. Since Segment 3 (control group) increased by 0.3 without the AI coach, this represents a secular trend. To isolate the AI coach effect, we should subtract this secular trend:\n- Segment 1 net effect: 1.44 - 0.3 = 1.14\n- Segment 2 net effect: 1.40 - 0.3 = 1.10\n\nThis suggests the maximum attributable AI coach effect is about 1.1 workouts per week.\n\nC",
+        "latency_s": 8.05,
+        "input_tokens": 515,
+        "output_tokens": 376,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:32.212708",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.81,
+        "input_tokens": 455,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:34.613419",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.37,
+        "input_tokens": 297,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:36.907420",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.26,
+        "input_tokens": 295,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:46.130517",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this problem, I need to find all non-causal paths from T to Y that become open when conditioning on S=1.\n\nFirst, let me identify all paths from T to Y:\n1. T \u2192 Y (direct causal path)\n2. T \u2192 S \u2192 F \u2192 Y (causal path through S and F)\n3. T \u2192 S \u2190 X \u2192 Y (non-causal path with collider at S)\n4. T \u2192 S \u2190 U \u2192 Y (non-causal path with collider at S)\n\nWhen we condition on S=1:\n- Paths with colliders at S become OPEN (conditioning on a collider opens the path)\n- Other paths remain as they were\n\nPath analysis after conditioning on S:\n1. T \u2192 Y: Open (no change - direct path)\n2. T \u2192 S \u2192 F \u2192 Y: Open (causal path remains open)\n3. T \u2192 S \u2190 X \u2192 Y: Opens due to conditioning on collider S (non-causal)\n4. T \u2192 S \u2190 U \u2192 Y: Opens due to conditioning on collider S (non-causal)\n\nThe non-causal paths that are open after conditioning on S are:\n- T \u2192 S \u2190 X \u2192 Y\n- T \u2192 S \u2190 U \u2192 Y\n\nTherefore, there are 2 non-causal (biasing) paths open.\n\nC",
+        "latency_s": 8.2,
+        "input_tokens": 121,
+        "output_tokens": 312,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:49.015980",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.86,
+        "input_tokens": 454,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:52.450648",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 2.4,
+        "input_tokens": 447,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:55.039771",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.55,
+        "input_tokens": 263,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:57.320258",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.27,
+        "input_tokens": 417,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:18:09.223761",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to identify the controlled direct effect (CDE) of T on Y not through the chain M1 \u2192 M2.\n\nThe CDE requires blocking all paths from T to Y that go through M1 \u2192 M2, while keeping other paths open. The paths from T to Y are:\n1. T \u2192 Y (direct)\n2. T \u2192 M1 \u2192 M2 \u2192 Y (through the chain we want to block)\n\nTo identify the CDE, I need to:\n- Block the path through M1 \u2192 M2\n- Account for confounding\n\nThe key insight is that U is an unmeasured confounder that affects both M1 and M2. This creates confounding for the M1 \u2192 M2 relationship that cannot be controlled by conditioning on observed variables alone.\n\nLet me check each option:\n\nA. {X, M1}: Conditioning on M1 would block the M1 \u2192 M2 path, but this creates collider bias at M1 (since U \u2192 M1 \u2190 T), opening the backdoor path T \u2192 M1 \u2190 U \u2192 M2 \u2192 Y. Since U is unobserved, we cannot block this path.\n\nB. {X, M1, M2, W}: Similar issue - conditioning on M1 creates collider bias involving the unobserved U.\n\nC. {X, M2, W}: This doesn't properly isolate the effect not through M1 \u2192 M2.\n\nSince U is unmeasured and creates confounding that cannot be resolved through conditioning on observed variables, no observed set can identify the CDE.\n\nD",
+        "latency_s": 10.87,
+        "input_tokens": 145,
+        "output_tokens": 366,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:18:21.551063",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this problem, I need to analyze what happens when the analyst pools all departments and controls for fitness gain.\n\nKey observations:\n1. Within each department, participants have consistently lower cardiac event rates than non-participants (3% vs 5%, 7% vs 9%, 11% vs 14%)\n2. This represents a 2-3 percentage point reduction in each department\n3. Participants also have much higher fitness gains (6-8 units vs 1 unit)\n\nWhen the analyst pools all departments without adjusting for department/income:\n- Department X (high income, low cardiac rates) has 200 participants out of 300 total\n- Department Z (low income, high cardiac rates) has only 50 participants out of 350 total\n- This creates a strong correlation between participation and income level\n\nThe problem: When controlling for fitness in the pooled data, the analyst is comparing people with similar fitness levels but ignoring that they come from different departments with vastly different baseline cardiac risks. This creates a comparison bias where:\n- High-fitness individuals are disproportionately from high-income Department X (naturally lower cardiac risk)\n- Low-fitness individuals are disproportionately from low-income Department Z (naturally higher cardiac risk)\n\nThis spurious association between fitness and department membership masks the true program effect, making it appear that fitness explains everything when it's actually confounded by department-level factors.\n\nThe answer is **B**.",
+        "latency_s": 11.31,
+        "input_tokens": 488,
+        "output_tokens": 320,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:18:23.822721",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.24,
+        "input_tokens": 417,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:18:26.289227",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.45,
+        "input_tokens": 285,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:18:28.597984",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.28,
+        "input_tokens": 459,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:18:39.827146",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG with conditioning on R=1, I need to find valid adjustment sets for the total effect of T on Y.\n\nGiven paths from T to Y:\n- Direct: T \u2192 Y\n- Through I: T \u2190 I \u2192 Y (backdoor path)\n\nSince we condition on R=1, and R is a collider affected by both T and Y, this conditioning opens backdoor paths through R.\n\nThe key insight is that conditioning on R=1 creates selection bias. When we condition on a collider (R) that is affected by both treatment (T) and outcome (Y), we induce a spurious association between them.\n\nSpecifically, conditioning on R opens paths like:\n- T \u2192 R \u2190 Y\n- T \u2192 R \u2190 U2 \u2192 R \u2190 Y\n\nThese opened paths cannot be blocked by conditioning on any observed variables without creating new problems. Adjusting for I or S doesn't help because they don't block these R-induced paths, and we cannot adjust for R itself since we're already conditioning on it.\n\nThis is a classic case of selection bias (Berkson's bias) where conditioning on a collider descendant of both treatment and outcome makes it impossible to identify the causal effect through adjustment.\n\nD",
+        "latency_s": 10.21,
+        "input_tokens": 141,
+        "output_tokens": 274,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:18:42.727758",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.88,
+        "input_tokens": 520,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:18:45.100861",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.34,
+        "input_tokens": 445,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:18:47.620308",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.49,
+        "input_tokens": 266,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:18:50.161187",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.51,
+        "input_tokens": 408,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:00.254944",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG with selection on Z=1, I need to identify which variables would create new bias if controlled for.\n\nGiven the DAG structure:\n- X \u2192 T, X \u2192 Y\n- T \u2192 Z, Y \u2192 Z  \n- T \u2192 W, W \u2192 Y\n- U \u2192 W, U \u2192 Y\n- T \u2192 Y\n\nWith Z = 1 (selection), this creates a collider bias between T and Y (since both cause Z).\n\nNow examining each variable:\n\n**X**: This is an ancestor of both T and Y. Controlling for X would not open any new biasing paths - it would actually help block the confounding path from X.\n\n**W**: This is a collider on the path T \u2192 W \u2190 U \u2192 Y. Currently this path is blocked because we're not conditioning on W. However, if we control for W, we would open this path, creating a new biasing association between T and Y through the unobserved U.\n\n**Z**: We're already conditioning on Z through selection, so additionally controlling for it wouldn't introduce new bias.\n\nTherefore, only controlling for W would introduce new bias beyond what the selection on Z already creates.\n\nA",
+        "latency_s": 9.06,
+        "input_tokens": 121,
+        "output_tokens": 261,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:02.570062",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.28,
+        "input_tokens": 503,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:04.988628",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.39,
+        "input_tokens": 378,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:07.525619",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.5,
+        "input_tokens": 346,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:09.903194",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.36,
+        "input_tokens": 453,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:19.430358",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to find all minimal adjustment sets that identify the total effect of T on Y.\n\nFirst, let me identify the paths from T to Y:\n1. T \u2192 Y (direct path)\n2. T \u2190 C \u2192 Y (backdoor path)\n3. T \u2190 G \u2192 Y (backdoor path)\n4. T \u2190 C \u2190 G \u2192 Y (backdoor path)\n5. T \u2190 C \u2190 U \u2192 G \u2192 Y (backdoor path)\n6. T \u2190 G \u2192 C \u2192 Y (backdoor path)\n7. T \u2190 G \u2190 U \u2192 C \u2192 Y (backdoor path)\n\nTo identify the total effect, I need to block all backdoor paths while not blocking any part of the direct path or creating new biasing paths.\n\nThe backdoor paths can be blocked by conditioning on:\n- C (blocks paths 2, 4, 5)\n- G (blocks paths 3, 4, 6)\n- Both C and G together\n\nLet me check each potential adjustment set:\n\n1. {C}: Blocks paths involving C as a non-collider, but doesn't block T \u2190 G \u2192 Y\n2. {G}: Blocks paths involving G as a non-collider, but doesn't block T \u2190 C \u2192 Y  \n3. {C, G}: Blocks all backdoor paths\n\nSince neither {C} alone nor {G} alone blocks all backdoor paths, they are not valid adjustment sets.\n\nThe only minimal adjustment set is {C, G}.\n\nB",
+        "latency_s": 8.5,
+        "input_tokens": 111,
+        "output_tokens": 348,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:22.309761",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.85,
+        "input_tokens": 394,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:25.027101",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.7,
+        "input_tokens": 466,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:27.420463",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.37,
+        "input_tokens": 279,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:30.333290",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.89,
+        "input_tokens": 418,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:39.835758",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG with S=1 conditioning, I need to find all d-connecting paths between A and B.\n\nFirst, let me identify the paths between A and B:\n1. A \u2192 S \u2190 H \u2190 B\n2. A \u2192 S \u2190 K \u2190 U \u2192 B  \n3. A \u2192 K \u2190 U \u2192 B\n4. A \u2192 H \u2192 S \u2190 K \u2190 U \u2192 B\n\nNow I'll check which paths are d-connecting given S=1:\n\nPath 1: A \u2192 S \u2190 H \u2190 B\n- Contains collider S with A \u2192 S \u2190 H\n- S is conditioned on (S=1)\n- No other colliders\n- This path is d-connecting \u2713\n\nPath 2: A \u2192 S \u2190 K \u2190 U \u2192 B\n- Contains collider S with A \u2192 S \u2190 K\n- S is conditioned on (S=1)\n- No other colliders\n- This path is d-connecting \u2713\n\nPath 3: A \u2192 K \u2190 U \u2192 B\n- Contains collider K with A \u2192 K \u2190 U\n- K is not conditioned on\n- Blocked at K \u2717\n\nPath 4: A \u2192 H \u2192 S \u2190 K \u2190 U \u2192 B\n- Contains collider S with H \u2192 S \u2190 K\n- S is conditioned on (S=1)\n- No other colliders\n- This path is d-connecting \u2713\n\nThree paths are d-connecting after conditioning on S=1.\n\nD",
+        "latency_s": 8.48,
+        "input_tokens": 112,
+        "output_tokens": 345,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:50.068818",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me work through this step-by-step.\n\nGiven information:\n- Disease A prevalence: 10%\n- Disease B prevalence: 10%\n- A and B are independent in general population\n- Hospital admission probabilities:\n  - Both diseases: 40%\n  - Only A: 20%\n  - Only B: 20%\n  - Neither: 5%\n\nIn 100,000 people:\n- Both A and B: 0.1 \u00d7 0.1 \u00d7 100,000 = 1,000\n- Only A: 0.1 \u00d7 0.9 \u00d7 100,000 = 9,000\n- Only B: 0.9 \u00d7 0.1 \u00d7 100,000 = 9,000\n- Neither: 0.9 \u00d7 0.9 \u00d7 100,000 = 81,000\n\nHospitalized patients:\n- Both: 1,000 \u00d7 0.4 = 400\n- Only A: 9,000 \u00d7 0.2 = 1,800\n- Only B: 9,000 \u00d7 0.2 = 1,800\n- Neither: 81,000 \u00d7 0.05 = 4,050\n- Total hospitalized: 8,050\n\nAmong hospitalized:\n- P(A) = (400 + 1,800)/8,050 = 2,200/8,050 \u2248 0.273\n- P(B) = (400 + 1,800)/8,050 = 2,200/8,050 \u2248 0.273\n- P(A and B) = 400/8,050 \u2248 0.0497\n\nIf independent among hospitalized:\n- Expected P(A and B) = 0.273 \u00d7 0.273 \u2248 0.0745\n\nRatio = 0.0497/0.0745 \u2248 0.67\n\nD",
+        "latency_s": 9.21,
+        "input_tokens": 261,
+        "output_tokens": 472,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:52.540969",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.45,
+        "input_tokens": 458,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:54.988461",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.41,
+        "input_tokens": 378,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:57.405440",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.39,
+        "input_tokens": 433,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:08.086197",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to find the minimal sufficient adjustment set to estimate the total causal effect of T on Y.\n\nFirst, let me identify all paths from T to Y:\n1. T \u2192 Y (direct causal path)\n2. T \u2190 U1 \u2192 C1 \u2190 U2 \u2192 Y (backdoor path)\n3. T \u2190 U3 \u2192 C2 \u2192 Y (backdoor path)\n4. T \u2190 C3 \u2192 Y (backdoor path)\n\nTo estimate the total effect, I need to block all backdoor paths while not blocking any part of the causal path (which is just T \u2192 Y).\n\nFor each backdoor path:\n- Path 2: Can be blocked by conditioning on C1\n- Path 3: Can be blocked by conditioning on C2\n- Path 4: Can be blocked by conditioning on C3\n\nSince C1 is a collider on path 2 (U1 \u2192 C1 \u2190 U2), conditioning on C1 actually opens this path rather than blocks it. So C1 should NOT be in the adjustment set.\n\nThe minimal sufficient adjustment set must include:\n- C2 (to block T \u2190 U3 \u2192 C2 \u2192 Y)\n- C3 (to block T \u2190 C3 \u2192 Y)\n\nTherefore, the minimal sufficient adjustment set is {C2, C3}.\n\nC",
+        "latency_s": 9.65,
+        "input_tokens": 151,
+        "output_tokens": 316,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:17.774378",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at the causal structure:\n- T = 0.6*P1 + eT\n- C = -0.5*P1 + 0.5*P2 + eC  \n- Y = 0.7*P2 + eY\n\nThe key insight is that C is a collider (both P1 and P2 point to C).\n\nFor the unadjusted regression:\n- There's no path from T to Y without conditioning on anything\n- T and Y are independent, so the coefficient should be near zero\n\nFor the adjusted regression (conditioning on C):\n- Conditioning on collider C opens the path: T \u2190 P1 \u2192 C \u2190 P2 \u2192 Y\n- This creates a spurious association between T and Y\n\nTo determine the sign:\n- T increases with P1 (coefficient +0.6)\n- When C is fixed and P1 increases, P2 must increase to compensate (since P1 has negative effect -0.5 on C)\n- Y increases with P2 (coefficient +0.7)\n- Therefore: T\u2191 \u2192 P1\u2191 \u2192 P2\u2191 \u2192 Y\u2191\n\nThis creates a positive spurious association.\n\nB",
+        "latency_s": 8.67,
+        "input_tokens": 398,
+        "output_tokens": 284,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:20.075443",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.28,
+        "input_tokens": 524,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:22.550342",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.45,
+        "input_tokens": 329,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:24.867633",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.3,
+        "input_tokens": 436,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:35.477058",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to check if Z can be a valid instrument for T\u2192Y under any conditioning set.\n\nFor Z to be a valid instrument, it must satisfy:\n1. Relevance: Z affects T (\u2713 - there's a direct edge Z\u2192T)\n2. Exclusion restriction: Z affects Y only through T\n3. Independence: Z is independent of unmeasured confounders of T-Y relationship\n\nLet me trace the paths from Z to Y:\n- Z\u2192T\u2192Y (through T - this is allowed)\n- Z\u2192W\u2192Y (direct path not through T - violates exclusion restriction)\n- Z\u2190U1\u2192Y (backdoor path)\n\nThe path Z\u2192W\u2192Y violates the exclusion restriction because Z affects Y through a path that doesn't go through T. This violation cannot be fixed by conditioning on any observed variables.\n\nEven if we could somehow address this (which we can't), we'd still have the backdoor path Z\u2190U1\u2192Y that would need to be blocked, but U1 is unmeasured so we cannot condition on it.\n\nSince the exclusion restriction is fundamentally violated by the Z\u2192W\u2192Y path, no conditioning set can make Z a valid instrument.\n\nD",
+        "latency_s": 9.59,
+        "input_tokens": 137,
+        "output_tokens": 280,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:46.763389",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me work through this step-by-step.\n\nGiven information:\n- 500 in treatment arm, 500 in control arm\n- In treatment: 350 compliers (took drug), 150 noncompliers (refused)\n- Average outcome in treatment arm: 72\n- Average outcome in control arm: 68\n- Average outcome among 350 compliers: 78\n- Noncompliers experienced -4 point stress effect from being assigned to treatment\n\nFirst, let me find the average outcome for noncompliers in the treatment arm:\n- Treatment arm average = (350 \u00d7 78 + 150 \u00d7 noncomplier_outcome) / 500 = 72\n- 27,300 + 150 \u00d7 noncomplier_outcome = 36,000\n- Noncomplier_outcome = 58\n\nThe critic says noncompliers' outcomes were worsened by 4 points due to stress. So without this stress effect, noncompliers would have had outcome = 58 + 4 = 62.\n\nThe true ITT effect (removing the exclusion restriction violation) would be:\n- Treatment arm average without stress effect = (350 \u00d7 78 + 150 \u00d7 62) / 500 = 74.4\n- True ITT = 74.4 - 68 = 6.4\n\nThe true CACE = True ITT / compliance rate = 6.4 / 0.7 \u2248 9.14\n\nThis is closest to 9.5.\n\nD",
+        "latency_s": 10.27,
+        "input_tokens": 416,
+        "output_tokens": 359,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:49.198965",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.42,
+        "input_tokens": 499,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:51.586104",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.37,
+        "input_tokens": 359,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:53.964916",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.36,
+        "input_tokens": 375,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:06.386405",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to identify the direct effect of Ti on Yi (not mediated through Tj).\n\nFor a direct effect, I need to:\n1. Block all backdoor paths from Ti to Yi\n2. NOT condition on any mediators (descendants of Ti on paths to Yi)\n\nLet me trace the paths:\n\nBackdoor paths from Ti to Yi:\n- Ti \u2190 U \u2192 Tj \u2192 Yi (through U and Tj)\n- Ti \u2190 U \u2192 Tj \u2192 Yj \u2190 Xj \u2192 Tj \u2192 Yi (through U)\n- Ti \u2190 Xi \u2192 Yi (through Xi)\n\nThe mediating path Ti \u2192 Tj \u2192 Yi must remain open (so I cannot condition on Tj).\n\nChecking the options:\n\nA. {Xi, Xj, Tj} - This conditions on Tj, which is a mediator. This would give the controlled direct effect, not the direct effect.\n\nB. {Xi, Tj} - Same issue as A.\n\nC. {Xi, Xj} - This blocks Ti \u2190 Xi \u2192 Yi and doesn't condition on the mediator Tj. However, it leaves Ti \u2190 U \u2192 Tj \u2192 Yi unblocked.\n\nD. No valid set exists - This would be true if we cannot block all backdoor paths without conditioning on a mediator.\n\nSince U is unmeasured and creates a backdoor path through Tj, and we cannot condition on Tj (as it's a mediator), we cannot identify the direct effect.\n\nD",
+        "latency_s": 11.4,
+        "input_tokens": 148,
+        "output_tokens": 340,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:08.671102",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.26,
+        "input_tokens": 405,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:11.090483",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.4,
+        "input_tokens": 448,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:13.448499",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.34,
+        "input_tokens": 370,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:16.449090",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.98,
+        "input_tokens": 417,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:25.906401",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to trace the paths between T* and Y* to understand what biases affect their observed association when adjusting for X.\n\nThe key paths between T* and Y* are:\n1. T* \u2190 T \u2192 Y \u2192 Y* (causal path)\n2. T* \u2190 T \u2190 U \u2192 Y \u2192 Y* (confounding through U)\n3. T* \u2190 T \u2192 Y* (differential outcome misclassification)\n4. T* \u2190 Y \u2190 T \u2192 Y* (reverse causation due to Y \u2192 T*)\n\nWhen we adjust for X:\n- X blocks some confounding between T and Y\n- But U still creates confounding that X cannot block\n- The differential misclassification (T \u2192 Y*) remains\n- The reverse causation (Y \u2192 T*) remains\n\nTherefore, even after adjusting for X, the observed association between T* and Y* is biased by:\n1. Unmeasured confounding through U\n2. Differential outcome misclassification (T \u2192 Y*)\n3. Reverse causation (Y \u2192 T*)\n\nThe answer is C - the association is biased by both differential misclassification AND U (among other biases).\n\nC",
+        "latency_s": 8.44,
+        "input_tokens": 160,
+        "output_tokens": 279,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:34.389236",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Let me calculate the observed exposure prevalence for each group.\n\nFor cases (n=1,000):\n- True exposed: 300 (30%)\n- True unexposed: 700 (70%)\n- Observed exposed = (True exposed \u00d7 Sensitivity) + (True unexposed \u00d7 (1-Specificity))\n- Observed exposed = (300 \u00d7 0.95) + (700 \u00d7 0.15) = 285 + 105 = 390\n- Observed prevalence = 390/1,000 = 39%\n\nFor controls (n=1,000):\n- True exposed: 300 (30%)\n- True unexposed: 700 (70%)\n- Observed exposed = (300 \u00d7 0.80) + (700 \u00d7 0.05) = 240 + 35 = 275\n- Observed prevalence = 275/1,000 = 27.5% \u2248 28%\n\nObserved OR = (390/610) / (275/725) = 0.639 / 0.379 = 1.69 \u2248 1.70\n\nThe answer is D.",
+        "latency_s": 7.46,
+        "input_tokens": 291,
+        "output_tokens": 272,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:37.093283",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.69,
+        "input_tokens": 483,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:39.424419",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.31,
+        "input_tokens": 275,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:41.631818",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.19,
+        "input_tokens": 310,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:44.553941",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.9,
+        "input_tokens": 203,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:47.777347",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 2.21,
+        "input_tokens": 484,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:50.819560",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 2.03,
+        "input_tokens": 488,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:53.225924",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.38,
+        "input_tokens": 318,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:55.946754",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.7,
+        "input_tokens": 460,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:05.162854",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG with the survival-to-initiation indicator S and the implicit conditioning on S=1 for treated individuals:\n\nThe key issue is that the analysis conditions on S=1 for the treated group (since they must survive to initiation to receive treatment), but does not condition on S for the untreated group (who contribute person-time regardless of their eventual S value).\n\nThis creates a fundamental problem:\n- S is a collider on the path X \u2192 S \u2190 U\n- Conditioning on S=1 (even partially) opens this collider path\n- This induces a spurious association between X and U\n- Since U is unmeasured and affects Y, this creates unmeasured confounding\n\nThe conditioning on S=1 for treated individuals cannot be \"undone\" by any adjustment strategy using only observed variables {X, S}. The induced association between X and U through the opened collider creates bias that cannot be blocked without measuring U.\n\nD",
+        "latency_s": 8.19,
+        "input_tokens": 148,
+        "output_tokens": 214,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:07.384824",
+        "api_model": "claude-opus-4-20250514",
+        "content": "D",
+        "latency_s": 1.21,
+        "input_tokens": 442,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:09.735865",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.33,
+        "input_tokens": 431,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:12.090838",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.34,
+        "input_tokens": 307,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:14.914855",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.8,
+        "input_tokens": 361,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:17.762445",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.83,
+        "input_tokens": 210,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:29.573612",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this problem, I need to calculate the overall heart disease rate for each region and then examine the ecological correlation between exercise prevalence and heart disease rates.\n\nLet me calculate the overall heart disease rate for each region:\n\nRegion A: 0.60 \u00d7 8% + 0.40 \u00d7 12% = 9.6%\nRegion B: 0.40 \u00d7 10% + 0.60 \u00d7 14% = 12.4%\nRegion C: 0.80 \u00d7 6% + 0.20 \u00d7 9% = 6.6%\nRegion D: 0.30 \u00d7 11% + 0.70 \u00d7 13% = 12.4%\n\nNow I can see the pattern:\n- Region C: 80% exercise \u2192 6.6% heart disease (lowest)\n- Region A: 60% exercise \u2192 9.6% heart disease\n- Region B: 40% exercise \u2192 12.4% heart disease\n- Region D: 30% exercise \u2192 12.4% heart disease (highest, tied with B)\n\nThere's a clear negative correlation at the ecological level - regions with higher exercise rates have lower heart disease rates. The gradient from Region D (30% exercise, 12.4% disease) to Region C (80% exercise, 6.6% disease) represents a 5.8 percentage point decrease in heart disease over a 50 percentage point increase in exercise prevalence.\n\nThis ecological effect appears much stronger than the individual-level effects (which range from -2 to -4 percentage points). This is a classic example of the ecological fallacy, where aggregate-level correlations can differ substantially from individual-level relationships.\n\nC",
+        "latency_s": 10.8,
+        "input_tokens": 429,
+        "output_tokens": 386,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:32.263486",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.67,
+        "input_tokens": 474,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:35.100730",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.82,
+        "input_tokens": 320,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:37.352859",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.24,
+        "input_tokens": 502,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:45.345772",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this DAG, I need to identify all non-causal paths from T to Y1 after conditioning on Y0 and selection on Y0 > c.\n\nThe causal path is: T \u2192 Y1\n\nNon-causal paths from T to Y1:\n1. T \u2190 Y0 \u2192 True \u2192 Y1\n2. T \u2190 U \u2192 True \u2192 Y1\n\nLet me check if these paths are open after conditioning:\n\nPath 1: T \u2190 Y0 \u2192 True \u2192 Y1\n- Y0 is a collider on this path (arrows point into it: T \u2190 Y0 \u2192 True)\n- We condition on Y0, which opens this collider\n- This path becomes open\n\nPath 2: T \u2190 U \u2192 True \u2192 Y1\n- No colliders on this path\n- U is unmeasured, so we don't condition on it\n- This path remains open\n\nBoth non-causal paths are open after conditioning on Y0.\n\nA",
+        "latency_s": 6.97,
+        "input_tokens": 159,
+        "output_tokens": 223,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:47.787733",
+        "api_model": "claude-opus-4-20250514",
+        "content": "A",
+        "latency_s": 1.42,
+        "input_tokens": 389,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:50.602462",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.8,
+        "input_tokens": 539,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:53.542180",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.92,
+        "input_tokens": 353,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:55.778935",
+        "api_model": "claude-opus-4-20250514",
+        "content": "C",
+        "latency_s": 1.21,
+        "input_tokens": 519,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:06.351155",
+        "api_model": "claude-opus-4-20250514",
+        "content": "Looking at this transportability problem, I need to determine what conditions are required for valid transport of the site-specific effect.\n\nGiven:\n- Site-specific effect is identified using adjustment set {X, Z}\n- Target population only has X and Z (not W or S)\n- Need to check S-admissibility conditions\n\nFor transportability, we need:\n1. The adjustment set {X, Z} to remain valid in the target\n2. S-admissibility: Y \u22a5 S | T, X, Z\n\nChecking paths from S to Y given {T, X, Z}:\n- S \u2192 X \u2192 Y: blocked by X\n- S \u2192 W \u2192 Y: NOT blocked (W is not in conditioning set)\n\nSince S \u2192 W \u2192 Y remains open when conditioning on {T, X, Z}, we have S \u22ad Y | T, X, Z.\n\nFor S-admissibility to hold, W must be independent of Y given {T, X, Z}. But W directly affects Y (W \u2192 Y), so this independence cannot hold.\n\nSince:\n- W must satisfy S-admissibility but cannot\n- W is unobserved in the target population\n- W is needed to block the S \u2192 W \u2192 Y path\n\nTransportability fails.\n\nD",
+        "latency_s": 9.55,
+        "input_tokens": 172,
+        "output_tokens": 291,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:11.324494",
+        "api_model": "claude-opus-4-20250514",
+        "content": "To find the transported estimate, I need to calculate the weighted average using the target population proportions:\n\n0.25(12) + 0.15(4) + 0.35(8) + 0.25(2)\n= 3.0 + 0.6 + 2.8 + 0.5\n= 6.9 percentage points\n\nThis is closest to option C's value of 7.6 percentage points (though the calculation shown in C actually equals 6.9, not 7.6).\n\nC",
+        "latency_s": 3.95,
+        "input_tokens": 469,
+        "output_tokens": 126,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:13.716821",
+        "api_model": "claude-opus-4-20250514",
+        "content": "B",
+        "latency_s": 1.37,
+        "input_tokens": 461,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T19:23:08.358461"
+  "updated": "2026-04-22T13:23:13.716860"
 }

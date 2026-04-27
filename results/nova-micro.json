@@ -7721,7 +7721,2437 @@
         "judge_score_avg": 2.75,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:11.875456",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.37,
+        "input_tokens": 295,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:13.241376",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.34,
+        "input_tokens": 460,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:14.520945",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 112,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:15.800738",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.26,
+        "input_tokens": 383,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:17.129191",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.29,
+        "input_tokens": 407,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:18.542973",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.39,
+        "input_tokens": 315,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:19.928003",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.36,
+        "input_tokens": 439,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:21.333317",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.38,
+        "input_tokens": 126,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:22.627425",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.26,
+        "input_tokens": 373,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:23.989901",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.32,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:25.274915",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 288,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:26.570441",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.27,
+        "input_tokens": 400,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:27.904345",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.31,
+        "input_tokens": 108,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:29.200540",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.27,
+        "input_tokens": 449,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:30.502578",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.28,
+        "input_tokens": 399,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:31.789027",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.27,
+        "input_tokens": 350,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:33.112181",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.31,
+        "input_tokens": 373,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:34.336321",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.21,
+        "input_tokens": 124,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:35.668446",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.31,
+        "input_tokens": 673,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:36.965967",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 375,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:38.322794",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.33,
+        "input_tokens": 332,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:39.606144",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.26,
+        "input_tokens": 375,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:40.875109",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.24,
+        "input_tokens": 152,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:42.144165",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.24,
+        "input_tokens": 447,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:43.464105",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.29,
+        "input_tokens": 396,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:44.781692",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.28,
+        "input_tokens": 270,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:46.109498",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.28,
+        "input_tokens": 255,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:47.395183",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.27,
+        "input_tokens": 109,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:48.867390",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.43,
+        "input_tokens": 445,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:50.307782",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.41,
+        "input_tokens": 387,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:51.636857",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.3,
+        "input_tokens": 229,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:53.007070",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.34,
+        "input_tokens": 359,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:54.317153",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.28,
+        "input_tokens": 128,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:55.632404",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.28,
+        "input_tokens": 449,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:57.148437",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B\n\nExplanation: Analyst 2's position is more defensible because it correctly identifies the limitations of controlling for observed confounders like school funding in a non-randomized observational study. While excluding mediators is a valid approach to estimate the total effect, controlling for funding alone does not fully address potential residual bias from unmeasured confounders that may be correlated with both programme access and outcomes. This makes the total-effect identification insufficiently secured by the proposed specification.",
+        "latency_s": 0.5,
+        "input_tokens": 360,
+        "output_tokens": 95,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:58.407581",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.25,
+        "input_tokens": 256,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:59.729778",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.31,
+        "input_tokens": 391,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:02.084875",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 1.34,
+        "input_tokens": 124,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:03.416101",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.31,
+        "input_tokens": 509,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:04.744037",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.31,
+        "input_tokens": 367,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:06.047878",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.29,
+        "input_tokens": 237,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:07.302975",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.23,
+        "input_tokens": 365,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:08.543378",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.22,
+        "input_tokens": 109,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:09.785382",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.22,
+        "input_tokens": 480,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:11.525561",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B\n\nThe most defensible position acknowledges the valid concerns raised by both analysts and recognizes that the truth likely lies somewhere in between. Analyst 1 correctly identifies the issues with post-treatment controls and collider bias, while Analyst 2 points out the necessity of restricting to employed workers and the potential value of certain controls. A nuanced approach that selectively includes appropriate controls (like industry) while excluding others (like job level) to mitigate bias is the most balanced stance.",
+        "latency_s": 0.72,
+        "input_tokens": 336,
+        "output_tokens": 92,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:12.836613",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.29,
+        "input_tokens": 295,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:14.270628",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.42,
+        "input_tokens": 404,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:15.720628",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B\n\nThe minimal adjustment set that identifies the total effect of T on Y is {G}. This is because adjusting for G removes the back-door paths between T and Y. There is only 1 minimal adjustment set.",
+        "latency_s": 0.43,
+        "input_tokens": 100,
+        "output_tokens": 47,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:16.960386",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.22,
+        "input_tokens": 382,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:18.302480",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.32,
+        "input_tokens": 391,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:19.721611",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.4,
+        "input_tokens": 248,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:21.062444",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.32,
+        "input_tokens": 378,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:22.342555",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 101,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:23.570096",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.21,
+        "input_tokens": 253,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:25.074958",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B\n\nAnalyst 2's assessment is correct because clinical homogeneity does not address the underlying causal graph (DAG) and collider structure. Conditioning on a second collider (ICU admission) downstream of the initial collider (hospital admission) compounds rather than mitigates the induced association, as per compound-collider theory.",
+        "latency_s": 0.49,
+        "input_tokens": 367,
+        "output_tokens": 64,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:26.337246",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.24,
+        "input_tokens": 330,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:27.686612",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.33,
+        "input_tokens": 394,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:28.938651",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.23,
+        "input_tokens": 127,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:30.187467",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.23,
+        "input_tokens": 348,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:31.473239",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 455,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:32.713331",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.22,
+        "input_tokens": 306,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:33.985799",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.25,
+        "input_tokens": 390,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:35.236975",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.23,
+        "input_tokens": 118,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:36.574086",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.32,
+        "input_tokens": 391,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:38.094532",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A\n\nAnalyst 2's assessment is correct because exclusion is a statement about the instrument's pathway to the outcome that must hold for all compliance types. The consent-induced anxiety pathway creates a non-treatment route from assignment to outcome and biases the Wald estimator regardless of targeted subpopulation.",
+        "latency_s": 0.5,
+        "input_tokens": 432,
+        "output_tokens": 60,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:39.370229",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.25,
+        "input_tokens": 317,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:40.660935",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.27,
+        "input_tokens": 335,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:42.149326",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.47,
+        "input_tokens": 127,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:43.557737",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.39,
+        "input_tokens": 384,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:44.797141",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.22,
+        "input_tokens": 392,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:46.079059",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 309,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:47.577491",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.48,
+        "input_tokens": 374,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:49.001999",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.41,
+        "input_tokens": 138,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:50.288053",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 286,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:51.688677",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C\n\nDifferential misclassification of a binary exposure can indeed move the odds ratio in either direction depending on the joint sensitivity-specificity pattern across strata, and quantitative bias analysis over plausible parameters is the right response rather than a directional prior. Analyst 2's assessment is correct in this regard.",
+        "latency_s": 0.37,
+        "input_tokens": 413,
+        "output_tokens": 60,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:52.983445",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.25,
+        "input_tokens": 236,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:54.255837",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.24,
+        "input_tokens": 263,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:55.510502",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.23,
+        "input_tokens": 168,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:56.775872",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.23,
+        "input_tokens": 435,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:58.144844",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.33,
+        "input_tokens": 421,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:59.428826",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.25,
+        "input_tokens": 280,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:00.716385",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.26,
+        "input_tokens": 394,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:01.957229",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.22,
+        "input_tokens": 128,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:03.233450",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.24,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:04.549339",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.28,
+        "input_tokens": 375,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:31:05.817963",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.24,
+        "input_tokens": 285,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:10.592251",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 3.74,
+        "input_tokens": 317,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:11.890456",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.26,
+        "input_tokens": 176,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:13.137102",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.22,
+        "input_tokens": 413,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:14.427499",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.27,
+        "input_tokens": 434,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:31:15.686930",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.22,
+        "input_tokens": 290,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:16.948762",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.24,
+        "input_tokens": 452,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:18.285002",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.32,
+        "input_tokens": 133,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:19.539576",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.23,
+        "input_tokens": 375,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:20.910125",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.35,
+        "input_tokens": 500,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:31:22.163582",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.21,
+        "input_tokens": 326,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:23.499436",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "C",
+        "latency_s": 0.3,
+        "input_tokens": 461,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:24.772706",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "D",
+        "latency_s": 0.24,
+        "input_tokens": 160,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:26.079573",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 447,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:27.377177",
+        "api_model": "eu.amazon.nova-micro-v1:0",
+        "content": "B",
+        "latency_s": 0.24,
+        "input_tokens": 395,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T22:14:36.411493"
+  "updated": "2026-04-22T13:31:27.377281"
 }

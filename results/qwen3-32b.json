@@ -3643,7 +3643,2430 @@
         "judge_score_avg": 3.25,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:09.368302",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.25,
+        "input_tokens": 296,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:10.569893",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.19,
+        "input_tokens": 350,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:11.767379",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D. 3 or more",
+        "latency_s": 0.18,
+        "input_tokens": 124,
+        "output_tokens": 7,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:12.956457",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.17,
+        "input_tokens": 382,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:14.174687",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.19,
+        "input_tokens": 422,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:15.355006",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.16,
+        "input_tokens": 331,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:16.558635",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "**C**",
+        "latency_s": 0.18,
+        "input_tokens": 453,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:17.784529",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A. {X}",
+        "latency_s": 0.2,
+        "input_tokens": 138,
+        "output_tokens": 6,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:19.036056",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D.",
+        "latency_s": 0.22,
+        "input_tokens": 384,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:20.387285",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.33,
+        "input_tokens": 423,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:21.671469",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.25,
+        "input_tokens": 305,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:22.858635",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.16,
+        "input_tokens": 408,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:24.077627",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C. 2",
+        "latency_s": 0.19,
+        "input_tokens": 119,
+        "output_tokens": 5,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:25.277481",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.18,
+        "input_tokens": 458,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:26.475550",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.18,
+        "input_tokens": 413,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:27.669637",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.18,
+        "input_tokens": 358,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:28.852356",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "**B**",
+        "latency_s": 0.17,
+        "input_tokens": 380,
+        "output_tokens": 4,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:30.076422",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C. {G, W, P}",
+        "latency_s": 0.19,
+        "input_tokens": 133,
+        "output_tokens": 10,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:31.312556",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.21,
+        "input_tokens": 674,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:32.506690",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.17,
+        "input_tokens": 402,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:33.695688",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.17,
+        "input_tokens": 339,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:34.874728",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.15,
+        "input_tokens": 383,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:36.133841",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A. No - B is a post-treatment mediator and U2 opens a backdoor via B",
+        "latency_s": 0.25,
+        "input_tokens": 167,
+        "output_tokens": 21,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:37.343671",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 463,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:38.518266",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.15,
+        "input_tokens": 409,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:39.711076",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.16,
+        "input_tokens": 279,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:40.912903",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.17,
+        "input_tokens": 269,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:42.110277",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B. 1",
+        "latency_s": 0.17,
+        "input_tokens": 122,
+        "output_tokens": 5,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:43.297779",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.17,
+        "input_tokens": 451,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:44.581554",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "**B.** Analyst 1 only, because baseline adjustment on a differentially selected subset cannot eliminate bias from unmeasured attrition determinants that the treatment activates, and reflexive post-randomisation adjustment introduces a distinct collider pathway baseline regression cannot close.",
+        "latency_s": 0.25,
+        "input_tokens": 414,
+        "output_tokens": 52,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:45.791597",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C.",
+        "latency_s": 0.2,
+        "input_tokens": 244,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:46.992427",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.17,
+        "input_tokens": 380,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:48.216306",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A. {X, M1}",
+        "latency_s": 0.19,
+        "input_tokens": 141,
+        "output_tokens": 9,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:49.495700",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 459,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:50.770265",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.24,
+        "input_tokens": 387,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:51.974164",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.16,
+        "input_tokens": 271,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:53.192021",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.19,
+        "input_tokens": 417,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:54.383286",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.16,
+        "input_tokens": 138,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:55.581846",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.17,
+        "input_tokens": 527,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:56.761887",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.17,
+        "input_tokens": 388,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:57.956479",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.17,
+        "input_tokens": 251,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:59.169035",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.19,
+        "input_tokens": 372,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:00.406432",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A. W only",
+        "latency_s": 0.21,
+        "input_tokens": 121,
+        "output_tokens": 5,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:01.621706",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.19,
+        "input_tokens": 489,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:02.865454",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C. Analyst 1 only, because both the sample restriction and the post-treatment controls introduce distinct biases that standard regression adjustment cannot resolve, and the resulting coefficient has no clean causal interpretation as a certification effect.",
+        "latency_s": 0.23,
+        "input_tokens": 354,
+        "output_tokens": 43,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:04.072765",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 305,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:05.256892",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.15,
+        "input_tokens": 437,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:06.445554",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C. 2",
+        "latency_s": 0.17,
+        "input_tokens": 114,
+        "output_tokens": 5,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:07.649049",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.17,
+        "input_tokens": 394,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:08.863456",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D.",
+        "latency_s": 0.18,
+        "input_tokens": 413,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:10.065663",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.16,
+        "input_tokens": 259,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:11.252185",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.17,
+        "input_tokens": 392,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:12.517900",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C. 2",
+        "latency_s": 0.24,
+        "input_tokens": 112,
+        "output_tokens": 5,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:13.691252",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.14,
+        "input_tokens": 266,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:15.004690",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "**B.** Analyst 2 only, because clinical homogeneity is orthogonal to the collider structure, and strengthening of the association in the ICU subset is precisely the predicted effect of conditioning on a second common-effect variable downstream.",
+        "latency_s": 0.28,
+        "input_tokens": 374,
+        "output_tokens": 45,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:16.196199",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C.",
+        "latency_s": 0.16,
+        "input_tokens": 351,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:17.592227",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B. Adjusting for L opens the non-causal path T <- W -> L <- N -> Y by conditioning on the collider at L, creating a spurious association between T and Y that was not present on any backdoor path prior to adjustment, so the adjusted estimate is biased despite L being a pre-treatment variable.",
+        "latency_s": 0.36,
+        "input_tokens": 409,
+        "output_tokens": 67,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:18.832088",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A. {C1, C2, C3}",
+        "latency_s": 0.2,
+        "input_tokens": 138,
+        "output_tokens": 13,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:20.024875",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.17,
+        "input_tokens": 364,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:21.421045",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "**C.** Analyst 1 only, because the crude T-Y association is already unbiased in this DAG and adjusting for the M-structure collider C opens a non-causal path and induces bias where none existed; proxy reasoning does not apply when no backdoor is open.",
+        "latency_s": 0.36,
+        "input_tokens": 472,
+        "output_tokens": 56,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:22.628571",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.18,
+        "input_tokens": 316,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:23.834083",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.17,
+        "input_tokens": 418,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:25.029048",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B. {X, W}",
+        "latency_s": 0.16,
+        "input_tokens": 130,
+        "output_tokens": 8,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:26.222343",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C.",
+        "latency_s": 0.18,
+        "input_tokens": 402,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:27.421466",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.17,
+        "input_tokens": 439,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:28.617708",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.18,
+        "input_tokens": 342,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:29.811647",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.17,
+        "input_tokens": 354,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:31.040434",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B. {Xi, Tj}",
+        "latency_s": 0.19,
+        "input_tokens": 140,
+        "output_tokens": 9,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:32.258756",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.19,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:33.490390",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.2,
+        "input_tokens": 422,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:34.708551",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.18,
+        "input_tokens": 321,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:35.917625",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.18,
+        "input_tokens": 381,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:37.136365",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C.",
+        "latency_s": 0.19,
+        "input_tokens": 150,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:38.328151",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.16,
+        "input_tokens": 304,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:39.540947",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C.",
+        "latency_s": 0.18,
+        "input_tokens": 419,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:40.781379",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.21,
+        "input_tokens": 260,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:42.016859",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.21,
+        "input_tokens": 289,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:43.221158",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.17,
+        "input_tokens": 182,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:44.406137",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.16,
+        "input_tokens": 454,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:45.626677",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.19,
+        "input_tokens": 451,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:46.867635",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.2,
+        "input_tokens": 295,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:48.073629",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D.",
+        "latency_s": 0.17,
+        "input_tokens": 410,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:49.332122",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D",
+        "latency_s": 0.22,
+        "input_tokens": 140,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:50.562680",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D.",
+        "latency_s": 0.21,
+        "input_tokens": 423,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:51.768932",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.17,
+        "input_tokens": 391,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:52.987735",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A",
+        "latency_s": 0.18,
+        "input_tokens": 287,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:54.201543",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 325,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:55.422551",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.19,
+        "input_tokens": 173,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:56.625222",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C.",
+        "latency_s": 0.17,
+        "input_tokens": 418,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:57.843700",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 434,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:59.047919",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.17,
+        "input_tokens": 302,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:00.260856",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.18,
+        "input_tokens": 473,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:01.473969",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A. 2 (via True and via U)",
+        "latency_s": 0.18,
+        "input_tokens": 146,
+        "output_tokens": 12,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:02.683240",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "A.",
+        "latency_s": 0.19,
+        "input_tokens": 385,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:03.950415",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.23,
+        "input_tokens": 504,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:05.168404",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 343,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:06.361189",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "C",
+        "latency_s": 0.16,
+        "input_tokens": 481,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:07.555358",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "D.",
+        "latency_s": 0.16,
+        "input_tokens": 168,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:09.545076",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B. 9.2 percentage points, because the target population has more older and less educated individuals who show larger treatment effects, outweighing the reduced share of young non-degree-holders.",
+        "latency_s": 0.96,
+        "input_tokens": 466,
+        "output_tokens": 39,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:10.773981",
+        "api_model": "qwen.qwen3-32b-v1:0",
+        "content": "B.",
+        "latency_s": 0.19,
+        "input_tokens": 402,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T23:11:58.478677"
+  "updated": "2026-04-22T13:29:10.774088"
 }

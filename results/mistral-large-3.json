@@ -3680,7 +3680,6011 @@
         "judge_score_avg": 5.0,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:40.814954",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.52,
+        "input_tokens": 295,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:42.321130",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.47,
+        "input_tokens": 340,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:43.809485",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.45,
+        "input_tokens": 115,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:45.530197",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.67,
+        "input_tokens": 381,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:46.678558",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:13.776432",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.86,
+        "input_tokens": 408,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:47.946601",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.21,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:15.298712",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.43,
+        "input_tokens": 318,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:49.190267",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.19,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:16.773412",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.41,
+        "input_tokens": 436,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:50.685216",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.45,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:18.537096",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.68,
+        "input_tokens": 128,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:51.829113",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:19.901920",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.28,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:55:17.181499",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.46,
+        "input_tokens": 378,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:52.956499",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:21.148204",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:55:27.116051",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.54,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:54.077060",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:22.340604",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:55:36.530329",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.51,
+        "input_tokens": 301,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:55.221229",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:23.515136",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:55:45.787045",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.5,
+        "input_tokens": 405,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:56.364382",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:24.676428",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:55:54.917090",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:44:10.303995",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.7,
+        "input_tokens": 111,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:57.491185",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:25.843566",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:56:04.259390",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.44,
+        "input_tokens": 458,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:58.640792",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:26.992127",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:56:13.511014",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.57,
+        "input_tokens": 417,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:59.756648",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:28.158562",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:56:22.667199",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:44:23.897280",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.48,
+        "input_tokens": 350,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:00.874172",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:29.331338",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:56:32.160238",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.46,
+        "input_tokens": 375,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:02.003272",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:30.488458",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:56:41.395507",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:44:37.121557",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.44,
+        "input_tokens": 124,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:03.136640",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:31.669791",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:56:51.041220",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.58,
+        "input_tokens": 678,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:04.283447",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:32.828018",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:00.581986",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.58,
+        "input_tokens": 393,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:05.433208",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:34.264492",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.37,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:09.777945",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:44:50.257122",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.45,
+        "input_tokens": 338,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:06.576090",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:35.432210",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:19.453524",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.57,
+        "input_tokens": 383,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:07.715205",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:36.572534",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:29.075790",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.56,
+        "input_tokens": 156,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:08.854234",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:37.722968",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:38.160219",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:45:02.945377",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T12:52:10.484068",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.83,
+        "input_tokens": 462,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:10.011276",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:38.871711",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:47.435122",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.45,
+        "input_tokens": 406,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:11.144632",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:40.028717",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:57:56.624159",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:45:16.552540",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.41,
+        "input_tokens": 269,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:12.307934",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:41.221224",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:58:05.941053",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.55,
+        "input_tokens": 257,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:13.440029",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:42.407226",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:58:15.564868",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.54,
+        "input_tokens": 114,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:14.583111",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:43.549379",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:58:24.497896",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:45:30.232388",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.6,
+        "input_tokens": 443,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:15.711919",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:44.701006",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:58:33.571348",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.48,
+        "input_tokens": 398,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:16.847890",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:45.833968",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:58:43.308672",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.64,
+        "input_tokens": 235,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:18.147493",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.26,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:46.980464",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:58:52.373168",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:45:43.750790",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.48,
+        "input_tokens": 366,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:19.373933",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.19,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:48.332483",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.27,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:01.782330",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.46,
+        "input_tokens": 132,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:20.568663",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:49.549883",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.17,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:10.825501",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:45:56.755785",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.48,
+        "input_tokens": 447,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:21.740053",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:50.766395",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.17,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:21.211185",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.63,
+        "input_tokens": 367,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:22.898027",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:51.894201",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:31.137702",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.53,
+        "input_tokens": 258,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:24.041019",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:53.035118",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:40.530413",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.32,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:46:09.585626",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T12:52:31.106415",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.61,
+        "input_tokens": 394,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:25.188908",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:54.263149",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.18,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:50.084179",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 129,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:26.329051",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:55.439142",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T18:59:59.912032",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.9,
+        "input_tokens": 512,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:27.448946",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:56.590182",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:00:08.920180",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:46:22.861671",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.4,
+        "input_tokens": 378,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:28.564149",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:57.748419",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:00:18.344747",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.52,
+        "input_tokens": 248,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:29.672247",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:01:58.913646",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:00:27.073706",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:46:36.304931",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.42,
+        "input_tokens": 365,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:30.905571",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.17,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:00.088454",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:00:35.989671",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.4,
+        "input_tokens": 112,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:32.049156",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:01.221531",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:00:45.787354",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.79,
+        "input_tokens": 489,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:33.188919",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:02.632354",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.34,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:00:54.868103",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:46:49.823838",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.54,
+        "input_tokens": 350,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:34.336440",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:03.897611",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.19,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:01:04.119662",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.44,
+        "input_tokens": 297,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:35.449081",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:05.029813",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:01:13.591264",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.5,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:36.586243",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:06.184071",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:01:22.610357",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:47:03.296727",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.45,
+        "input_tokens": 105,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:37.724465",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:07.367715",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:01:32.382487",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.76,
+        "input_tokens": 386,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:39.067173",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.29,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:08.529649",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:01:41.486142",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:47:16.831569",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.5,
+        "input_tokens": 398,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:40.207388",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:09.724652",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:01:50.912898",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 253,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:41.773135",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.51,
+        "input_tokens": 380,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:42.910980",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:10.901226",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:00.227970",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.42,
+        "input_tokens": 104,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:44.065604",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:12.048768",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:09.278563",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:47:30.246361",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.53,
+        "input_tokens": 256,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:45.189682",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:13.242206",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:18.743660",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.45,
+        "input_tokens": 379,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:46.349832",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:14.877837",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.52,
+        "input_tokens": 336,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:47.599757",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.21,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:16.016413",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:27.749477",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.46,
+        "input_tokens": 402,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:48.840325",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.18,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:17.211410",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:36.838928",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:47:43.530507",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.38,
+        "input_tokens": 129,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:50.081217",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.19,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:18.488669",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.23,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:46.217212",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.56,
+        "input_tokens": 354,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:51.318134",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.18,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:19.731061",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:02:54.969421",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:47:56.958831",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.69,
+        "input_tokens": 468,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:52.448974",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:20.898045",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:03:04.337324",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.71,
+        "input_tokens": 307,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:21:53.594805",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:22.048221",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:03:14.034361",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.8,
+        "input_tokens": 405,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:21:54.737208",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:23.230022",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:03:23.125265",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:48:09.638006",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T12:52:51.576413",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.41,
+        "input_tokens": 121,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:21:56.699673",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.89,
+        "input_tokens": 391,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:21:57.847626",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:24.417919",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:03:34.666285",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 2.66,
+        "input_tokens": 439,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:21:59.003809",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:25.600769",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:03:44.068127",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.62,
+        "input_tokens": 324,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:00.117225",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:26.809355",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:03:52.913622",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:48:22.707007",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 343,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:01.257606",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:27.957359",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:02.399920",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.42,
+        "input_tokens": 131,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:02.389585",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:29.449609",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.45,
+        "input_tokens": 395,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:03.525448",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:30.659929",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:11.554155",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:48:35.871894",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.63,
+        "input_tokens": 409,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:04.671392",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:31.853894",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:20.624831",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 324,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:05.814116",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:33.003156",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:29.636483",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.49,
+        "input_tokens": 374,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:06.950795",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:34.191685",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:38.328741",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:48:49.298650",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.4,
+        "input_tokens": 143,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:08.087155",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:35.367599",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:47.556186",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.49,
+        "input_tokens": 298,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:09.232139",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:36.585976",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:04:56.709367",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:49:02.768918",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.48,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:10.395139",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:37.731129",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:05:06.089050",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.48,
+        "input_tokens": 244,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:11.841412",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.39,
+        "input_tokens": 275,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:12.963124",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:38.882473",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:05:15.395096",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.42,
+        "input_tokens": 173,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:14.221010",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.2,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:40.063695",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:05:24.623397",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.47,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:49:15.882706",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.6,
+        "input_tokens": 443,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:15.372973",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:41.206114",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:05:33.944235",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.63,
+        "input_tokens": 425,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:16.513454",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:42.329803",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:05:43.569300",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.58,
+        "input_tokens": 280,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:17.762400",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.19,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:43.797894",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.42,
+        "input_tokens": 387,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:19.003658",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.2,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:44.937425",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:05:52.779638",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:49:28.943188",
+        "api_model": "mistral-large-latest",
+        "content": "D",
+        "latency_s": 0.44,
+        "input_tokens": 132,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:20.224703",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:46.079316",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:02.203972",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.49,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:21.469141",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.2,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:47.309198",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.18,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:11.062861",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:49:42.413346",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.45,
+        "input_tokens": 386,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:22.607788",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:48.670400",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.32,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:20.331599",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.72,
+        "input_tokens": 284,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:23.846246",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.18,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:49.913330",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.18,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:29.957097",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.57,
+        "input_tokens": 316,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:24.992213",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:51.154214",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.17,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:39.168050",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:49:55.862602",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.39,
+        "input_tokens": 160,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:26.798653",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.75,
+        "input_tokens": 412,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:27.951191",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:52.322273",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:48.766386",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.57,
+        "input_tokens": 425,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:29.100210",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:53.518360",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:06:58.320395",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.51,
+        "input_tokens": 288,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:30.234410",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:54.699601",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:07:07.494146",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:50:09.026978",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T12:53:12.092639",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.46,
+        "input_tokens": 458,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:31.372448",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:55.902444",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:07:17.104846",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.54,
+        "input_tokens": 137,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:32.512499",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:57.051019",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:07:26.112311",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.14,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:50:22.597093",
+        "api_model": "mistral-large-latest",
+        "content": "A",
+        "latency_s": 0.53,
+        "input_tokens": 380,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:33.688946",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.12,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:58.221845",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:07:35.594447",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.48,
+        "input_tokens": 498,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:34.830831",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:02:59.705032",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.44,
+        "input_tokens": 327,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:35.975011",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:03:00.884862",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:07:45.416813",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.78,
+        "input_tokens": 467,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:37.118009",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:03:02.060159",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.11,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:07:54.652663",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.15,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T10:50:35.561361",
+        "api_model": "mistral-large-latest",
+        "content": "C",
+        "latency_s": 0.44,
+        "input_tokens": 159,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:38.253603",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:03:03.216534",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.09,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:08:04.128767",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.46,
+        "input_tokens": 456,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:39.390026",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.08,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:03:04.388627",
+        "api_model": "mistral-large-latest",
+        "content": "",
+        "latency_s": 0.1,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.mistral.ai/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T19:08:13.793271",
+        "api_model": "mistral-large-latest",
+        "content": "B",
+        "latency_s": 0.61,
+        "input_tokens": 396,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T22:25:06.473800"
+  "updated": "2026-04-27T12:53:12.092672"
 }

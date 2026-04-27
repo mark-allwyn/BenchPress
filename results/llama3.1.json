@@ -5465,7 +5465,4502 @@
         "judge_score_avg": 2.5,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-23T06:22:07.420745",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 2.32,
+        "input_tokens": 291,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:28.042083",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 4.84,
+        "input_tokens": 291,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-23T06:22:08.969944",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.51,
+        "input_tokens": 344,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:29.580391",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.52,
+        "input_tokens": 344,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-23T06:22:10.241520",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.25,
+        "input_tokens": 122,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:30.906066",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.27,
+        "input_tokens": 122,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-23T06:22:11.755039",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.5,
+        "input_tokens": 342,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:32.428065",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.5,
+        "input_tokens": 342,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-23T06:22:14.084416",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe post-treatment outcome-visibility mechanism (Analyst 1) is a distinct threat to identification that pre-treatment matching cannot address. Analyst 2's concern about unmeasured confounding is also relevant, but it does not subsume the problem of post-treatment selection on the outcome-observation window.",
+        "latency_s": 1.3,
+        "input_tokens": 420,
+        "output_tokens": 66,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:34.777984",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe post-treatment outcome-visibility mechanism (Analyst 1) is a distinct threat to identification that pre-treatment matching cannot address. Analyst 2's concern about unmeasured confounding is also relevant, but it does not subsume the problem of post-treatment selection on the outcome-observation window.",
+        "latency_s": 1.33,
+        "input_tokens": 420,
+        "output_tokens": 66,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-23T06:22:15.555691",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.46,
+        "input_tokens": 320,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:36.291125",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.48,
+        "input_tokens": 320,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-23T06:22:17.770869",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe imputation model does not account for the reason for dropout (flare-ups in placebo arm vs mild side effects in drug arm), which may lead to overly optimistic imputed values for the placebo dropouts and thus attenuate the apparent advantage of the drug.",
+        "latency_s": 1.19,
+        "input_tokens": 443,
+        "output_tokens": 54,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:38.541817",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe imputation model does not account for the reason for dropout (flare-ups in placebo arm vs mild side effects in drug arm), which may lead to overly optimistic imputed values for the placebo dropouts and thus attenuate the apparent advantage of the drug.",
+        "latency_s": 1.23,
+        "input_tokens": 443,
+        "output_tokens": 54,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-23T06:22:19.068890",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.28,
+        "input_tokens": 136,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:39.869035",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.3,
+        "input_tokens": 136,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-23T06:22:25.378095",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nThe Drug group had a 5% dropout rate and the Placebo group had a 20% dropout rate. The sensitivity analysis assumes dropouts had pain scores 2 points higher than the group's completer mean. \n\nFor the Drug group, there were 10 dropouts out of 200 patients (5%). Therefore, the number of dropouts is 10. Since the remaining patients have a mean pain score of 3.2, we can calculate the total mean pain score for the Drug group as follows:\n\nTotal mean = (mean of completer patients * number of completer patients + mean of dropout patients * number of dropout patients) / total number of patients\n= ((3.2 * 190) + (5.2 * 10)) / 200\n= (608 + 52) / 200\n= 660 / 200\n= 3.30\n\nFor the Placebo group, there were 40 dropouts out of 200 patients (20%). Therefore, the number of dropouts is 40. Since the remaining patients have a mean pain score of 4.5, we can calculate the total mean pain score for the Placebo group as follows:\n\nTotal mean = (mean of completer patients * number of completer patients + mean of dropout patients * number of dropout patients) / total number of patients\n= ((4.5 * 160) + (6.5 * 40)) / 200\n= (720 + 260) / 200\n= 980 / 200\n= 4.90\n\nThe ITT difference is the difference between the Drug group and Placebo group mean pain scores:\n\nITT difference = Drug ITT mean - Placebo ITT mean\n= 3.30 - 4.90\n= -1.60 points (Note: The negative sign indicates that the Drug group has a lower mean pain score than the Placebo group, but we are interested in the absolute value of the difference.)\n\nTherefore, the correct answer is D.",
+        "latency_s": 5.29,
+        "input_tokens": 356,
+        "output_tokens": 419,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:46.300249",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nThe Drug group had a 5% dropout rate and the Placebo group had a 20% dropout rate. The sensitivity analysis assumes dropouts had pain scores 2 points higher than the group's completer mean. \n\nFor the Drug group, there were 10 dropouts out of 200 patients (5%). Therefore, the number of dropouts is 10. Since the remaining patients have a mean pain score of 3.2, we can calculate the total mean pain score for the Drug group as follows:\n\nTotal mean = (mean of completer patients * number of completer patients + mean of dropout patients * number of dropout patients) / total number of patients\n= ((3.2 * 190) + (5.2 * 10)) / 200\n= (608 + 52) / 200\n= 660 / 200\n= 3.30\n\nFor the Placebo group, there were 40 dropouts out of 200 patients (20%). Therefore, the number of dropouts is 40. Since the remaining patients have a mean pain score of 4.5, we can calculate the total mean pain score for the Placebo group as follows:\n\nTotal mean = (mean of completer patients * number of completer patients + mean of dropout patients * number of dropout patients) / total number of patients\n= ((4.5 * 160) + (6.5 * 40)) / 200\n= (720 + 260) / 200\n= 980 / 200\n= 4.90\n\nThe ITT difference is the difference between the Drug group and Placebo group mean pain scores:\n\nITT difference = Drug ITT mean - Placebo ITT mean\n= 3.30 - 4.90\n= -1.60 points (Note: The negative sign indicates that the Drug group has a lower mean pain score than the Placebo group, but we are interested in the absolute value of the difference.)\n\nTherefore, the correct answer is D.",
+        "latency_s": 5.41,
+        "input_tokens": 356,
+        "output_tokens": 419,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-23T06:22:26.968288",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.56,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:47.910241",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.58,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-23T06:22:28.438139",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.45,
+        "input_tokens": 303,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:49.410028",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.47,
+        "input_tokens": 303,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-23T06:22:30.042168",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.57,
+        "input_tokens": 401,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:51.015391",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.58,
+        "input_tokens": 401,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-23T06:22:31.327302",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.26,
+        "input_tokens": 117,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:52.309942",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.27,
+        "input_tokens": 117,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-23T06:22:32.943345",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.6,
+        "input_tokens": 428,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:53.951363",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.61,
+        "input_tokens": 428,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-23T06:22:34.529676",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.56,
+        "input_tokens": 411,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:55.559386",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.58,
+        "input_tokens": 411,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-23T06:22:36.686868",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe electric bus fleet replacement would have occurred regardless of the congestion tax, so some of the observed improvement in downtown PM2.5 is not attributable to the policy intervention. This means that the 22% estimate may understate the true effect of the congestion tax.",
+        "latency_s": 1.13,
+        "input_tokens": 353,
+        "output_tokens": 56,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:57.729149",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe electric bus fleet replacement would have occurred regardless of the congestion tax, so some of the observed improvement in downtown PM2.5 is not attributable to the policy intervention. This means that the 22% estimate may understate the true effect of the congestion tax.",
+        "latency_s": 1.14,
+        "input_tokens": 353,
+        "output_tokens": 56,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-23T06:22:38.238354",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 371,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:33:59.276736",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.52,
+        "input_tokens": 371,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-23T06:22:39.516435",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.25,
+        "input_tokens": 131,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:00.578356",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.27,
+        "input_tokens": 131,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-23T06:22:41.344016",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.8,
+        "input_tokens": 612,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:02.411727",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.8,
+        "input_tokens": 612,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-23T06:22:42.934081",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.56,
+        "input_tokens": 400,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:04.022529",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.58,
+        "input_tokens": 400,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-23T06:22:45.166851",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nThis is because statement D suggests that the self-selection bias and the logging behaviour change would cancel each other out, which is not necessarily true. The self-selection bias could indeed inflate the gap, but the logging behaviour change would likely add to the apparent increase in workouts, rather than deflating it.",
+        "latency_s": 1.21,
+        "input_tokens": 337,
+        "output_tokens": 63,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:06.275542",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nThis is because statement D suggests that the self-selection bias and the logging behaviour change would cancel each other out, which is not necessarily true. The self-selection bias could indeed inflate the gap, but the logging behaviour change would likely add to the apparent increase in workouts, rather than deflating it.",
+        "latency_s": 1.23,
+        "input_tokens": 337,
+        "output_tokens": 63,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-23T06:22:46.718867",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.53,
+        "input_tokens": 376,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:07.839789",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.54,
+        "input_tokens": 376,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-23T06:22:48.033602",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.29,
+        "input_tokens": 165,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:09.168202",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.31,
+        "input_tokens": 165,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-23T06:22:49.659039",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.6,
+        "input_tokens": 443,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:10.807876",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.61,
+        "input_tokens": 443,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-23T06:22:52.190333",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nAnalyst 1's proposal is flawed because it assumes that using accelerometer data solves the logging problem, but Analyst 2 correctly points out that the coach alters users' exercise patterns, making the outcome \"sensor-detected workouts\" endogenously redefined by treatment. This means that even with objective measurement, the IV estimate would capture both the direct effect of the coach and the behavioural adaptation induced by it.",
+        "latency_s": 1.51,
+        "input_tokens": 407,
+        "output_tokens": 84,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:13.357437",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nAnalyst 1's proposal is flawed because it assumes that using accelerometer data solves the logging problem, but Analyst 2 correctly points out that the coach alters users' exercise patterns, making the outcome \"sensor-detected workouts\" endogenously redefined by treatment. This means that even with objective measurement, the IV estimate would capture both the direct effect of the coach and the behavioural adaptation induced by it.",
+        "latency_s": 1.53,
+        "input_tokens": 407,
+        "output_tokens": 84,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-23T06:22:53.641539",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.43,
+        "input_tokens": 268,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:14.821226",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.44,
+        "input_tokens": 268,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-23T06:22:55.092201",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.43,
+        "input_tokens": 267,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:16.294682",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.45,
+        "input_tokens": 267,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-23T06:22:56.365212",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.26,
+        "input_tokens": 120,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:17.597621",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.27,
+        "input_tokens": 120,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-23T06:22:58.707058",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThe training group lost more participants than the control group (40% vs. 10%), which means that the high engagers in the training group are a selected group. Conditioning on engagement among differentially-selected survivors compounds the bias, making it likely that the reported 10-point gap overstates the causal effect of the programme.",
+        "latency_s": 1.32,
+        "input_tokens": 402,
+        "output_tokens": 68,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:19.963419",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThe training group lost more participants than the control group (40% vs. 10%), which means that the high engagers in the training group are a selected group. Conditioning on engagement among differentially-selected survivors compounds the bias, making it likely that the reported 10-point gap overstates the causal effect of the programme.",
+        "latency_s": 1.34,
+        "input_tokens": 402,
+        "output_tokens": 68,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:01.487734",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nBoth analysts identify valid but partial concerns: Analyst 1 correctly points out that the MAR assumption may not hold if the treatment itself affects who persists in the study (MNAR), and Analyst 2's suggestion to adjust for baseline test scores among completers is a standard fix, but it does not address the potential issue of unmeasured traits correlated with outcomes. Combining baseline adjustment with careful avoidance of post-randomisation controls can jointly be sufficient to recover the ATE in this particular trial without additional sensitivity analysis.",
+        "latency_s": 1.76,
+        "input_tokens": 410,
+        "output_tokens": 105,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:22.792633",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nBoth analysts identify valid but partial concerns: Analyst 1 correctly points out that the MAR assumption may not hold if the treatment itself affects who persists in the study (MNAR), and Analyst 2's suggestion to adjust for baseline test scores among completers is a standard fix, but it does not address the potential issue of unmeasured traits correlated with outcomes. Combining baseline adjustment with careful avoidance of post-randomisation controls can jointly be sufficient to recover the ATE in this particular trial without additional sensitivity analysis.",
+        "latency_s": 1.8,
+        "input_tokens": 410,
+        "output_tokens": 105,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-23T06:23:04.700550",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThe reasoning is as follows:\n\n- Controlling for a mediator (fitness) blocks its pathway, so the estimated 'direct effect' omits that channel (A).\n- The income difference between participants and non-participants could confound the total effect estimate even without any adjustment for mediators along the causal chain (B).\n- Because fitness is on the causal pathway, controlling for it does not remove the confounding influence of income from the remaining direct-effect estimate of the programme. Controlling for a mediator only blocks its pathway and does not address other pathways that may be confounded by covariates (C).\n- The combination of blocking the mediated path and leaving income uncontrolled means the residual estimate captures neither the total effect nor an unconfounded direct effect (D).",
+        "latency_s": 2.18,
+        "input_tokens": 242,
+        "output_tokens": 157,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:26.007034",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThe reasoning is as follows:\n\n- Controlling for a mediator (fitness) blocks its pathway, so the estimated 'direct effect' omits that channel (A).\n- The income difference between participants and non-participants could confound the total effect estimate even without any adjustment for mediators along the causal chain (B).\n- Because fitness is on the causal pathway, controlling for it does not remove the confounding influence of income from the remaining direct-effect estimate of the programme. Controlling for a mediator only blocks its pathway and does not address other pathways that may be confounded by covariates (C).\n- The combination of blocking the mediated path and leaving income uncontrolled means the residual estimate captures neither the total effect nor an unconfounded direct effect (D).",
+        "latency_s": 2.18,
+        "input_tokens": 242,
+        "output_tokens": 157,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-23T06:23:06.258790",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.53,
+        "input_tokens": 378,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:27.588456",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.56,
+        "input_tokens": 378,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-23T06:23:07.568972",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.28,
+        "input_tokens": 139,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:28.882596",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.28,
+        "input_tokens": 139,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-23T06:23:09.193462",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.6,
+        "input_tokens": 444,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:30.500930",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.6,
+        "input_tokens": 444,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:12.391488",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe reasoning behind this answer is as follows:\n\nAnalyst 1 correctly identifies that vocabulary and comprehension should be excluded from the model because they are mediators on the causal chain between programme participation (A) and exam scores (Y). However, Analyst 2 points out a crucial issue with controlling for school funding alone. In non-randomised observational studies, there may be unmeasured confounders correlated with both programme access and outcomes that cannot be addressed by simply controlling for observed confounders like funding.\n\nTherefore, while Analyst 1 is correct about excluding mediators, Analyst 2's concerns about the limitations of controlling for school funding in a non-randomised setting make their position more defensible.",
+        "latency_s": 2.17,
+        "input_tokens": 385,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:33.718035",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe reasoning behind this answer is as follows:\n\nAnalyst 1 correctly identifies that vocabulary and comprehension should be excluded from the model because they are mediators on the causal chain between programme participation (A) and exam scores (Y). However, Analyst 2 points out a crucial issue with controlling for school funding alone. In non-randomised observational studies, there may be unmeasured confounders correlated with both programme access and outcomes that cannot be addressed by simply controlling for observed confounders like funding.\n\nTherefore, while Analyst 1 is correct about excluding mediators, Analyst 2's concerns about the limitations of controlling for school funding in a non-randomised setting make their position more defensible.",
+        "latency_s": 2.2,
+        "input_tokens": 385,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-23T06:23:13.847716",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.43,
+        "input_tokens": 269,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:35.178428",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.43,
+        "input_tokens": 269,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-23T06:23:15.439661",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.58,
+        "input_tokens": 407,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:36.865591",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.66,
+        "input_tokens": 407,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-23T06:23:16.748422",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.28,
+        "input_tokens": 136,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:38.215304",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.32,
+        "input_tokens": 136,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-23T06:23:19.419722",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThe statement in option A is most accurate because it correctly identifies confounding by indication (i.e., sicker patients are more likely to receive aggressive treatment) and differential attrition as the main drivers of the observed survival gap between the two treatment groups. The similarity in survival rates within each severity stratum further supports this conclusion, suggesting that the aggregate comparison is indeed influenced by these biases rather than a genuine difference in treatment effectiveness.",
+        "latency_s": 1.65,
+        "input_tokens": 459,
+        "output_tokens": 88,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:40.895588",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThe statement in option A is most accurate because it correctly identifies confounding by indication (i.e., sicker patients are more likely to receive aggressive treatment) and differential attrition as the main drivers of the observed survival gap between the two treatment groups. The similarity in survival rates within each severity stratum further supports this conclusion, suggesting that the aggregate comparison is indeed influenced by these biases rather than a genuine difference in treatment effectiveness.",
+        "latency_s": 1.65,
+        "input_tokens": 459,
+        "output_tokens": 88,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:21.434376",
+        "api_model": "llama3.1:latest",
+        "content": "C. Both analysts correctly identify one mechanism each, and stacking propensity-score weighting with IPCW yields a doubly robust estimator that is unbiased if either the treatment model or the censoring model is correctly specified.",
+        "latency_s": 0.99,
+        "input_tokens": 384,
+        "output_tokens": 41,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:42.929539",
+        "api_model": "llama3.1:latest",
+        "content": "C. Both analysts correctly identify one mechanism each, and stacking propensity-score weighting with IPCW yields a doubly robust estimator that is unbiased if either the treatment model or the censoring model is correctly specified.",
+        "latency_s": 1.0,
+        "input_tokens": 384,
+        "output_tokens": 41,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-23T06:23:22.851581",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.39,
+        "input_tokens": 249,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:44.373757",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.42,
+        "input_tokens": 249,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-23T06:23:24.411503",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.54,
+        "input_tokens": 370,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:45.932351",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.54,
+        "input_tokens": 370,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-23T06:23:25.697794",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 119,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:47.220672",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 119,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-23T06:23:27.373706",
+        "api_model": "llama3.1:latest",
+        "content": "B.",
+        "latency_s": 0.65,
+        "input_tokens": 457,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:48.906694",
+        "api_model": "llama3.1:latest",
+        "content": "B.",
+        "latency_s": 0.66,
+        "input_tokens": 457,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:28.906057",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.5,
+        "input_tokens": 352,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:50.462972",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.52,
+        "input_tokens": 352,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-23T06:23:32.228323",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThe other options are supported by the pattern:\n\n- A: Technique A is concentrated at Campus 1, which has a high complication rate (18% for A vs 22% for B), so its overall complication rate is inflated.\n- B: The reversal occurs at Campus 1 only, suggesting that technique effectiveness may interact with patient acuity level.\n- D: The uneven distribution of techniques across campuses means that the aggregate rates conflate technique effectiveness with campus-level severity differences.\n\nOption C is incorrect because it states that the aggregate and every campus-level comparison point in the same direction once compositional confounding is understood. However, this is not true - at Campuses 2 and 3, Technique B has a lower complication rate than Technique A, which contradicts the overall pattern.",
+        "latency_s": 2.3,
+        "input_tokens": 299,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:53.828458",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThe other options are supported by the pattern:\n\n- A: Technique A is concentrated at Campus 1, which has a high complication rate (18% for A vs 22% for B), so its overall complication rate is inflated.\n- B: The reversal occurs at Campus 1 only, suggesting that technique effectiveness may interact with patient acuity level.\n- D: The uneven distribution of techniques across campuses means that the aggregate rates conflate technique effectiveness with campus-level severity differences.\n\nOption C is incorrect because it states that the aggregate and every campus-level comparison point in the same direction once compositional confounding is understood. However, this is not true - at Campuses 2 and 3, Technique B has a lower complication rate than Technique A, which contradicts the overall pattern.",
+        "latency_s": 2.34,
+        "input_tokens": 299,
+        "output_tokens": 161,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-23T06:23:34.667422",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nThe biostatistician's vote-counting approach across campuses is misleading because it gives disproportionate weight to Campus 1, which has the largest sample size and treats high-complexity cases that may not be representative of typical surgical practice. This misrepresents the overall evidence, as Technique A shows a clinically meaningful advantage in this important subgroup.",
+        "latency_s": 1.41,
+        "input_tokens": 423,
+        "output_tokens": 71,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:56.301049",
+        "api_model": "llama3.1:latest",
+        "content": "D\n\nThe biostatistician's vote-counting approach across campuses is misleading because it gives disproportionate weight to Campus 1, which has the largest sample size and treats high-complexity cases that may not be representative of typical surgical practice. This misrepresents the overall evidence, as Technique A shows a clinically meaningful advantage in this important subgroup.",
+        "latency_s": 1.45,
+        "input_tokens": 423,
+        "output_tokens": 71,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-23T06:23:35.958081",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 112,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:34:57.598589",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.27,
+        "input_tokens": 112,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-23T06:23:38.689807",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe within-group comparisons show that Drug P has a higher adverse event rate than Drug Q in two of three age groups (middle and elderly), but not in the young age group. The aggregate comparison shows a larger gap between the two drugs, which is likely due to compositional confounding: Drug P was prescribed more to elderly patients who have high event rates. This suggests that the analyst's claim is overstated, and the safety profile of Drug P may be worse than claimed when considering the entire population treated.",
+        "latency_s": 1.7,
+        "input_tokens": 355,
+        "output_tokens": 105,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:00.337829",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe within-group comparisons show that Drug P has a higher adverse event rate than Drug Q in two of three age groups (middle and elderly), but not in the young age group. The aggregate comparison shows a larger gap between the two drugs, which is likely due to compositional confounding: Drug P was prescribed more to elderly patients who have high event rates. This suggests that the analyst's claim is overstated, and the safety profile of Drug P may be worse than claimed when considering the entire population treated.",
+        "latency_s": 1.73,
+        "input_tokens": 355,
+        "output_tokens": 105,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:41.502414",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nBoth analysts are correct in their observations but for different reasons. Analyst 1 correctly identifies Simpson's paradox as a potential explanation for the aggregate flip, which is resolved by stratification. However, Analyst 2 points out that even within clinics, there is heterogeneity in treatment effects across severity levels, suggesting effect modification rather than compositional confounding.\n\nThe correct answer acknowledges that both analysts' insights are valuable and complementary, revealing a genuine severity-dependent treatment effect that supports tailored recommendations to match patients with their most effective treatment.",
+        "latency_s": 1.79,
+        "input_tokens": 411,
+        "output_tokens": 106,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:03.194573",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nBoth analysts are correct in their observations but for different reasons. Analyst 1 correctly identifies Simpson's paradox as a potential explanation for the aggregate flip, which is resolved by stratification. However, Analyst 2 points out that even within clinics, there is heterogeneity in treatment effects across severity levels, suggesting effect modification rather than compositional confounding.\n\nThe correct answer acknowledges that both analysts' insights are valuable and complementary, revealing a genuine severity-dependent treatment effect that supports tailored recommendations to match patients with their most effective treatment.",
+        "latency_s": 1.83,
+        "input_tokens": 411,
+        "output_tokens": 106,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-23T06:23:43.275456",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe negative correlation observed among hospitalized patients likely reflects a spurious association due to collider bias, rather than a genuine protective effect of obesity against depression.",
+        "latency_s": 0.74,
+        "input_tokens": 257,
+        "output_tokens": 32,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:05.002083",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe negative correlation observed among hospitalized patients likely reflects a spurious association due to collider bias, rather than a genuine protective effect of obesity against depression.",
+        "latency_s": 0.77,
+        "input_tokens": 257,
+        "output_tokens": 32,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-23T06:23:45.769375",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThis response correctly identifies that even within the trauma subgroup, there may be patients who are more likely to be admitted due to clinical concern about complications related to smoking or comorbidities associated with G, thereby persisting the collider pathway through hospitalisation conditional on injury. This maintains Berkson's bias and means the association between G and L is still subject to this artefact.",
+        "latency_s": 1.47,
+        "input_tokens": 390,
+        "output_tokens": 78,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:07.498422",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThis response correctly identifies that even within the trauma subgroup, there may be patients who are more likely to be admitted due to clinical concern about complications related to smoking or comorbidities associated with G, thereby persisting the collider pathway through hospitalisation conditional on injury. This maintains Berkson's bias and means the association between G and L is still subject to this artefact.",
+        "latency_s": 1.47,
+        "input_tokens": 390,
+        "output_tokens": 78,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-23T06:23:47.061308",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.26,
+        "input_tokens": 110,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:08.785644",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.26,
+        "input_tokens": 110,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-23T06:23:48.481916",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.39,
+        "input_tokens": 245,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:10.208229",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.4,
+        "input_tokens": 245,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:50.048980",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.54,
+        "input_tokens": 372,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:11.792193",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.55,
+        "input_tokens": 372,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-23T06:23:51.575233",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.5,
+        "input_tokens": 349,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:13.353696",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.53,
+        "input_tokens": 349,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-23T06:23:53.167507",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.57,
+        "input_tokens": 407,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:14.978433",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.6,
+        "input_tokens": 407,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-23T06:23:54.477136",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.28,
+        "input_tokens": 136,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:16.313809",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.3,
+        "input_tokens": 136,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-23T06:23:56.019630",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.52,
+        "input_tokens": 362,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:17.901085",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.55,
+        "input_tokens": 362,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-23T06:23:57.667923",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.63,
+        "input_tokens": 470,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:19.600364",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.66,
+        "input_tokens": 470,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-23T06:24:01.460565",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThis question requires the test-taker to understand the concept of instrumental variables (IV) estimation and its assumptions, particularly the exclusion restriction. The correct answer is A because the anxiety effect among surgical refusers represents a violation of the exclusion restriction, which states that assignment affects outcomes only through the treatment actually received. If assignment affects outcomes through other channels, such as anxiety in this case, it can bias the IV estimate of the treatment effect.\n\nThe other options are incorrect:\n\nB: The refusal rate is not directly related to the statistical power or first-stage F-statistic of the instrument.\n\nC: Monotonicity is an assumption that requires all units assigned to a particular treatment actually receive it. However, in this case, patients who learn they are assigned to surgery but refuse do not represent defiers (units that choose the opposite of their assignment).\n\nD: The exclusion restriction requires more than just independence between assignment and potential outcomes; it also requires that assignment affects outcomes only through the treatment actually received.",
+        "latency_s": 2.77,
+        "input_tokens": 309,
+        "output_tokens": 202,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:23.450482",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThis question requires the test-taker to understand the concept of instrumental variables (IV) estimation and its assumptions, particularly the exclusion restriction. The correct answer is A because the anxiety effect among surgical refusers represents a violation of the exclusion restriction, which states that assignment affects outcomes only through the treatment actually received. If assignment affects outcomes through other channels, such as anxiety in this case, it can bias the IV estimate of the treatment effect.\n\nThe other options are incorrect:\n\nB: The refusal rate is not directly related to the statistical power or first-stage F-statistic of the instrument.\n\nC: Monotonicity is an assumption that requires all units assigned to a particular treatment actually receive it. However, in this case, patients who learn they are assigned to surgery but refuse do not represent defiers (units that choose the opposite of their assignment).\n\nD: The exclusion restriction requires more than just independence between assignment and potential outcomes; it also requires that assignment affects outcomes only through the treatment actually received.",
+        "latency_s": 2.82,
+        "input_tokens": 309,
+        "output_tokens": 202,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-23T06:24:03.602977",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe weekly automated text messages constitute an additional intervention that affects depression outcomes through a pathway that bypasses CBT receipt. This violates the exclusion restriction required by IV analysis, even though randomisation, relevance and monotonicity are intact.",
+        "latency_s": 1.11,
+        "input_tokens": 409,
+        "output_tokens": 49,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:25.629358",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe weekly automated text messages constitute an additional intervention that affects depression outcomes through a pathway that bypasses CBT receipt. This violates the exclusion restriction required by IV analysis, even though randomisation, relevance and monotonicity are intact.",
+        "latency_s": 1.16,
+        "input_tokens": 409,
+        "output_tokens": 49,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-23T06:24:04.886978",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.26,
+        "input_tokens": 128,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:26.933040",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.27,
+        "input_tokens": 128,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-23T06:24:07.616737",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe critic's argument implies that the average outcome in the treatment arm is 4 points lower than it would have been if all noncompliers had received the drug, because of stress caused by assignment to the treatment arm. This means that the observed complier mean (78) overestimates the true complier mean, which is the CACE. The ITT effect attributable to actual treatment is smaller than the raw ITT difference suggests, so the true CACE is approximately 4.0.",
+        "latency_s": 1.7,
+        "input_tokens": 377,
+        "output_tokens": 103,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:29.715715",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe critic's argument implies that the average outcome in the treatment arm is 4 points lower than it would have been if all noncompliers had received the drug, because of stress caused by assignment to the treatment arm. This means that the observed complier mean (78) overestimates the true complier mean, which is the CACE. The ITT effect attributable to actual treatment is smaller than the raw ITT difference suggests, so the true CACE is approximately 4.0.",
+        "latency_s": 1.75,
+        "input_tokens": 377,
+        "output_tokens": 103,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-23T06:24:09.260162",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.62,
+        "input_tokens": 436,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:31.392684",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.64,
+        "input_tokens": 436,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-23T06:24:10.782160",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.51,
+        "input_tokens": 329,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:32.938478",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.52,
+        "input_tokens": 329,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-23T06:24:13.242488",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe reviewer's criticism in option B has the strongest basis. The buffer strips may indeed introduce a new bias by creating edge effects from adjacent fallow land, which could confound the comparison between treatment and control plots if they differ systematically in their buffer-strip exposure. This is a valid concern because it highlights an unintended consequence of the design change that could affect the validity of the study's conclusions.",
+        "latency_s": 1.43,
+        "input_tokens": 346,
+        "output_tokens": 81,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:35.393589",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe reviewer's criticism in option B has the strongest basis. The buffer strips may indeed introduce a new bias by creating edge effects from adjacent fallow land, which could confound the comparison between treatment and control plots if they differ systematically in their buffer-strip exposure. This is a valid concern because it highlights an unintended consequence of the design change that could affect the validity of the study's conclusions.",
+        "latency_s": 1.42,
+        "input_tokens": 346,
+        "output_tokens": 81,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-23T06:24:14.556874",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.29,
+        "input_tokens": 138,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:36.719617",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.3,
+        "input_tokens": 138,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-23T06:24:16.118734",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.53,
+        "input_tokens": 376,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:38.317993",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.57,
+        "input_tokens": 376,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-23T06:24:17.711366",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.56,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:39.948449",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.6,
+        "input_tokens": 420,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-23T06:24:19.551953",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe overall misclassification rate is not relevant to whether there is differential or nondifferential misclassification; what matters is how the error rates differ between groups.",
+        "latency_s": 0.81,
+        "input_tokens": 317,
+        "output_tokens": 33,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:41.823170",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThe overall misclassification rate is not relevant to whether there is differential or nondifferential misclassification; what matters is how the error rates differ between groups.",
+        "latency_s": 0.85,
+        "input_tokens": 317,
+        "output_tokens": 33,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-23T06:24:21.113037",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 374,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:43.425844",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.56,
+        "input_tokens": 374,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-23T06:24:22.416000",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.28,
+        "input_tokens": 148,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:44.764925",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.31,
+        "input_tokens": 148,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-23T06:24:23.864498",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.43,
+        "input_tokens": 278,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:46.228846",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.44,
+        "input_tokens": 278,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-23T06:24:25.458355",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.56,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:47.859689",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.59,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-23T06:24:26.898893",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.41,
+        "input_tokens": 255,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:49.296429",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.41,
+        "input_tokens": 255,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-23T06:24:28.352351",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.43,
+        "input_tokens": 283,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:50.775845",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.45,
+        "input_tokens": 283,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-23T06:24:29.705434",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.33,
+        "input_tokens": 180,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:52.145771",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.34,
+        "input_tokens": 180,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-23T06:24:32.051209",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThe naive analysis adjusts for a post-treatment variable (biomarker level), which can induce collider-like bias and inflate the apparent benefit of Drug X. The IPTW approach is less biased because it uses weighting to adjust for time-varying confounders, including biomarker levels at each period.",
+        "latency_s": 1.31,
+        "input_tokens": 424,
+        "output_tokens": 64,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:54.516170",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThe naive analysis adjusts for a post-treatment variable (biomarker level), which can induce collider-like bias and inflate the apparent benefit of Drug X. The IPTW approach is less biased because it uses weighting to adjust for time-varying confounders, including biomarker levels at each period.",
+        "latency_s": 1.35,
+        "input_tokens": 424,
+        "output_tokens": 64,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-23T06:24:33.700512",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.62,
+        "input_tokens": 449,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:56.179314",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.63,
+        "input_tokens": 449,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-23T06:24:35.282662",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.43,
+        "input_tokens": 286,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:57.651463",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.44,
+        "input_tokens": 286,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-23T06:24:36.877194",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.57,
+        "input_tokens": 408,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:35:59.242671",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.57,
+        "input_tokens": 408,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-23T06:24:38.208534",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.3,
+        "input_tokens": 138,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:00.547767",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.28,
+        "input_tokens": 138,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-23T06:24:41.000456",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 1.76,
+        "input_tokens": 390,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:02.141633",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.57,
+        "input_tokens": 390,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-23T06:25:01.350143",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nBoth analysts identify legitimate but independent issues: immortal time bias and informative censoring. The landmark approach addresses immortal time bias by ensuring that both users and non-users have survived to the same point in time, but it does not eliminate differential censoring due to disease severity. Informative censoring remains a concern because patients who discontinue beta-blockers due to worsening heart failure are censored differently than those who continue treatment. Implementing both corrections sequentially would yield an estimate that adequately addresses both issues jointly.",
+        "latency_s": 19.31,
+        "input_tokens": 389,
+        "output_tokens": 102,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:04.915211",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nBoth analysts identify legitimate but independent issues: immortal time bias and informative censoring. The landmark approach addresses immortal time bias by ensuring that both users and non-users have survived to the same point in time, but it does not eliminate differential censoring due to disease severity. Informative censoring remains a concern because patients who discontinue beta-blockers due to worsening heart failure are censored differently than those who continue treatment. Implementing both corrections sequentially would yield an estimate that adequately addresses both issues jointly.",
+        "latency_s": 1.74,
+        "input_tokens": 389,
+        "output_tokens": 102,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-23T06:25:05.479483",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThis answer choice highlights the potential issue of ecological fallacy, which occurs when correlations observed at an aggregate level (e.g., county or district) do not accurately reflect relationships at the individual level. This is a strong concern because it suggests that the policy brief's conclusion may be based on a flawed assumption about how fast-food density affects diabetes risk for individuals.",
+        "latency_s": 1.29,
+        "input_tokens": 278,
+        "output_tokens": 74,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:07.265698",
+        "api_model": "llama3.1:latest",
+        "content": "A\n\nThis answer choice highlights the potential issue of ecological fallacy, which occurs when correlations observed at an aggregate level (e.g., county or district) do not accurately reflect relationships at the individual level. This is a strong concern because it suggests that the policy brief's conclusion may be based on a flawed assumption about how fast-food density affects diabetes risk for individuals.",
+        "latency_s": 1.3,
+        "input_tokens": 278,
+        "output_tokens": 74,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-23T06:30:13.625270",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThis choice correctly identifies a form of ecological bias in the individual-level analysis: because children within the same census tract all receive the same assigned PM2.5 value, it masks within-tract variation in actual exposure and may reflect tract-level socioeconomic or environmental factors that correlate with both PM2.5 and asthma.",
+        "latency_s": 1.2,
+        "input_tokens": 320,
+        "output_tokens": 65,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:09.530436",
+        "api_model": "llama3.1:latest",
+        "content": "B\n\nThis choice correctly identifies a form of ecological bias in the individual-level analysis: because children within the same census tract all receive the same assigned PM2.5 value, it masks within-tract variation in actual exposure and may reflect tract-level socioeconomic or environmental factors that correlate with both PM2.5 and asthma.",
+        "latency_s": 1.23,
+        "input_tokens": 320,
+        "output_tokens": 65,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-23T06:30:14.992354",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.35,
+        "input_tokens": 171,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:10.897376",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.34,
+        "input_tokens": 171,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-23T06:30:17.189892",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 1.18,
+        "input_tokens": 393,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:12.526042",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.6,
+        "input_tokens": 393,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-23T06:30:25.158193",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 6.93,
+        "input_tokens": 427,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:14.193412",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.64,
+        "input_tokens": 427,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-23T06:30:32.653930",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 5.16,
+        "input_tokens": 294,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:15.713780",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.49,
+        "input_tokens": 294,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-23T06:30:40.931300",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 7.09,
+        "input_tokens": 437,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:17.366816",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.63,
+        "input_tokens": 437,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-23T06:30:45.355134",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 2.82,
+        "input_tokens": 144,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:18.693223",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.29,
+        "input_tokens": 144,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-23T06:30:52.669003",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 5.63,
+        "input_tokens": 354,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:20.247549",
+        "api_model": "llama3.1:latest",
+        "content": "A",
+        "latency_s": 0.52,
+        "input_tokens": 354,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-23T06:30:58.084942",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 4.35,
+        "input_tokens": 484,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-24T15:36:21.932022",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.66,
+        "input_tokens": 484,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-24T15:36:23.483045",
+        "api_model": "llama3.1:latest",
+        "content": "C",
+        "latency_s": 0.52,
+        "input_tokens": 331,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-24T15:36:25.918250",
+        "api_model": "llama3.1:latest",
+        "content": "C\n\nThis answer choice highlights the most important concern: that IOSW reweighting addresses distributional differences on measured covariates but may leave unmeasured factors like supportive-care intensity and monitoring frequency, which can modify the treatment effect and differ between populations, leading to a biased estimate for the target-population effect.",
+        "latency_s": 1.4,
+        "input_tokens": 464,
+        "output_tokens": 65,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-24T15:36:27.288366",
+        "api_model": "llama3.1:latest",
+        "content": "D",
+        "latency_s": 0.34,
+        "input_tokens": 166,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-24T15:36:28.950732",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.63,
+        "input_tokens": 444,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-24T15:36:30.569320",
+        "api_model": "llama3.1:latest",
+        "content": "B",
+        "latency_s": 0.59,
+        "input_tokens": 400,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-07T06:50:39.665828"
+  "updated": "2026-04-24T15:36:30.569386"
 }

@@ -66,6 +66,9 @@ class AnthropicProvider(Provider):
             "messages": [{"role": "user", "content": prompt}],
             **params,
         }
+        # Opus 4.7+ deprecates temperature
+        if self.model >= "claude-opus-4-7":
+            body.pop("temperature", None)
         resp = self.client.post("/v1/messages", json=body)
         resp.raise_for_status()
         data = resp.json()
@@ -94,8 +97,10 @@ class OpenAIProvider(Provider):
 
     def complete(self, prompt: str, params: dict) -> tuple[str, dict]:
         p = dict(params)
-        # OpenAI reasoning models (o-series, gpt-5) don't support temperature
-        if self.model.startswith(("o1", "o3", "o4", "gpt-5.3")) or self.model == "gpt-5":
+        # OpenAI reasoning models (o-series, some gpt-5 versions) only accept the default
+        # temperature (1). API error for these is: "Unsupported value: 'temperature' does
+        # not support 0 with this model." Strip temperature for them.
+        if self.model.startswith(("o1", "o3", "o4", "gpt-5.3", "gpt-5.5")):
             p.pop("temperature", None)
         # Newer OpenAI models require max_completion_tokens instead of max_tokens
         if "max_tokens" in p and self.model.startswith(("gpt-5", "gpt-4.1", "o1", "o3", "o4")):

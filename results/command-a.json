@@ -3679,7 +3679,2740 @@
         "judge_score_avg": 4.75,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:15:27.645988",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 3.72,
+        "input_tokens": 793,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:15:29.463007",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.78,
+        "input_tokens": 851,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:15:30.829464",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.34,
+        "input_tokens": 611,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:15:34.295747",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 2.44,
+        "input_tokens": 881,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:15:35.748773",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.43,
+        "input_tokens": 920,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:15:37.116143",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.34,
+        "input_tokens": 820,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:15:39.687177",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.55,
+        "input_tokens": 949,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:15:41.027582",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.32,
+        "input_tokens": 628,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:15:42.521812",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.48,
+        "input_tokens": 878,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:15:45.378406",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.83,
+        "input_tokens": 931,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:15:48.302088",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.91,
+        "input_tokens": 795,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:15:49.875330",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.55,
+        "input_tokens": 906,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:15:51.531739",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.63,
+        "input_tokens": 606,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:15:53.961156",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.4,
+        "input_tokens": 960,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:15:55.466163",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.48,
+        "input_tokens": 913,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:02.942123",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 6.46,
+        "input_tokens": 851,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:07.060754",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 3.09,
+        "input_tokens": 876,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:08.402583",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.32,
+        "input_tokens": 627,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:09.798261",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.38,
+        "input_tokens": 1175,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:12.854180",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 2.03,
+        "input_tokens": 893,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:14.019827",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:06.685330",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.77,
+        "input_tokens": 834,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:15.180315",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:08.048337",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.34,
+        "input_tokens": 878,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:16.340893",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:09.770218",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.68,
+        "input_tokens": 654,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:17.620514",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.26,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:11.997922",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 1.18,
+        "input_tokens": 956,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:18.857448",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.2,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:16.124676",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 3.11,
+        "input_tokens": 910,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:20.057599",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.17,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:30.279183",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 13.13,
+        "input_tokens": 777,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:21.301439",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.2,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:31.659597",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.36,
+        "input_tokens": 759,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:22.457663",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:33.298898",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.62,
+        "input_tokens": 609,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:23.644110",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:36.884312",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 2.56,
+        "input_tokens": 955,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:28.772768",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 4.12,
+        "input_tokens": 904,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:33.945835",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 4.14,
+        "input_tokens": 734,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:38.504750",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 3.53,
+        "input_tokens": 867,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:42.680451",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 3.16,
+        "input_tokens": 631,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:46.178786",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 2.48,
+        "input_tokens": 956,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:47.621736",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.42,
+        "input_tokens": 884,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:16:49.030459",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.37,
+        "input_tokens": 763,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:16:52.414111",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 2.37,
+        "input_tokens": 897,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:16:54.132058",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.7,
+        "input_tokens": 626,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:16:56.146373",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.99,
+        "input_tokens": 1021,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:16:58.827008",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 1.64,
+        "input_tokens": 887,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:00.265142",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.41,
+        "input_tokens": 742,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:01.768734",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.47,
+        "input_tokens": 867,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:03.646286",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.85,
+        "input_tokens": 608,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:09.869891",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 5.2,
+        "input_tokens": 998,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:14.388209",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 3.49,
+        "input_tokens": 849,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:15.919820",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.5,
+        "input_tokens": 803,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:19.032618",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 2.08,
+        "input_tokens": 913,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:22.281767",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 2.24,
+        "input_tokens": 599,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:25.189902",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.88,
+        "input_tokens": 894,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:30.285401",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 4.08,
+        "input_tokens": 910,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:33.266847",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.96,
+        "input_tokens": 753,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:34.433840",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:38.265148",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.36,
+        "input_tokens": 887,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:38.771804",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 3.31,
+        "input_tokens": 599,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:40.967091",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 1.16,
+        "input_tokens": 758,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:42.119781",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:39.765925",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.46,
+        "input_tokens": 882,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:44.425273",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 1.27,
+        "input_tokens": 841,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:45.573482",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:41.673075",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.89,
+        "input_tokens": 904,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:46.753837",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.16,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:45.091656",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 2.4,
+        "input_tokens": 630,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:49.016038",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.22,
+        "input_tokens": 856,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:50.422237",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.38,
+        "input_tokens": 975,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:51.815854",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.37,
+        "input_tokens": 809,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:17:52.966015",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:47.065306",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.95,
+        "input_tokens": 896,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:17:54.294563",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.31,
+        "input_tokens": 620,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:17:55.662531",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.34,
+        "input_tokens": 891,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:17:56.809501",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:48.504860",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.41,
+        "input_tokens": 940,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:17:58.827222",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 0.99,
+        "input_tokens": 827,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:18:04.879890",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 5.02,
+        "input_tokens": 842,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:18:07.907507",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 2.0,
+        "input_tokens": 623,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:18:12.269562",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 3.2,
+        "input_tokens": 899,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:18:20.824696",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 7.53,
+        "input_tokens": 914,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:18:23.886138",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 2.04,
+        "input_tokens": 819,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:18:26.466096",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 1.56,
+        "input_tokens": 881,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:18:29.920378",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 2.43,
+        "input_tokens": 640,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:18:32.731370",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 1.79,
+        "input_tokens": 792,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:03.523966",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 29.76,
+        "input_tokens": 921,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:09.664420",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 5.11,
+        "input_tokens": 746,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:12.324676",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.65,
+        "input_tokens": 778,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:15.227293",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.88,
+        "input_tokens": 669,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:16.590082",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.35,
+        "input_tokens": 952,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:18.007332",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.4,
+        "input_tokens": 951,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:22.100206",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 3.08,
+        "input_tokens": 793,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:23.410646",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.29,
+        "input_tokens": 911,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:25.483899",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 1.06,
+        "input_tokens": 630,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:30.221199",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 3.54,
+        "input_tokens": 929,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:35.287200",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 4.04,
+        "input_tokens": 893,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:38.172658",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 1.81,
+        "input_tokens": 789,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:41.073368",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.87,
+        "input_tokens": 825,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:44.476074",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 2.37,
+        "input_tokens": 670,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:19:48.841578",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 3.34,
+        "input_tokens": 921,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:19:50.541921",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.67,
+        "input_tokens": 946,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:19:52.896798",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 1.33,
+        "input_tokens": 794,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:19:55.084458",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 1.17,
+        "input_tokens": 960,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:19:57.262935",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 1.17,
+        "input_tokens": 636,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:01.161909",
+        "api_model": "command-a-03-2025",
+        "content": "A",
+        "latency_s": 2.87,
+        "input_tokens": 882,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:02.526353",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.34,
+        "input_tokens": 1005,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:20:03.670810",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:53.445510",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 3.88,
+        "input_tokens": 827,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:20:08.064888",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 3.37,
+        "input_tokens": 970,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:20:09.217089",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:55.401285",
+        "api_model": "command-a-03-2025",
+        "content": "D",
+        "latency_s": 0.93,
+        "input_tokens": 657,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:20:11.157313",
+        "api_model": "command-a-03-2025",
+        "content": "C",
+        "latency_s": 0.92,
+        "input_tokens": 951,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:20:12.299149",
+        "api_model": "command-a-03-2025",
+        "content": "",
+        "latency_s": 0.13,
+        "error": "Client error '429 Too Many Requests' for url 'https://api.cohere.com/v2/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:04:56.953011",
+        "api_model": "command-a-03-2025",
+        "content": "B",
+        "latency_s": 0.53,
+        "input_tokens": 902,
+        "output_tokens": 3,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-07T06:56:23.739426"
+  "updated": "2026-04-22T15:04:56.953069"
 }

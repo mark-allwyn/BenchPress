@@ -74,7 +74,7 @@ def score_with_deepeval(prompt_meta: dict, response: str, config: dict) -> dict:
     """Score a response using DeepEval G-Eval metrics.
 
     Args:
-        prompt_meta: Prompt metadata from evals/default.json
+        prompt_meta: Prompt metadata from eval set JSON
         response: The model's response text
         config: Full config dict (uses deepeval and judge sections)
 

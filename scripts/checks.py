@@ -112,7 +112,7 @@ def check_constraint(meta: dict, response: str) -> dict:
         if term.lower() in response_lower:
             flags.append(f"FAIL_INCLUDED_EXCLUDED_TERM: {term}")
 
-    # Check count (rough — count lines that look like list items)
+    # Check count (rough - count lines that look like list items)
     expected_count = constraints.get("count")
     if expected_count:
         # Count numbered items or bullet points
@@ -143,7 +143,7 @@ def check_refusal(meta: dict, response: str) -> dict:
 
 
 def check_trap_no_bug(meta: dict, response: str) -> dict:
-    """The code actually works — model should recognize there's no real bug."""
+    """The code actually works - model should recognize there's no real bug."""
     flags = []
     resp_lower = response.lower()
 
@@ -184,7 +184,7 @@ def check_trap_common_error(meta: dict, response: str) -> dict:
 
 
 def check_trap_wrong_claim(meta: dict, response: str) -> dict:
-    """User made a wrong claim — model should correct it."""
+    """User made a wrong claim - model should correct it."""
     flags = []
     resp_lower = response.lower()
 
@@ -361,6 +361,58 @@ def check_acknowledges_nonexistence(meta: dict, response: str) -> dict:
     return {"flags": flags, "auto_scores": {}}
 
 
+def _extract_answer_letter(response: str) -> str | None:
+    """Extract a multiple-choice answer letter (A-D) from a response."""
+    text = response.strip()
+    # Strategy 1: "answer is X" / "Answer: X" / "final answer: X" patterns
+    pattern = r"(?:final\s+)?(?:answer|choice)\s*(?:is|:)\s*\(?([A-Da-d])\)?"
+    matches = re.findall(pattern, text, re.IGNORECASE)
+    if matches:
+        return matches[-1].upper()
+    # Strategy 2: standalone letter at end of response (last line)
+    last_line = text.split("\n")[-1].strip()
+    m = re.match(r"^\(?([A-Da-d])\)?\s*\.?$", last_line)
+    if m:
+        return m.group(1).upper()
+    # Strategy 3: "X)" or "(X)" pattern - take last occurrence
+    matches = re.findall(r"\b([A-Da-d])\)", text)
+    if matches:
+        return matches[-1].upper()
+    # Strategy 4: first capital A-D letter in response (for "Reply with one letter only" format)
+    m = re.match(r"^\s*([A-D])", text)
+    if m:
+        return m.group(1)
+    # Strategy 5: last standalone A-D letter as a word boundary
+    matches = re.findall(r"\b([A-Da-d])\b", text)
+    if matches:
+        return matches[-1].upper()
+    return None
+
+
+def check_multiple_choice(meta: dict, response: str) -> dict:
+    correct = meta.get("correct_answer", "").strip().upper()
+    if not correct:
+        return {"flags": ["NO_CORRECT_ANSWER_DEFINED"], "auto_scores": {}}
+    extracted = _extract_answer_letter(response)
+    flags = []
+    if extracted is None:
+        flags.append("FAIL_COULD_NOT_EXTRACT_ANSWER")
+        is_correct = False
+    elif extracted != correct:
+        flags.append(f"WRONG_ANSWER: got {extracted}, expected {correct}")
+        is_correct = False
+    else:
+        is_correct = True
+    return {
+        "flags": flags,
+        "auto_scores": {
+            "correct": 1 if is_correct else 0,
+            "extracted_answer": extracted,
+            "correct_answer": correct,
+        },
+    }
+
+
 # Passthrough for human-only checks
 def check_noop(meta: dict, response: str) -> dict:
     return {"flags": [], "auto_scores": {}}
@@ -394,4 +446,5 @@ CHECKERS = {
     "synthesis": check_noop,
     "comparison": check_noop,
     "behavioural": check_noop,
+    "multiple_choice": check_multiple_choice,
 }

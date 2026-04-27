@@ -6223,7 +6223,2429 @@
         "judge_score_avg": 2.25,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:20.861691",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.5,
+        "input_tokens": 292,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:22.043957",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.17,
+        "input_tokens": 346,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:23.247535",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C. 2",
+        "latency_s": 0.18,
+        "input_tokens": 120,
+        "output_tokens": 5,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:24.438951",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.17,
+        "input_tokens": 378,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:25.641476",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 418,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:26.796073",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.14,
+        "input_tokens": 327,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:27.965533",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.15,
+        "input_tokens": 449,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:30.402116",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C\n\nTo block all biasing paths for the T \u2192 M1 \u2192 M2 \u2192 Y indirect effect without blocking the mediator chain, we need to identify which set of variables blocks all backdoor paths from T to M1 and from M2 to Y while preserving the causal chain.\n\nThe key biasing paths are:\n1. T \u2190 U \u2192 M2 \u2192 Y (blocked by conditioning on U)\n2. T \u2192 Y through X (blocked by conditioning on X)\n\nHowever, we must be careful not to block the mediator chain T \u2192 M1 \u2192 M2 \u2192 Y.\n\nIf we condition on {X}, it blocks the path T \u2192 X \u2192 R \u2192 Y but also blocks the path T \u2192 X \u2192 M1 \u2192 M2 \u2192 Y, which would block the mediator chain.\n\nIf we condition on {X, M2}, this blocks the path T \u2192 X \u2192 M1 \u2192 M2 \u2192 Y, so it blocks the mediator chain.\n\nIf we condition on {X, U}, this blocks:\n- The path T \u2192 X \u2192 R \u2192 Y (via X)\n- The path T \u2192 U \u2192 M2 \u2192 Y (via U) \n- But preserves the path T \u2192 M1 \u2192 M2 \u2192 Y since we don't condition on M1 or M2 in a way that blocks the chain\n\nWait, let me reconsider more carefully. \n\nFor the indirect effect T \u2192 M1 \u2192 M2 \u2192 Y, we want to block all backdoor paths from T to M1 and from M2 to Y.\n\nThe backdoor paths are:\n- From T to M1: T \u2192 X \u2192 M1 (blocked by conditioning on X)\n- From M2 to Y: M2 \u2192 U \u2192 R \u2192 Y (blocked by conditioning on U)  \n- From T to Y: T \u2192 X \u2192 R \u2192 Y (blocked by conditioning on X)\n\nBut we also have T \u2192 Y directly, which is blocked by conditioning on X.\n\nSo {X, U} blocks all biasing paths while preserving the mediator chain.\n\nC",
+        "latency_s": 1.42,
+        "input_tokens": 134,
+        "output_tokens": 415,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:31.662901",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.24,
+        "input_tokens": 380,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:32.844705",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.16,
+        "input_tokens": 419,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:34.041531",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 301,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:35.248179",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.18,
+        "input_tokens": 404,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:40.141766",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A\n\nLet me trace through all possible paths from A to B and see which ones remain open after conditioning on C1 = 1 and D = 1.\n\nPaths from A to B:\n1. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n2. A \u2192 C2 \u2192 D \u2190 B\n3. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B (via U)\n\nWait, let me be more systematic about the DAG structure:\n- A \u2192 C1, B \u2192 C1\n- C1 \u2192 C2, A \u2192 C2  \n- U \u2192 C2, U \u2192 B\n- C2 \u2192 D, B \u2192 D\n\nAll paths from A to B:\n1. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n2. A \u2192 C2 \u2192 D \u2190 B  \n3. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B (this is the same as path 1)\n4. A \u2192 C2 \u2192 D \u2190 B (this is the same as path 2)\n5. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B (this is the same as path 1)\n6. A \u2192 C2 \u2192 D \u2190 B (this is the same as path 2)\n\nActually, let me list unique paths:\n1. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B\n2. A \u2192 C2 \u2192 D \u2190 B\n3. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B (through U) - but there's no direct path A \u2192 C1 \u2192 C2 \u2192 D \u2190 B through U since U connects to C2 and B, not C1\n\nLet me re-read the DAG carefully:\n- A \u2192 C1, B \u2192 C1\n- C1 \u2192 C2, A \u2192 C2\n- U \u2192 C2, U \u2192 B  \n- C2 \u2192 D, B \u2192 D\n\nPaths from A to B:\n1. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B (but this requires C2 to be observed, and we're conditioning on C1=1, D=1)\n2. A \u2192 C2 \u2192 D \u2190 B (but this requires C2 to be observed)\n3. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B (but this requires C2 to be observed)\n\nWait, I need to check what happens when we condition on C1=1 and D=1:\n\nFor a path to be d-connected given the conditioning set {C1=1, D=1}, it must satisfy the d-separation criteria.\n\nLooking at the paths:\n1. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B: This path goes through C1 and D. Since we condition on both C1 and D, this path is blocked.\n2. A \u2192 C2 \u2192 D \u2190 B: This path goes through C2 and D. Since we condition on D=1, this path is blocked by D.\n3. A \u2192 C1 \u2192 C2 \u2192 D \u2190 B: Same as above.\n\nActually, let me reconsider the structure more carefully. The path A \u2192 C1 \u2192 C2 \u2192 D \u2190 B would be blocked because:\n- At C1: we condition on C1=1, so this collider is blocked\n- At C2: we don't condition on C2, but we do have C2 \u2192 D and D=1, so this path is blocked by D being a descendant of the collider\n\nBut wait, in the path A \u2192 C1 \u2192 C2 \u2192 D \u2190 B, we have:\n- C1 is a collider (A\u2192C1\u2190B) \n- We condition on C1=1, so this collider is blocked\n- C2 is a non-collider (C1\u2192C2 and C2\u2192D), but we don't condition on C2\n- D is a descendant of C2, and we condition on D=1\n\nSo the path A \u2192 C1 \u2192 C2 \u2192 D \u2190 B is blocked because we condition on C1.\n\nSimilarly for A \u2192 C2 \u2192 D \u2190 B, we condition on D=1, so this path is also blocked.\n\nBut actually, let me think about whether there are any paths that aren't blocked.\n\nThe only way a path could be open is if it doesn't go through a collider that's conditioned on, or if it goes through a non-collider that isn't conditioned on.\n\nLooking again at the DAG, there are no other paths from A to B besides those that go through C2 and D.\n\nSince we condition on both C1=1 and D=1, and all paths from A to B go through either C1 or C2 (which leads to D), all paths are blocked.\n\nA",
+        "latency_s": 3.88,
+        "input_tokens": 115,
+        "output_tokens": 974,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:41.337663",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 454,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:42.525434",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.17,
+        "input_tokens": 409,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:43.720170",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.17,
+        "input_tokens": 354,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:44.902351",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.16,
+        "input_tokens": 376,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:47.963428",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B\n\nTo identify the total effect of T on Y1 using post-period data only, we need to find a valid adjustment set that blocks all backdoor paths from T to Y1 while not opening any new paths.\n\nLet me trace the paths:\n- T \u2192 Y1 (direct path)\n- T \u2192 G \u2192 Y1 (through G)\n- T \u2192 G \u2192 Y0 \u2192 P \u2192 Y1 (indirect through Y0 and P)\n\nThe key insight is that we want to adjust for variables that block backdoor paths but don't create new ones.\n\nLooking at the DAG structure:\n- T has direct effect on Y1\n- T can influence Y1 through G\n- T can influence Y1 through the path T \u2192 G \u2192 Y0 \u2192 P \u2192 Y1\n\nHowever, since we're using post-period data only, we should focus on variables that are available in the post-period.\n\nThe adjustment set {G, W} works because:\n1. G blocks the path T \u2192 G \u2192 Y1\n2. W blocks the path T \u2192 G \u2192 Y0 \u2192 P \u2192 Y1 (since W \u2192 Y1 and we're conditioning on W)\n3. W also blocks the path T \u2192 G \u2192 Y0 \u2192 P \u2192 Y1 through the collider structure\n\nWait, let me reconsider more carefully:\n\nActually, looking at this more systematically:\n- T \u2192 Y1 (direct)\n- T \u2192 G \u2192 Y1 (indirect)\n- T \u2192 G \u2192 Y0 \u2192 P \u2192 Y1 (indirect)\n\nFor post-period data only, we want to condition on variables that are measured after the treatment period.\n\nThe correct answer is B: {G, W}\n\nThis set blocks all backdoor paths from T to Y1:\n- The path T \u2192 G \u2192 Y1 is blocked by conditioning on G\n- The path T \u2192 G \u2192 Y0 \u2192 P \u2192 Y1 is blocked by conditioning on W (since W \u2192 Y1 and W is in our adjustment set)",
+        "latency_s": 2.04,
+        "input_tokens": 129,
+        "output_tokens": 406,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:49.241314",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 670,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:50.580521",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.32,
+        "input_tokens": 398,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:52.535233",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.94,
+        "input_tokens": 335,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:53.799744",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.24,
+        "input_tokens": 379,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:55.040931",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.22,
+        "input_tokens": 163,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:56.242665",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 459,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:57.790390",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.52,
+        "input_tokens": 405,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:59.044387",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.24,
+        "input_tokens": 275,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:00.425071",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.37,
+        "input_tokens": 265,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:04.040338",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B\n\nLet me trace all paths from T to Y and see which ones are open when conditioning on S=1.\n\nPaths from T to Y:\n1. T \u2192 S \u2192 F \u2192 Y\n2. T \u2192 S \u2192 Y\n3. T \u2192 Y (direct)\n4. T \u2192 X \u2192 S \u2192 F \u2192 Y\n5. T \u2192 X \u2192 S \u2192 Y\n6. T \u2192 X \u2192 Y\n\nWhen conditioning on S=1, I need to check which paths remain open:\n\nPath 1: T \u2192 S \u2192 F \u2192 Y\n- S is conditioned on (S=1), so this path is blocked by the collider at S\n\nPath 2: T \u2192 S \u2192 Y  \n- S is conditioned on (S=1), so this path is blocked by the collider at S\n\nPath 3: T \u2192 Y\n- No variables on the path are conditioned on, so this path is open\n\nPath 4: T \u2192 X \u2192 S \u2192 F \u2192 Y\n- S is conditioned on (S=1), so this path is blocked by the collider at S\n\nPath 5: T \u2192 X \u2192 S \u2192 Y\n- S is conditioned on (S=1), so this path is blocked by the collider at S\n\nPath 6: T \u2192 X \u2192 Y\n- No variables on the path are conditioned on, so this path is open\n\nWait, let me reconsider the DAG structure more carefully.\n\nActually, looking at the paths that go through S:\n- T \u2192 S \u2192 F \u2192 Y: S is a collider, so it's blocked\n- T \u2192 S \u2192 Y: S is a collider, so it's blocked\n- T \u2192 X \u2192 S \u2192 F \u2192 Y: S is a collider, so it's blocked  \n- T \u2192 X \u2192 S \u2192 Y: S is a collider, so it's blocked\n\nThe open paths are:\n- T \u2192 Y (direct)\n- T \u2192 X \u2192 Y\n\nBut wait - I need to be more careful about what constitutes \"non-causal\" or biasing paths. In causal inference, we're looking for backdoor paths that create bias.\n\nThe only open path from T to Y that doesn't go through S is T \u2192 Y directly.\n\nHowever, there are also paths that go through S but are open due to conditioning on S=1:\n- T \u2192 X \u2192 S \u2192 Y (this is actually blocked because S is a collider)\n\nActually, re-examining the structure:\n- T \u2192 S \u2192 Y: S is a collider, so conditioning on S blocks this path\n- T \u2192 X \u2192 S \u2192 Y: S is a collider, so conditioning on S blocks this path  \n\nThe only open path is T \u2192 Y directly.\n\nBut the question asks for non-causal paths that are open. The direct path T \u2192 Y is not a backdoor path, so it's not biasing.\n\nLooking again at the paths that would be biasing (backdoor paths):\nAll paths through S are blocked by conditioning on S.\n\nBut wait - I should consider if any other paths exist that could be biasing.\n\nActually, let me reconsider what \"non-causal (biasing) paths\" means in this context. These would be backdoor paths that create confounding bias.\n\nIn the original DAG, the backdoor paths from T to Y are those that go through S (since S is a collider in the path T \u2192 S \u2192 Y).\n\nWhen we condition on S=1, these paths become blocked.\n\nBut there might be other biasing paths...\n\nNo, the only backdoor paths are those going through S, and they're all blocked by conditioning on S.\n\nThe answer is A. 0\n\nA",
+        "latency_s": 2.59,
+        "input_tokens": 118,
+        "output_tokens": 757,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:05.236661",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.18,
+        "input_tokens": 447,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:06.425039",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.16,
+        "input_tokens": 410,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:07.624639",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 240,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:08.875346",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.23,
+        "input_tokens": 376,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:10.231569",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C. {X, M2, W}",
+        "latency_s": 0.34,
+        "input_tokens": 137,
+        "output_tokens": 11,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:11.550310",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.3,
+        "input_tokens": 455,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:12.721155",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.16,
+        "input_tokens": 383,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:13.924156",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.19,
+        "input_tokens": 267,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:15.129964",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.19,
+        "input_tokens": 413,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:18.498350",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A\n\nUnder the restriction R = 1 (retained), we need to identify a valid adjustment set for the total effect of T on Y.\n\nLet me trace through the DAG structure:\n\nThe causal pathways from T to Y are:\n1. T \u2192 Y (direct effect)\n2. T \u2192 I \u2192 Y (through indicator)\n3. T \u2192 R \u2192 Y (indirect through R)\n\nSince we're conditioning on R = 1, we need to block all backdoor paths from T to Y that go through R.\n\nThe key insight is that in the restricted analysis where R = 1, we can adjust for I because:\n- I is a collider on the path T \u2192 I \u2190 S \u2192 Y (when S is not conditioned on)\n- But since we're conditioning on R = 1, and T \u2192 R \u2192 Y, we need to control for variables that would open paths\n- I blocks the path T \u2192 I \u2192 Y directly\n- I also blocks the path T \u2192 I \u2190 S \u2192 Y when S is not controlled for, but since we're conditioning on R = 1, we don't need to control for S to block this path\n\nActually, let me reconsider more carefully:\n\nIn the original DAG, to identify the total effect of T on Y, we need to block all backdoor paths. The backdoor paths from T to Y are:\n- T \u2190 S \u2192 Y (blocked by conditioning on S)\n- T \u2190 I \u2192 Y (this is actually a direct path, not backdoor)\n- T \u2192 R \u2192 Y (this is a forward path, not backdoor)\n\nWait - let me re-read the structure more carefully.\n\nThe backdoor paths from T to Y are those that start with an arrow pointing into T:\n- T \u2190 S \u2192 Y (this is a backdoor path)\n- T \u2190 I \u2192 Y (this is a direct path, not backdoor)\n\nBut we also have: T \u2192 R \u2192 Y, which is a forward path.\n\nTo identify the total effect of T on Y, we need to condition on I to block the path T \u2192 I \u2192 Y, but we also need to consider what happens with R = 1.\n\nActually, looking at the structure again, if we condition on R = 1, then we're essentially fixing R to be 1, so we don't need to adjust for R itself.\n\nThe correct adjustment set is just {I} because:\n1. I is on the main causal path T \u2192 I \u2192 Y \n2. Conditioning on I blocks the direct path T \u2192 I \u2192 Y\n3. There are no other backdoor paths from T to Y that require additional controls\n\nThe answer is A.",
+        "latency_s": 2.35,
+        "input_tokens": 134,
+        "output_tokens": 550,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:20.006502",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.46,
+        "input_tokens": 523,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:21.366479",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.32,
+        "input_tokens": 384,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:22.550537",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.16,
+        "input_tokens": 247,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:23.719287",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.16,
+        "input_tokens": 368,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:25.510177",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A\n\nControlling for W would introduce new bias beyond the selection on Z. Since W is a collider on the backdoor path U\u2192W\u2190Y\u2190Z, controlling for W would open this path and induce bias. The other variables don't create additional bias when controlled for given the selection on Z.",
+        "latency_s": 0.77,
+        "input_tokens": 117,
+        "output_tokens": 63,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:27.004628",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.48,
+        "input_tokens": 485,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:28.193795",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.17,
+        "input_tokens": 350,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:29.395656",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 301,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:30.633072",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.22,
+        "input_tokens": 433,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:33.184677",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C\n\nLooking at the DAG, I need to find minimal adjustment sets that identify the total effect of T on Y.\n\nLet me trace all paths from T to Y:\n1. T \u2192 Y (direct path)\n2. T \u2192 G \u2192 Y (via G)\n3. T \u2192 C \u2192 Y (via C)\n4. T \u2192 G \u2192 C \u2192 Y (via G and C)\n\nTo block all backdoor paths from T to Y, I need to adjust for variables that:\n- Are ancestors of T (to block collider paths)\n- Are parents of T (to block direct paths)\n- Are descendants of T (to block collider paths)\n\nThe key insight is that we need to block all backdoor paths. The minimal adjustment sets are:\n\n1. {G} - blocks paths through G\n2. {C} - blocks paths through C  \n3. {G,C} - blocks all paths\n\nWait, let me reconsider more carefully by identifying all backdoor paths:\n\nBackdoor paths from T to Y:\n- T \u2190 U \u2192 G \u2192 Y (blocked by adjusting for G)\n- T \u2190 U \u2192 G \u2192 C \u2192 Y (blocked by adjusting for G or C)\n- T \u2192 C \u2192 Y (this is a forward path, not backdoor)\n- T \u2192 G \u2192 Y (this is a forward path, not backdoor)\n\nActually, the backdoor paths are:\n1. T \u2190 U \u2192 G \u2192 Y (blocked by G)\n2. T \u2190 U \u2192 G \u2192 C \u2192 Y (blocked by G or C)\n\nBut wait, there's also: T \u2192 G \u2192 C \u2192 Y, but this is a forward path.\n\nThe correct backdoor paths are:\n1. T \u2190 U \u2192 G \u2192 Y (blocked by G)\n2. T \u2190 U \u2192 G \u2192 C \u2192 Y (blocked by G or C)\n\nSo minimal adjustment sets are:\n1. {G}\n2. {C}\n\nTherefore, there are exactly 2 minimal adjustment sets.\n\nC",
+        "latency_s": 1.51,
+        "input_tokens": 110,
+        "output_tokens": 405,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:34.381531",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.18,
+        "input_tokens": 390,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:35.531462",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.14,
+        "input_tokens": 409,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:36.731023",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 255,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:38.088851",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.34,
+        "input_tokens": 388,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:43.444911",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A\n\nLet me trace through the d-connecting paths between A and B after conditioning on S = 1.\n\nFirst, I'll identify all possible paths from A to B in the original DAG:\n1. A \u2192 H \u2192 B\n2. A \u2192 S \u2192 B (but this doesn't exist directly)\n3. A \u2192 K \u2192 B (but this doesn't exist directly)\n4. A \u2192 H \u2192 S \u2192 B (but we condition on S = 1, so S is fixed)\n\nWait, let me be more systematic about the actual paths:\n\nFrom the DAG structure:\n- A \u2192 H\n- A \u2192 S  \n- B \u2192 H\n- H \u2192 S\n- U \u2192 B\n- U \u2192 K\n- K \u2192 S\n- A \u2192 K\n\nPaths from A to B:\n1. A \u2192 H \u2192 B\n2. A \u2192 S \u2192 B (no direct path S\u2192B)\n3. A \u2192 K \u2192 S \u2192 B (no direct path S\u2192B)\n4. A \u2192 K \u2192 S \u2192 H \u2192 B (no direct path S\u2192H)\n5. A \u2192 H \u2192 S \u2192 H \u2192 B (no direct path S\u2192H)\n\nActually, let me reconsider what paths exist:\n- A \u2192 H \u2192 B (path 1)\n- A \u2192 S \u2192 ? (no direct connection from S to B)\n- A \u2192 K \u2192 ? (no direct connection from K to B)\n\nThe only direct path from A to B is A \u2192 H \u2192 B.\n\nBut wait - there's also a path that goes through S: A \u2192 S, but there's no direct edge from S to B.\n\nHowever, I need to consider that S is observed (S = 1), so I should check if any paths are blocked by conditioning.\n\nFor the path A \u2192 H \u2192 B:\n- H is not observed, so this path is open.\n\nBut I also need to consider other potential paths that might go through S or other variables.\n\nActually, looking more carefully at the structure:\n- A \u2192 H \u2192 S\n- A \u2192 S (direct)\n- A \u2192 K \u2192 S\n\nSo the paths from A to B are:\n1. A \u2192 H \u2192 B (this path is open since H is not conditioned on)\n2. A \u2192 S \u2192 ? (no such path exists)\n3. A \u2192 K \u2192 S \u2192 ? (no such path exists)\n\nWait, I'm missing something. Let me re-read the DAG structure.\n\nLooking at the edges again:\n- A \u2192 H, B \u2192 H\n- H \u2192 S, A \u2192 S  \n- U \u2192 B, U \u2192 K\n- K \u2192 S\n- A \u2192 K\n\nPaths from A to B:\n1. A \u2192 H \u2192 B (open since H is not observed)\n2. A \u2192 S \u2192 ? (no such path)\n3. A \u2192 K \u2192 S \u2192 ? (no such path)\n\nBut actually, there's no direct path from S to B, so no paths go through S to reach B.\n\nWait, I think I misunderstood. The question asks about open d-connecting paths between A and B after conditioning on S = 1.\n\nThe only path from A to B is A \u2192 H \u2192 B.\nThis path is open because H is not being conditioned on.\n\nBut I should also consider whether conditioning on S = 1 blocks any paths.\n\nSince S = 1 is observed, and we're looking for paths between A and B, we need to see if any paths go through S.\n\nThe path A \u2192 H \u2192 S \u2192 B would be blocked because S is observed, but there's no direct edge from S to B.\n\nActually, let me reconsider the paths more systematically:\n\nPaths from A to B:\n1. A \u2192 H \u2192 B (this path is open since H is not observed)\n2. A \u2192 S \u2192 ? (no such path exists)\n3. A \u2192 K \u2192 S \u2192 ? (no such path exists) \n\nBut wait - there's no direct path from A to B. The only way to get from A to B is through H.\n\nSo the only path is A \u2192 H \u2192 B, which remains open when conditioning on S = 1.\n\nBut I should double-check if there are any other paths that might be relevant.\n\nActually, let me re-read the problem. We have a DAG where we condition on S = 1, and we want to know how many open d-connecting paths exist between A and B.\n\nIn the original DAG:\n- A \u2192 H \u2192 B \n- A \u2192 S \u2192 ? (no such path)\n- A \u2192 K \u2192 S \u2192 ? (no such path)\n\nThe only path from A to B is A \u2192 H \u2192 B, which is open since H is not observed.\n\nBut I need to be careful about d-separation rules. When we condition on S = 1, we're conditioning on S, so any path that goes through S would be blocked unless it's a collider.\n\nThe path A \u2192 H \u2192 S \u2192 B doesn't exist because there's no edge from S to B.\n\nThe path A \u2192 H \u2192 B is open because H is not observed.\n\nTherefore, there is exactly 1 open d-connecting path.\n\nA",
+        "latency_s": 4.3,
+        "input_tokens": 108,
+        "output_tokens": 1066,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:44.654811",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.16,
+        "input_tokens": 262,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:45.876338",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.2,
+        "input_tokens": 370,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:47.051024",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.16,
+        "input_tokens": 347,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:48.289578",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.22,
+        "input_tokens": 405,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:53.451449",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B\n\nTo find the minimal sufficient adjustment set for the total effect of T on Y, I need to identify all backdoor paths from T to Y and block them.\n\nFirst, let me identify all paths from T to Y:\n1. T \u2192 Y (direct path)\n2. T \u2192 C2 \u2192 Y (through C2)\n3. T \u2192 C3 \u2192 Y (through C3)\n4. T \u2192 C1 \u2192 Y (through C1) - but this would require C1 to be a collider, which it's not in this structure\n5. T \u2192 U1 \u2192 C1 \u2192 Y (through U1 and C1)\n\nWait, let me recheck the DAG structure more carefully:\n\nFrom the given structure:\n- T is connected to: U1, C2, C3\n- C1 is connected to: U1, U2  \n- C2 is connected to: U3, Y\n- C3 is connected to: T, Y\n- Y is connected to: U2, C2, C3\n\nActually, let me trace the backdoor paths from T to Y:\n- T \u2192 C3 \u2192 Y (this is a backdoor path since C3 is a collider)\n- T \u2192 C2 \u2192 Y (this is a backdoor path since C2 is a collider)\n- T \u2192 U1 \u2192 C1 \u2192 Y (this is a backdoor path since U1 is unmeasured)\n\nThe key insight is that we need to block all backdoor paths. The backdoor paths are:\n1. T \u2190 U1 \u2192 C1 \u2192 Y (blocked by adjusting for C1)\n2. T \u2192 C3 \u2192 Y (this is actually a frontdoor path, not backdoor)\n3. T \u2192 C2 \u2192 Y (this is actually a frontdoor path, not backdoor)\n\nLet me reconsider what constitutes a backdoor path:\n- A backdoor path is one that starts with an arrow pointing into T (T \u2190 ...), or has a collider that is not in our adjustment set.\n\nLooking at the actual backdoor paths:\n- T \u2190 U1 \u2192 C1 \u2192 Y (backdoor path through U1)\n- T \u2192 C3 \u2192 Y (this is a frontdoor path, not backdoor)\n\nThe minimal sufficient adjustment set must include C1 to block the path T \u2190 U1 \u2192 C1 \u2192 Y.\n\nBut wait, I also need to check if there are other backdoor paths involving other variables.\n\nActually, looking more systematically:\n- T \u2192 C2 \u2192 Y: This is a frontdoor path (C2 is not a collider)\n- T \u2192 C3 \u2192 Y: This is a frontdoor path (C3 is not a collider)  \n- T \u2192 U1 \u2192 C1 \u2192 Y: This is a backdoor path through U1\n\nSo I need to adjust for C1 to block the backdoor path through U1.\n\nBut I also need to consider whether C3 or C2 should be included.\n\nLooking at the structure again:\n- T \u2192 C3 \u2192 Y: This is a direct path from T to Y through C3\n- T \u2192 C2 \u2192 Y: This is a direct path from T to Y through C2\n\nThese are not backdoor paths - they're just direct paths.\n\nThe only backdoor path is T \u2190 U1 \u2192 C1 \u2192 Y, so I need to adjust for C1.\n\nHowever, I also need to make sure no other paths are created by adjusting for C1.\n\nLooking more carefully at the full graph, I see that C1 is connected to both U1 and U2, and C2 is connected to U3 and Y, etc.\n\nThe minimal sufficient adjustment set is {C1, C3} because:\n1. C1 blocks the backdoor path T \u2190 U1 \u2192 C1 \u2192 Y\n2. C3 blocks the direct path T \u2192 C3 \u2192 Y (but this is not a backdoor path)\n\nWait, let me reconsider what makes a path a backdoor path.\n\nBackdoor paths from T to Y are those that:\n1. Start with an arrow pointing into T (T \u2190 ...)\n2. Or have a collider that is not in the adjustment set\n\nIn this case, the backdoor paths are:\n- T \u2190 U1 \u2192 C1 \u2192 Y (U1 is unmeasured, so we must block this)\n- T \u2192 C3 \u2192 Y (this is a direct path, not a backdoor path)\n\nSo we need to adjust for C1 to block the backdoor path.\n\nBut we also need to consider that C3 is connected to T and Y, and we want to avoid creating new paths.\n\nActually, the answer is B: {C1, C3}.\n\nThis adjusts for C1 to block the backdoor path through U1, and C3 to control for its influence on T and Y.\n\nB",
+        "latency_s": 4.14,
+        "input_tokens": 134,
+        "output_tokens": 1003,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:54.634055",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.16,
+        "input_tokens": 360,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:55.817709",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.16,
+        "input_tokens": 468,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:57.033211",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.2,
+        "input_tokens": 312,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:58.333156",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.28,
+        "input_tokens": 414,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:59.520226",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.18,
+        "input_tokens": 126,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:00.744844",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.21,
+        "input_tokens": 398,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:01.923602",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.16,
+        "input_tokens": 435,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:03.201668",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.26,
+        "input_tokens": 338,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:04.417991",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.19,
+        "input_tokens": 350,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:10.761186",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B\n\nLooking at this DAG, I need to find a valid adjustment set to identify the direct effect of Ti on Yi (excluding the indirect path through Tj).\n\nLet me trace the paths from Ti to Yi:\n- Direct path: Ti \u2192 Yi\n- Indirect path: Ti \u2192 Yj \u2192 Yi (via Tj)\n\nTo block this indirect path, I need to adjust for Tj.\n\nThe key insight is that U is unmeasured, so I cannot adjust for it. However, I can use the backdoor criterion.\n\nFor Ti \u2192 Yi, I need to find a set of variables that:\n1. Blocks all backdoor paths from Ti to Yi\n2. Does not include any variable that is a descendant of Ti (to avoid blocking the direct path)\n\nThe backdoor paths from Ti to Yi are:\n- Ti \u2190 U \u2192 Tj \u2192 Yj \u2192 Yi (this goes through Tj, but we want to block this path)\n- Ti \u2192 Yj \u2192 Yi (this is the path we want to block)\n\nWait, let me reconsider the structure more carefully:\n\nActually, there's no direct path Ti \u2192 Yi in the given structure - the only paths are Ti \u2192 Yi and Ti \u2192 Yj \u2192 Yi.\n\nBut looking at the structure again:\n- Ti \u2192 Yi (direct)\n- Ti \u2192 Yj \u2192 Yi (indirect via Tj)\n\nTo identify the direct effect of Ti on Yi, I need to block the indirect path Ti \u2192 Yj \u2192 Yi.\n\nThis requires adjusting for Tj, since Tj is on the indirect path.\n\nI also need to consider whether Xi or Xj should be included. Looking at the structure:\n- Xi \u2192 Ti and Xi \u2192 Yi (so Xi blocks the path Ti \u2192 Yi if we're considering Xi as a collider)\n- But Xi is not on the path Ti \u2192 Yj \u2192 Yi\n\nThe minimal adjustment set would be just {Tj} to block the path Ti \u2192 Yj \u2192 Yi.\n\nHowever, I should also check if Xi or Xj are needed to block other paths.\n\nActually, let me re-read the structure more carefully:\n- Ti \u2192 Yi (direct)\n- Ti \u2192 Yj (via Tj) \n- Tj \u2192 Yi (via Tj)\n- U \u2192 Ti, U \u2192 Tj (unmeasured confounder)\n- Xi \u2192 Ti, Xi \u2192 Yi\n- Xj \u2192 Tj, Xj \u2192 Yj\n\nThe backdoor paths from Ti to Yi are blocked by adjusting for Tj, since Tj is on the path Ti \u2192 Yj \u2192 Yi.\n\nBut wait - I need to be more systematic about what variables to adjust for.\n\nThe correct answer is B: {Xi, Tj}\n\nActually, let me reconsider even more carefully.\n\nThe direct effect of Ti on Yi is identified by blocking all backdoor paths. The only backdoor path is Ti \u2190 U \u2192 Tj \u2192 Yj \u2192 Yi.\n\nTo block this, I need to adjust for Tj (which blocks the path through Tj). \n\nBut I also need to make sure I'm not opening any new paths. Since Xi \u2192 Ti and Xi \u2192 Yi, adjusting for Xi alone would not block the backdoor path properly.\n\nThe answer is B: {Xi, Tj} - this adjusts for both the mediator Tj that creates the backdoor path and Xi which is a common cause of Ti and Yi.\n\nNo, actually the answer is simpler. To block Ti \u2192 Yj \u2192 Yi, I just need to adjust for Tj. But I also need to control for Xi to block the path Ti \u2192 Yi through Xi.\n\nWait, no - Xi \u2192 Ti and Xi \u2192 Yi, so Xi is a parent of both Ti and Yi, making it a collider on the path Ti \u2192 Yi. So Xi doesn't block anything.\n\nThe answer is B: {Xi, Tj} - this is sufficient to block the backdoor path Ti \u2190 U \u2192 Tj \u2192 Yj \u2192 Yi.\n\nActually, let me think about this very carefully.\n\nThe backdoor paths from Ti to Yi are those that start with an arrow pointing into Ti.\nIn this case, the backdoor path is Ti \u2190 U \u2192 Tj \u2192 Yj \u2192 Yi.\n\nTo block this, I must adjust for Tj. But I also need to make sure I don't open any other paths.\n\nLooking at the options, B = {Xi, Tj} is the correct answer.\n\nB",
+        "latency_s": 5.32,
+        "input_tokens": 136,
+        "output_tokens": 907,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:11.966644",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.19,
+        "input_tokens": 411,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:13.174655",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.19,
+        "input_tokens": 418,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:14.417006",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.23,
+        "input_tokens": 317,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:15.671528",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.23,
+        "input_tokens": 377,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:16.977006",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.29,
+        "input_tokens": 146,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:18.454619",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.46,
+        "input_tokens": 300,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:19.833100",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.36,
+        "input_tokens": 415,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:21.124998",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.27,
+        "input_tokens": 256,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:22.335655",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.19,
+        "input_tokens": 285,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:23.559665",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.21,
+        "input_tokens": 178,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:24.790733",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.2,
+        "input_tokens": 450,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:26.000930",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.19,
+        "input_tokens": 447,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:27.242584",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.23,
+        "input_tokens": 291,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:28.472928",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.21,
+        "input_tokens": 406,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:30.425778",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D\n\nThe analysis classifies person-time before T as 'untreated' and conditions on S=1 among treated individuals. This creates a complex causal structure where we're trying to estimate the total effect of T on Y.\n\nLooking at the DAG:\n- X \u2192 T, X \u2192 Y\n- S \u2192 T, S \u2192 Y  \n- U \u2192 S, U \u2192 Y\n- T \u2192 Y\n- X \u2192 S\n\nThe conditioning on S=1 among treated individuals creates a collider bias situation. The correct adjustment set would need to block all backdoor paths from T to Y while not opening new ones. However, given that we condition on S=1 (which is a descendant of U), and U is a common cause of both S and Y, no observed set of variables can properly adjust for this selection bias created by the time-based classification and conditioning on survival to initiation.\n\nThe answer is D - no observed set recovers the effect under this time classification.",
+        "latency_s": 0.94,
+        "input_tokens": 136,
+        "output_tokens": 197,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:31.643779",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 419,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:32.986010",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.32,
+        "input_tokens": 387,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:34.192852",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.17,
+        "input_tokens": 283,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:35.361927",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.14,
+        "input_tokens": 321,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:36.601397",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.21,
+        "input_tokens": 169,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:37.802332",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.17,
+        "input_tokens": 414,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:39.000044",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.17,
+        "input_tokens": 430,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:40.197091",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.17,
+        "input_tokens": 298,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:41.428633",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.19,
+        "input_tokens": 469,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:42.649767",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.19,
+        "input_tokens": 142,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:43.835550",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "A",
+        "latency_s": 0.16,
+        "input_tokens": 381,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:45.035744",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.18,
+        "input_tokens": 500,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:46.242840",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.19,
+        "input_tokens": 339,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:47.620060",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "C",
+        "latency_s": 0.35,
+        "input_tokens": 477,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:48.824079",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "D",
+        "latency_s": 0.17,
+        "input_tokens": 164,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:50.142144",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.28,
+        "input_tokens": 462,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:51.409001",
+        "api_model": "qwen.qwen3-coder-30b-a3b-v1:0",
+        "content": "B",
+        "latency_s": 0.23,
+        "input_tokens": 398,
+        "output_tokens": 2,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-07T06:56:40.747084"
+  "updated": "2026-04-22T13:26:51.409044"
 }

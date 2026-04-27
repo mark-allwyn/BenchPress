@@ -7214,7 +7214,2434 @@
         "judge_score_avg": 5.0,
         "judge_count": 4
       }
+    ],
+    "B01_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:11.887400",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 6.49,
+        "input_tokens": 287,
+        "output_tokens": 785,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:15.798003",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 2.89,
+        "input_tokens": 338,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q3": [
+      {
+        "timestamp": "2026-04-22T13:22:37.483886",
+        "api_model": "o3-mini",
+        "content": "We will show that\u2014even after \u201cblocking\u2010by\u2010adjustment\u201d using any choice among the observed (pre\u2010treatment) variables\u2014the selection problem induced by conditioning on S = 1 remains unresolvable by adjustment. That is, there is no set of observed variables (other than S itself, which is \u201cfixed\u201d by design) that, when conditioned on along with S = 1, is sufficient to \u201crecover\u201d the total effect of T on Y. In other words, no minimal sufficient adjustment set (over the observed nodes T, L, M, Y, \u2026) exists.\n\nTo explain briefly (with fewer formalities than a full \u201cd\u2013separation\u201d analysis):\n\n1. The DAG has a confounding path T \u2190 L \u2192 Y that clearly\u2010would be \u201cfixed\u201d by adjusting for L. (There is also an additional latent confounding stream via U1 that shows up through L.) In a \u201cstandard\u201d analysis one might expect adjusting for L would do the job.\n\n2. However, the analysis is done in a selected sample where S = 1. In our diagram S has arrows coming in from T and from Y (and also from an unmeasured U2). When one fixes S = 1 the collider S is \u201copened\u201d so that a noncausal association is induced between T and Y along the path T \u2192 S \u2190 Y. This \u201cselection\u2010induced\u201d bias \u2013 sometimes called collider\u2010stratification bias \u2013 introduces a spurious noncausal association that is not blocked simply by adjusting for L or any other observed pre\u2013treatment variable (other than S, which however is \u201cfixed by design\u201d).\n\n3. Thus, no choice of a subset of the measured variables (besides the built\u2013in selection on S) is sufficient to \u201crecover\u201d the total causal effect of T on Y by standard adjustment. In the language of causal\u2010inference criteria, there are 0 minimal sufficient adjustment sets (over the observed variables) that would allow identification of the total effect of T on Y in this selected sample.\n\nThe correct answer is, therefore, A.",
+        "latency_s": 20.67,
+        "input_tokens": 118,
+        "output_tokens": 2748,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q4": [
+      {
+        "timestamp": "2026-04-22T13:22:41.409208",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 2.91,
+        "input_tokens": 337,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B01_Q5": [
+      {
+        "timestamp": "2026-04-22T13:22:46.202763",
+        "api_model": "o3-mini",
+        "content": "B\n\nAnalyst 1\u2019s point is more precise here. The treatment itself increased the likelihood that participants relocated, making the observation of outcomes (in-state UI wage records) a post\u2010treatment outcome. This introduces a selection mechanism that is not addressed by matching on pre-treatment covariates or by standard sensitivity analyses (such as Rosenbaum bounds) that target hidden bias due to unobserved pre\u2010treatment confounders. In this context, analyst 1 correctly identifies that conditioning on in\u2010state residence (an outcome affected by treatment) creates a selection issue separate from baseline confounding.",
+        "latency_s": 3.78,
+        "input_tokens": 409,
+        "output_tokens": 391,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q1": [
+      {
+        "timestamp": "2026-04-22T13:22:48.794582",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 1.57,
+        "input_tokens": 315,
+        "output_tokens": 79,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q2": [
+      {
+        "timestamp": "2026-04-22T13:22:58.439172",
+        "api_model": "o3-mini",
+        "content": "B. The imputation model does not include the reason for dropout, so it imputes month\u201012 pain for placebo dropouts based on completers who had similar baseline traits but did not experience the flare-ups that triggered dropout, likely generating imputed values that are too optimistic for the placebo arm and attenuating the drug's apparent advantage.",
+        "latency_s": 8.63,
+        "input_tokens": 437,
+        "output_tokens": 1042,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:14.421487",
+        "api_model": "o3-mini",
+        "content": "A\n\nLet\u2019s briefly explain the reasoning. We need to choose a set of covariates that \u201cblocks\u201d any non\u2010mediator (that is, spurious) path between T and Y that could bias the estimation of the indirect effect T \u2192 M1 \u2192 M2 \u2192 Y. In the DAG, the mediator chain must remain unblocked to \u201ccarry\u201d the indirect effect. One obvious \u201cback\u2010door\u201d threat is the common cause X, which (by arrows X \u2192 M1 and X \u2192 Y) creates a non\u2010mediating path T \u2192 M1 \u2190 X \u2192 Y. Conditioning on X blocks that path. The other candidate sets include M2 or U. However, M2 is an essential mediator on the chain (so conditioning on it would \u201cdestroy\u201d the indirect effect we want to measure) and U is unmeasured. Also, the fact that analysis is restricted to R = 1 (a selection variable with parents Y, X, and U) reinforces that X must be \u201ccontrolled\u201d to block an extra path opened by conditioning on R. Thus, the set {X} is the only valid set, and the answer is A.",
+        "latency_s": 14.97,
+        "input_tokens": 132,
+        "output_tokens": 1979,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q4": [
+      {
+        "timestamp": "2026-04-22T13:23:18.666990",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 3.23,
+        "input_tokens": 353,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B02_Q5": [
+      {
+        "timestamp": "2026-04-22T13:23:22.632780",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.95,
+        "input_tokens": 418,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q1": [
+      {
+        "timestamp": "2026-04-22T13:23:25.408544",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 1.76,
+        "input_tokens": 294,
+        "output_tokens": 79,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q2": [
+      {
+        "timestamp": "2026-04-22T13:23:28.359359",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 1.93,
+        "input_tokens": 396,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q3": [
+      {
+        "timestamp": "2026-04-22T13:23:55.601392",
+        "api_model": "o3-mini",
+        "content": "D\n\nLet\u2019s briefly explain one way to see that there are \u201c3 or more\u201d active routes.\n\nOne may list several simple (non\u2010repeating) paths between A and B that become d\u2010connected once we condition on C1 and D. For example, one common solution is to note that at least the following d\u2010connecting paths exist:\n\n1. A \u2192 C1 \u2190 B  \n\u2003\u2022 Here C1 is a collider that is conditioned on so it \u201copens\u201d the path.\n\n2. A \u2192 C2 \u2192 D \u2190 B  \n\u2003\u2022 Here D is a collider and is conditioned on, so the path is open.\n\n3. A \u2192 C2 \u2190 U \u2192 B  \n\u2003\u2022 C2 is a collider on the segment A \u2192 C2 \u2190 U and is \u201copened\u201d because a descendant of C2 (namely D) is conditioned on.\n\nIn fact, by also considering routes that \u201cdetour\u201d via C1 then to C2 (for instance, A \u2192 C1 \u2192 C2 \u2192 D \u2190 B and A \u2192 C1 \u2192 C2 \u2190 U \u2192 B), one finds additional d\u2010connecting paths. Thus the total number is \u201c3 or more.\u201d\n\nSo the correct answer is D.",
+        "latency_s": 26.2,
+        "input_tokens": 113,
+        "output_tokens": 3206,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:05.331800",
+        "api_model": "o3-mini",
+        "content": "B\n\nThe additional GPA (or sum) threshold further restricts the variation in Math+Music scores among those receiving scholarships. In the admitted pool, conditioning on Math+Music \u2265 120 induces a negative correlation between the two scores (i.e. a collider bias) because a low score in one area must be somewhat compensated by a high score in the other to meet the overall cutoff. When you further require that the GPA exceed 3.5, which is nearly equivalent (aside from added noise) to requiring a further increase in the sum Math+Music, you impose yet another constraint on that sum. This extra censoring tends to amplify the negative correlation between Math and Music within the scholarship subsample. Hence, answer B is most accurate.",
+        "latency_s": 8.71,
+        "input_tokens": 424,
+        "output_tokens": 932,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B03_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:10.352630",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 4.0,
+        "input_tokens": 405,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q1": [
+      {
+        "timestamp": "2026-04-22T13:24:14.291176",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 2.92,
+        "input_tokens": 349,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q2": [
+      {
+        "timestamp": "2026-04-22T13:24:20.490103",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 5.18,
+        "input_tokens": 367,
+        "output_tokens": 399,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q3": [
+      {
+        "timestamp": "2026-04-22T13:24:49.205230",
+        "api_model": "o3-mini",
+        "content": "We can show that the only \u201cpost\u2010period\u2013only\u201d variables needed to block all back\u2010door paths are those that \u201cmark\u201d the group assignment. (In our DAG the \u201cgroup\u201d factor G is a confounder since it affects both treatment (T) and the post\u2010period outcome (Y1); note also there is an extra back\u2010door via U that \u201cleaks\u201d into Y1 via W.) \n\nIn the graph the back\u2010door paths of concern include\n\u2003\u2022\u2003T \u2190 G \u2192 Y1\u2003and\n\u2003\u2022\u2003T \u2190 G \u2190 U \u2192 W \u2192 Y1.\nConditioning on G blocks both of these. (In the second path the segment \u201cT \u2190 G\u201d is \u201ccut\u201d by adjusting for G.) \n\nBecause we are restricted to post\u2010period data, we cannot \u201cbring in\u201d the pre\u2010period outcome Y0, even though it would normally be useful. (That rules out option A.) Among the remaining choices, note that in principle the minimal sufficient set is just {G} but the only answer options that contain only post\u2010period variables are {G, W}, {G, W, P} and {G, P}. Both {G, W} and {G, P} would \u201ccut\u201d the back\u2010door paths (and {G, W, P} is just a larger set that also works).\n\nThe best (minimal, with only post\u2010period measurements) answer among the options is {G, W}.\n\nThe correct answer is B.",
+        "latency_s": 27.7,
+        "input_tokens": 127,
+        "output_tokens": 3399,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q4": [
+      {
+        "timestamp": "2026-04-22T13:24:53.963481",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 3.74,
+        "input_tokens": 606,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B04_Q5": [
+      {
+        "timestamp": "2026-04-22T13:24:57.992145",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 3.01,
+        "input_tokens": 392,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:02.747466",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 3.74,
+        "input_tokens": 332,
+        "output_tokens": 335,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:05.416341",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 1.65,
+        "input_tokens": 374,
+        "output_tokens": 15,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:11.023972",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 4.59,
+        "input_tokens": 159,
+        "output_tokens": 527,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:20.747079",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 8.7,
+        "input_tokens": 433,
+        "output_tokens": 911,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B05_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:23.842390",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 2.07,
+        "input_tokens": 405,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:26.497664",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 1.64,
+        "input_tokens": 265,
+        "output_tokens": 15,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q2": [
+      {
+        "timestamp": "2026-04-22T13:25:30.637847",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 3.12,
+        "input_tokens": 260,
+        "output_tokens": 270,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q3": [
+      {
+        "timestamp": "2026-04-22T13:25:45.784333",
+        "api_model": "o3-mini",
+        "content": "C\n\nWe start with the DAG where the nodes and arrows are as follows:\n\n\u2003\u2022 T \u2192 S  \n\u2003\u2022 X \u2192 S  \n\u2003\u2022 U \u2192 S  \n\u2003\u2022 T \u2192 Y  \n\u2003\u2022 X \u2192 Y  \n\u2003\u2022 U \u2192 Y  \n\u2003\u2022 S \u2192 F  \n\u2003\u2022 F \u2192 Y  \n\nWe also condition on S = 1 (i.e. survival).\n\nNow, our task is to count only the non\u2010causal (\u201cbiasing\u201d) paths from T to Y that remain open after conditioning on S.\n\nStep 1. Identify candidate paths from T to Y that are not the direct causal effect:\n\u2003\u2022 The causal path is T \u2192 Y. We do not count this path.\n\u2003\u2022 Consider the path: T \u2192 S \u2190 X \u2192 Y  \n\u2003\u2022 Consider the path: T \u2192 S \u2190 U \u2192 Y  \n\u2003\u2022 There\u2019s also a path: T \u2192 S \u2192 F \u2192 Y\n\nStep 2. Determine which of these paths are open after conditioning on S.\n\n\u2003a) Path: T \u2192 S \u2190 X \u2192 Y  \n\u2003\u2003\u2013 At node S, notice the structure is a collider: T \u2192 S \u2190 X. Colliders are normally closed but conditioning on a collider opens the path.  \n\u2003\u2003\u2013 Thus, by conditioning on S, this path is opened.\n\n\u2003b) Path: T \u2192 S \u2190 U \u2192 Y  \n\u2003\u2003\u2013 Similarly, the substructure T \u2192 S \u2190 U forms a collider at S. Conditioning on S opens this path.  \n\u2003\u2003\u2013 So, this path is also open after conditioning.\n\n\u2003c) Path: T \u2192 S \u2192 F \u2192 Y  \n\u2003\u2003\u2013 Here, S is on a chain (T \u2192 S \u2192 F \u2192 Y). When you condition on a non\u2010collider in a chain, you block the path.  \n\u2003\u2003\u2013 Therefore, this path is closed.\n\nStep 3. Count the open non\u2010causal paths.  \n\u2003The two open non\u2010causal paths are:  \n\u2003\u20031. T \u2192 S \u2190 X \u2192 Y  \n\u2003\u20032. T \u2192 S \u2190 U \u2192 Y\n\nThe answer is 2, so the correct letter is C.",
+        "latency_s": 14.11,
+        "input_tokens": 115,
+        "output_tokens": 1546,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q4": [
+      {
+        "timestamp": "2026-04-22T13:25:47.973901",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 1.17,
+        "input_tokens": 399,
+        "output_tokens": 17,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B06_Q5": [
+      {
+        "timestamp": "2026-04-22T13:25:53.321534",
+        "api_model": "o3-mini",
+        "content": "B\n\nAnalyst 1\u2019s concerns are more defensible. In this situation, the treatment appears to affect who continues participation, meaning that the set of completers in the treatment arm is selected in a way that depends on unmeasured factors related to the outcome. This makes the missingness mechanism effectively not missing at random (MNAR) even if one conditions on baseline covariates, and such selection bias may not be fully addressed by simply adjusting for baseline variables. Moreover, including any post\u2010randomisation characteristics (which could induce collider bias) would further complicate the analysis. In contrast, Analyst 2\u2019s \u201cstandard fix\u201d relies on assumptions (like MAR conditional on strong pre\u2010treatment predictors) that are questionable in the face of differential attrition driven by treatment effects.",
+        "latency_s": 4.33,
+        "input_tokens": 408,
+        "output_tokens": 429,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q1": [
+      {
+        "timestamp": "2026-04-22T13:25:59.939632",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 5.6,
+        "input_tokens": 237,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:04.568395",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 3.61,
+        "input_tokens": 374,
+        "output_tokens": 335,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q3": [
+      {
+        "timestamp": "2026-04-22T13:26:36.623042",
+        "api_model": "o3-mini",
+        "content": "",
+        "latency_s": 31.04,
+        "input_tokens": 135,
+        "output_tokens": 4096,
+        "auto_checks": {
+          "flags": [
+            "EMPTY_RESPONSE"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T12:48:12.491806",
+        "api_model": "o3-mini",
+        "content": "We will show that by \u201cblocking\u201d the mediation\u2010chain (the T\u2192M1\u2192M2 path) and \u201cadjusting away\u201d any back\u2010door bias into the direct effect T\u2192Y one can write a g\u2013formula for the controlled direct effect setting the \u201cmediator values\u201d that transmit the M1\u2192M2 route to fixed levels. In our DAG the \u201cpure\u201d controlled direct effect is that of T on Y when one \u201cholds fixed\u201d whatever value passes through the M1\u2192M2 chain. (In other words, we want to \u201cremove\u201d the T\u2192M1\u2192M2\u2192Y channel.) To do that we must: \n\n\u2022 Not let the chain \u201cwork\u201d \u2013 which is accomplished by setting the \u201cdownstream mediator\u201d M2 equal to some fixed value. (Notice that if you fix only M1 then M2 remains free to \u201ccollect\u201d variation coming from M1 and from its other parents.)\n\n\u2022 Block confounding of T\u2192Y. In our graph there is the standard back\u2013door T\u2190X\u2192Y so one must adjust for X. (Other variables like W do not confound T and Y because they are not causes of T; however, when one \u201cfixes\u201d M2 there is a potential for collider problems coming in from a route like T\u2192M1\u2190\u2026\u2192M2\u2190W\u2192Y. In that case it turns out that also adjusting for W is needed so that any \u201ccollider\u2010induced\u201d confounding is removed.)\n\nMore precisely, note the following:\n \n1. Without intervening on M2 the effect T\u2192M1\u2192M2\u2192Y contributes to the overall effect. But to \u201cremove\u201d that channel (i.e. to \u201ccontrol\u201d it) we intervene and set M2 to a fixed value. (If you intervene only on M1, then the arrow M1\u2192M2 still remains \u201cactive\u201d.)\n\n2. Once you have \u201cfixed\u201d M2 (that is, you plan to compare Y(t, m1*, m2*) for different t), the only \u201creal\u201d confounder of T and Y is common cause X (via T\u2190X\u2192Y). In addition, note that conditioning on M2 (which you must do for the controlled effect) (a) \u201cblocks\u201d a lot of the mediation chain and (b) opens a potential collider path T\u2192M1\u2192M2\u2190W\u2192Y. To block that newly opened noncausal association it helps to adjust for W.\n\nThus, the minimal adjustment set that accomplishes both (i) removing the T\u2192M1\u2192M2 route by controlling for M2 and (ii) blocking back\u2013door paths (the T\u2190X\u2192Y channel and the \u201ccollider\u201d branch T\u2192M1\u2192M2\u2190W\u2192Y) is {X, M2, W}. In the answer choices given the set in option C is exactly {X, M2, W}.\n\nSo the correct answer is:\n\nC.",
+        "latency_s": 40.15,
+        "input_tokens": 135,
+        "output_tokens": 5881,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q4": [
+      {
+        "timestamp": "2026-04-22T13:26:43.651112",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 6.0,
+        "input_tokens": 433,
+        "output_tokens": 655,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B07_Q5": [
+      {
+        "timestamp": "2026-04-22T13:26:48.156362",
+        "api_model": "o3-mini",
+        "content": "A\n\nAnalyst 1\u2019s position is more defensible here. Under the standard assumptions for conditional ignorability (i.e., if all relevant pre-treatment confounders are measured and controlled for), excluding mediators from the analysis when estimating the total effect is appropriate. Controlling for school funding \u2013 a pre-treatment confounder that affects both programme participation and exam scores \u2013 is sufficient for blocking backdoor paths, assuming no other unmeasured confounders exist. Analyst 2\u2019s point about potential residual confounding touches on a broader concern in observational research, but within the standard framework where conditional ignorability is assumed, Analyst 1\u2019s strategy is the appropriate one.",
+        "latency_s": 3.47,
+        "input_tokens": 381,
+        "output_tokens": 341,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q1": [
+      {
+        "timestamp": "2026-04-22T13:26:50.512733",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 1.32,
+        "input_tokens": 265,
+        "output_tokens": 14,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q2": [
+      {
+        "timestamp": "2026-04-22T13:26:54.183371",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.64,
+        "input_tokens": 397,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:17.606310",
+        "api_model": "o3-mini",
+        "content": "D\n\nWe start by noting that the goal is to estimate the total effect of T on Y. In the full DAG (without the R\u2010restriction) the back\u2010door paths from T to Y come primarily from the severity proxy I \u2013 which is affected by U1 and also by S (since S affects both I and Y). In an unrestricted sample one could hope to \u201cadjust\u201d for indication severity (and possibly S) so as to block the non\u2010causal path T \u2190 I \u2192 Y (including the sub\u2010path via S) and recover the total effect.\n\nHowever, the analysis is done \u201crestricted to R = 1\u201d (i.e. we only retain subjects with R = 1). In this DAG the selection indicator R has parents T, Y and U2. Restricting the analysis to R = 1 is equivalent to conditioning on a collider, R, between T and Y. Conditioning on R opens a spurious association (a biasing back\u2010door path) T \u2192 R \u2190 Y that cannot be blocked by adjusting for the available pre\u2010treatment variables (I and S) because the \u201cextra\u201d common cause U2 (a parent of R) is unobserved. In effect, there is residual selection bias induced by the sample restriction that we cannot \u201cfix\u201d with the observed variables provided.\n\nThus, no valid adjustment set among those available (even \u201cadding\u201d R does nothing, as it is already fixed by design) can identify the total effect of T on Y when you restrict to R = 1. Therefore the correct answer is D.",
+        "latency_s": 22.39,
+        "input_tokens": 132,
+        "output_tokens": 3216,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:22.426157",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 3.79,
+        "input_tokens": 452,
+        "output_tokens": 335,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B08_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:27.018669",
+        "api_model": "o3-mini",
+        "content": "D\n\nNeither analyst\u2019s fix is sufficient on its own. Confounding by indication and differential censoring are separate issues requiring distinct assumptions and corrections. Balancing on baseline severity via propensity scores does not guarantee that the censoring mechanism is balanced during follow-up, and simply applying inverse-probability-of-censoring weights (IPCW) does not address the baseline imbalance that led to treatment selection in the first place. Therefore, each bias needs its own careful adjustment, and neither analyst\u2019s single correction fully resolves the complex bias in this study.",
+        "latency_s": 3.57,
+        "input_tokens": 381,
+        "output_tokens": 378,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:29.233371",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 1.19,
+        "input_tokens": 245,
+        "output_tokens": 15,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q2": [
+      {
+        "timestamp": "2026-04-22T13:27:32.342196",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.08,
+        "input_tokens": 365,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q3": [
+      {
+        "timestamp": "2026-04-22T13:27:43.454771",
+        "api_model": "o3-mini",
+        "content": "A\n\nLet\u2019s explain briefly. Z is \u201cselected on\u201d (Z = 1 for everyone), so bias is already being induced there by opening the non\u2010causal pathway T \u2192 Z \u2190 Y. However, if you add adjusting for W (which is affected by T, and also a descendant of the unmeasured U that affects Y), you open up a collider path (T \u2192 W \u2190 U \u2192 Y) that isn\u2019t already open by selection alone. In contrast, adjusting for X (a pre\u2010treatment confounder) is standard and doesn\u2019t add new distortion, and Z is already conditioned on by design. \n\nThus, controlling for W only introduces additional (new) bias.",
+        "latency_s": 10.08,
+        "input_tokens": 115,
+        "output_tokens": 1245,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q4": [
+      {
+        "timestamp": "2026-04-22T13:27:46.816188",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.33,
+        "input_tokens": 448,
+        "output_tokens": 144,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B09_Q5": [
+      {
+        "timestamp": "2026-04-22T13:27:55.103390",
+        "api_model": "o3-mini",
+        "content": "B\n\nHere's the reasoning:\n\nThere is validity in both lines of thought. Analyst 1 correctly notes that conditioning on employment (and then on some job characteristics) might introduce collider bias or block part of the causal pathway, thus complicating a clean interpretation of a \u201ctotal\u201d certification effect. Analyst 2, on the other hand, points out that in applied labour economics it is common to condition on post\u2010employment variables (such as industry, job level, and tenure) to compare salary outcomes, thereby estimating a conditional effect that may be informative in policy or practice.\n\nThus, a balanced view is that some post\u2010treatment controls (for example, industry) may explain exogenous variation not directly caused by certification, but others (such as job level or tenure) that lie on the pathway from certification to wage might introduce bias if the goal is to measure the total effect. This supports the position that both analysts raise valid points, with the ultimate truth lying somewhere between the two extremes.",
+        "latency_s": 7.26,
+        "input_tokens": 345,
+        "output_tokens": 852,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q1": [
+      {
+        "timestamp": "2026-04-22T13:27:59.420275",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 3.3,
+        "input_tokens": 293,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:03.826725",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 3.38,
+        "input_tokens": 419,
+        "output_tokens": 335,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q3": [
+      {
+        "timestamp": "2026-04-22T13:28:14.691729",
+        "api_model": "o3-mini",
+        "content": "B\n\nLet's explain briefly:\n\nWe want to estimate the total effect of T on Y. In the DAG, the potential back\u2010door paths are:\n\n1. T \u2190 G \u2192 Y  \n2. T \u2190 C \u2192 Y\n\nBecause U is unmeasured we only have the observed nodes G and C. Testing candidate adjustment sets:\n\n\u2022 Adjusting on nothing leaves both back\u2010door paths open.  \n\u2022 Adjusting on G alone blocks the path through G (T \u2190 G \u2192 Y) but leaves the T \u2190 C \u2192 Y path open.  \n\u2022 Adjusting on C alone blocks T \u2190 C \u2192 Y but still leaves T \u2190 G \u2192 Y open.\n\nOnly adjusting on both G and C simultaneously blocks all back\u2010door paths. And this set is minimal because dropping either variable unblocks a confounding path.\n\nThus, there is exactly 1 minimal adjustment set.\n\nThe correct answer is B.",
+        "latency_s": 9.83,
+        "input_tokens": 108,
+        "output_tokens": 1411,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q4": [
+      {
+        "timestamp": "2026-04-22T13:28:25.189060",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 9.46,
+        "input_tokens": 351,
+        "output_tokens": 1039,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B10_Q5": [
+      {
+        "timestamp": "2026-04-22T13:28:34.124441",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 7.9,
+        "input_tokens": 404,
+        "output_tokens": 847,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q1": [
+      {
+        "timestamp": "2026-04-22T13:28:37.453409",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.3,
+        "input_tokens": 253,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q2": [
+      {
+        "timestamp": "2026-04-22T13:28:42.829054",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 4.34,
+        "input_tokens": 386,
+        "output_tokens": 463,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:14.327367",
+        "api_model": "o3-mini",
+        "content": "",
+        "latency_s": 30.46,
+        "input_tokens": 106,
+        "output_tokens": 4096,
+        "auto_checks": {
+          "flags": [
+            "EMPTY_RESPONSE"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-27T12:49:17.127345",
+        "api_model": "o3-mini",
+        "content": "We will show that when we \u201cselect\u2010on\u201d S (that is, when we restrict to cases with S = 1) several distinct simple \u201cd\u2010connecting\u201d paths (i.e. unblocked when using the rules of d\u2013separation) between A and B become active. (U is an unmeasured common\u2010cause for B and K.) One may \u201csee\u201d that in the full (unselected) DAG A and B are independent, but once we condition on S a spurious association appears via several \u201copened\u201d backdoor routes. (For example, conditioning on S \u2013 a collider or a descendant of colliders \u2013 will \u201copen\u201d an A\u2013B path that would otherwise be blocked.) \n\nA quick look at the DAG shows that there are at least two \u201cbasic\u201d kinds of biasing paths:\n \n\u2022 One set runs \u201cthrough H\u201d. For example, the simple path \n\u2003\u2003A \u2192 H \u2190 B \nwhich is closed ordinarily because H is a collider. However, H \u201csends\u201d an arrow to S (H \u2192 S), so S is a descendant of H. When we condition on S the collider \u201cat H\u201d is activated. (Also note that one may \u201cinsert\u201d S into the route to get A \u2192 S \u2190 H \u2190 B and even extend it as A \u2192 H \u2192 S \u2190 H \u2190 B \u2013 all of which are valid distinct simple d\u2013connecting paths.)\n\n\u2022 A second set runs \u201cthrough K\u201d (and the unobserved U). For example, \n\u2003\u2003A \u2192 K \u2190 U \u2192 B \nwould be blocked at K (a collider) if we did nothing. But K has a child S (K \u2192 S) so that conditioning on S opens this route. (Again, extra colliders such as S may also be \u201cinjected\u201d so that one may also have, for instance, a path like A \u2192 K \u2192 S \u2190 H \u2190 B or A \u2192 S \u2190 K \u2190 U \u2192 B, etc.)\n\nA careful enumeration of all the simple, non\u2010repeating paths in the undirected moralized version of the graph reveals more than two distinct d\u2013connecting paths between A and B \u2013 in fact, one may list at least the following:\n \n1. A \u2192 H \u2190 B \n2. A \u2192 S \u2190 H \u2190 B \n3. A \u2192 K \u2190 U \u2192 B \n4. A \u2192 K \u2192 S \u2190 H \u2190 B \n5. A \u2192 S \u2190 K \u2190 U \u2192 B \n6. A \u2192 H \u2192 S \u2190 K \u2190 U \u2192 B \n\nIn each case one checks that every triple on the path satisfies the rules:\n\u2003\u2013 A noncollider on the path must not be conditioned on.\n\u2003\u2013 A collider (or a node with a descendant that is conditioned)[1] is \u201copened.\u201d\nSince the only node we have conditioned on is S (and note that it appears as a collider in each of these paths when taken in the proper order), all these routes are active.\n\nThus \u2013 after we condition on S = 1 \u2013 there are \u201c3 or more\u201d (in fact, at least 6 distinct simple d\u2013connecting paths) between A and B.\n\nThe answer choice that correctly reflects this is D.\n\n\u2003\n[1] Recall: Conditioning on a collider (or on a descendant of a collider) \u201copens\u201d an otherwise blocked path. \n\nSo, the one\u2010letter answer is: D. 3 or more.",
+        "latency_s": 63.62,
+        "input_tokens": 106,
+        "output_tokens": 8972,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q4": [
+      {
+        "timestamp": "2026-04-22T13:29:24.024418",
+        "api_model": "o3-mini",
+        "content": "To solve the problem, we first identify the populations:\n\n\u2022 In the total population of 100,000:\n\u2003\u2013 Both diseases: 10% \u00d7 10% = 1% \u2192 1,000 people.\n\u2003\u2013 Only Disease A: (10% \u2013 1%) = 9% \u2192 9,000 people.\n\u2003\u2013 Only Disease B: (10% \u2013 1%) = 9% \u2192 9,000 people.\n\u2003\u2013 Neither disease: 100,000 \u2013 1,000 \u2013 9,000 \u2013 9,000 = 81,000 people.\n\nNext, we compute the expected hospital admissions:\n\u2003\u2013 Both diseases: 1,000 \u00d7 40% = 400.\n\u2003\u2013 Only A: 9,000 \u00d7 20% = 1,800.\n\u2003\u2013 Only B: 9,000 \u00d7 20% = 1,800.\n\u2003\u2013 Neither: 81,000 \u00d7 5% = 4,050.\n\u2003Total hospital admissions \u2248 400 + 1,800 + 1,800 + 4,050 = 8,050.\n\nAmong the hospitalized:\n\u2003\u2013 The number with both diseases is 400.\n\u2003\u2013 The prevalence of Disease A is (400 + 1,800) / 8,050 = 2,200/8,050 \u2248 27.33%.\n\u2003\u2013 Similarly, the prevalence of Disease B is approximately 27.33%.\n\nIf the diseases were independent in the hospital sample, the expected joint prevalence would be:\n\u20030.2733 \u00d7 0.2733 \u2248 0.0747 (or 7.47%).\nSince the observed joint is 400/8,050 \u2248 0.0497 (or 4.97%), the association ratio is:\n\u20030.0497 / 0.0747 \u2248 0.67.\n\nThus, among hospitalized patients about 400 have both diseases, and the observed-to-expected ratio is about 0.67, indicating a spurious negative association due to the hospital-based selection.\n\nThe correct answer is: D.",
+        "latency_s": 8.68,
+        "input_tokens": 241,
+        "output_tokens": 902,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B11_Q5": [
+      {
+        "timestamp": "2026-04-22T13:29:31.673214",
+        "api_model": "o3-mini",
+        "content": "B\n\nAnalyst 2 is correct. Although both analysts recognize the initial Berkson\u2019s bias from conditioning on hospital admission, Analyst 1 mistakenly argues that restricting to a clinically homogeneous ICU subgroup will attenuate the bias. In fact, ICU admission itself is influenced by the severity of both conditions, making it a second collider. Conditioning on this second collider can compound the bias, exactly as Analyst 2 states.",
+        "latency_s": 6.63,
+        "input_tokens": 371,
+        "output_tokens": 864,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q1": [
+      {
+        "timestamp": "2026-04-22T13:29:35.126801",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 2.43,
+        "input_tokens": 343,
+        "output_tokens": 80,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q2": [
+      {
+        "timestamp": "2026-04-22T13:29:38.712174",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.55,
+        "input_tokens": 401,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q3": [
+      {
+        "timestamp": "2026-04-22T13:29:53.462160",
+        "api_model": "o3-mini",
+        "content": "C\n\nWe have the following DAG:\n\n\u2003\u2022 U1 \u2192 T  \n\u2003\u2003\u2003\u2003\u2198  \n\u2003\u2003\u2003\u2003\u2003C1\n\n\u2003\u2022 U2 \u2192 C1  \n\u2003\u2003\u2003\u2003\u2198  \n\u2003\u2003\u2003\u2003\u2003Y\n\n\u2003\u2022 U3 \u2192 C2  \n\u2003\u2003\u2003\u2003\u2198  \n\u2003\u2003\u2003\u2003\u2003T\n\n\u2003\u2022 C2 \u2192 Y\n\n\u2003\u2022 C3 \u2192 T  \n\u2003\u2003\u2003\u2003\u2198  \n\u2003\u2003\u2003\u2003\u2003Y\n\n\u2003\u2022 T \u2192 Y\n\nIn this DAG, U1\u2013U3 are unmeasured. When estimating the total effect of T on Y, we need to block any backdoor paths linking T and Y.\n\nOne key back\u2010door path is:  \n\u2003T \u2190 U3 \u2192 C2 \u2192 Y  \nBecause U3 is unmeasured, we can block this path by adjusting for its descendant C2.\n\nAnother back\u2010door path is:  \n\u2003T \u2190 C3 \u2192 Y  \nThis common cause (confounder) can be blocked by adjusting for C3.\n\nThere is a path T \u2190 U1 \u2192 C1 \u2190 U2 \u2192 Y, but note that C1 acts as a collider (it has two incoming arrows) and is naturally closed if not conditioned on. Adjusting for C1 might actually open the path, so we intentionally do not adjust for it.\n\nThus, the minimal sufficient adjustment set that blocks both problematic back\u2010door paths is {C2, C3}.\n\nThe answer is C.",
+        "latency_s": 13.73,
+        "input_tokens": 132,
+        "output_tokens": 1604,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:03.725787",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 9.24,
+        "input_tokens": 363,
+        "output_tokens": 977,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B12_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:08.816086",
+        "api_model": "o3-mini",
+        "content": "C\n\nThe DAG shows that without conditioning on C, there is no open backdoor path creating bias, as the potential collider is left unconditioned. Analyst 1 is correct: the crude association is unbiased, and conditioning on C would open up the path T <- U1 -> C <- U2 -> Y, introducing bias where none existed.",
+        "latency_s": 4.08,
+        "input_tokens": 463,
+        "output_tokens": 276,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:12.029941",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 2.2,
+        "input_tokens": 305,
+        "output_tokens": 15,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:15.560814",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.51,
+        "input_tokens": 397,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q3": [
+      {
+        "timestamp": "2026-04-22T13:30:31.767601",
+        "api_model": "o3-mini",
+        "content": "The DAG includes a direct arrow from Z to Y via Z \u2192 W \u2192 Y, and an unobserved confounder U1 that influences both Z and Y via U1 \u2192 Z and U1 \u2192 Y. Thus even if you condition on observable variables such as X or W (or both), you cannot remove the back\u2010door path Z \u2190 U1 \u2192 Y because U1 is unobserved.\n\nLet\u2019s check the options briefly:\n\n\u2022 Option A, conditioning on {X}: This does nothing to block either Z \u2192 W \u2192 Y or Z \u2190 U1 \u2192 Y.\n\u2022 Option B, conditioning on {X, W}: Although conditioning on W blocks the Z \u2192 W \u2192 Y path, it leaves the problematic back\u2010door Z \u2190 U1 \u2192 Y open.\n\u2022 Option C, conditioning on {W}: Again, this blocks the Z \u2192 W \u2192 Y path, but not the confounding via U1.\n\u2022 Option D: Recognizes that no choice among the available observed sets can block both back\u2010door paths.\n\nThus, the correct answer is D.",
+        "latency_s": 15.18,
+        "input_tokens": 124,
+        "output_tokens": 1383,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q4": [
+      {
+        "timestamp": "2026-04-22T13:30:44.172638",
+        "api_model": "o3-mini",
+        "content": "We can view the overall ITT difference as a weighted average of the causal effects in compliers and noncompliers. Let\n\n\u2003\u2022\u2003CACE = effect among compliers (unknown)  \n\u2003\u2022\u2003For noncompliers, because they \u201crefuse\u201d the drug, normally we\u2019d expect zero effect. But the critic argues that being assigned to treatment inflicts stress that lowers their outcome by 4 points relative to if they\u2019d been in control. Thus, the effect for noncompliers becomes \u20134.\n\nThe observed ITT effect is the average outcome in treatment minus that in control:\n\n\u2003\u2003ITT = (0.7 \u00d7 CACE) + (0.3 \u00d7 (\u20134)).\n\nWe know that the treatment mean is 72 and the control mean is 68, so\n\n\u2003\u200372 \u2013 68 = 4 = 0.7 \u00d7 CACE \u2013 1.2.\n\nSolve for CACE:\n\u2003\u20030.7 \u00d7 CACE = 4 + 1.2 = 5.2  \n\u2003\u2003CACE = 5.2 / 0.7 \u2248 7.43.\n\nThus the true complier average causal effect is about 7.4 points, and the correct answer is option C.",
+        "latency_s": 11.38,
+        "input_tokens": 373,
+        "output_tokens": 1232,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B13_Q5": [
+      {
+        "timestamp": "2026-04-22T13:30:51.952621",
+        "api_model": "o3-mini",
+        "content": "The correct answer is A.\n\nAnalyst 2 is correct. The exclusion restriction in the IV (LATE) framework is a population\u2010level assumption; it must hold for all individuals (compliers, never\u2010takers, always\u2010takers). Even though the LATE is eventually defined as the treatment effect on compliers, the identification strategy relies on the assumption that the instrument (random assignment) affects the outcome only through the treatment and not through any other pathways. In this case, consent-induced anxiety (occurring even among those who refuse surgery) creates a direct pathway from assignment to outcome that bypasses treatment receipt. This violates the exclusion restriction and thus biases the Wald (or IV) estimator.",
+        "latency_s": 6.76,
+        "input_tokens": 430,
+        "output_tokens": 668,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q1": [
+      {
+        "timestamp": "2026-04-22T13:30:55.394087",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 2.42,
+        "input_tokens": 319,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q2": [
+      {
+        "timestamp": "2026-04-22T13:30:59.896294",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 3.47,
+        "input_tokens": 340,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:13.334631",
+        "api_model": "o3-mini",
+        "content": "B\n\nWe want the direct effect of T\u2081 (Ti) on Y\u2081 (Yi) not mediated by T\u2082 (Tj). One key \u201cback\u2010door\u201d path is\n\n\u2003\u2003Ti \u2190 U \u2192 Tj \u2192 Yi.\n\nU is unmeasured, but conditioning on Tj can \u201cblock\u201d the path via U. Also, Xi affects both Ti and Yi so we must condition on it. Thus, the set {Xi, Tj} blocks the backdoor paths\u2014from U (via Tj) and from Xi\u2014yielding identification of the direct effect of Ti on Yi.\n\nThus, answer B.",
+        "latency_s": 12.4,
+        "input_tokens": 134,
+        "output_tokens": 1231,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got B, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q4": [
+      {
+        "timestamp": "2026-04-22T13:31:18.143031",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 3.77,
+        "input_tokens": 360,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B14_Q5": [
+      {
+        "timestamp": "2026-04-22T13:31:25.235960",
+        "api_model": "o3-mini",
+        "content": "D\n\nAnalyst 2 is correct. When there are spillover effects that vary with geographic proximity (or any measure of exposure), the naive treatment\u2010control difference does not correspond to a single, well\u2010defined causal parameter (such as the \"total effect\") in a clean way. While Analyst 1\u2019s intuition that the spillover biases the naive difference toward zero may hold in some uniform cases, the heterogeneous nature of the spillover means that the composition of the control group\u2014and thus the bias\u2014varies. Without imposing strong structural and spatial assumptions to model the distance\u2010dependent spillover effects, you cannot claim that the naive estimate is a conservative lower bound on the overall program impact.",
+        "latency_s": 6.07,
+        "input_tokens": 406,
+        "output_tokens": 729,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q1": [
+      {
+        "timestamp": "2026-04-22T13:31:29.132958",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.86,
+        "input_tokens": 317,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q2": [
+      {
+        "timestamp": "2026-04-22T13:31:54.731955",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 24.58,
+        "input_tokens": 372,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q3": [
+      {
+        "timestamp": "2026-04-22T13:31:58.489562",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 2.71,
+        "input_tokens": 144,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q4": [
+      {
+        "timestamp": "2026-04-22T13:32:05.099200",
+        "api_model": "o3-mini",
+        "content": "",
+        "latency_s": 5.59,
+        "error": "Server error '500 Internal Server Error' for url 'https://api.openai.com/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+        "auto_checks": {
+          "flags": [
+            "API_ERROR"
+          ],
+          "auto_scores": {},
+          "passed": false
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      },
+      {
+        "timestamp": "2026-04-22T15:52:16.059316",
+        "api_model": "o3-mini",
+        "content": "D\n\nLet's break it down step-by-step:\n\n1. For cases:\n\u2003\u2022 True exposed = 30% of 1,000 = 300; true unexposed = 700.\n\u2003\u2022 With 95% sensitivity, correctly classified exposed = 0.95 \u00d7 300 = 285.\n\u2003\u2022 With 85% specificity, 15% (1 \u2013 0.85) of the 700 unexposed are misclassified as exposed = 0.15 \u00d7 700 = 105.\n\u2003\u2022 Total observed exposed among cases = 285 + 105 = 390 (\u224839%).\n\n2. For controls:\n\u2003\u2022 True exposed = 30% of 1,000 = 300; true unexposed = 700.\n\u2003\u2022 With 80% sensitivity, correctly classified exposed = 0.80 \u00d7 300 = 240.\n\u2003\u2022 With 95% specificity, 5% (1 \u2013 0.95) of the 700 unexposed are misclassified as exposed = 0.05 \u00d7 700 = 35.\n\u2003\u2022 Total observed exposed among controls = 240 + 35 = 275 (\u224828%).\n\n3. Observed odds:\n\u2003\u2022 Cases: Odds = 390/(1,000 \u2013 390) = 390/610 \u2248 0.639.\n\u2003\u2022 Controls: Odds = 275/(1,000 \u2013 275) = 275/725 \u2248 0.379.\n\u2003\u2022 Observed OR = 0.639/0.379 \u2248 1.69 (\u22481.70).\n\nThus, the observed exposure prevalence is about 39% in cases and about 28% in controls, yielding an observed OR of about 1.70, demonstrating that differential misclassification can create a spurious association from a true null.\n\nThe correct answer is D.",
+        "latency_s": 14.48,
+        "input_tokens": 274,
+        "output_tokens": 974,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B15_Q5": [
+      {
+        "timestamp": "2026-04-22T13:32:08.337797",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 2.18,
+        "input_tokens": 411,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q1": [
+      {
+        "timestamp": "2026-04-22T13:32:11.491096",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.11,
+        "input_tokens": 249,
+        "output_tokens": 80,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q2": [
+      {
+        "timestamp": "2026-04-22T13:32:14.353902",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 1.82,
+        "input_tokens": 280,
+        "output_tokens": 79,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q3": [
+      {
+        "timestamp": "2026-04-22T13:32:19.035192",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 3.64,
+        "input_tokens": 176,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q4": [
+      {
+        "timestamp": "2026-04-22T13:32:21.412220",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 1.34,
+        "input_tokens": 423,
+        "output_tokens": 15,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B16_Q5": [
+      {
+        "timestamp": "2026-04-22T13:32:25.848701",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 3.4,
+        "input_tokens": 444,
+        "output_tokens": 207,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q1": [
+      {
+        "timestamp": "2026-04-22T13:32:29.956022",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 3.08,
+        "input_tokens": 277,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q2": [
+      {
+        "timestamp": "2026-04-22T13:32:34.833503",
+        "api_model": "o3-mini",
+        "content": "D",
+        "latency_s": 3.84,
+        "input_tokens": 400,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q3": [
+      {
+        "timestamp": "2026-04-22T13:32:53.783003",
+        "api_model": "o3-mini",
+        "content": "The correct answer is D.\n\nTo explain briefly without getting lost in technicalities: In the DAG we have, note that T is only \u201cinitiated\u201d if a person has S = 1 (i.e. survived\u2010to\u2010initiation), and S is itself affected by both measured (X) and unmeasured (U) factors. Because the analysis \u201cimplicitly conditions\u201d on S = 1 among the treated (because only survivors may get treated) while the untreated person\u2013time is classified from an earlier period, this time\u2010classification feature effectively selects on a post\u2010baseline variable. In our DAG there is a problematic back\u2010door path running T \u2190 S \u2190 U \u2192 Y that cannot be \u201copened\u201d or blocked by simply adjusting for the available measured covariate(s) (like X) or even adding S. Adjusting for S isn\u2019t enough because S is on a causal pathway that has been \u201cselected on\u201d asymmetrically (only among those treatment initiators) and, moreover, U is unobserved. Thus no set of observed variables (whether {X} or {X, S}) will recover the true total effect of T on Y. \n\nSo the correct answer is D.",
+        "latency_s": 17.91,
+        "input_tokens": 134,
+        "output_tokens": 2052,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q4": [
+      {
+        "timestamp": "2026-04-22T13:32:57.705504",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.89,
+        "input_tokens": 388,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B17_Q5": [
+      {
+        "timestamp": "2026-04-22T13:33:07.432367",
+        "api_model": "o3-mini",
+        "content": "C\n\nBoth analysts are raising valid concerns about separate issues in the design. Analyst 1\u2019s proposal, using a landmark analysis to start follow\u2010up at the time of the 4th prescription, is a well\u2010recognized way to address immortal time bias by ensuring that all \u201cusers\u201d have survived to the point of accumulating exposure and by matching them with non\u2010users alive at that same time.\n\nAt the same time, Analyst 2 correctly points out that even after resolving immortal time bias, there can be informative censoring if, for example, beta\u2010blocker discontinuation (perhaps due to worsening disease) is related to the risk of the outcome (mortality). This potential for bias is not eliminated by the landmark design and may require additional methods\u2014such as inverse probability of censoring weights\u2014to further adjust for the non-random nature of censoring after the landmark.\n\nTherefore, both analysts identify separate issues whose concerns do not invalidate the other\u2019s proposed solution. Addressing both issues sequentially would provide a more robust estimate.",
+        "latency_s": 8.69,
+        "input_tokens": 385,
+        "output_tokens": 990,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q1": [
+      {
+        "timestamp": "2026-04-22T13:33:11.853354",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 3.38,
+        "input_tokens": 275,
+        "output_tokens": 271,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q2": [
+      {
+        "timestamp": "2026-04-22T13:33:15.781700",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.89,
+        "input_tokens": 315,
+        "output_tokens": 79,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got B, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "B",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q3": [
+      {
+        "timestamp": "2026-04-22T13:33:35.617428",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 18.8,
+        "input_tokens": 161,
+        "output_tokens": 2127,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q4": [
+      {
+        "timestamp": "2026-04-22T13:33:57.215791",
+        "api_model": "o3-mini",
+        "content": "B\n\nLet's explain briefly. Although within each region the individual\u2010level risk difference (heart disease rate among exercisers vs. non\u2010exercisers) is consistently around \u20132 to \u20134 percentage points, the overall prevalence of exercise and overall heart disease rates in each region differ due to other regional characteristics. When you aggregate the data, regional confounders can obscure the individual-level protective effect of exercise. In our example, regions with lower exercise rates (like Regions B and D) have overall heart disease rates that do not differ dramatically, resulting in a near-zero or even positive correlation in an ecological analysis, rather than a consistent \u22123 percentage point drop per 10% increase in exercise prevalence. This is a classic ecological bias issue where aggregation obscures the individual\u2010level relationship.",
+        "latency_s": 20.56,
+        "input_tokens": 390,
+        "output_tokens": 2156,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "D",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B18_Q5": [
+      {
+        "timestamp": "2026-04-22T13:34:00.472491",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 2.22,
+        "input_tokens": 422,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q1": [
+      {
+        "timestamp": "2026-04-22T13:34:03.159933",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 1.66,
+        "input_tokens": 285,
+        "output_tokens": 78,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got A, expected C"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "A",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q2": [
+      {
+        "timestamp": "2026-04-22T13:34:06.822409",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 2.62,
+        "input_tokens": 430,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q3": [
+      {
+        "timestamp": "2026-04-22T13:34:22.692349",
+        "api_model": "o3-mini",
+        "content": "C\n\nWe have the following DAG:\n\n\u2003\u2003True \u2192 Y0\u2003\u2003and\u2003\u2003e0 \u2192 Y0  \n\u2003\u2003True \u2192 Y1\u2003\u2003and\u2003\u2003e1 \u2192 Y1  \n\u2003\u2003Y0 \u2192 T  \n\u2003\u2003T \u2192 Y1  \n\u2003\u2003U \u2192 True\u2003\u2003and\u2003\u2003U \u2192 T\n\nThe study first \u201cselects\u201d on Y0 > c (i.e. restricts to subjects with high Y0) and later adjusts for Y0 when estimating the effect of T on Y1.\n\nLet\u2019s consider the relevant non\u2010causal (i.e. back\u2010door) paths from T to Y1:\n\n1. One candidate is:\n\u2003\u2003T \u2190 Y0 \u2190 True \u2192 Y1.\nSince Y0 lies on this chain normally it would be a non\u2010causal backdoor. However, because the analysis adjusts for Y0, that path is blocked.\n\n2. Another candidate is:\n\u2003\u2003T \u2190 U \u2192 True \u2192 Y1.\nNotice that none of these nodes (U, True) are conditioned on. The selection on Y0 does not block this path because Y0 is not part of it. Therefore, this path remains open.\n\nThus, after conditioning on Y0 (both via adjustment and through selection), only the back\u2010door path running via U and True remains open.\n\nThe correct answer is C (only via U).",
+        "latency_s": 14.84,
+        "input_tokens": 140,
+        "output_tokens": 1770,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got C, expected A"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q4": [
+      {
+        "timestamp": "2026-04-22T13:34:26.506097",
+        "api_model": "o3-mini",
+        "content": "A",
+        "latency_s": 2.76,
+        "input_tokens": 351,
+        "output_tokens": 206,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "A",
+            "correct_answer": "A"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B19_Q5": [
+      {
+        "timestamp": "2026-04-22T13:34:33.861018",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 6.33,
+        "input_tokens": 475,
+        "output_tokens": 655,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q1": [
+      {
+        "timestamp": "2026-04-22T13:34:37.755573",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 2.85,
+        "input_tokens": 321,
+        "output_tokens": 143,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE",
+            "WRONG_ANSWER: got C, expected D"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "C",
+            "correct_answer": "D"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q2": [
+      {
+        "timestamp": "2026-04-22T13:34:40.408542",
+        "api_model": "o3-mini",
+        "content": "C",
+        "latency_s": 1.61,
+        "input_tokens": 456,
+        "output_tokens": 15,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q3": [
+      {
+        "timestamp": "2026-04-22T13:34:51.432913",
+        "api_model": "o3-mini",
+        "content": "Transportability requires that after conditioning on the variables available in both source and target populations (here X and Z, and treatment T since we\u2019re looking at an effect), any remaining way in which the study\u2010site indicator S might influence Y is \u201cclosed\u201d (that is, Y becomes independent of S given T, X, and Z). In the DAG S affects Y via two paths. One is S \u2192 X \u2192 Y and S \u2192 X \u2192 T \u2192 Y. These, however, become blocked when conditioning on X (and T when needed). But S also affects Y via S \u2192 W \u2192 Y. Because W is a common effect of S (via S \u2192 W) that then partly determines Y (W \u2192 Y) and because W is not blocked by conditioning on X, Z, or even T (W is not a descendant of T), the back\u2010door path S \u2192 W \u2192 Y remains open. Therefore, for S \u2aeb Y | T, X, Z to hold, W would need to be adjusted for. \n\nThe problem states that in the target population only X and Z are observed (W is unobserved) and specifies that identification in\u2010site used {X, Z} alone. But as we see from the DAG, the extra open path via W isn\u2019t blocked by X and Z; it would have to be blocked by including W among the adjustment set. Since W is unobserved in the target, this means that the S\u2013admissibility condition cannot be met using just X and Z. \n\nThus, in order to transport the site\u2010specific effect from the study (where W is observed) to the target population (where W is not observed), one would need to adjust for W. Failing that, transportability fails. \n\nAnswer: D.",
+        "latency_s": 9.99,
+        "input_tokens": 163,
+        "output_tokens": 1210,
+        "auto_checks": {
+          "flags": [
+            "WRONG_ANSWER: got D, expected B"
+          ],
+          "auto_scores": {
+            "correct": 0,
+            "extracted_answer": "D",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q4": [
+      {
+        "timestamp": "2026-04-22T13:35:15.839887",
+        "api_model": "o3-mini",
+        "content": "The idea is to \u201ctransport\u201d the subgroup\u2010specific effects to the target population by taking a weighted average with the target population subgroup proportions. That is, you compute\n\n\u2003\u20030.25\u00d712 + 0.15\u00d74 + 0.35\u00d78 + 0.25\u00d72 \n\u2003\u2003= 3.0 + 0.6 + 2.8 + 0.5 \n\u2003\u2003= 6.9 percentage points.\n\nAmong the answer choices, option C (7.6 percentage points) is closest to this re\u2010weighted estimate. (There is a slight rounding difference, but option C best reflects the re\u2010weighting calculation.) \n\nThe answer is C.",
+        "latency_s": 23.37,
+        "input_tokens": 438,
+        "output_tokens": 3231,
+        "auto_checks": {
+          "flags": [],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "C",
+            "correct_answer": "C"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
+    ],
+    "B20_Q5": [
+      {
+        "timestamp": "2026-04-22T13:35:21.309292",
+        "api_model": "o3-mini",
+        "content": "B",
+        "latency_s": 4.43,
+        "input_tokens": 395,
+        "output_tokens": 463,
+        "auto_checks": {
+          "flags": [
+            "VERY_SHORT_RESPONSE"
+          ],
+          "auto_scores": {
+            "correct": 1,
+            "extracted_answer": "B",
+            "correct_answer": "B"
+          },
+          "passed": true
+        },
+        "judge_scores": {},
+        "judge_score_avg": null,
+        "judge_count": 0
+      }
     ]
   },
-  "updated": "2026-03-06T22:44:15.682170"
+  "updated": "2026-04-27T12:49:17.127419"
 }
