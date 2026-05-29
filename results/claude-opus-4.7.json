@@ -705,7 +705,7 @@
           },
           "gemini-2.5-flash": {
             "score": null,
-            "rationale": "Judge error: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyCR58iYbd85bhImxB9dPDyggIT-QtEA6-I'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+            "rationale": "Judge error: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=[REDACTED]'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
             "judged_at": "2026-04-16T20:00:37.131680"
           },
           "qwen3-235b": {

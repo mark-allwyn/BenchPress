@@ -5,7 +5,7 @@
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
 ![Tests 178](https://img.shields.io/badge/tests-178-brightgreen)
-![Models 49](https://img.shields.io/badge/models-49-orange)
+![Models 50](https://img.shields.io/badge/models-50-orange)
 
 **Live dashboard:** [mark-allwyn.github.io/BenchPress](https://mark-allwyn.github.io/BenchPress/)
 
@@ -25,7 +25,7 @@ Both benchmarks display 0-100 and are reported side by side. They are never blen
 - **Three-layer scoring** (Generalist) - heuristic auto-checks, multi-judge LLM scoring, and DeepEval G-Eval metrics combined into a composite score
 - **Per-variant accuracy** (Causal) - 20 bundles × 5 variants each, exposing pattern-matching vs structural reasoning per model
 - **Multi-judge consensus** - multiple independent LLM judges score each response, with self-judging prevented and agreement/divergence tracking
-- **49 models, 12 companies** - Anthropic, OpenAI, Google, Meta, xAI, Mistral, Alibaba, Zhipu, Moonshot, MiniMax, Cohere, Amazon
+- **50 models, 12 companies** - Anthropic, OpenAI, Google, Meta, xAI, Mistral, Alibaba, Zhipu, Moonshot, MiniMax, Cohere, Amazon
 - **20 automated checkers** - trap detection, sycophancy checks, constraint validation, hallucination flags, multiple-choice scoring, and more
 - **Interactive dashboard** - sortable leaderboard with per-category breakdowns, company views, causal reasoning page, and methodology docs
 - **Any OpenAI-compatible API** - works with vLLM, Ollama, Together, Groq, HF Inference API, and others
@@ -95,13 +95,14 @@ Weights default to 50/50, configurable in `config.yaml`. The dashboard auto-rege
 
 ## Models Evaluated
 
-49 models across 12 companies. All ran on Generalist; 5 are excluded from Causal (retired APIs, paid-tier-only, broken HF model paths).
+50 models across 12 companies. All ran on Generalist; 5 are excluded from Causal (retired APIs, paid-tier-only, broken HF model paths).
 
 <details>
 <summary>Full model list</summary>
 
 | Model | Company | Launched |
 |---|---|---|
+| claude-opus-4.8 | Anthropic | 2026-05-28 |
 | claude-opus-4.7 | Anthropic | 2026-04-14 |
 | claude-opus-4.6 | Anthropic | 2026-01-28 |
 | claude-sonnet-4.6 | Anthropic | 2026-01-28 |
