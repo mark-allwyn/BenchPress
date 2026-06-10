@@ -255,6 +255,8 @@ def cmd_eval(args):
             latency = time.time() - t0
             auto = check_response(pmeta, content)
 
+            is_refusal = "EMPTY_RESPONSE" in auto.get("flags", []) or "VERY_SHORT_RESPONSE" in auto.get("flags", [])
+
             entry = {
                 "timestamp": datetime.now().isoformat(),
                 "api_model": model_cfg["model"],
@@ -263,6 +265,7 @@ def cmd_eval(args):
                 "input_tokens": usage.get("input_tokens"),
                 "output_tokens": usage.get("output_tokens"),
                 "auto_checks": auto,
+                "refusal": is_refusal,
                 "judge_scores": {},
                 "judge_score_avg": None,
                 "judge_count": 0,
@@ -388,13 +391,18 @@ def cmd_compare(args):
         scores, latencies, tokens = [], [], []
         de_avgs = []
         flagged = 0
+        refusals = 0
         for pid in pids:
             run = latest_run(data, pid)
             if not run:
                 continue
+            flags = run.get("auto_checks", {}).get("flags", [])
+            if run.get("refusal") or "EMPTY_RESPONSE" in flags or "VERY_SHORT_RESPONSE" in flags:
+                refusals += 1
+                continue
             if run.get("judge_score_avg") is not None:
                 scores.append(run["judge_score_avg"])
-            if run.get("auto_checks", {}).get("flags"):
+            if flags:
                 flagged += 1
             latencies.append(run.get("latency_s", 0))
             tokens.append(run.get("output_tokens", 0) or 0)
@@ -419,14 +427,15 @@ def cmd_compare(args):
         else:
             composite = None
 
-        leaderboard.append((name, avg_s, len(scores), total, flagged, avg_l, avg_t, composite))
+        leaderboard.append((name, avg_s, len(scores), total, flagged, refusals, avg_l, avg_t, composite))
 
-    leaderboard.sort(key=lambda x: (x[2] > 0, x[7] or 0), reverse=True)
+    leaderboard.sort(key=lambda x: (x[2] > 0, x[8] or 0), reverse=True)
 
-    for name, avg_s, scored, total, flagged, avg_l, avg_t, composite in leaderboard:
+    for name, avg_s, scored, total, flagged, refusals, avg_l, avg_t, composite in leaderboard:
         s = f"{avg_s:.2f}/5" if scored else "  -  "
         c = f"{composite:.2f}" if composite is not None else "  -  "
-        print(f"{name:<{col_w}} {c:>10} {s:>9} {scored:>3}/{total:<3} {flagged:>8} {avg_l:>7.1f}s {avg_t:>7.0f}")
+        ref_str = f" ({refusals} refused)" if refusals else ""
+        print(f"{name:<{col_w}} {c:>10} {s:>9} {scored:>3}/{total:<3} {flagged:>8} {avg_l:>7.1f}s {avg_t:>7.0f}{ref_str}")
 
     # Category breakdown
     if not args.category:
@@ -446,11 +455,15 @@ def cmd_compare(args):
             row = f"{cat:<22}"
             for name, *_ in leaderboard:
                 data = models[name]
-                sc = [
-                    latest_run(data, pid).get("judge_score_avg")
-                    for pid in cat_pids
-                    if latest_run(data, pid) and latest_run(data, pid).get("judge_score_avg") is not None
-                ]
+                sc = []
+                for pid in cat_pids:
+                    run = latest_run(data, pid)
+                    if not run or run.get("judge_score_avg") is None:
+                        continue
+                    flags = run.get("auto_checks", {}).get("flags", [])
+                    if run.get("refusal") or "EMPTY_RESPONSE" in flags or "VERY_SHORT_RESPONSE" in flags:
+                        continue
+                    sc.append(run["judge_score_avg"])
                 row += f" {(f'{sum(sc)/len(sc):.2f}' if sc else ', '):>{cw}}"
             print(row)
 
