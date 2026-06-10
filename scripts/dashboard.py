@@ -221,6 +221,13 @@ def latest_run(model_data, pid):
     return runs[-1] if runs else {}
 
 
+def is_refusal(run: dict) -> bool:
+    if run.get("refusal"):
+        return True
+    flags = run.get("auto_checks", {}).get("flags", [])
+    return "EMPTY_RESPONSE" in flags or "VERY_SHORT_RESPONSE" in flags
+
+
 def compute_stats(models, prompts, judge_models=None, composite_config=None, models_cfg=None):
     """Compute all stats needed for the dashboard."""
     judge_weight = (composite_config or {}).get("judge_weight", 0.5)
@@ -236,6 +243,7 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
     for name, data in models.items():
         latencies, tokens, errors = [], [], 0
         flagged = 0
+        refusals = 0
         de_scores_all = {"correctness": [], "coherence": [], "instruction_following": []}
         de_avgs = []
         runs_cache = {pid: latest_run(data, pid) for pid in pids}
@@ -253,6 +261,9 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
                 continue
             if run.get("error"):
                 errors += 1
+                continue
+            if is_refusal(run):
+                refusals += 1
                 continue
             if run.get("auto_checks", {}).get("flags"):
                 flagged += 1
@@ -283,8 +294,8 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
         for jname, jscores in judge_breakdown.items():
             judge_averages[jname] = round(sum(jscores) / len(jscores), 2) if jscores else None
 
-        # Count scorable prompts (non-error runs)
-        scorable = sum(1 for pid in pids if runs_cache[pid] and not runs_cache[pid].get("error"))
+        # Count scorable prompts (non-error, non-refusal runs)
+        scorable = sum(1 for pid in pids if runs_cache[pid] and not runs_cache[pid].get("error") and not is_refusal(runs_cache[pid]))
 
         # Only include judges with complete coverage (scored every scorable prompt)
         complete_judges = {
@@ -313,7 +324,7 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
         cat_scores = {}
         cat_deepeval = {}
         cat_composite = {}
-        cat_scorable = {cat: sum(1 for pid in cat_pids[cat] if runs_cache[pid] and not runs_cache[pid].get("error")) for cat in categories}
+        cat_scorable = {cat: sum(1 for pid in cat_pids[cat] if runs_cache[pid] and not runs_cache[pid].get("error") and not is_refusal(runs_cache[pid])) for cat in categories}
         for cat in categories:
             # Only include judges that scored every scorable prompt in this category
             cat_ja_vals = []
@@ -344,7 +355,7 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
         diff_scores = {}
         diff_deepeval = {}
         diff_composite = {}
-        diff_scorable = {d: sum(1 for pid in diff_pids[d] if runs_cache[pid] and not runs_cache[pid].get("error")) for d in difficulties}
+        diff_scorable = {d: sum(1 for pid in diff_pids[d] if runs_cache[pid] and not runs_cache[pid].get("error") and not is_refusal(runs_cache[pid])) for d in difficulties}
         for d in difficulties:
             diff_ja_vals = []
             for jname, jscores in judge_diff_breakdown[d].items():
@@ -442,6 +453,7 @@ def compute_stats(models, prompts, judge_models=None, composite_config=None, mod
             "de_scored": de_scored,
             "total": total,
             "errors": errors,
+            "refusals": refusals,
             "flagged": flagged,
             "avg_latency": round(avg_l, 1),
             "median_latency": round(median_l, 1),
@@ -1972,6 +1984,12 @@ def _leaderboard_row(i, m):
     else:
         errors_badge = '<span class="badge badge-ok">0</span>'
 
+    refusals_badge = ""
+    if m.get("refusals"):
+        refusals_badge = f'<span class="badge badge-flag" title="Empty/near-empty responses excluded from scoring">{m["refusals"]}</span>'
+    else:
+        refusals_badge = '<span class="badge badge-ok">0</span>'
+
     flags_badge = ""
     if m["flagged"]:
         flags_badge = f'<span class="badge badge-flag">{m["flagged"]}</span>'
@@ -2016,7 +2034,7 @@ def _leaderboard_row(i, m):
             detail_bars += f'<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem"><span style="min-width:120px;font-size:0.75rem;color:var(--text2)">{jn}</span><div style="flex:1;max-width:200px;height:6px;background:var(--border);border-radius:3px;overflow:hidden"><div style="width:{bar_pct:.0f}%;height:100%;background:{bar_color};border-radius:3px"></div></div><span style="font-size:0.75rem;font-weight:600;color:{bar_color};min-width:3rem">{jv:.2f}/5</span></div>'
     # Chevron hint for expandable rows (shown next to judge score)
     chevron = '<span style="font-size:0.55rem;color:var(--text2);margin-left:3px;vertical-align:middle;transition:transform 0.2s" title="Click to see per-judge scores">&#9660;</span>' if detail_bars else ''
-    detail_row = f'<tr class="judge-detail-row" data-parent="{safe_name}" style="display:none;background:var(--surface2)"><td></td><td colspan="10" style="padding:0.6rem 0.75rem"><div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.4rem">Per-Judge Scores</div>{detail_bars}</td></tr>' if detail_bars else ''
+    detail_row = f'<tr class="judge-detail-row" data-parent="{safe_name}" style="display:none;background:var(--surface2)"><td></td><td colspan="11" style="padding:0.6rem 0.75rem"><div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.4rem">Per-Judge Scores</div>{detail_bars}</td></tr>' if detail_bars else ''
 
     # Per-row "as-of" date so users can see how fresh each evaluation is. Stored
     # as ISO timestamp; render as "Apr 27" if available.
@@ -2029,7 +2047,7 @@ def _leaderboard_row(i, m):
         except (ValueError, TypeError):
             pass
 
-    return f"""<tr class="model-row" data-rank="{i+1}" data-name="{safe_name}" data-company="{safe_company}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-causal="{causal_data}" data-errors="{m['errors']}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" style="cursor:pointer">
+    return f"""<tr class="model-row" data-rank="{i+1}" data-name="{safe_name}" data-company="{safe_company}" data-composite="{comp_data}" data-score="{m['avg_score']}" data-deepeval="{de_data}" data-causal="{causal_data}" data-errors="{m['errors']}" data-refusals="{m.get('refusals', 0)}" data-flags="{m['flagged']}" data-latency="{m['avg_latency']}" data-tokens="{m['avg_tokens']}" style="cursor:pointer">
       <td><span class="rank {rank_cls}">{i+1}</span></td>
       <td style="font-weight:600">{safe_name}{asof_str}</td>
       <td style="color:var(--text2);font-size:0.8rem"><span class="company-dot" style="background:{company_clr}"></span>{safe_company}</td>
@@ -2038,6 +2056,7 @@ def _leaderboard_row(i, m):
       <td class="num" style="font-weight:600;{de_color}">{de_str}</td>
       <td class="num" style="font-weight:600;{causal_color}">{causal_str}</td>
       <td class="num">{errors_badge}</td>
+      <td class="num">{refusals_badge}</td>
       <td class="num col-detail">{flags_badge}</td>
       <td class="num col-detail">{m['avg_latency']:.1f}s</td>
       <td class="num col-detail">{m['avg_tokens']:.0f}</td>
@@ -3881,6 +3900,19 @@ def generate_methodology_html(stats):
   </p>
 </div>
 
+<!-- Refusal handling -->
+<div class="card" id="section-refusals">
+  <h2>Refusals</h2>
+  <p>
+    Some models return empty or near-empty responses on prompts they consider sensitive
+    (security topics, network scanning, fictitious libraries). These are counted as
+    <strong>Refusals</strong> and excluded from quality scores (Judge, DeepEval, Composite).
+    This prevents safety-layer behavior from artificially deflating a model's quality rating.
+    The refusal count is shown separately so you can see both how good a model's answers
+    are and how often it declines to answer.
+  </p>
+</div>
+
 <!-- Group: Reference data -->
 <div class="section-divider" id="group-reference">Reference Data</div>
 
@@ -5128,6 +5160,7 @@ def generate_generalist_html(stats):
             <th class="num" data-sort="deepeval" data-type="num"><span class="info-tip" data-info="DeepEval G-Eval (correctness, coherence, instruction-following) averaged into 0 to 100.">DeepEval</span></th>
             <th class="num" data-sort="causal" data-type="num"><span class="info-tip" data-info="Causal benchmark accuracy (0 to 100). Independent of the general score.">Causal</span></th>
             <th class="num" data-sort="errors" data-type="num"><span class="info-tip" data-info="API failures (rate limits, 4xx/5xx, timeouts).">Errors</span></th>
+            <th class="num" data-sort="refusals" data-type="num"><span class="info-tip" data-info="Empty or near-empty responses (safety refusals). Excluded from quality scores.">Refusals</span></th>
             <th class="num col-detail" data-sort="flags" data-type="num"><span class="info-tip" data-info="Auto-check heuristic flags (sycophancy, hallucination, format violations).">Flags</span></th>
             <th class="num col-detail" data-sort="latency" data-type="num">Avg Latency</th>
             <th class="num col-detail" data-sort="tokens" data-type="num">Avg Tokens</th>
