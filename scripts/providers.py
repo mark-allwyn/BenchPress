@@ -66,8 +66,8 @@ class AnthropicProvider(Provider):
             "messages": [{"role": "user", "content": prompt}],
             **params,
         }
-        # Opus 4.7+ deprecates temperature
-        if self.model >= "claude-opus-4-7":
+        # Fable 5 and Opus 4.7+ don't support temperature
+        if self.model >= "claude-opus-4-7" or self.model == "claude-fable-5":
             body.pop("temperature", None)
         resp = self.client.post("/v1/messages", json=body)
         resp.raise_for_status()
