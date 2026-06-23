@@ -54,9 +54,43 @@ def test_openai_nonreasoning_model_uses_max_tokens():
 
 def test_openai_error_is_sanitized():
     def handler(request):
-        return httpx.Response(429, text="bad Bearer sk-proj-SECRET")
+        return httpx.Response(400, text="bad Bearer sk-proj-SECRET")
     r = OpenAIProvider("gpt-4o", "k", client=_client(handler)).complete("x")
     assert r.error and "SECRET" not in r.error and r.content == ""
+
+
+def test_openai_joins_list_content_from_reasoning_models():
+    def handler(request):
+        return httpx.Response(200, json={
+            "choices": [{"message": {"content": [
+                {"type": "thinking", "thinking": "reasoning..."},
+                {"type": "text", "text": "ESTIMATE: 0.5"},
+            ]}, "finish_reason": "stop"}],
+            "usage": {},
+        })
+    r = OpenAIProvider("magistral-small", "k", client=_client(handler)).complete("x")
+    assert r.content == "ESTIMATE: 0.5"
+
+
+def test_openai_retries_on_429_then_succeeds():
+    calls = {"n": 0}
+
+    def handler(request):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return httpx.Response(429, text="slow down")
+        return httpx.Response(200, json={
+            "choices": [{"message": {"content": "ok"}, "finish_reason": "stop"}], "usage": {}})
+
+    r = OpenAIProvider("gpt-4o", "k", client=_client(handler), backoff_base=0).complete("x")
+    assert r.error is None and r.content == "ok" and calls["n"] == 2
+
+
+def test_openai_gives_up_after_max_retries_on_429():
+    def handler(request):
+        return httpx.Response(429, text="slow down")
+    r = OpenAIProvider("gpt-4o", "k", client=_client(handler), backoff_base=0, max_retries=2).complete("x")
+    assert r.error is not None and r.content == ""
 
 
 # ---- Google ------------------------------------------------------------------

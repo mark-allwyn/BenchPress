@@ -33,7 +33,8 @@ def _run_dict(r) -> dict:
 
 def _completed(data: dict, item) -> bool:
     runs = data["runs"].get(item.item_id)
-    return bool(runs) and runs[-1].get("content") is not None
+    # An errored run is NOT complete - it should be retried on the next sweep.
+    return bool(runs) and runs[-1].get("content") is not None and not runs[-1].get("error")
 
 
 def run_model(provider, items, path, *, model_name, benchmark, version, rerun=False, workers=1) -> int:
