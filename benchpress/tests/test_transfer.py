@@ -4,9 +4,12 @@ from benchpress.modules.causal.lint import lint_text
 from benchpress.modules.causal.transfer import verify_transfer
 
 
+BACKDOOR_BUNDLES = {"B02", "B03", "B05"}  # transfer items scored via verify_transfer
+
+
 def _transfer_items(seed=11):
     items, _ = registry.get_module("causal")(seed)
-    return [i for i in items if i.variant == "transfer"]
+    return [i for i in items if i.bundle_id in BACKDOOR_BUNDLES]
 
 
 def test_transfer_items_exist_and_have_expected_parts():
