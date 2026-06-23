@@ -6,19 +6,43 @@ import random
 
 from benchpress.core.registry import register_module
 from benchpress.core.types import Item, ModuleMeta, Part
-from benchpress.modules.causal import naming, render, scm
+from benchpress.modules.causal import naming, render, scm, transfer
 from benchpress.modules.causal.verify import verify_item
 
 VERSION = "1"
-N_ITEMS = 5
+N_B01 = 3  # numeric confounding items (emitted first)
+N_B02 = 2  # transfer DAG items
 
 
 @register_module("causal")
 def generate(seed: int, difficulty: str = "hard"):
     rng = random.Random(seed)
     items: list[Item] = []
+    items.extend(_generate_numeric(rng))
+    items.extend(_generate_transfer(rng))
+    meta = ModuleMeta(
+        name="causal", version=VERSION, variants=["numeric", "transfer"],
+        bundles=["B01", "B02"],
+        part_types=["set_match", "numeric_tolerance", "categorical"],
+    )
+    return items, meta
+
+
+def _generate_transfer(rng: random.Random) -> list[Item]:
+    items: list[Item] = []
     draw = 0
-    while len(items) < N_ITEMS:
+    while len(items) < N_B02:
+        item = transfer.make_item(rng, draw, VERSION)
+        draw += 1
+        if verify_item(item):
+            items.append(item)
+    return items
+
+
+def _generate_numeric(rng: random.Random) -> list[Item]:
+    items: list[Item] = []
+    draw = 0
+    while len(items) < N_B01:
         scenario = naming.pick(rng)
         sc = scm.draw_scenario(rng)
         gold_est = round(scm.partial_regression_coef(sc["r_ty"], sc["r_tz"], sc["r_zy"]), 2)
@@ -27,7 +51,7 @@ def generate(seed: int, difficulty: str = "hard"):
             "confounder": scenario["Z"],
             "treatment": scenario["T"],
             "outcome": scenario["Y"],
-            "sim_seed": seed * 1000 + draw,
+            "sim_seed": rng.getrandbits(32),
         }
         parts = [
             Part("ADJUSTMENT_SET", "set_match", {scenario["Z"]}, {}, ["confounding", "backdoor"]),
@@ -48,11 +72,4 @@ def generate(seed: int, difficulty: str = "hard"):
         draw += 1
         if verify_item(item):
             items.append(item)
-    meta = ModuleMeta(
-        name="causal",
-        version=VERSION,
-        variants=["numeric"],
-        bundles=["B01"],
-        part_types=["set_match", "numeric_tolerance", "categorical"],
-    )
-    return items, meta
+    return items

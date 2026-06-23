@@ -12,6 +12,13 @@ from benchpress.modules.causal import scm
 
 
 def verify_item(item: Item) -> bool:
+    if item.variant == "transfer":
+        from benchpress.modules.causal.transfer import verify_transfer
+        return verify_transfer(item)
+    return _verify_numeric(item)
+
+
+def _verify_numeric(item: Item) -> bool:
     gp = item.gen_params
     closed = scm.partial_regression_coef(gp["r_ty"], gp["r_tz"], gp["r_zy"])
     simulated = scm.simulate_partial_coef(
