@@ -55,6 +55,19 @@ def is_instrument(G: nx.DiGraph, z, x, y) -> bool:
     return nx.is_d_separator(H, {z}, {y}, set())
 
 
+def all_minimal_backdoor_sets(G: nx.DiGraph, x, y) -> list[frozenset]:
+    """Every minimal valid backdoor adjustment set."""
+    excluded = nx.descendants(G, x) | {x, y}
+    candidates = [n for n in G.nodes if n not in excluded]
+    out = []
+    for r in range(len(candidates) + 1):
+        for combo in combinations(candidates, r):
+            s = set(combo)
+            if satisfies_backdoor(G, x, y, s) and is_minimal_backdoor(G, x, y, s):
+                out.append(frozenset(s))
+    return out
+
+
 def is_front_door(G: nx.DiGraph, M, x, y) -> bool:
     """Front-door criterion for set M relative to (X, Y):
     (i) M intercepts every directed path X->Y;

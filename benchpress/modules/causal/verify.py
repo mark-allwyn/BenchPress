@@ -12,7 +12,7 @@ from benchpress.modules.causal import scm
 
 
 def verify_item(item: Item) -> bool:
-    if item.bundle_id in ("B02", "B03", "B05"):
+    if item.bundle_id in ("B02", "B03", "B05", "B20"):
         from benchpress.modules.causal.transfer import verify_transfer
         return verify_transfer(item)
     if item.bundle_id == "B04":
@@ -51,6 +51,15 @@ def verify_item(item: Item) -> bool:
     if item.bundle_id == "B16":
         from benchpress.modules.causal.proxy import verify_proxy
         return verify_proxy(item)
+    if item.bundle_id == "B17":
+        from benchpress.modules.causal.count_sets import verify_count_sets
+        return verify_count_sets(item)
+    if item.bundle_id == "B18":
+        from benchpress.modules.causal.do_vs_observe import verify_do_vs_observe
+        return verify_do_vs_observe(item)
+    if item.bundle_id == "B19":
+        from benchpress.modules.causal.chain_partial import verify_chain_partial
+        return verify_chain_partial(item)
     return _verify_numeric(item)
 
 

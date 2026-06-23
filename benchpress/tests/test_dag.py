@@ -82,3 +82,15 @@ def test_front_door_fails_with_direct_x_to_y_edge():
 
 def test_outcome_is_not_a_front_door_set():
     assert dag.is_front_door(_front_door_graph(), {"Y"}, "X", "Y") is False
+
+
+def test_two_minimal_adjustment_sets_enumerated():
+    # Backdoor path X<-A->B->Y is blocked by {A} (fork) or {B} (chain).
+    g = nx.DiGraph([("A", "X"), ("A", "B"), ("B", "Y"), ("X", "Y")])
+    sets = set(dag.all_minimal_backdoor_sets(g, "X", "Y"))
+    assert sets == {frozenset({"A"}), frozenset({"B"})}
+
+
+def test_single_minimal_adjustment_set_enumerated():
+    g = nx.DiGraph([("C", "X"), ("C", "Y"), ("X", "Y")])
+    assert set(dag.all_minimal_backdoor_sets(g, "X", "Y")) == {frozenset({"C"})}
