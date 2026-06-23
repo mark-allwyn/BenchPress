@@ -1,0 +1,51 @@
+import threading
+import time
+
+import benchpress.modules.causal  # noqa: F401
+from benchpress.core import registry
+from benchpress.providers.base import CompletionResult
+from benchpress.runner import persist, run_model
+
+
+class _ConcurrencyProbe:
+    def __init__(self):
+        self._lock = threading.Lock()
+        self.inflight = 0
+        self.max_seen = 0
+
+    def complete(self, prompt):
+        with self._lock:
+            self.inflight += 1
+            self.max_seen = max(self.max_seen, self.inflight)
+        time.sleep(0.02)
+        with self._lock:
+            self.inflight -= 1
+        return CompletionResult(content="ESTIMATE: 0.0", stop_reason="end_turn")
+
+
+def test_parallel_run_caps_concurrency_and_persists_all(tmp_path):
+    items, meta = registry.get_module("causal")(seed=5)
+    probe = _ConcurrencyProbe()
+    path = tmp_path / "m.json"
+
+    ran = run_model(probe, items, path, model_name="m", benchmark="causal",
+                    version=meta.version, workers=4)
+
+    assert ran == len(items)
+    assert probe.max_seen >= 2          # genuinely ran in parallel
+    assert probe.max_seen <= 4          # respected the cap
+    data = persist.load(path)           # file is valid JSON, all items present
+    assert len(data["runs"]) == len(items)
+    assert all(r[-1]["content"] is not None for r in data["runs"].values())
+
+
+def test_parallel_resume_skips_completed(tmp_path):
+    items, meta = registry.get_module("causal")(seed=5)
+    path = tmp_path / "m.json"
+    run_model(_ConcurrencyProbe(), items, path, model_name="m", benchmark="causal",
+              version=meta.version, workers=4)
+    probe2 = _ConcurrencyProbe()
+    ran = run_model(probe2, items, path, model_name="m", benchmark="causal",
+                    version=meta.version, workers=4)
+    assert ran == 0
+    assert probe2.max_seen == 0  # no calls made

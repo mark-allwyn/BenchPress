@@ -41,7 +41,7 @@ def cmd_run(a) -> int:
     provider = get_provider(spec)
     path = _model_path(a.results_dir, a.benchmark, a.model)
     ran = run_model(provider, items, path, model_name=a.model, benchmark=a.benchmark,
-                    version=meta.version, rerun=a.rerun)
+                    version=meta.version, rerun=a.rerun, workers=a.workers)
     print(f"run: {a.model} on {len(items)} items, {ran} new responses -> {path}")
     return 0
 
@@ -97,6 +97,7 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--model")
         if name == "run":
             p.add_argument("--rerun", action="store_true")
+            p.add_argument("--workers", type=int, default=1)
         if name == "export":
             p.add_argument("--out", default=None)
     return parser
