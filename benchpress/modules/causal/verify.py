@@ -12,9 +12,12 @@ from benchpress.modules.causal import scm
 
 
 def verify_item(item: Item) -> bool:
-    if item.variant == "transfer":
+    if item.bundle_id in ("B02", "B03"):
         from benchpress.modules.causal.transfer import verify_transfer
         return verify_transfer(item)
+    if item.bundle_id == "B04":
+        from benchpress.modules.causal.simpson import verify_simpson
+        return verify_simpson(item)
     return _verify_numeric(item)
 
 

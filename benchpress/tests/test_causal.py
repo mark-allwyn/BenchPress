@@ -45,25 +45,24 @@ def test_generation_is_deterministic():
     assert len(items_a) >= 3
 
 
-def test_numeric_items_have_three_conjunctive_parts():
+def test_b01_items_have_three_conjunctive_parts():
     items, _ = _generate()
-    for item in (i for i in items if i.variant == "numeric"):
+    for item in (i for i in items if i.bundle_id == "B01"):
         ptypes = {p.part_id: p.part_type for p in item.parts}
         assert ptypes["ADJUSTMENT_SET"] == "set_match"
         assert ptypes["ESTIMATE"] == "numeric_tolerance"
         assert ptypes["IDENTIFIABLE"] == "categorical"
 
 
-def test_generation_includes_both_variants():
+def test_generation_includes_all_bundles():
     items, meta = _generate()
-    variants = {i.variant for i in items}
-    assert variants == {"numeric", "transfer"}
-    assert set(meta.bundles) == {"B01", "B02"}
+    assert {i.variant for i in items} == {"numeric", "transfer"}
+    assert set(meta.bundles) == {"B01", "B02", "B03", "B04"}
 
 
 def test_estimate_gold_matches_closed_form():
     items, _ = _generate()
-    for item in (i for i in items if i.variant == "numeric"):
+    for item in (i for i in items if i.bundle_id == "B01"):
         gp = item.gen_params
         expected = scm.partial_regression_coef(gp["r_ty"], gp["r_tz"], gp["r_zy"])
         est = next(p for p in item.parts if p.part_id == "ESTIMATE")

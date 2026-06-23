@@ -6,12 +6,14 @@ import random
 
 from benchpress.core.registry import register_module
 from benchpress.core.types import Item, ModuleMeta, Part
-from benchpress.modules.causal import naming, render, scm, transfer
+from benchpress.modules.causal import naming, render, scm, simpson, transfer
 from benchpress.modules.causal.verify import verify_item
 
 VERSION = "1"
-N_B01 = 3  # numeric confounding items (emitted first)
-N_B02 = 2  # transfer DAG items
+N_B01 = 3  # numeric confounding (emitted first)
+N_B02 = 2  # transfer DAG: confounding
+N_B03 = 2  # transfer DAG: M-bias trap
+N_B04 = 2  # Simpson's paradox numeric
 
 
 @register_module("causal")
@@ -19,20 +21,33 @@ def generate(seed: int, difficulty: str = "hard"):
     rng = random.Random(seed)
     items: list[Item] = []
     items.extend(_generate_numeric(rng))
-    items.extend(_generate_transfer(rng))
+    items.extend(_generate_transfer(rng, "B02", N_B02))
+    items.extend(_generate_transfer(rng, "B03", N_B03))
+    items.extend(_generate_simpson(rng))
     meta = ModuleMeta(
         name="causal", version=VERSION, variants=["numeric", "transfer"],
-        bundles=["B01", "B02"],
+        bundles=["B01", "B02", "B03", "B04"],
         part_types=["set_match", "numeric_tolerance", "categorical"],
     )
     return items, meta
 
 
-def _generate_transfer(rng: random.Random) -> list[Item]:
+def _generate_transfer(rng: random.Random, bundle: str, n: int) -> list[Item]:
     items: list[Item] = []
     draw = 0
-    while len(items) < N_B02:
-        item = transfer.make_item(rng, draw, VERSION)
+    while len(items) < n:
+        item = transfer.make_item(rng, bundle, draw, VERSION)
+        draw += 1
+        if verify_item(item):
+            items.append(item)
+    return items
+
+
+def _generate_simpson(rng: random.Random) -> list[Item]:
+    items: list[Item] = []
+    draw = 0
+    while len(items) < N_B04:
+        item = simpson.make_item(rng, draw, VERSION)
         draw += 1
         if verify_item(item):
             items.append(item)

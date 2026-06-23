@@ -54,11 +54,12 @@ def test_full_pipeline_one_model(tmp_path):
     results = persist.load_scored(items, path)
     acc = stats.accuracy(results)
 
-    assert acc["attempted"] == 5
-    assert acc["correct"] == 1
-    assert acc["refusals"] == 1
-    assert acc["invalids"] == 2
-    assert acc["accuracy"] == 1 / 5
+    n = len(items)
+    assert acc["attempted"] == n
+    assert acc["correct"] == 1          # only item 0 answered correctly
+    assert acc["refusals"] == 1         # item 2
+    assert acc["invalids"] == n - 3     # items 3..n-1 gave no protocol
+    assert acc["accuracy"] == 1 / n
 
 
 def test_score_and_rerun_never_recall_provider(tmp_path):
@@ -107,4 +108,4 @@ def test_leaderboard_renders_model_and_accuracy(tmp_path):
     score_model(items, path)
     text = leaderboard([path])
     assert "fake" in text
-    assert "20.0%" in text or "20%" in text
+    assert f"{100 / len(items):.1f}%" in text
