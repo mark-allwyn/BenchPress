@@ -45,18 +45,25 @@ def test_generation_is_deterministic():
     assert len(items_a) >= 3
 
 
-def test_each_item_has_three_conjunctive_parts():
+def test_numeric_items_have_three_conjunctive_parts():
     items, _ = _generate()
-    for item in items:
+    for item in (i for i in items if i.variant == "numeric"):
         ptypes = {p.part_id: p.part_type for p in item.parts}
         assert ptypes["ADJUSTMENT_SET"] == "set_match"
         assert ptypes["ESTIMATE"] == "numeric_tolerance"
         assert ptypes["IDENTIFIABLE"] == "categorical"
 
 
+def test_generation_includes_both_variants():
+    items, meta = _generate()
+    variants = {i.variant for i in items}
+    assert variants == {"numeric", "transfer"}
+    assert set(meta.bundles) == {"B01", "B02"}
+
+
 def test_estimate_gold_matches_closed_form():
     items, _ = _generate()
-    for item in items:
+    for item in (i for i in items if i.variant == "numeric"):
         gp = item.gen_params
         expected = scm.partial_regression_coef(gp["r_ty"], gp["r_tz"], gp["r_zy"])
         est = next(p for p in item.parts if p.part_id == "ESTIMATE")
