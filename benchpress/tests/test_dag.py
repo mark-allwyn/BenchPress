@@ -63,3 +63,22 @@ def test_not_identifiable_by_adjustment_when_confounder_latent():
 def test_identifiable_by_adjustment_when_confounder_observed():
     g = nx.DiGraph([("C", "X"), ("C", "Y"), ("X", "Y")])
     assert dag.identifiable_by_adjustment(g, "X", "Y", observed=["C", "X", "Y"]) is True
+
+
+def _front_door_graph():
+    # X -> M -> Y with latent U confounding X and Y; M is the front-door set.
+    return nx.DiGraph([("X", "M"), ("M", "Y"), ("U", "X"), ("U", "Y")])
+
+
+def test_front_door_set_recognized():
+    assert dag.is_front_door(_front_door_graph(), {"M"}, "X", "Y") is True
+
+
+def test_front_door_fails_with_direct_x_to_y_edge():
+    g = _front_door_graph()
+    g.add_edge("X", "Y")  # M no longer intercepts all directed paths
+    assert dag.is_front_door(g, {"M"}, "X", "Y") is False
+
+
+def test_outcome_is_not_a_front_door_set():
+    assert dag.is_front_door(_front_door_graph(), {"Y"}, "X", "Y") is False
