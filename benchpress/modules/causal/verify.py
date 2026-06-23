@@ -12,12 +12,15 @@ from benchpress.modules.causal import scm
 
 
 def verify_item(item: Item) -> bool:
-    if item.bundle_id in ("B02", "B03"):
+    if item.bundle_id in ("B02", "B03", "B05"):
         from benchpress.modules.causal.transfer import verify_transfer
         return verify_transfer(item)
     if item.bundle_id == "B04":
         from benchpress.modules.causal.simpson import verify_simpson
         return verify_simpson(item)
+    if item.bundle_id == "B06":
+        from benchpress.modules.causal.base_rate import verify_base_rate
+        return verify_base_rate(item)
     return _verify_numeric(item)
 
 

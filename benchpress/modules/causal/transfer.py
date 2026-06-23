@@ -38,7 +38,14 @@ def _m_bias(rng: random.Random) -> dict:
     return {"edges": edges, "x": "_x", "y": "_y", "gold": set(), "pair": ("_u1", "_u2")}
 
 
-STRUCTURES = {"B02": _confounding, "B03": _m_bias}
+def _mediator(rng: random.Random) -> dict:
+    # C confounds X,Y; M mediates X->M->Y. Total effect needs adjusting C only -
+    # adjusting the mediator M (a descendant of X) is the trap. Minimal set = {C}.
+    edges = [("_c", "_x"), ("_c", "_y"), ("_x", "_m"), ("_m", "_y"), ("_x", "_y")]
+    return {"edges": edges, "x": "_x", "y": "_y", "gold": {"_c"}, "pair": ("_c", "_m")}
+
+
+STRUCTURES = {"B02": _confounding, "B03": _m_bias, "B05": _mediator}
 
 
 def _relabel(rng: random.Random, raw: dict) -> dict:
