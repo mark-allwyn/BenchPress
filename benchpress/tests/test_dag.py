@@ -35,3 +35,31 @@ def test_superset_satisfies_but_is_not_minimal():
     assert dag.is_minimal_backdoor(g, "X", "Y", {"C1"})
     assert dag.satisfies_backdoor(g, "X", "Y", {"C1", "U"})
     assert not dag.is_minimal_backdoor(g, "X", "Y", {"C1", "U"})
+
+
+def _iv_graph():
+    # Z is an instrument; U is a latent confounder of X and Y.
+    return nx.DiGraph([("Z", "X"), ("U", "X"), ("U", "Y"), ("X", "Y")])
+
+
+def test_valid_instrument_recognized():
+    assert dag.is_instrument(_iv_graph(), "Z", "X", "Y") is True
+
+
+def test_confounder_is_not_an_instrument():
+    # U affects Y directly (violates exclusion).
+    assert dag.is_instrument(_iv_graph(), "U", "X", "Y") is False
+
+
+def test_outcome_is_not_an_instrument():
+    assert dag.is_instrument(_iv_graph(), "Y", "X", "Y") is False
+
+
+def test_not_identifiable_by_adjustment_when_confounder_latent():
+    g = _iv_graph()
+    assert dag.identifiable_by_adjustment(g, "X", "Y", observed=["Z", "X", "Y"]) is False
+
+
+def test_identifiable_by_adjustment_when_confounder_observed():
+    g = nx.DiGraph([("C", "X"), ("C", "Y"), ("X", "Y")])
+    assert dag.identifiable_by_adjustment(g, "X", "Y", observed=["C", "X", "Y"]) is True

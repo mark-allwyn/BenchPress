@@ -41,3 +41,26 @@ def is_minimal_backdoor(G: nx.DiGraph, x, y, z) -> bool:
     if not satisfies_backdoor(G, x, y, z):
         return False
     return all(not satisfies_backdoor(G, x, y, z - {n}) for n in z)
+
+
+def is_instrument(G: nx.DiGraph, z, x, y) -> bool:
+    """Graphical instrument test: Z is relevant to X (d-connected) and affects Y
+    only through X (d-separated from Y once X's outgoing edges are removed)."""
+    if z in (x, y):
+        return False
+    if nx.is_d_separator(G, {z}, {x}, set()):  # not relevant
+        return False
+    H = G.copy()
+    H.remove_edges_from(list(G.out_edges(x)))
+    return nx.is_d_separator(H, {z}, {y}, set())
+
+
+def identifiable_by_adjustment(G: nx.DiGraph, x, y, observed) -> bool:
+    """Whether some subset of OBSERVED variables is a valid backdoor set."""
+    excluded = nx.descendants(G, x) | {x, y}
+    candidates = [n for n in observed if n not in excluded]
+    for r in range(len(candidates) + 1):
+        for combo in combinations(candidates, r):
+            if satisfies_backdoor(G, x, y, set(combo)):
+                return True
+    return False
