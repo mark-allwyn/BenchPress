@@ -7,9 +7,9 @@ import random
 from benchpress.core.registry import register_module
 from benchpress.core.types import Item, ModuleMeta, Part
 from benchpress.modules.causal import (
-    adjustment_drill, base_rate, dsep_drill, effect_mod, explaining_away,
-    frontdoor, iv, mediation_effects, naming, proxy, rates, render, scm,
-    selection, simpson, transfer,
+    adjustment_drill, base_rate, chain_partial, count_sets, do_vs_observe,
+    dsep_drill, effect_mod, explaining_away, frontdoor, iv, mediation_effects,
+    naming, proxy, rates, render, scm, selection, simpson, transfer,
 )
 from benchpress.modules.causal.verify import verify_item
 
@@ -30,6 +30,10 @@ N_B13 = 2  # total vs direct effect (mediation)
 N_B14 = 2  # adjustment-sufficiency drill
 N_B15 = 2  # explaining away / Berkson
 N_B16 = 2  # proxy confounder
+N_B17 = 2  # count of minimal adjustment sets
+N_B18 = 2  # intervention vs observation
+N_B19 = 2  # chain partial correlation
+N_B20 = 2  # synthesis DAG
 
 
 @register_module("causal")
@@ -52,9 +56,13 @@ def generate(seed: int, difficulty: str = "hard"):
     items.extend(_generate_simple(rng, adjustment_drill, N_B14))
     items.extend(_generate_simple(rng, explaining_away, N_B15))
     items.extend(_generate_simple(rng, proxy, N_B16))
+    items.extend(_generate_simple(rng, count_sets, N_B17))
+    items.extend(_generate_simple(rng, do_vs_observe, N_B18))
+    items.extend(_generate_simple(rng, chain_partial, N_B19))
+    items.extend(_generate_transfer(rng, "B20", N_B20))
     meta = ModuleMeta(
         name="causal", version=VERSION, variants=["numeric", "transfer"],
-        bundles=[f"B{i:02d}" for i in range(1, 17)],
+        bundles=[f"B{i:02d}" for i in range(1, 21)],
         part_types=["set_match", "numeric_tolerance", "categorical"],
     )
     return items, meta

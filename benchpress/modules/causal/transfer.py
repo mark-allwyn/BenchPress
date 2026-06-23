@@ -45,7 +45,18 @@ def _mediator(rng: random.Random) -> dict:
     return {"edges": edges, "x": "_x", "y": "_y", "gold": {"_c"}, "pair": ("_c", "_m")}
 
 
-STRUCTURES = {"B02": _confounding, "B03": _m_bias, "B05": _mediator}
+def _synthesis(rng: random.Random) -> dict:
+    # Two confounders + mediator + collider + an instrument-like extra parent of X.
+    # Gold backdoor set is still exactly the two confounders.
+    edges = [
+        ("_c1", "_x"), ("_c1", "_y"), ("_c2", "_x"), ("_c2", "_y"),
+        ("_x", "_m"), ("_m", "_y"), ("_x", "_y"),
+        ("_x", "_k"), ("_y", "_k"), ("_z", "_x"),
+    ]
+    return {"edges": edges, "x": "_x", "y": "_y", "gold": {"_c1", "_c2"}, "pair": ("_c1", "_z")}
+
+
+STRUCTURES = {"B02": _confounding, "B03": _m_bias, "B05": _mediator, "B20": _synthesis}
 
 
 def _relabel(rng: random.Random, raw: dict) -> dict:
