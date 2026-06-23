@@ -7,7 +7,7 @@ import random
 from benchpress.core.registry import register_module
 from benchpress.core.types import Item, ModuleMeta, Part
 from benchpress.modules.causal import (
-    base_rate, iv, naming, rates, render, scm, simpson, transfer,
+    base_rate, frontdoor, iv, naming, rates, render, scm, selection, simpson, transfer,
 )
 from benchpress.modules.causal.verify import verify_item
 
@@ -20,6 +20,8 @@ N_B05 = 2  # transfer DAG: mediator trap
 N_B06 = 2  # base-rate / Bayes numeric
 N_B07 = 2  # instrumental variables
 N_B08 = 2  # rate difference / ratio numeric
+N_B09 = 2  # front-door
+N_B10 = 2  # selection / collider bias
 
 
 @register_module("causal")
@@ -34,9 +36,11 @@ def generate(seed: int, difficulty: str = "hard"):
     items.extend(_generate_simple(rng, base_rate, N_B06))
     items.extend(_generate_simple(rng, iv, N_B07))
     items.extend(_generate_simple(rng, rates, N_B08))
+    items.extend(_generate_simple(rng, frontdoor, N_B09))
+    items.extend(_generate_simple(rng, selection, N_B10))
     meta = ModuleMeta(
         name="causal", version=VERSION, variants=["numeric", "transfer"],
-        bundles=["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08"],
+        bundles=[f"B{i:02d}" for i in range(1, 11)],
         part_types=["set_match", "numeric_tolerance", "categorical"],
     )
     return items, meta

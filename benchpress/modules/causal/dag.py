@@ -55,6 +55,28 @@ def is_instrument(G: nx.DiGraph, z, x, y) -> bool:
     return nx.is_d_separator(H, {z}, {y}, set())
 
 
+def is_front_door(G: nx.DiGraph, M, x, y) -> bool:
+    """Front-door criterion for set M relative to (X, Y):
+    (i) M intercepts every directed path X->Y;
+    (ii) no unblocked backdoor path X->M;
+    (iii) every backdoor path M->Y is blocked by X."""
+    M = set(M)
+    if x in M or y in M:
+        return False
+    without_m = G.copy()
+    without_m.remove_nodes_from(M)
+    if nx.has_path(without_m, x, y):
+        return False
+    gx = G.copy()
+    gx.remove_edges_from(list(G.out_edges(x)))
+    if not nx.is_d_separator(gx, {x}, M, set()):
+        return False
+    gm = G.copy()
+    for m in M:
+        gm.remove_edges_from(list(G.out_edges(m)))
+    return nx.is_d_separator(gm, M, {y}, {x})
+
+
 def identifiable_by_adjustment(G: nx.DiGraph, x, y, observed) -> bool:
     """Whether some subset of OBSERVED variables is a valid backdoor set."""
     excluded = nx.descendants(G, x) | {x, y}

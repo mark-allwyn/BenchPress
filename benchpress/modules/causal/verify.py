@@ -27,6 +27,12 @@ def verify_item(item: Item) -> bool:
     if item.bundle_id == "B08":
         from benchpress.modules.causal.rates import verify_rates
         return verify_rates(item)
+    if item.bundle_id == "B09":
+        from benchpress.modules.causal.frontdoor import verify_frontdoor
+        return verify_frontdoor(item)
+    if item.bundle_id == "B10":
+        from benchpress.modules.causal.selection import verify_selection
+        return verify_selection(item)
     return _verify_numeric(item)
 
 
