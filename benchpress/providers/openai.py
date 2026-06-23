@@ -13,10 +13,25 @@ from benchpress.providers.base import CompletionResult, Provider
 _COMPLETION_TOKENS = ("gpt-5", "gpt-4.1", "o1", "o3", "o4")
 
 
+def _extract_content(message: dict) -> str:
+    """Content may be a string or, for reasoning models, a list of segments;
+    keep only the answer text."""
+    raw = message.get("content")
+    if isinstance(raw, list):
+        return "".join(
+            seg.get("text", "") for seg in raw
+            if isinstance(seg, dict) and seg.get("type") == "text"
+        )
+    return raw or ""
+
+
 class OpenAIProvider(Provider):
-    def __init__(self, model, api_key, base_url="https://api.openai.com/v1", client=None):
+    def __init__(self, model, api_key, base_url="https://api.openai.com/v1", client=None,
+                 max_retries=4, backoff_base=1.0):
         self.model = model
         self.native_config = {"max_tokens": 16000}
+        self.max_retries = max_retries
+        self.backoff_base = backoff_base
         self.client = client or httpx.Client(
             base_url=base_url,
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
@@ -31,14 +46,28 @@ class OpenAIProvider(Provider):
         else:
             body["max_tokens"] = mt
         start = time.perf_counter()
-        try:
-            resp = self.client.post("/chat/completions", json=body)
-            resp.raise_for_status()
-        except httpx.HTTPError as e:
-            return error_result(e, self.native_config, start)
+        attempt = 0
+        while True:
+            try:
+                resp = self.client.post("/chat/completions", json=body)
+                resp.raise_for_status()
+                break
+            except httpx.HTTPStatusError as e:
+                retryable = e.response.status_code == 429 or e.response.status_code >= 500
+                if retryable and attempt < self.max_retries:
+                    time.sleep(self.backoff_base * (2 ** attempt))
+                    attempt += 1
+                    continue
+                return error_result(e, self.native_config, start)
+            except httpx.HTTPError as e:
+                if attempt < self.max_retries:
+                    time.sleep(self.backoff_base * (2 ** attempt))
+                    attempt += 1
+                    continue
+                return error_result(e, self.native_config, start)
         data = resp.json()
         choice = (data.get("choices") or [{}])[0]
-        content = (choice.get("message") or {}).get("content") or ""
+        content = _extract_content(choice.get("message") or {})
         usage = data.get("usage") or {}
         details = usage.get("completion_tokens_details") or {}
         return CompletionResult(
