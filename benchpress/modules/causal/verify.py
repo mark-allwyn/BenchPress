@@ -33,6 +33,12 @@ def verify_item(item: Item) -> bool:
     if item.bundle_id == "B10":
         from benchpress.modules.causal.selection import verify_selection
         return verify_selection(item)
+    if item.bundle_id == "B11":
+        from benchpress.modules.causal.effect_mod import verify_effect_mod
+        return verify_effect_mod(item)
+    if item.bundle_id == "B12":
+        from benchpress.modules.causal.dsep_drill import verify_dsep_drill
+        return verify_dsep_drill(item)
     return _verify_numeric(item)
 
 
