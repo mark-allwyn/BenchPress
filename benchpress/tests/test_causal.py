@@ -57,7 +57,7 @@ def test_b01_items_have_three_conjunctive_parts():
 def test_generation_includes_all_bundles():
     items, meta = _generate()
     assert {i.variant for i in items} == {"numeric", "transfer"}
-    assert set(meta.bundles) == {"B01", "B02", "B03", "B04"}
+    assert {"B01", "B02", "B03", "B04", "B05", "B06"} <= set(meta.bundles)
 
 
 def test_estimate_gold_matches_closed_form():
