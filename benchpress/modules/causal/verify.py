@@ -39,6 +39,12 @@ def verify_item(item: Item) -> bool:
     if item.bundle_id == "B12":
         from benchpress.modules.causal.dsep_drill import verify_dsep_drill
         return verify_dsep_drill(item)
+    if item.bundle_id == "B13":
+        from benchpress.modules.causal.mediation_effects import verify_mediation_effects
+        return verify_mediation_effects(item)
+    if item.bundle_id == "B14":
+        from benchpress.modules.causal.adjustment_drill import verify_adjustment_drill
+        return verify_adjustment_drill(item)
     return _verify_numeric(item)
 
 
