@@ -146,6 +146,25 @@ def item_stats(model_results: dict[str, list[ItemResult]]) -> dict:
     return out
 
 
+def audit_gap(canonical: dict[str, float], fresh: dict[str, float],
+              threshold: float = 0.1) -> dict:
+    """Per-model public-vs-fresh accuracy gap; flag large drops (contamination)."""
+    out = {}
+    for m, c in canonical.items():
+        if m in fresh:
+            gap = c - fresh[m]
+            out[m] = {"canonical": c, "fresh": fresh[m], "gap": gap, "flagged": gap > threshold}
+    return out
+
+
+def review_queue(item_stats_result: dict) -> dict:
+    """From classical item stats, surface items needing human review:
+    all-wrong (miskey or hardest) and dead (everyone right)."""
+    dead = [i for i, s in item_stats_result.items() if s["p_value"] == 1.0]
+    all_wrong = [i for i, s in item_stats_result.items() if s["p_value"] == 0.0]
+    return {"dead": sorted(dead), "all_wrong": sorted(all_wrong)}
+
+
 def model_efficiency(data: dict) -> dict:
     """Per-model accuracy + median latency/thinking-tokens from a results file."""
     lat, think, correct, attempted = [], [], 0, 0

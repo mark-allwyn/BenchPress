@@ -74,14 +74,47 @@ def cmd_export(a) -> int:
     return 0
 
 
+def cmd_freeze(a) -> int:
+    from benchpress.manifest import build_manifest, write_manifest
+    items, meta = _items(a.benchmark, a.seed)
+    manifest = build_manifest(a.benchmark, a.seed, meta.version, [i.item_id for i in items])
+    path = Path(a.benchsets_dir) / f"benchpress-{a.benchmark}-v{meta.version}.json"
+    write_manifest(path, manifest)
+    print(f"freeze: {manifest['n_items']} items -> {path} (seed={a.seed}, v{meta.version})")
+    return 0
+
+
 def cmd_audit(a) -> int:
-    print("audit: not yet implemented (slice 7)")
+    model_results, canonical_acc = {}, {}
+    for p in _paths(a.results_dir, a.benchmark):
+        data = persist.load(p)
+        name = data.get("model_name", p.stem)
+        rs = persist.scored_results(p)
+        model_results[name] = rs
+        canonical_acc[name] = stats.accuracy(rs)["accuracy"]
+
+    if len(model_results) >= 2:
+        q = stats.review_queue(stats.item_stats(model_results))
+        print(f"audit: all-wrong (miskey/hardest): {q['all_wrong'] or 'none'}; "
+              f"dead (too easy): {q['dead'] or 'none'}")
+    else:
+        print("audit: need >=2 models with results for item analysis")
+
+    if a.fresh_dir:
+        fresh_acc = {}
+        for p in _paths(a.fresh_dir, a.benchmark):
+            data = persist.load(p)
+            fresh_acc[data.get("model_name", p.stem)] = stats.accuracy(persist.scored_results(p))["accuracy"]
+        for m, g in stats.audit_gap(canonical_acc, fresh_acc).items():
+            flag = " FLAG" if g["flagged"] else ""
+            print(f"  {m}: canonical {g['canonical']:.2f} vs fresh {g['fresh']:.2f} "
+                  f"gap {g['gap']:+.2f}{flag}")
     return 0
 
 
 HANDLERS = {
     "generate": cmd_generate, "run": cmd_run, "score": cmd_score,
-    "stats": cmd_stats, "export": cmd_export, "audit": cmd_audit,
+    "stats": cmd_stats, "export": cmd_export, "freeze": cmd_freeze, "audit": cmd_audit,
 }
 
 
@@ -100,6 +133,10 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--workers", type=int, default=1)
         if name == "export":
             p.add_argument("--out", default=None)
+        if name == "freeze":
+            p.add_argument("--benchsets-dir", default="benchpress/benchsets")
+        if name == "audit":
+            p.add_argument("--fresh-dir", default=None)
     return parser
 
 
