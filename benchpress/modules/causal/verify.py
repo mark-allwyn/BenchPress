@@ -45,6 +45,12 @@ def verify_item(item: Item) -> bool:
     if item.bundle_id == "B14":
         from benchpress.modules.causal.adjustment_drill import verify_adjustment_drill
         return verify_adjustment_drill(item)
+    if item.bundle_id == "B15":
+        from benchpress.modules.causal.explaining_away import verify_explaining_away
+        return verify_explaining_away(item)
+    if item.bundle_id == "B16":
+        from benchpress.modules.causal.proxy import verify_proxy
+        return verify_proxy(item)
     return _verify_numeric(item)
 
 
