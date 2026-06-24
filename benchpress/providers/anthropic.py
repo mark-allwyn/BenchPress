@@ -11,8 +11,8 @@ import httpx
 from benchpress.providers.base import CompletionResult, Provider
 from benchpress.providers.errors import sanitize_error
 
-# Models that run with adaptive extended thinking and no temperature.
-_THINKING = re.compile(r"^claude-(opus|sonnet)-4-[6-9]\b")
+# Claude 4.x (opus/sonnet/haiku) and Fable run with adaptive extended thinking.
+_THINKING = re.compile(r"^claude-(opus|sonnet|haiku)-4")
 
 
 def _supports_thinking(model: str) -> bool:
@@ -20,8 +20,11 @@ def _supports_thinking(model: str) -> bool:
 
 
 class AnthropicProvider(Provider):
-    def __init__(self, model: str, api_key: str, client: httpx.Client | None = None):
+    def __init__(self, model: str, api_key: str, client: httpx.Client | None = None,
+                 max_retries: int = 4, backoff_base: float = 1.0):
         self.model = model
+        self.max_retries = max_retries
+        self.backoff_base = backoff_base
         self.native_config: dict = {"max_tokens": 16000}
         if _supports_thinking(model):
             self.native_config["thinking"] = {"type": "adaptive"}
@@ -42,20 +45,32 @@ class AnthropicProvider(Provider):
             **self.native_config,
         }
         start = time.perf_counter()
-        try:
-            resp = self.client.post("/v1/messages", json=body)
-            resp.raise_for_status()
-        except httpx.HTTPStatusError as e:
-            text = getattr(e.response, "text", "")
-            return CompletionResult(
-                content="", error=sanitize_error(f"{e}: {text}"),
-                native_config=self.native_config, latency_s=time.perf_counter() - start,
-            )
-        except httpx.HTTPError as e:
-            return CompletionResult(
-                content="", error=sanitize_error(str(e)),
-                native_config=self.native_config, latency_s=time.perf_counter() - start,
-            )
+        attempt = 0
+        while True:
+            try:
+                resp = self.client.post("/v1/messages", json=body)
+                resp.raise_for_status()
+                break
+            except httpx.HTTPStatusError as e:
+                retryable = e.response.status_code == 429 or e.response.status_code >= 500
+                if retryable and attempt < self.max_retries:
+                    time.sleep(self.backoff_base * (2 ** attempt))
+                    attempt += 1
+                    continue
+                text = getattr(e.response, "text", "")
+                return CompletionResult(
+                    content="", error=sanitize_error(f"{e}: {text}"),
+                    native_config=self.native_config, latency_s=time.perf_counter() - start,
+                )
+            except httpx.HTTPError as e:
+                if attempt < self.max_retries:
+                    time.sleep(self.backoff_base * (2 ** attempt))
+                    attempt += 1
+                    continue
+                return CompletionResult(
+                    content="", error=sanitize_error(str(e)),
+                    native_config=self.native_config, latency_s=time.perf_counter() - start,
+                )
 
         latency = time.perf_counter() - start
         data = resp.json()

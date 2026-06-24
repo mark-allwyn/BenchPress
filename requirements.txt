@@ -1,4 +1,5 @@
 httpx
 pyyaml
 networkx
+boto3
 pytest

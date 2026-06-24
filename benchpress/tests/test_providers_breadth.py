@@ -151,6 +151,55 @@ def test_bedrock_parses_via_injected_client():
     assert r.input_tokens == 7
 
 
+class _ThrottleThenOk:
+    def __init__(self):
+        self.calls = 0
+
+    def converse(self, **kwargs):
+        self.calls += 1
+        if self.calls == 1:
+            raise Exception("ThrottlingException: Too many requests, please slow down")
+        return {"output": {"message": {"content": [{"text": "ok"}]}},
+                "stopReason": "end_turn", "usage": {"inputTokens": 1, "outputTokens": 1}}
+
+
+def test_bedrock_retries_on_throttling():
+    client = _ThrottleThenOk()
+    r = BedrockProvider("anthropic.x", client=client, backoff_base=0).complete("x")
+    assert r.error is None and r.content == "ok" and client.calls == 2
+
+
+class _RecordingBedrock:
+    def __init__(self):
+        self.kwargs = None
+
+    def converse(self, **kwargs):
+        self.kwargs = kwargs
+        return {
+            "output": {"message": {"content": [
+                {"reasoningContent": {"reasoningText": {"text": "let me think..."}}},
+                {"text": "ANSWER: 5"},
+            ]}},
+            "stopReason": "end_turn", "usage": {"inputTokens": 3, "outputTokens": 40},
+        }
+
+
+def test_bedrock_adaptive_thinking_sends_correct_fields_and_strips_reasoning():
+    client = _RecordingBedrock()
+    r = BedrockProvider("anthropic.x", client=client, thinking="adaptive", effort="high").complete("x")
+    assert r.content == "ANSWER: 5"                       # reasoning block stripped
+    amrf = client.kwargs["additionalModelRequestFields"]
+    assert amrf["thinking"] == {"type": "adaptive"}
+    assert amrf["output_config"] == {"effort": "high"}
+    assert r.native_config.get("thinking") == "adaptive"
+
+
+def test_bedrock_no_thinking_by_default():
+    client = _RecordingBedrock()
+    BedrockProvider("anthropic.x", client=client).complete("x")
+    assert "additionalModelRequestFields" not in client.kwargs
+
+
 # ---- factory -----------------------------------------------------------------
 
 def test_get_provider_dispatches_by_provider():
