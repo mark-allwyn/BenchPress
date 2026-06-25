@@ -10,10 +10,9 @@ def _gen(seed=1):
     return registry.get_module("frontier")(seed)
 
 
-def test_emits_all_seven_bundles():
+def test_emits_all_five_bundles():
     items, meta = _gen()
-    assert set(meta.bundles) == {"DSEP", "MEC", "LINEXT", "VSTRUCT", "MINSEP_SIZE",
-                                 "OPENPATH", "MINSEP_COUNT"}
+    assert set(meta.bundles) == {"DSEP", "LINEXT", "VSTRUCT", "OPENPATH", "MINSEP_COUNT"}
     by = {b: [i for i in items if i.bundle_id == b] for b in meta.bundles}
     for b, lst in by.items():
         assert len(lst) == 8, f"{b} has {len(lst)}"
