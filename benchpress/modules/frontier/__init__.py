@@ -149,12 +149,13 @@ _BUILDERS = {
 
 
 @register_module("frontier")
-def generate(seed: int, difficulty: str = "hard"):
+def generate(seed: int, difficulty: str = "hard", n: int = N_PER_BUNDLE):
+    """n = items per test. Default keeps test runs fast; the frozen set uses ~25."""
     items: list[Item] = []
     for bi, (bundle, builder) in enumerate(_BUILDERS.items()):
         made, attempt = 0, 0
         base = seed * 1_000_000 + bi * 10_000
-        while made < N_PER_BUNDLE and attempt < 4000:
+        while made < n and attempt < 8000:
             item = builder(base + attempt)
             attempt += 1
             if item is not None:
