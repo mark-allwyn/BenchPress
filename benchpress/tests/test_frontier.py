@@ -69,7 +69,7 @@ def test_scoring_a_perfect_response(tmp_path):
     # Build the gold answer string for one count item and confirm it scores correct.
     from benchpress.runner.score import score_response
     items, _ = _gen()
-    it = next(i for i in items if i.bundle_id == "MEC")
+    it = next(i for i in items if i.bundle_id == "MINSEP_COUNT")
     content = f"ANSWER: {int(it.parts[0].expected)}"
     result = score_response(it, content, "end_turn")
     assert result.item_correct is True
