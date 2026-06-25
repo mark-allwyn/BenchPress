@@ -20,16 +20,15 @@ N_PER_BUNDLE = 8
 # Difficulty knobs per test. nodes/density shape the graph; queries = battery length.
 CONFIG = {
     # Hardened (calibration phase): pushed up to pull frontier scores down.
-    "DSEP":          {"nodes": 22, "density": 0.19, "queries": 24},     # good (25%)
-    "MEC":           {"nodes": 8,  "density": 0.46, "edge_min": 13, "edge_max": 15},  # good (38%)
-    "OPENPATH":      {"nodes": 10, "density": 0.42, "gold_min": 5},      # good (12%)
-    "MINSEP_COUNT":  {"nodes": 10, "density": 0.32, "gold_min": 3},      # good (50%)
-    # --- hardened again (were 75-88%) ---
+    # Official config = thinking ON. Only "exact count too large to enumerate even
+    # carefully" survives thinking, so the suite is exhaustive-counting under load.
     "LINEXT":        {"nodes": 10, "density": 0.30, "gold_min": 1000, "gold_max": 50000},
-    "VSTRUCT":       {"nodes": 16, "density": 0.36, "gold_min": 12},
-    "MINSEP_SIZE":   {"nodes": 14, "density": 0.24, "gold_min": 4, "gold_max": 8},
-    # COMPELLED dropped: Opus stayed ~88% even when re-tuned (it's strong at Meek-rule
-    # reasoning). MEC already covers equivalence-class reasoning.
+    "OPENPATH":      {"nodes": 10, "density": 0.44, "gold_min": 25},
+    "VSTRUCT":       {"nodes": 24, "density": 0.40, "gold_min": 80},
+    "MINSEP_COUNT":  {"nodes": 10, "density": 0.32, "gold_min": 3},
+    "DSEP":          {"nodes": 22, "density": 0.19, "queries": 50},
+    # Dropped: COMPELLED + MINSEP_SIZE (thinking solves them), MEC (thinking reasons
+    # out class size structurally even at scale: 88% with thinking).
 }
 
 _NUM = {"tol": 0.4}  # exact integer match
@@ -92,18 +91,6 @@ def _dsep(seed):
     )
 
 
-def _mec(seed):
-    cfg = CONFIG["MEC"]
-    nodes, edges, G = g.seeded_dag(seed, cfg["nodes"], cfg["density"])
-    if not (cfg["edge_min"] <= len(edges) <= cfg["edge_max"]):
-        return None
-    gold = g.mec_size(edges, nodes)
-    q = ("Two DAGs are Markov equivalent iff they share the same skeleton and the same "
-         "v-structures (a->c<-b with a,b non-adjacent). How many DAGs are in this DAG's "
-         "Markov equivalence class, including itself?")
-    return _count_item("MEC", seed, nodes, edges, _header(nodes, edges) + _fmt_int(q), gold, ["mec"])
-
-
 def _linext(seed):
     cfg = CONFIG["LINEXT"]
     nodes, edges, G = g.seeded_dag(seed, cfg["nodes"], cfg["density"])
@@ -123,20 +110,6 @@ def _vstruct(seed):
     q = ("A v-structure (collider) is a triple a->c<-b where a and b are NOT adjacent. "
          "How many v-structures are in this graph?")
     return _count_item("VSTRUCT", seed, nodes, edges, _header(nodes, edges) + _fmt_int(q), gold, ["vstruct"])
-
-
-def _minsep_size(seed):
-    cfg = CONFIG["MINSEP_SIZE"]
-    nodes, edges, G = g.seeded_dag(seed, cfg["nodes"], cfg["density"])
-    x, y = nodes[0], nodes[-1]
-    if y in (set(G.successors(x)) | set(G.predecessors(x))):
-        return None
-    gold = g.min_separator_size(G, x, y)
-    if gold is None or not (cfg["gold_min"] <= gold <= cfg["gold_max"]):
-        return None
-    q = (f"What is the SMALLEST number of variables you must condition on to d-separate "
-         f"{x} and {y}?")
-    return _count_item("MINSEP_SIZE", seed, nodes, edges, _header(nodes, edges) + _fmt_int(q), gold, ["minsep"])
 
 
 def _openpath(seed):
@@ -170,8 +143,8 @@ def _minsep_count(seed):
 
 
 _BUILDERS = {
-    "DSEP": _dsep, "MEC": _mec, "LINEXT": _linext, "VSTRUCT": _vstruct,
-    "MINSEP_SIZE": _minsep_size, "OPENPATH": _openpath, "MINSEP_COUNT": _minsep_count,
+    "DSEP": _dsep, "LINEXT": _linext, "VSTRUCT": _vstruct,
+    "OPENPATH": _openpath, "MINSEP_COUNT": _minsep_count,
 }
 
 
