@@ -11,11 +11,11 @@ from benchpress.providers.base import CompletionResult, Provider
 
 
 class GoogleProvider(Provider):
-    def __init__(self, model, api_key, client=None):
+    def __init__(self, model, api_key, client=None, *, max_tokens=None, timeout=None):
         self.model = model
         self.api_key = api_key
-        self.native_config = {"max_output_tokens": 16000}
-        self.client = client or httpx.Client(timeout=120)
+        self.native_config = {"max_output_tokens": max_tokens or 16000}
+        self.client = client or httpx.Client(timeout=timeout or 120)
 
     def complete(self, prompt: str) -> CompletionResult:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"

@@ -11,13 +11,13 @@ from benchpress.providers.base import CompletionResult, Provider
 
 
 class CohereProvider(Provider):
-    def __init__(self, model, api_key, client=None):
+    def __init__(self, model, api_key, client=None, *, max_tokens=None, timeout=None):
         self.model = model
-        self.native_config = {"max_tokens": 16000}
+        self.native_config = {"max_tokens": max_tokens or 16000}
         self.client = client or httpx.Client(
             base_url="https://api.cohere.com",
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            timeout=120,
+            timeout=timeout or 120,
         )
 
     def complete(self, prompt: str) -> CompletionResult:

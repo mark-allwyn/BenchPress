@@ -1,0 +1,75 @@
+# Benchpress model registry.
+#
+# Copy this file to config.yaml (which is gitignored) and keep only the models
+# you want to evaluate. Set each api_key_env variable in your environment (or a
+# local .env). `benchpress eval` overlays the benchmark's frozen run-config
+# (max_tokens, thinking, timeout) onto every entry, so here you declare only a
+# model's identity and how to reach it - never the run budget.
+#
+# Fields:
+#   provider    anthropic | bedrock | openai | openai_compatible | google | cohere | ollama
+#   model       the vendor's model string
+#   company     display name (shown on the dashboard)
+#   type        open | closed  (open-weight vs proprietary)
+#   api_key_env name of the env var holding the API key (omit for local Ollama)
+#   region      Bedrock only: AWS region
+#   base_url    openai_compatible / ollama only: override the endpoint
+
+models:
+
+  # ── Open-weight, local via Ollama (no API key) ────────────────────────────
+  llama-4-maverick:
+    provider: ollama
+    model: llama4:maverick
+    company: Meta
+    type: open
+    # base_url: http://localhost:11434/v1   # default
+
+  # ── OpenAI ────────────────────────────────────────────────────────────────
+  gpt-5:
+    provider: openai
+    model: gpt-5
+    company: OpenAI
+    type: closed
+    api_key_env: OPENAI_API_KEY
+
+  # ── Google Gemini ─────────────────────────────────────────────────────────
+  gemini-3-pro:
+    provider: google
+    model: gemini-3-pro
+    company: Google
+    type: closed
+    api_key_env: GOOGLE_API_KEY
+
+  # ── Anthropic, direct API key ─────────────────────────────────────────────
+  claude-opus-4.8:
+    provider: anthropic
+    model: claude-opus-4-8
+    company: Anthropic
+    type: closed
+    api_key_env: ANTHROPIC_API_KEY
+
+  # ── Anthropic via AWS Bedrock (boto3 reads AWS_* from the environment) ─────
+  claude-opus-4.8-bedrock:
+    provider: bedrock
+    model: eu.anthropic.claude-opus-4-8
+    region: eu-central-1
+    company: Anthropic
+    type: closed
+
+  # ── Cohere ────────────────────────────────────────────────────────────────
+  command-a:
+    provider: cohere
+    model: command-a-03-2025
+    company: Cohere
+    type: closed
+    api_key_env: COHERE_API_KEY
+
+  # ── Any OpenAI-compatible endpoint (vLLM, Together, Groq, ...) ─────────────
+  # deepseek-r2:
+  #   provider: openai_compatible
+  #   model: deepseek-r2
+  #   company: DeepSeek
+  #   type: open
+  #   api_key_env: OPENAI_COMPAT_KEY
+  #   base_url: https://api.your-host.com/v1

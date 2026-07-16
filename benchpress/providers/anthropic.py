@@ -21,11 +21,12 @@ def _supports_thinking(model: str) -> bool:
 
 class AnthropicProvider(Provider):
     def __init__(self, model: str, api_key: str, client: httpx.Client | None = None,
-                 max_retries: int = 4, backoff_base: float = 1.0):
+                 max_retries: int = 4, backoff_base: float = 1.0,
+                 *, max_tokens: int | None = None, timeout: float | None = None):
         self.model = model
         self.max_retries = max_retries
         self.backoff_base = backoff_base
-        self.native_config: dict = {"max_tokens": 16000}
+        self.native_config: dict = {"max_tokens": max_tokens or 16000}
         if _supports_thinking(model):
             self.native_config["thinking"] = {"type": "adaptive"}
         self.client = client or httpx.Client(
@@ -35,7 +36,7 @@ class AnthropicProvider(Provider):
                 "anthropic-version": "2023-06-01",
                 "content-type": "application/json",
             },
-            timeout=120,
+            timeout=timeout or 120,
         )
 
     def complete(self, prompt: str) -> CompletionResult:

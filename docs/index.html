@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchpress / Simulate v1</title>
+<meta name="description" content="A deterministic, judge-free, tools-off benchmark for frontier LLMs. Execute a machine N steps; report the exact final state.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:    oklch(0.165 0.014 264);
+    --bg-2:  oklch(0.205 0.016 264);
+    --bg-3:  oklch(0.245 0.018 264);
+    --bone:  oklch(0.935 0.014 85);
+    --bone-2:oklch(0.72 0.015 264);
+    --bone-3:oklch(0.55 0.017 264);
+    --line:  oklch(0.30 0.014 264);
+    --line-2:oklch(0.42 0.016 264);
+    --acc:   oklch(0.705 0.195 34);
+    --acc-d: oklch(0.62 0.19 33);
+    --track: oklch(0.28 0.014 264);
+    --sans:"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+    --gut: clamp(18px,4vw,52px);
+    --maxw:1240px;
+  }
+  :root[data-theme="light"]{
+    --bg:    oklch(0.955 0.010 85);
+    --bg-2:  oklch(0.925 0.012 85);
+    --bg-3:  oklch(0.895 0.013 85);
+    --bone:  oklch(0.20 0.02 264);
+    --bone-2:oklch(0.40 0.02 264);
+    --bone-3:oklch(0.55 0.018 264);
+    --line:  oklch(0.83 0.010 85);
+    --line-2:oklch(0.72 0.012 85);
+    --acc:   oklch(0.565 0.205 33);
+    --acc-d: oklch(0.52 0.20 33);
+    --track: oklch(0.86 0.008 85);
+  }
+  *{box-sizing:border-box; margin:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg); color:var(--bone); font-family:var(--sans);
+    font-size:clamp(14px,13px + 0.3vw,16px); line-height:1.5; -webkit-font-smoothing:antialiased;
+    font-optical-sizing:auto; overflow-x:hidden;}
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--gut)}
+  .mono{font-family:var(--mono)}
+  .ey{font-family:var(--mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--bone-3); font-weight:500}
+
+  /* 3x3 cell glyph */
+  .glyph{display:inline-grid; grid-template:repeat(3,1fr)/repeat(3,1fr); gap:2px; width:20px; height:20px; flex:none}
+  .glyph i{background:var(--line-2); border-radius:1px}
+  .glyph i.on{background:var(--acc)}
+
+  /* ── top bar ── */
+  header.top{position:sticky; top:0; z-index:40; background:color-mix(in oklab,var(--bg) 82%,transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
+  .wm{display:flex; align-items:center; gap:13px}
+  .wm .name{font-weight:800; font-size:1.06rem; letter-spacing:-.02em}
+  .wm .name b{color:var(--acc)}
+  .wm .rev{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); letter-spacing:.06em; padding:3px 8px; border:1px solid var(--line)}
+  .top nav{display:flex; gap:8px}
+  .btn{font-family:var(--mono); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; padding:8px 14px;
+    border:1px solid var(--line-2); background:transparent; color:var(--bone-2); cursor:pointer; transition:.16s}
+  .btn:hover{color:var(--bg); background:var(--bone); border-color:var(--bone)}
+  .btn.acc:hover{background:var(--acc); border-color:var(--acc); color:#fff}
+
+  /* ── hero ── */
+  .hero{position:relative; border-bottom:1px solid var(--line)}
+  .hero .wrap{display:grid; grid-template-columns:1fr; gap:clamp(22px,3.5vw,42px); padding-top:clamp(22px,3vw,38px); padding-bottom:clamp(22px,3vw,38px)}
+  @media(min-width:900px){.hero .wrap{grid-template-columns:1.1fr 0.9fr; align-items:center}}
+  .hero .ey{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+  .hero .ey::before{content:""; width:30px; height:2px; background:var(--acc)}
+  h1{font-weight:800; letter-spacing:-.035em; line-height:.95;
+    font-size:clamp(1.95rem,2.2vw + 1.35rem,3.5rem); margin:0}
+  h1 .hl{color:var(--acc)}
+  .lede{margin-top:16px; color:var(--bone-2); max-width:50ch; font-size:clamp(.92rem,.88rem + .3vw,1.06rem); line-height:1.5}
+  .lede b{color:var(--bone); font-weight:700}
+
+  /* live simulation viewport */
+  .viewport{border:1px solid var(--line-2); background:var(--bg-2); position:relative; overflow:hidden}
+  .viewport .vbar{display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.04em; color:var(--bone-3); text-transform:uppercase}
+  .viewport .dot{width:8px; height:8px; border-radius:50%; background:var(--acc); flex:none}
+  @media (prefers-reduced-motion:no-preference){.viewport .dot{animation:pulse 1.6s ease-in-out infinite}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .viewport .vbar .gen{margin-left:auto; color:var(--bone-2)}
+  .viewport canvas{display:block; width:100%; height:clamp(190px,20vw,258px)}
+
+  /* spec strip */
+  .spec{display:grid; grid-template-columns:repeat(6,1fr); border-top:1px solid var(--line)}
+  @media(max-width:760px){.spec{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:430px){.spec{grid-template-columns:repeat(2,1fr)}}
+  .spec .kv{padding:16px var(--gut); border-right:1px solid var(--line)}
+  .spec{padding:0}
+  .spec .kv{padding:16px clamp(12px,1.6vw,20px)}
+  .spec .kv:first-child{padding-left:var(--gut)}
+  .spec .kv .k{font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bone-3)}
+  .spec .kv .v{font-family:var(--mono); font-size:1.15rem; font-weight:600; margin-top:4px; letter-spacing:-.01em; color:var(--bone)}
+  .specband{border-bottom:1px solid var(--line); background:var(--bg-2)}
+
+  /* ── section ── */
+  section{padding:clamp(50px,7vw,92px) 0}
+  section#results{padding-top:clamp(26px,3.5vw,44px)}
+  section + section{border-top:1px solid var(--line)}
+  .head{display:flex; align-items:center; gap:16px; margin-bottom:clamp(18px,2.4vw,30px)}
+  .head .glyph{width:26px; height:26px}
+  .head h2{font-weight:800; letter-spacing:-.03em; font-size:clamp(1.7rem,1.4rem + 1.4vw,2.7rem)}
+  .head .n{font-family:var(--mono); font-size:.8rem; color:var(--acc); font-weight:600}
+  .head .note{margin-left:auto; font-family:var(--mono); font-size:.7rem; color:var(--bone-3); text-transform:uppercase; letter-spacing:.08em; text-align:right}
+
+  /* ── toolbar ── */
+  .toolbar{display:flex; flex-wrap:wrap; gap:18px 28px; align-items:center; margin-bottom:8px}
+  .field{display:flex; align-items:center; gap:12px}
+  .field .fl{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bone-3)}
+  .switch{display:inline-flex; border:1px solid var(--line-2)}
+  .switch button{border:0; border-left:1px solid var(--line); background:transparent; color:var(--bone-3);
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; padding:8px 15px; cursor:pointer; transition:.14s}
+  .switch button:first-child{border-left:0}
+  .switch button[aria-pressed="true"]{background:var(--acc); color:#fff}
+
+  /* ── leaderboard ── */
+  .board{width:100%; overflow-x:auto; margin-top:22px}
+  table{width:100%; border-collapse:collapse; min-width:820px}
+  thead th{text-align:right; padding:0 18px 14px; border-bottom:2px solid var(--line-2); white-space:nowrap; vertical-align:bottom;
+    cursor:pointer; user-select:none; font-family:var(--mono); font-size:.66rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--bone-2)}
+  thead th.lft{text-align:left}
+  thead th .rn{display:block; font-weight:400; color:var(--bone-3); font-size:.6rem; margin-top:5px; letter-spacing:.02em}
+  thead th:hover{color:var(--bone)}
+  thead th[aria-sort="descending"],thead th[aria-sort="ascending"]{color:var(--acc)}
+  .arw{opacity:0; margin-left:6px}
+  thead th[aria-sort] .arw{opacity:1}
+  tbody td{padding:20px 18px; border-bottom:1px solid var(--line); text-align:right; vertical-align:middle}
+  tbody tr:hover td{background:var(--bg-2)}
+  td.rank{font-family:var(--mono); font-size:1.05rem; color:var(--bone-3); text-align:left; width:52px; font-weight:600}
+  tr.top td.rank{color:var(--acc)}
+  td.model{text-align:left; min-width:200px}
+  .mname{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .mname b{font-weight:700; font-size:1.12rem; letter-spacing:-.02em}
+  tr.top .mname b{font-size:1.24rem}
+  .tag{font-family:var(--mono); font-size:.58rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:3px 7px; border:1px solid var(--line-2); color:var(--bone-3)}
+  .tag.base{border-color:var(--acc); color:var(--acc)}
+  .mmeta{font-family:var(--mono); color:var(--bone-3); font-size:.68rem; margin-top:5px; letter-spacing:.01em}
+  .cell{display:inline-grid; justify-items:end; gap:7px; min-width:92px}
+  .val{font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:1.24rem; letter-spacing:-.03em; line-height:1}
+  tr.top .val{font-size:1.4rem}
+  .val .u{font-size:.64rem; color:var(--bone-3); font-weight:400; margin-left:1px}
+  .val.dim{color:var(--bone-3); font-weight:400; font-size:.95rem}
+  .meter{width:100%; height:5px; background:var(--track)}
+  .meter i{display:block; height:100%; background:var(--acc)}
+  td.overall .meter i{background:var(--bone)}
+  .sub{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); font-variant-numeric:tabular-nums; letter-spacing:.01em}
+  .flag{color:var(--acc); font-family:var(--mono); font-size:.66rem; font-weight:600; cursor:help; margin-left:6px}
+  tr.top td{background:linear-gradient(90deg,var(--bg-2),transparent 78%)}
+  tr.top td:first-child{box-shadow:inset 3px 0 0 var(--acc)}
+  .capt{font-family:var(--mono); color:var(--bone-3); font-size:.68rem; margin-top:18px; letter-spacing:.01em; line-height:1.8}
+  .capt b{color:var(--bone-2); font-weight:600}
+
+  /* ── task grid ── */
+  .tasks{display:grid; grid-template-columns:1fr; border:1px solid var(--line); }
+  @media(min-width:720px){.tasks{grid-template-columns:1fr 1fr}}
+  .tk{padding:clamp(22px,2.6vw,32px); border-bottom:1px solid var(--line); border-right:1px solid var(--line); position:relative}
+  @media(min-width:720px){.tk:nth-child(2n){border-right:0} .tk:nth-last-child(-n+2){border-bottom:0}}
+  @media(max-width:719px){.tk:last-child{border-bottom:0} .tk{border-right:0}}
+  .tk .th{display:flex; align-items:baseline; gap:12px; margin-bottom:10px}
+  .tk .th .id{font-family:var(--mono); font-size:.72rem; color:var(--bone-3)}
+  .tk .th .nm{font-weight:800; font-size:1.5rem; letter-spacing:-.03em}
+  .tk .th .rl{margin-left:auto; font-family:var(--mono); font-size:.78rem; color:var(--acc); font-weight:500}
+  .tk .ds{color:var(--bone-2); font-size:.95rem; max-width:46ch}
+  .tk .dim{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); margin-top:14px; letter-spacing:.05em; text-transform:uppercase}
+
+  /* ── method ── */
+  .cols{display:grid; grid-template-columns:1fr; gap:clamp(32px,4vw,60px)}
+  @media(min-width:860px){.cols{grid-template-columns:1.05fr 0.95fr}}
+  .steps{counter-reset:s}
+  .step{display:grid; grid-template-columns:auto 1fr; gap:18px; padding:18px 0; border-top:1px solid var(--line)}
+  .step:first-child{border-top:0}
+  .step .sn{font-family:var(--mono); font-weight:600; font-size:.9rem; color:var(--acc)}
+  .step h4{font-size:1.08rem; font-weight:700; letter-spacing:-.015em}
+  .step p{color:var(--bone-2); font-size:.92rem; margin-top:4px; max-width:46ch}
+  .note{background:var(--bg-2); border:1px solid var(--line); padding:clamp(24px,3vw,34px)}
+  .note p{color:var(--bone-2); font-size:.95rem; max-width:56ch; margin-bottom:1.1em}
+  .note p:last-child{margin-bottom:0}
+  .note p b{color:var(--bone); font-weight:700}
+  .note .km{font-family:var(--mono); font-size:.85em; background:var(--bg-3); padding:1px 6px; color:var(--acc); font-weight:500}
+  .note .fd{font-family:var(--mono); font-size:.82rem; color:var(--acc); border:1px solid var(--acc); padding:1px 6px; font-weight:500}
+
+  .lead{color:var(--bone-2); max-width:72ch; font-size:clamp(1rem,.94rem + .35vw,1.16rem); margin:-4px 0 32px}
+  .lead b{color:var(--bone); font-weight:700}
+  .why{display:grid; grid-template-columns:1fr; border-top:1px solid var(--line-2)}
+  @media(min-width:820px){.why{grid-template-columns:repeat(3,1fr)}}
+  .why .w{padding:26px 0; border-bottom:1px solid var(--line)}
+  @media(min-width:820px){
+    .why .w{padding:32px clamp(22px,2vw,34px); border-bottom:0; border-right:1px solid var(--line)}
+    .why .w:first-child{padding-left:0}
+    .why .w:last-child{border-right:0; padding-right:0}
+  }
+  .why .wl{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--acc); font-weight:500; margin-bottom:16px}
+  .why .w h3{font-size:clamp(1.15rem,1rem + .55vw,1.4rem); font-weight:700; letter-spacing:-.02em; margin-bottom:11px; line-height:1.1}
+  .why .w p{color:var(--bone-2); font-size:.92rem; line-height:1.58}
+  footer{border-top:2px solid var(--line-2); padding:30px 0 64px}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:14px 26px; justify-content:space-between; align-items:baseline}
+  footer .c{font-family:var(--mono); font-size:.68rem; color:var(--bone-3); letter-spacing:.02em}
+  footer a.lnk{color:var(--bone-2); border-bottom:1px solid var(--acc)}
+  footer a.lnk:hover{color:var(--acc)}
+  .empty{padding:50px 16px; text-align:center; color:var(--bone-3); font-family:var(--mono); font-size:.8rem; line-height:1.9}
+  @media (prefers-reduced-motion:no-preference){
+    tbody tr{animation:in .5s cubic-bezier(.2,.7,.2,1) backwards}
+    .meter i{transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  }
+  @keyframes in{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="wm" href="./">
+    <span class="glyph" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i></span>
+    <span class="name">BENCH<b>PRESS</b></span>
+    <span class="rev" id="rev">SIMULATE v1</span>
+  </a>
+  <nav>
+    <button class="btn" id="theme">Light</button>
+    <a class="btn acc" href="https://github.com/mark-allwyn/BenchPress" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</div></header>
+
+<main>
+  <div class="hero"><div class="wrap">
+    <div>
+      <div class="ey">Frontier LLM benchmark · simulation tier</div>
+      <h1>Run the machine.<br>Report the <span class="hl">exact</span><br>final state.</h1>
+      <p class="lede">Benchpress measures whether a model can hold a precise state in its head and update it correctly over <b>many sequential steps, without drifting</b>. We give it the exact rules of a small deterministic machine and a starting state; it must report the state after N steps, with no tools and no shortcut. That is the reliability every long, multi-step task depends on - and the failure mode most benchmarks never isolate.</p>
+    </div>
+    <div class="viewport">
+      <div class="vbar"><span class="dot"></span>Live · Conway B3/S23<span class="gen" id="gen">gen 0000</span></div>
+      <canvas id="sim"></canvas>
+    </div>
+  </div></div>
+
+  <div class="specband"><div class="wrap" style="padding:0"><div class="spec" id="spec"></div></div></div>
+
+  <section id="results"><div class="wrap">
+    <div class="head">
+      <span class="glyph" aria-hidden="true"><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
+      <span class="n">01</span><h2>Leaderboard</h2><span class="note">lower is harder</span>
+    </div>
+    <div class="toolbar">
+      <div class="field"><span class="fl">Metric</span>
+        <div class="switch" id="metric" role="group" aria-label="Metric">
+          <button data-m="per_row_pct" aria-pressed="true">Per-row</button>
+          <button data-m="exact_pct" aria-pressed="false">Exact</button>
+        </div></div>
+      <div class="field"><span class="fl">Type</span>
+        <div class="switch" id="filter" role="group" aria-label="Filter">
+          <button data-f="all" aria-pressed="true">All</button>
+          <button data-f="open" aria-pressed="false">Open</button>
+          <button data-f="closed" aria-pressed="false">Closed</button>
+        </div></div>
+    </div>
+    <div class="board"><table id="tbl"><thead><tr id="head"></tr></thead><tbody id="rows"></tbody></table></div>
+    <p class="capt" id="cap"></p>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="head">
+      <span class="glyph" aria-hidden="true"><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
+      <span class="n">02</span><h2>What it measures</h2><span class="note">and why it matters</span>
+    </div>
+    <div class="why">
+      <div class="w">
+        <div class="wl">The capability</div>
+        <h3>Long-horizon state tracking.</h3>
+        <p>The model gets the full rules of a deterministic machine, a starting configuration, and a step count, then must carry out every step itself and report the exact final state. The systems are Turing-complete or chaotic, so no formula shortcuts them - the only path to the answer is to actually simulate.</p>
+      </div>
+      <div class="w">
+        <div class="wl">Why the score is honest</div>
+        <h3>Errors compound. Nothing is judged.</h3>
+        <p>A single wrong cell early on corrupts every later step, so a score reflects sustained, error-free execution rather than a lucky partial. The answer is checked byte-for-byte against a reference simulator - no LLM judge, no rubric. And with no trick to discover, a stronger model can only score higher by tracking more steps correctly, so the benchmark does not saturate.</p>
+      </div>
+      <div class="w">
+        <div class="wl">Why it is valuable</div>
+        <h3>It predicts real reliability.</h3>
+        <p>Following a multi-step procedure, executing an algorithm, or holding state across a long tool-using trajectory all lean on the same skill. A model that loses the thread at step 15 here will lose it at step 15 of a real workflow. Tools normally hide this - a code interpreter makes every task trivial - so we take tools away to measure the raw capability.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="head">
+      <span class="glyph" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i></span>
+      <span class="n">03</span><h2>Tasks</h2><span class="note">two CA families</span>
+    </div>
+    <p class="lead">Every prompt is fully self-contained: the complete rule, a starting state, and a step count. The model never has to recognise the automaton by name - only execute it faithfully. Two families span an easy-to-hard range, so the benchmark separates models instead of flooring or saturating them.</p>
+    <div class="tasks" id="tasks"></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="head">
+      <span class="glyph" aria-hidden="true"><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
+      <span class="n">04</span><h2>Method &amp; integrity</h2><span class="note">frozen · reproducible</span>
+    </div>
+    <div class="cols">
+      <div class="steps">
+        <div class="step"><span class="sn">01</span><div><h4>Generate</h4><p>Deterministic items from the frozen seed. Identical questions for every model.</p></div></div>
+        <div class="step"><span class="sn">02</span><div><h4>Run tools-off</h4><p>Thinking on, one generous fixed token budget, no code interpreter.</p></div></div>
+        <div class="step"><span class="sn">03</span><div><h4>Verify completion</h4><p>Only genuinely completed responses count. Truncation and timeouts are recorded, never scored as wrong.</p></div></div>
+        <div class="step"><span class="sn">04</span><div><h4>Score in code</h4><p>Byte-exact comparison against the reference simulator. No LLM judge, ever.</p></div></div>
+      </div>
+      <div class="note">
+        <p><b>Frozen.</b> The configuration is an immutable manifest. Re-hardening is a new version, never an edit, so scores stay comparable across models and over time.</p>
+        <p><b>Contamination.</b> Answers are generated at runtime, never committed. The canonical set is <span class="km">seed 42</span>. Any other seed mints a structurally identical fresh holdout that has never touched an API, so comparing canonical against fresh accuracy exposes a model that memorised.</p>
+        <p><span class="fd">⚑ n</span> &nbsp;marks responses truncated before completion. Excluded from a task's valid score, never counted as wrong.</p>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <span class="c" id="foot">Benchpress / Simulate v1</span>
+  <span class="c">Calibrated against Opus 4.8 · cross-model panel in progress · <a class="lnk" href="https://github.com/mark-allwyn/BenchPress" target="_blank" rel="noopener">reproduce on GitHub ↗</a></span>
+</div></footer>
+
+<script>
+const TASK = {
+  LIFE:     {fam:"2D life-like", rule:"B3/S23",       body:"Conway's Life. Born on 3 live neighbours, survives on 2-3. The hard anchor: errors compound over every generation."},
+  DAYNIGHT: {fam:"2D life-like", rule:"B3678/S34678", body:"A dense, day/night-symmetric rule. Forgiving enough to add mid-range discrimination."},
+  ECA110:   {fam:"1D elementary", rule:"Rule 110",    body:"Turing-complete. A 30-cell cyclic row, 35 steps; one scored row, all-or-nothing."},
+  ECA30:    {fam:"1D elementary", rule:"Rule 30",     body:"Chaotic yet locally simple. The easiest tier, near the top of the range."},
+};
+const state = {metric:"per_row_pct", filter:"all", sort:"per_row_pct", dir:-1, data:null};
+const $ = s => document.querySelector(s);
+const pct = v => v==null ? "—" : (Math.round(v*10)/10).toFixed(1);
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function spec(cfg){
+  const rows=[["seed",cfg.seed],["items/task",cfg.n_per_bundle],["tokens",(cfg.max_tokens/1000)+"K"],
+    ["tools",(cfg.tools||"off").toString().toUpperCase()],["thinking",cfg.thinking],["judge","none"]].filter(([,v])=>v!=null);
+  $("#spec").innerHTML=rows.map(([k,v])=>`<div class="kv"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
+}
+
+function tasks(meta,order){
+  $("#tasks").innerHTML=order.map((k,i)=>{
+    const t=TASK[k]||{},m=meta[k]||{};
+    const dim=m.kind==="eca"?`${t.fam} · W${m.W} · ${m.N} steps`:`${t.fam} · ${m.S}×${m.S} · ${m.gens} gen`;
+    return `<div class="tk"><div class="th"><span class="id">T${String(i+1).padStart(2,"0")}</span><span class="nm">${k}</span><span class="rl">${t.rule||""}</span></div>
+      <p class="ds">${t.body||""}</p><div class="dim">${dim}</div></div>`;
+  }).join("");
+}
+
+function head(order){
+  const th=(id,lbl,note,cls="")=>`<th class="${cls}" data-k="${id}" aria-sort="${state.sort===id?(state.dir<0?'descending':'ascending'):'none'}">${lbl}${note?`<span class="rn">${note}</span>`:""}<span class="arw">${state.dir<0?'↓':'↑'}</span></th>`;
+  $("#head").innerHTML=`<th class="lft" data-k="rank">#</th><th class="lft" data-k="name">Model</th>`+
+    th("overall","Overall","exact · per-row")+order.map(k=>th(k,k,TASK[k]?.rule||"")).join("");
+  $("#head").querySelectorAll("th").forEach(t=>t.addEventListener("click",()=>{
+    const k=t.dataset.k; if(k==="rank")return;
+    if(state.sort===k)state.dir*=-1; else {state.sort=k; state.dir=k==="name"?1:-1;} render();
+  }));
+}
+const scoreOf=(m,k)=>k==="name"?m.name.toLowerCase():k==="overall"?m.overall[state.metric]:m.tasks[k]?.[state.metric];
+
+function cell(t,isOverall){
+  if(!t)return `<td><span class="val dim">—</span></td>`;
+  const main=t[state.metric],other=t[state.metric==="per_row_pct"?"exact_pct":"per_row_pct"];
+  const flag=t.truncated?`<span class="flag" title="${t.truncated} truncated, excluded from a valid score">⚑${t.truncated}</span>`:"";
+  const ol=state.metric==="per_row_pct"?"exact":"row";
+  return `<td class="${isOverall?'overall':''}"><span class="cell"><span class="val">${pct(main)}<span class="u">%</span>${flag}</span>
+    <span class="meter"><i style="width:${Math.max(0,Math.min(100,main||0))}%"></i></span><span class="sub">${pct(other)}% ${ol}</span></span></td>`;
+}
+
+function render(){
+  const d=state.data,order=d.tasks;
+  let rows=d.models.filter(m=>state.filter==="all"||m.type===state.filter);
+  rows.sort((a,b)=>{const av=scoreOf(a,state.sort),bv=scoreOf(b,state.sort);
+    return typeof av==="string"?state.dir*av.localeCompare(bv):state.dir*(((av??-1)-(bv??-1)));});
+  head(order);
+  $("#rows").innerHTML=rows.length?rows.map((m,i)=>{
+    const tag=m.baseline?`<span class="tag base">baseline</span>`:(m.type?`<span class="tag">${m.type}</span>`:"");
+    const meta=[m.company,m.launch_date].filter(Boolean).join(" · ");
+    return `<tr class="${i===0?'top':''}" style="animation-delay:${i*30}ms">
+      <td class="rank">${String(i+1).padStart(2,"0")}</td>
+      <td class="model"><span class="mname"><b>${m.name}</b>${tag}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
+      ${cell({...m.overall,truncated:0},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}</tr>`;
+  }).join(""):`<tr><td colspan="${order.length+3}" class="empty">No models match this filter.</td></tr>`;
+  $("#cap").innerHTML=`Sorted by <b>${state.sort==="name"?"name":state.sort}</b> · <b>${state.metric==="per_row_pct"?"per-row accuracy":"exact match"}</b>. Per-row = fraction of output rows correct; exact = every row correct. ⚑ = truncated, excluded from a valid score.`;
+}
+
+function bindSwitch(id,key,attr){
+  $(id).querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+    $(id).querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true"); state[key]=b.dataset[attr];
+    if(key==="metric"&&(state.sort==="per_row_pct"||state.sort==="exact_pct"))state.sort=state.metric; render();
+  }));
+}
+
+/* ── live Conway's Life viewport ── */
+function sim(){
+  const cv=$("#sim"); if(!cv) return; const ctx=cv.getContext("2d");
+  const CELL=13, GAP=2, STEP=B=>B; let cols,rows,grid,age,gen=0,dpr=1;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function seed(){grid=[];age=[];for(let y=0;y<rows;y++){grid[y]=[];age[y]=[];for(let x=0;x<cols;x++){grid[y][x]=Math.random()<0.30?1:0;age[y][x]=0;}} gen=0;}
+  function resize(){const r=cv.getBoundingClientRect(); dpr=Math.min(devicePixelRatio||1,2);
+    cv.width=r.width*dpr; cv.height=r.height*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    cols=Math.max(8,Math.floor(r.width/(CELL+GAP))); rows=Math.max(6,Math.floor(r.height/(CELL+GAP))); seed(); draw();}
+  function step(){const n=[],pop=[];let live=0;
+    for(let y=0;y<rows;y++){n[y]=[];for(let x=0;x<cols;x++){let c=0;
+      for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue; c+=grid[(y+dy+rows)%rows][(x+dx+cols)%cols];}
+      const alive=grid[y][x]?(c===2||c===3):(c===3); n[y][x]=alive?1:0; if(alive)live++;
+      age[y][x]=alive?(grid[y][x]?age[y][x]+1:1):0;}}
+    grid=n; gen++;
+    if(live<6||gen>380){seed();}
+  }
+  function draw(){const bg=css("--bg-2"),on=css("--bone"),hot=css("--acc");
+    ctx.clearRect(0,0,cv.width,cv.height);
+    const ox=(cv.width/dpr-(cols*(CELL+GAP)-GAP))/2, oy=(cv.height/dpr-(rows*(CELL+GAP)-GAP))/2;
+    for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
+      if(!grid[y][x]){continue;}
+      ctx.fillStyle = age[y][x]<=1 ? hot : on;
+      ctx.globalAlpha = age[y][x]<=1 ? 1 : Math.max(0.45, 1-(age[y][x]-1)*0.08);
+      ctx.fillRect(ox+x*(CELL+GAP), oy+y*(CELL+GAP), CELL, CELL);
+    }
+    ctx.globalAlpha=1;
+    const g=$("#gen"); if(g)g.textContent="gen "+String(gen).padStart(4,"0");
+  }
+  resize(); let ro; addEventListener("resize",()=>{clearTimeout(ro); ro=setTimeout(resize,180);});
+  if(!reduce){let last=0; (function loop(t){ if(t-last>170){step();draw();last=t;} requestAnimationFrame(loop);})(0);}
+}
+
+(function(){const btn=$("#theme"),root=document.documentElement;
+  const set=t=>{root.setAttribute("data-theme",t); btn.textContent=t==="dark"?"Light":"Dark";};
+  set(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
+  btn.addEventListener("click",()=>set(root.getAttribute("data-theme")==="dark"?"light":"dark"));})();
+bindSwitch("#metric","metric","m"); bindSwitch("#filter","filter","f");
+
+fetch("./leaderboard.json").then(r=>r.json()).then(d=>{
+  state.data=d; spec(d.config); tasks(d.task_meta||{},d.tasks);
+  $("#rev").textContent=`SIMULATE ${d.version}`;
+  $("#foot").textContent=`${d.benchmark} / ${d.version} · exported ${d.generated}`;
+  render();
+}).catch(()=>{$("#rows").innerHTML=`<tr><td colspan="7" class="empty">Could not load leaderboard.json.<br>Serve this folder over HTTP (python -m http.server), not file://</td></tr>`;});
+sim();
+</script>
+</body>
+</html>

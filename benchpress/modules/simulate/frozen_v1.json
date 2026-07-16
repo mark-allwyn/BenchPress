@@ -1,0 +1,47 @@
+{
+  "benchmark": "Benchpress-Simulate",
+  "version": "v1",
+  "frozen": true,
+  "frozen_date": "2026-07-13",
+  "note": "IMMUTABLE. Do not edit these values. Re-hardening or new tasks = a NEW version (v2), never an edit to v1. This is what makes scores comparable across models over time.",
+  "module": "simulate",
+  "module_version": "1",
+
+  "official_run_config": {
+    "seed": 42,
+    "n_per_bundle": 25,
+    "tools": "OFF (mandatory - with a code interpreter these tasks are trivial)",
+    "thinking": "adaptive",
+    "effort": "high",
+    "max_tokens": 64000,
+    "read_timeout_seconds": 900,
+    "scoring": "per-item conjunctive exact-match (headline) + per-row/per-part marginal accuracy (graded, primary); no LLM judge",
+    "validity_guard": "only trust items with stop_reason == 'end_turn'. max_tokens = truncated, None = timeout - both invalid."
+  },
+
+  "tasks": {
+    "LIFE":     {"kind": "life", "name": "Conway's Game of Life", "S": 7, "gens": 7, "density": 0.40, "born": [3], "survive": [2, 3]},
+    "DAYNIGHT": {"kind": "life", "name": "Day & Night", "S": 7, "gens": 7, "density": 0.45, "born": [3, 6, 7, 8], "survive": [3, 4, 6, 7, 8]},
+    "ECA110":   {"kind": "eca", "rule": 110, "W": 30, "N": 35, "density": 0.5},
+    "ECA30":    {"kind": "eca", "rule": 30, "W": 30, "N": 35, "density": 0.5}
+  },
+
+  "baseline": {
+    "model": "eu.anthropic.claude-opus-4-8 (Bedrock, eu-central-1)",
+    "measured_date": "2026-07-13",
+    "n": 25,
+    "results": {
+      "LIFE":     {"exact_pct": 36, "per_row_pct": 50.3, "truncated": 2},
+      "DAYNIGHT": {"exact_pct": 68, "per_row_pct": 73.7, "truncated": 0},
+      "ECA110":   {"exact_pct": 56, "per_row_pct": 56.0, "truncated": 0},
+      "ECA30":    {"exact_pct": 88, "per_row_pct": 88.0, "truncated": 0}
+    }
+  },
+
+  "caveats": [
+    "Calibrated against Opus 4.8 ONLY (Bedrock-only constraint). Cross-model discrimination (GPT-5/Gemini-3/Grok) is UNVERIFIED - run a panel to confirm the ranking/headroom claim.",
+    "The hard signal leans on LIFE (36%); ECA110 (56%) is moderate; DAYNIGHT (68%) and ECA30 (88%) are easier tiers adding discrimination range.",
+    "Scores are budget-sensitive (fixed 64k). LIFE verified robust 40k->64k; easier tiers not stress-tested for budget-sensitivity.",
+    "Sample n=25, no confidence intervals; ~+/-10% band. Domain is two cellular-automata families (faithful long-horizon simulation)."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "benchmark": "Benchpress-Simulate",
+  "version": "v1",
+  "generated": "2026-07-16",
+  "tasks": [
+    "LIFE",
+    "DAYNIGHT",
+    "ECA110",
+    "ECA30"
+  ],
+  "config": {
+    "seed": 42,
+    "n_per_bundle": 25,
+    "max_tokens": 64000,
+    "tools": "off",
+    "thinking": "adaptive"
+  },
+  "task_meta": {
+    "LIFE": {
+      "kind": "life",
+      "name": "Conway's Game of Life",
+      "S": 7,
+      "gens": 7,
+      "density": 0.4,
+      "born": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ]
+    },
+    "DAYNIGHT": {
+      "kind": "life",
+      "name": "Day & Night",
+      "S": 7,
+      "gens": 7,
+      "density": 0.45,
+      "born": [
+        3,
+        6,
+        7,
+        8
+      ],
+      "survive": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "ECA110": {
+      "kind": "eca",
+      "rule": 110,
+      "W": 30,
+      "N": 35,
+      "density": 0.5
+    },
+    "ECA30": {
+      "kind": "eca",
+      "rule": 30,
+      "W": 30,
+      "N": 35,
+      "density": 0.5
+    }
+  },
+  "models": [
+    {
+      "name": "claude-opus-4.8",
+      "company": "Anthropic",
+      "type": "closed",
+      "launch_date": "2026-05-28",
+      "run_date": "2026-07-13",
+      "baseline": true,
+      "overall": {
+        "exact_pct": 62.0,
+        "per_row_pct": 67.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 36,
+          "per_row_pct": 50.3,
+          "n": 25,
+          "truncated": 2,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 68,
+          "per_row_pct": 73.7,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 56,
+          "per_row_pct": 56.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 88,
+          "per_row_pct": 88.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    }
+  ]
+}
