@@ -8,12 +8,14 @@ import sys
 from pathlib import Path
 
 import benchpress.modules.causal  # noqa: F401  (registers the causal module)
+import benchpress.modules.simulate  # noqa: F401  (registers the simulate module)
 import benchpress.scorers  # noqa: F401  (registers part-scorers)
 from benchpress import stats
 from benchpress.config import load_models
 from benchpress.core import registry
+from benchpress.frozen import load_frozen, run_params_from_config
 from benchpress.providers import get_provider
-from benchpress.runner import persist, run_model, score_model
+from benchpress.runner import format_console, per_task_summary, persist, run_model, score_model
 from benchpress.runner.board import leaderboard
 
 
@@ -46,6 +48,61 @@ def cmd_run(a) -> int:
     return 0
 
 
+def _frozen_items(benchmark: str, seed_override: int | None = None):
+    """Generate a benchmark's item set under its frozen official run-config.
+
+    Returns (items, meta, run_params, label). A non-None ``seed_override`` mints
+    a fresh holdout under an otherwise-frozen config (used for the contamination
+    audit). Falls back to plain defaults when the benchmark has no manifest yet.
+    """
+    frozen = load_frozen(benchmark)
+    module = registry.get_module(benchmark)
+    if frozen:
+        cfg = frozen["official_run_config"]
+        seed = cfg["seed"] if seed_override is None else seed_override
+        items, meta = module(seed, "hard", cfg["n_per_bundle"])
+        return items, meta, run_params_from_config(cfg), frozen.get("version", "")
+    items, meta = module(seed_override or 0)
+    return items, meta, {}, ""
+
+
+def cmd_eval(a) -> int:
+    """One-shot: generate the frozen set, run a model, score, and summarize.
+
+    Works for any provider in config.yaml - the benchmark's frozen run-config
+    (max_tokens, thinking, effort, timeout) is overlaid onto the model's params
+    so every vendor runs the identical configuration.
+    """
+    # A nonzero --seed mints a fresh holdout (contamination audit); 0 = canonical.
+    seed_override = a.seed or None
+    items, meta, run_params, label = _frozen_items(a.benchmark, seed_override)
+
+    models = load_models(a.config)
+    if a.model not in models:
+        print(f"eval: model {a.model!r} not found in {a.config}. "
+              f"Known: {', '.join(sorted(models)) or '(none)'}")
+        return 2
+    spec = dict(models[a.model])
+    params = dict(spec.get("params") or {})
+    params.update(run_params)  # frozen run-config wins over per-model defaults
+    spec["params"] = params
+
+    provider = get_provider(spec)
+    path = _model_path(a.results_dir, a.benchmark, a.model)
+    tools_note = "tools OFF, " if load_frozen(a.benchmark) else ""
+    print(f"eval: {a.model} on {len(items)} {a.benchmark} items (v{meta.version}), "
+          f"{tools_note}max_tokens={params.get('max_tokens', 'default')}", flush=True)
+    run_model(provider, items, path, model_name=a.model, benchmark=a.benchmark,
+              version=meta.version, rerun=a.rerun, workers=a.workers)
+    score_model(items, path)
+
+    results = persist.load_scored(items, path)
+    summary = per_task_summary(items, results)
+    print()
+    print(format_console(summary, title=f"=== Benchpress-{a.benchmark} {label} - {a.model} ==="))
+    return 0
+
+
 def cmd_score(a) -> int:
     items, _ = _items(a.benchmark, a.seed)
     path = _model_path(a.results_dir, a.benchmark, a.model)
@@ -60,18 +117,34 @@ def cmd_stats(a) -> int:
 
 
 def cmd_export(a) -> int:
+    if getattr(a, "format", "json") == "leaderboard":
+        return _export_leaderboard(a)
     items, _ = _items(a.benchmark, a.seed)
     out = {}
     for p in _paths(a.results_dir, a.benchmark):
         data = persist.load(p)
         out[data.get("model_name", p.stem)] = stats.report(persist.scored_results(p), items)
-    text = json.dumps(out, indent=2)
-    if a.out:
-        Path(a.out).write_text(text)
-        print(f"export: wrote {a.out}")
+    _emit(json.dumps(out, indent=2), a.out)
+    return 0
+
+
+def _export_leaderboard(a) -> int:
+    from benchpress.leaderboard import build_leaderboard
+    items, _, _, _ = _frozen_items(a.benchmark)  # join against the frozen item set
+    board = build_leaderboard(a.benchmark, items, _paths(a.results_dir, a.benchmark),
+                              load_models(a.config))
+    _emit(json.dumps(board, indent=2), a.out)
+    return 0
+
+
+def _emit(text: str, out: str | None) -> None:
+    if out:
+        p = Path(out)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text)
+        print(f"export: wrote {out}")
     else:
         print(text)
-    return 0
 
 
 def cmd_freeze(a) -> int:
@@ -113,7 +186,7 @@ def cmd_audit(a) -> int:
 
 
 HANDLERS = {
-    "generate": cmd_generate, "run": cmd_run, "score": cmd_score,
+    "generate": cmd_generate, "run": cmd_run, "score": cmd_score, "eval": cmd_eval,
     "stats": cmd_stats, "export": cmd_export, "freeze": cmd_freeze, "audit": cmd_audit,
 }
 
@@ -128,11 +201,12 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--results-dir", default="results")
         p.add_argument("--config", default="config.yaml")
         p.add_argument("--model")
-        if name == "run":
+        if name in ("run", "eval"):
             p.add_argument("--rerun", action="store_true")
             p.add_argument("--workers", type=int, default=1)
         if name == "export":
             p.add_argument("--out", default=None)
+            p.add_argument("--format", choices=["json", "leaderboard"], default="json")
         if name == "freeze":
             p.add_argument("--benchsets-dir", default="benchpress/benchsets")
         if name == "audit":

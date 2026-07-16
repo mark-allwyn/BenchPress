@@ -11,11 +11,12 @@ from benchpress.providers.base import CompletionResult, Provider
 
 
 class OllamaProvider(Provider):
-    def __init__(self, model, base_url="http://localhost:11434/v1", client=None):
+    def __init__(self, model, base_url="http://localhost:11434/v1", client=None,
+                 *, max_tokens=None, timeout=None):
         self.model = model
-        self.native_config = {"max_tokens": 16000}
+        self.native_config = {"max_tokens": max_tokens or 16000}
         self.client = client or httpx.Client(
-            base_url=base_url, headers={"Content-Type": "application/json"}, timeout=600
+            base_url=base_url, headers={"Content-Type": "application/json"}, timeout=timeout or 600
         )
 
     def complete(self, prompt: str) -> CompletionResult:

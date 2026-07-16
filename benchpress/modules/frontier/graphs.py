@@ -104,6 +104,71 @@ def minimal_separators(G, x, y) -> list:
     return seps
 
 
+def seeded_weighted_dag(seed: int, n: int, density: float):
+    """A reproducible DAG with linear structural coefficients on each edge."""
+    nodes, edges, G = seeded_dag(seed, n, density)
+    rng = random.Random(seed * 131 + 7)
+    w = {e: rng.choice([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]) * rng.choice([-1, 1]) for e in edges}
+    return nodes, edges, G, w
+
+
+def total_effect(G, w, x, y) -> float:
+    """Total causal effect of x on y in a linear SEM: sum over every directed path
+    x->y of the product of the coefficients along it (Wright's rules)."""
+    tot = 0.0
+    for path in nx.all_simple_paths(G, x, y):
+        prod = 1.0
+        for a, b in zip(path, path[1:]):
+            prod *= w[(a, b)]
+        tot += prod
+    return tot
+
+
+def _minus_out(G, S):
+    """Copy of G with every edge leaving a node in S removed."""
+    Gm = G.copy()
+    for s in S:
+        Gm.remove_edges_from(list(G.out_edges(s)))
+    return Gm
+
+
+def backdoor_set_valid(G, x, y, Z) -> bool:
+    """Z is a valid back-door adjustment set for X->Y iff Z has no descendant of X
+    (nor Y), and Z blocks every back-door path from X to Y."""
+    Z = set(Z)
+    desc = nx.descendants(G, x) | {x}
+    if any(z in desc or z == y for z in Z):
+        return False
+    return nx.is_d_separator(_minus_out(G, {x}), {x}, {y}, Z)
+
+
+def frontdoor_set_valid(G, x, y, Z) -> bool:
+    """Z satisfies the front-door criterion for X->Y iff (1) Z intercepts every
+    directed path X->Y, (2) no unblocked back-door path X->Z, (3) every back-door
+    path Z->Y is blocked by X."""
+    Z = set(Z)
+    if not Z or x in Z or y in Z:
+        return False
+    sub = G.subgraph([n for n in G.nodes if n not in Z])
+    if x in sub and y in sub and nx.has_path(sub, x, y):
+        return False
+    if not nx.is_d_separator(_minus_out(G, {x}), {x}, Z, set()):
+        return False
+    if not nx.is_d_separator(_minus_out(G, Z), Z, {y}, {x}):
+        return False
+    return True
+
+
+def instrument_valid(G, v, x, y) -> bool:
+    """V is a valid instrument for X->Y iff V is associated with X (d-connected)
+    and V affects Y only through X (d-separated from Y once X's out-edges are cut)."""
+    if v in (x, y):
+        return False
+    if d_separated(G, v, x, set()):
+        return False
+    return nx.is_d_separator(_minus_out(G, {x}), {v}, {y}, set())
+
+
 def open_path_count(G, x, y, S) -> int:
     """Number of active (d-connecting) trails between x and y given S."""
     undirected = G.to_undirected()

@@ -27,15 +27,15 @@ def _extract_content(message: dict) -> str:
 
 class OpenAIProvider(Provider):
     def __init__(self, model, api_key, base_url="https://api.openai.com/v1", client=None,
-                 max_retries=4, backoff_base=1.0):
+                 max_retries=4, backoff_base=1.0, *, max_tokens=None, timeout=None):
         self.model = model
-        self.native_config = {"max_tokens": 16000}
+        self.native_config = {"max_tokens": max_tokens or 16000}
         self.max_retries = max_retries
         self.backoff_base = backoff_base
         self.client = client or httpx.Client(
             base_url=base_url,
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            timeout=300,
+            timeout=timeout or 300,
         )
 
     def complete(self, prompt: str) -> CompletionResult:
