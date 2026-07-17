@@ -49,7 +49,17 @@ def _baseline_entry(frozen: dict) -> dict | None:
     }
 
 
-def _model_entry(name: str, summary: dict, meta: dict, run_date: str | None) -> dict:
+def _thinking_off(data: dict) -> bool:
+    """True if the provider had to run this model without extended thinking
+    (recorded per-response as native_config.thinking_downgraded)."""
+    for runs in data.get("runs", {}).values():
+        if runs and (runs[-1].get("native_config") or {}).get("thinking_downgraded"):
+            return True
+    return False
+
+
+def _model_entry(name: str, summary: dict, meta: dict, run_date: str | None,
+                 thinking_off: bool = False) -> dict:
     return {
         "name": name,
         "company": meta.get("company"),
@@ -57,6 +67,7 @@ def _model_entry(name: str, summary: dict, meta: dict, run_date: str | None) -> 
         "launch_date": meta.get("launch_date"),
         "run_date": run_date,
         "baseline": False,
+        "thinking_off": thinking_off,
         "overall": {"exact_pct": summary["overall"]["exact_pct"],
                     "per_row_pct": summary["overall"]["per_row_pct"]},
         "tasks": {b: {"exact_pct": s["exact_pct"], "per_row_pct": s["per_row_pct"],
@@ -72,8 +83,14 @@ def _last_run_date(data: dict) -> str | None:
 
 
 def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
-                      *, include_baseline: bool = True, now: str | None = None) -> dict:
-    """Assemble the leaderboard dict from scored result files + config metadata."""
+                      *, include_baseline: bool = True, now: str | None = None,
+                      require_complete: bool = True) -> dict:
+    """Assemble the leaderboard dict from scored result files + config metadata.
+
+    With ``require_complete`` (default), only runs that scored every item are
+    included - partial/in-progress runs are skipped so the board never shows a
+    misleading half-finished score.
+    """
     frozen = load_frozen(benchmark) or {}
     bundles = list(dict.fromkeys(i.bundle_id for i in items))
 
@@ -89,10 +106,15 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
         data = persist.load(path)
         name = data.get("model_name", Path(path).stem)
         results = persist.load_scored(items, path)
-        if not results:
+        if not results or (require_complete and len(results) < len(items)):
             continue
         summary = per_task_summary(items, results)
-        entry = _model_entry(name, summary, models_meta.get(name, {}), _last_run_date(data))
+        # Skip runs marred by API/infra errors (e.g. a credit-blocked partial):
+        # those errored items are not real attempts and would understate the model.
+        if require_complete and summary["overall"]["errors"] > 5:
+            continue
+        entry = _model_entry(name, summary, models_meta.get(name, {}), _last_run_date(data),
+                             thinking_off=_thinking_off(data))
         # A real run supersedes the static baseline row for the same model.
         entries = [e for e in entries if e["name"] != name]
         seen.discard(name)

@@ -1,6 +1,9 @@
 <div align="center">
 
-# Benchpress
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">
+  <img src="docs/assets/logo-light.svg" alt="Benchpress" height="52">
+</picture>
 
 **A hard, deterministic, judge-free, tools-off benchmark for frontier language models.**
 
@@ -89,16 +92,36 @@ ROW1: <5 digits>
 The real scored items use the sizes in the table above.
 Their gold answers are never stored in this repository. They are recomputed at run time by the simulator in [`benchpress/modules/simulate/sim.py`](benchpress/modules/simulate/sim.py).
 
-## How scoring works
+## How scoring works, and how to read the leaderboard
 
-Each item's answer is a set of labelled rows (`ROW1: ...`).
-Two metrics come out of every item:
+Each item's answer is a grid written as labelled rows (`ROW1: ...`, `ROW2: ...`).
+Every item produces two numbers, and the leaderboard shows both.
 
-- **Exact match** is conjunctive: the item is correct only if every row is correct. This is the harsh headline.
-- **Per-row accuracy** is the fraction of rows correct. This is the graded, lower-variance, non-saturating primary metric.
+**Exact match** is all-or-nothing: an item counts only if **every** row is correct.
+It is the fraction of grids the model got completely right, and it is the leaderboard's default headline number.
 
-A one-dimensional ECA item has a single scored row, so its two metrics coincide.
-Scoring is pure string comparison after a status check that separates a genuine answer from a refusal, a truncation, or an API error.
+**Per-row accuracy** is the fraction of individual rows the model got right, across all items.
+It gives partial credit: get 5 of a Life grid's 7 rows right and that item contributes 5/7, even if the grid as a whole is wrong.
+It is the graded, lower-variance, non-saturating secondary metric, useful because it keeps discriminating when no model gets a full grid.
+
+On the leaderboard, each task cell shows both numbers (toggle which one is the large headline); on the ECA tasks they are identical.
+
+A one-dimensional ECA item has a single scored row, so for those tasks the two metrics are identical.
+A model can score well on per-row while scoring 0% exact if it drifts by only a cell or two per grid.
+
+Worked example, Sonnet 5 on LIFE: **56% exact / 69.7% per-row**.
+It got 56% of the Life grids completely right, and 69.7% of all individual rows right, meaning the grids it missed were mostly correct apart from a cell or two.
+
+Reading the flags and labels:
+
+- **Lower is harder.** These are hard tasks; a low score is the expected, informative result, not a bug.
+- **⚑ (truncation)** means the response hit the 64000-token budget before finishing.
+  Reasoning-heavy models can spend the whole budget thinking and never emit the final grid.
+  A truncated item never produced a complete answer, so it counts as not correct, but it is flagged rather than silently scored wrong, because it reflects a capacity limit rather than a reasoning error.
+- **"no thinking"** marks a model with no extended-thinking mode (for example Amazon Nova), which therefore ran thinking-off and is not directly comparable to the thinking-on models.
+
+Scoring itself is pure byte-exact string comparison against the reference simulator, after a status check that separates a genuine answer from a refusal, a truncation, or an API error.
+There is no LLM judge.
 
 ## Quickstart
 
