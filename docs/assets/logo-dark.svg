@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="330" height="58" viewBox="0 0 330 58" fill="none" role="img" aria-label="Benchpress">
+  <rect x="4"  y="4"  width="14" height="14" rx="2" fill="#E86B41"/>
+  <rect x="22" y="4"  width="14" height="14" rx="2" fill="#474B57"/>
+  <rect x="40" y="4"  width="14" height="14" rx="2" fill="#E86B41"/>
+  <rect x="4"  y="22" width="14" height="14" rx="2" fill="#474B57"/>
+  <rect x="22" y="22" width="14" height="14" rx="2" fill="#E86B41"/>
+  <rect x="40" y="22" width="14" height="14" rx="2" fill="#474B57"/>
+  <rect x="4"  y="40" width="14" height="14" rx="2" fill="#E86B41"/>
+  <rect x="22" y="40" width="14" height="14" rx="2" fill="#E86B41"/>
+  <rect x="40" y="40" width="14" height="14" rx="2" fill="#474B57"/>
+  <text x="70" y="39" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="800" letter-spacing="-1">
+    <tspan fill="#ECEAE2">BENCH</tspan><tspan fill="#E86B41">PRESS</tspan>
+  </text>
+</svg>

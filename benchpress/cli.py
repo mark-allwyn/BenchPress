@@ -131,8 +131,9 @@ def cmd_export(a) -> int:
 def _export_leaderboard(a) -> int:
     from benchpress.leaderboard import build_leaderboard
     items, _, _, _ = _frozen_items(a.benchmark)  # join against the frozen item set
-    board = build_leaderboard(a.benchmark, items, _paths(a.results_dir, a.benchmark),
-                              load_models(a.config))
+    # Exclude non-model artifacts (e.g. old confirm-* calibration runs).
+    paths = [p for p in _paths(a.results_dir, a.benchmark) if "confirm" not in p.stem]
+    board = build_leaderboard(a.benchmark, items, paths, load_models(a.config))
     _emit(json.dumps(board, indent=2), a.out)
     return 0
 

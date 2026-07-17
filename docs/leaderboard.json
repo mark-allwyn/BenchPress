@@ -1,7 +1,7 @@
 {
   "benchmark": "Benchpress-Simulate",
   "version": "v1",
-  "generated": "2026-07-16",
+  "generated": "2026-07-17",
   "tasks": [
     "LIFE",
     "DAYNIGHT",
@@ -102,6 +102,307 @@
         "ECA30": {
           "exact_pct": 88,
           "per_row_pct": 88.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "claude-opus-4.7-bedrock",
+      "company": "Anthropic",
+      "type": "closed",
+      "launch_date": null,
+      "run_date": "2026-07-17",
+      "baseline": false,
+      "thinking_off": false,
+      "overall": {
+        "exact_pct": 49.0,
+        "per_row_pct": 58.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 40.0,
+          "per_row_pct": 49.1,
+          "n": 25,
+          "truncated": 1,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 60.0,
+          "per_row_pct": 69.7,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 60.0,
+          "per_row_pct": 60.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 36.0,
+          "per_row_pct": 36.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "claude-sonnet-5-bedrock",
+      "company": "Anthropic",
+      "type": "closed",
+      "launch_date": null,
+      "run_date": "2026-07-16",
+      "baseline": false,
+      "thinking_off": false,
+      "overall": {
+        "exact_pct": 43.0,
+        "per_row_pct": 52.8
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 56.0,
+          "per_row_pct": 69.7,
+          "n": 25,
+          "truncated": 2,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 32.0,
+          "per_row_pct": 38.9,
+          "n": 25,
+          "truncated": 3,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 40.0,
+          "per_row_pct": 40.0,
+          "n": 25,
+          "truncated": 4,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 44.0,
+          "per_row_pct": 44.0,
+          "n": 25,
+          "truncated": 4,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "gpt-oss-120b",
+      "company": "OpenAI",
+      "type": "open",
+      "launch_date": "2025-07-01",
+      "run_date": "2026-07-16",
+      "baseline": false,
+      "thinking_off": false,
+      "overall": {
+        "exact_pct": 4.0,
+        "per_row_pct": 9.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 4.0,
+          "per_row_pct": 10.3,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 8.6,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 8.0,
+          "per_row_pct": 8.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 4.0,
+          "per_row_pct": 4.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "qwen3-235b",
+      "company": "Alibaba",
+      "type": "open",
+      "launch_date": "2025-07-01",
+      "run_date": "2026-07-16",
+      "baseline": false,
+      "thinking_off": false,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 6.8
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 15.4,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "nemotron-3-super-120b",
+      "company": "NVIDIA",
+      "type": "open",
+      "launch_date": "2025-06-01",
+      "run_date": "2026-07-17",
+      "baseline": false,
+      "thinking_off": false,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 4.5
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 8.6,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 1.7,
+          "n": 25,
+          "truncated": 1,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "nova-pro",
+      "company": "Amazon",
+      "type": "closed",
+      "launch_date": "2024-12-03",
+      "run_date": "2026-07-16",
+      "baseline": false,
+      "thinking_off": true,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 4.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 6.3,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 2.9,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "glm-4.7-flash-bedrock",
+      "company": "Z.ai",
+      "type": "open",
+      "launch_date": null,
+      "run_date": "2026-07-16",
+      "baseline": false,
+      "thinking_off": false,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 0.8
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.6,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 1.1,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
           "n": 25,
           "truncated": 0,
           "errors": 0
