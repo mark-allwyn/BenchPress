@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Benchpress / Simulate v1</title>
+<title>Benchpress / Simulate v2</title>
 <meta name="description" content="A deterministic, judge-free, tools-off benchmark for frontier LLMs. Execute a machine N steps; report the exact final state.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -229,7 +229,7 @@
   <a class="wm" href="./">
     <span class="glyph" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i></span>
     <span class="name">BENCH<b>PRESS</b></span>
-    <span class="rev" id="rev">SIMULATE v1</span>
+    <span class="rev" id="rev">SIMULATE v2</span>
   </a>
   <nav class="secnav">
     <a href="#results">Leaderboard</a>
@@ -322,12 +322,13 @@
     <div class="cols">
       <div class="steps">
         <div class="step"><span class="sn">01</span><div><h4>Generate</h4><p>Deterministic items from the frozen seed. Identical questions for every model.</p></div></div>
-        <div class="step"><span class="sn">02</span><div><h4>Run tools-off</h4><p>Thinking on, one generous fixed token budget, no code interpreter.</p></div></div>
+        <div class="step"><span class="sn">02</span><div><h4>Run tools-off</h4><p>Thinking on, one generous fixed token budget (96k), no code interpreter.</p></div></div>
         <div class="step"><span class="sn">03</span><div><h4>Verify completion</h4><p>Only genuinely completed responses count. Truncation and timeouts are recorded, never scored as wrong.</p></div></div>
         <div class="step"><span class="sn">04</span><div><h4>Score in code</h4><p>Byte-exact comparison against the reference simulator. No LLM judge, ever.</p></div></div>
       </div>
       <div class="note">
         <p><b>Frozen.</b> The configuration is an immutable manifest. Re-hardening is a new version, never an edit, so scores stay comparable across models and over time.</p>
+        <p><b>Budget (why 96k).</b> v1 used 64k and truncated verbose reasoners, penalising them for length rather than accuracy. A budget ablation settled it: raising 64k&rarr;96k lifted Sonnet 4.6 from 16% to 67% and minimax-m2.5 from 12% to 24% exact, with nothing else changed. 96k captures essentially all reasoning (max output observed ~107k); v2 adopts it, and truncations are still reported for the few models that exceed even that.</p>
         <p><b>Contamination.</b> Answers are generated at runtime, never committed. The canonical set is <span class="km">seed 42</span>. Any other seed mints a structurally identical fresh holdout that has never touched an API, so comparing canonical against fresh accuracy exposes a model that memorised.</p>
         <p><span class="fd">&dagger; n</span> &nbsp;marks n responses that hit the token budget before finishing. Counted as not correct, but flagged because it is a capacity limit, not a reasoning error.</p>
       </div>
@@ -336,7 +337,7 @@
 </main>
 
 <footer><div class="wrap">
-  <span class="c" id="foot">Benchpress / Simulate v1</span>
+  <span class="c" id="foot">Benchpress / Simulate v2</span>
   <span class="c">Calibrated against Opus 4.8 · cross-model panel in progress · <a class="lnk" href="https://github.com/mark-allwyn/BenchPress" target="_blank" rel="noopener">reproduce on GitHub ↗</a></span>
 </div></footer>
 
@@ -385,7 +386,7 @@ const scoreOf=(m,k)=>k==="name"?m.name.toLowerCase():k==="overall"?m.overall[sta
 function cell(t,isOverall){
   if(!t)return `<td><span class="val dim">—</span></td>`;
   const main=t[state.metric],other=t[state.metric==="per_row_pct"?"exact_pct":"per_row_pct"];
-  const flag=t.truncated?`<span class="flag" title="${t.truncated} response(s) hit the 64k token budget before finishing - counted as not correct">&dagger;${t.truncated}</span>`:"";
+  const flag=t.truncated?`<span class="flag" title="${t.truncated} response(s) hit the token budget before finishing - counted as not correct">&dagger;${t.truncated}</span>`:"";
   const ol=state.metric==="per_row_pct"?"exact":"row";
   return `<td class="${isOverall?'overall':''}"><span class="cell"><span class="val">${pct(main)}<span class="u">%</span>${flag}</span>
     <span class="meter"><i style="width:${Math.max(0,Math.min(100,main||0))}%"></i></span><span class="sub">${pct(other)}% ${ol}</span></span></td>`;
