@@ -114,7 +114,6 @@ It got 56% of the Life grids completely right, and 69.7% of all individual rows 
 
 Reading the flags and labels:
 
-- **Lower is harder.** These are hard tasks; a low score is the expected, informative result, not a bug.
 - **⚑ (truncation)** means the response hit the 96000-token budget before finishing.
   Reasoning-heavy models can spend the whole budget thinking and never emit the final grid.
   A truncated item never produced a complete answer, so it counts as not correct, but it is flagged rather than silently scored wrong, because it reflects a capacity limit rather than a reasoning error.

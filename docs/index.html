@@ -261,9 +261,9 @@
   <section id="results"><div class="wrap">
     <div class="head">
       <span class="glyph" aria-hidden="true"><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
-      <span class="n">01</span><h2>Leaderboard</h2><span class="note">lower is harder</span>
+      <span class="n">01</span><h2>Leaderboard</h2>
     </div>
-    <p class="lead">Each task cell shows two numbers: the <b>large one is the selected headline metric</b>, the small one beneath it is the other. <b>Exact match</b> (the default) is the share of grids the model got <em>completely</em> right - every row, all-or-nothing. <b>Per-row accuracy</b> is the share of individual rows correct - partial credit, graded and non-saturating. A model can score on per-row while scoring 0% exact if it drifts by only a cell or two. <b>Lower is harder.</b> A dagger (<span class="fdchip">&dagger;N</span>) flags N responses that hit the token budget before finishing, counted as not correct. Switch the headline with <b>Exact / Per-row</b> below.</p>
+    <p class="lead">Each task cell shows two numbers: the <b>large one is the selected headline metric</b>, the small one beneath it is the other. <b>Exact match</b> (the default) is the share of grids the model got <em>completely</em> right - every row, all-or-nothing. <b>Per-row accuracy</b> is the share of individual rows correct - partial credit, graded and non-saturating. A model can score on per-row while scoring 0% exact if it drifts by only a cell or two. A dagger (<span class="fdchip">&dagger;N</span>) flags N responses that hit the token budget before finishing, counted as not correct. Switch the headline with <b>Exact / Per-row</b> below.</p>
     <div class="toolbar">
       <div class="field"><span class="fl">Metric</span>
         <div class="switch" id="metric" role="group" aria-label="Metric">
@@ -345,13 +345,13 @@
 <script>
 const TASK = {
   LIFE:     {fam:"2D grid", rule:"B3/S23",
-    body:"The famous \"Game of Life\". Picture a small grid where each square is either on or off. A simple rule looks at how many of a square's touching neighbours are on and decides whether that square is on or off in the next round - every square updating at the same moment. The new grid then feeds back into the same rule, round after round (7 here). The model must carry this out in its head and report the final pattern. It is the hardest task: one square wrong in an early round throws off everything after it."},
+    body:"A square grid of cells, each on or off (Conway's Game of Life). Every round, all cells update at once by one rule based on how many of a cell's 8 neighbours are on: an off cell turns on if exactly 3 are on; an on cell stays on if 2 or 3 are on, otherwise it turns off. The resulting grid feeds into the same rule again. The model runs 7 rounds and reports the final grid."},
   DAYNIGHT: {fam:"2D grid", rule:"B3678/S34678",
-    body:"A close cousin of the Game of Life on the same kind of on/off grid, but with a busier rule that switches more squares on. It is called \"Day &amp; Night\" because the on-pattern and the off-pattern behave as mirror images of each other. The extra activity makes each round harder to follow by hand, yet the grid tends to settle into stable shapes - so models earn more partial credit, placing it in the middle of the range."},
+    body:"The same on/off grid and all-at-once update, with a rule that keeps more cells on: an off cell turns on with 3, 6, 7, or 8 neighbours on; an on cell stays on with 3, 4, 6, 7, or 8. (Called \"Day &amp; Night\" because on- and off-patterns follow the same rule.) The model runs 7 rounds and reports the final grid."},
   ECA110:   {fam:"1D row", rule:"Rule 110",
-    body:"A one-dimensional version: instead of a grid, a single row of on/off cells. Each cell's next value depends only on itself and its two immediate neighbours, looked up in a small fixed table, and the whole row advances one step at a time - 35 steps in all. This rule is powerful enough that, in principle, it could compute anything a computer can, so there is no clever shortcut. Only the final row is checked, all-or-nothing: one wrong cell anywhere fails it."},
+    body:"A single row of cells with its two ends joined into a loop, rather than a grid. Each cell's next value is set only by itself and its left and right neighbour, read from a fixed table covering the 8 possible left-cell-right patterns (this table is \"Rule 110\"). The whole row updates at once, for 35 steps. The model reports the final row, scored as one exact string."},
   ECA30:    {fam:"1D row", rule:"Rule 30",
-    body:"The same single-row setup with a different rule that produces wild, random-looking patterns - it is even used to generate random numbers. But because the step-by-step rule stays simple and local, models actually keep up with it better than the others, making it the easiest task and the top of the range."},
+    body:"The same single-row setup and 35 steps, using a different table (\"Rule 30\") whose output looks random. The model reports the final row."},
 };
 const state = {metric:"exact_pct", filter:"all", sort:"exact_pct", dir:-1, data:null};
 const $ = s => document.querySelector(s);
