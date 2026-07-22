@@ -311,7 +311,7 @@
       <span class="glyph" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i class="on"></i></span>
       <span class="n">03</span><h2 id="tasksec">Tasks</h2><span class="note">two CA families</span>
     </div>
-    <p class="lead">Every prompt is fully self-contained: the complete rule, a starting state, and a step count. The model never has to recognise the automaton by name - only execute it faithfully. Two families span an easy-to-hard range, so the benchmark separates models instead of flooring or saturating them.</p>
+    <p class="lead">Each prompt contains everything needed: the full rule, the starting state, and how many steps to run. The model doesn't need to know the automaton in advance - it just applies the rule step by step and reports the final state. There are four tasks in two groups: two run on a 2D grid, two on a single 1D row.</p>
     <div class="tasks" id="tasks"></div>
   </div></section>
 
