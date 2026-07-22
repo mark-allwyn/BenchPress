@@ -279,6 +279,7 @@
     </div>
     <div class="board"><table id="tbl"><thead><tr id="head"></tr></thead><tbody id="rows"></tbody></table></div>
     <p class="capt" id="cap"></p>
+    <p class="capt" id="floornote"></p>
   </div></section>
 
   <section><div class="wrap">
@@ -408,7 +409,7 @@ function render(){
       <td class="model"><span class="mname"><b>${disp}</b>${tag}${offtag}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
       ${cell({...m.overall,truncated:0},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}</tr>`;
   }).join(""):`<tr><td colspan="${order.length+3}" class="empty">No models match this filter.</td></tr>`;
-  $("#cap").innerHTML=`Sorted by <b>${state.sort==="name"?"name":state.sort}</b> · <b>${state.metric==="per_row_pct"?"per-row accuracy":"exact match"}</b>. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger; = response hit the token budget before finishing (counted as not correct). "no thinking" = model has no reasoning mode, not comparable to the thinking-on models.`;
+  $("#cap").innerHTML=`Sorted by <b>${state.sort==="name"?"name":state.sort}</b> · <b>${state.metric==="per_row_pct"?"per-row accuracy":"exact match"}</b>. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger; = response hit the token budget before finishing (counted as not correct). All ranked models run thinking-on.`;
 }
 
 function bindSwitch(id,key,attr){
@@ -463,6 +464,10 @@ fetch("./leaderboard.json").then(r=>r.json()).then(d=>{
   $("#rev").textContent=`SIMULATE ${d.version}`;
   $("#foot").textContent=`${d.benchmark} / ${d.version} · exported ${d.generated}`;
   render();
+  const fl=d.floor||[];
+  $("#floornote").innerHTML = fl.length ? "Non-reasoning floor (not ranked): " +
+    fl.map(m=>`<b>${m.name.replace(/-bedrock$/,"")}</b> ${pct(m.overall.exact_pct)}% exact / ${pct(m.overall.per_row_pct)}% per-row`).join(", ") +
+    " - a model with no extended-thinking mode, shown as a control: it floors, confirming the task requires reasoning, not recall." : "";
 }).catch(()=>{$("#rows").innerHTML=`<tr><td colspan="7" class="empty">Could not load leaderboard.json.<br>Serve this folder over HTTP (python -m http.server), not file://</td></tr>`;});
 sim();
 </script>

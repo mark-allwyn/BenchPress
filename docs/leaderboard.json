@@ -1,7 +1,7 @@
 {
   "benchmark": "Benchpress-Simulate",
   "version": "v2",
-  "generated": "2026-07-21",
+  "generated": "2026-07-22",
   "tasks": [
     "LIFE",
     "DAYNIGHT",
@@ -540,49 +540,6 @@
       }
     },
     {
-      "name": "nova-pro",
-      "company": "Amazon",
-      "type": "closed",
-      "launch_date": "2024-12-03",
-      "run_date": "2026-07-16",
-      "baseline": false,
-      "thinking_off": true,
-      "overall": {
-        "exact_pct": 0.0,
-        "per_row_pct": 4.0
-      },
-      "tasks": {
-        "LIFE": {
-          "exact_pct": 0.0,
-          "per_row_pct": 6.3,
-          "n": 25,
-          "truncated": 0,
-          "errors": 0
-        },
-        "DAYNIGHT": {
-          "exact_pct": 0.0,
-          "per_row_pct": 2.9,
-          "n": 25,
-          "truncated": 0,
-          "errors": 0
-        },
-        "ECA110": {
-          "exact_pct": 0.0,
-          "per_row_pct": 0.0,
-          "n": 25,
-          "truncated": 0,
-          "errors": 0
-        },
-        "ECA30": {
-          "exact_pct": 0.0,
-          "per_row_pct": 0.0,
-          "n": 25,
-          "truncated": 0,
-          "errors": 0
-        }
-      }
-    },
-    {
       "name": "qwen3-coder-30b",
       "company": "Alibaba",
       "type": "open",
@@ -648,6 +605,51 @@
         "DAYNIGHT": {
           "exact_pct": 0.0,
           "per_row_pct": 1.1,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    }
+  ],
+  "floor": [
+    {
+      "name": "nova-pro",
+      "company": "Amazon",
+      "type": "closed",
+      "launch_date": "2024-12-03",
+      "run_date": "2026-07-16",
+      "baseline": false,
+      "thinking_off": true,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 4.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 6.3,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 2.9,
           "n": 25,
           "truncated": 0,
           "errors": 0

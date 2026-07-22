@@ -118,7 +118,7 @@ Reading the flags and labels:
 - **⚑ (truncation)** means the response hit the 96000-token budget before finishing.
   Reasoning-heavy models can spend the whole budget thinking and never emit the final grid.
   A truncated item never produced a complete answer, so it counts as not correct, but it is flagged rather than silently scored wrong, because it reflects a capacity limit rather than a reasoning error.
-- **"no thinking"** marks a model with no extended-thinking mode (for example Amazon Nova), which therefore ran thinking-off and is not directly comparable to the thinking-on models.
+- **Thinking-on only.** The ranked board contains only models run with extended thinking. Models with no thinking mode (e.g. Amazon Nova) aren't comparable, so they're reported separately as a non-reasoning floor control rather than ranked.
 
 Scoring itself is pure byte-exact string comparison against the reference simulator, after a status check that separates a genuine answer from a refusal, a truncation, or an API error.
 There is no LLM judge.
@@ -135,11 +135,13 @@ Simulate v2 (96k budget), 14-model panel. The full sortable board is on the [liv
 | 4 | Claude Opus 4.7 | Anthropic | 49% | 58.0% |
 | 5 | Claude Sonnet 5 | Anthropic | 47% | 56.0% |
 | 6 | minimax-m2.5 | MiniMax (open) | 24% | 46.8% |
-| 7-14 | gpt-oss, qwen3, nemotron, glm, nova, ... | open / no-thinking | ≤9% | ≤13% |
+| 7-13 | gpt-oss-20b/120b, qwen3-235b/coder, minimax-m2.1, nemotron, glm | open | ≤9% | ≤14% |
+
+The ranked board is **thinking-on models only**. A non-reasoning model (Amazon Nova Pro, no extended-thinking mode) was run as a separate control and **floored at 0% exact / 4% per-row** - confirming the task requires reasoning, not recall.
 
 Two findings stand out:
 
-1. **Vendor separation.** The top five are all Anthropic, then a sharp cliff. The strongest open-weight model (minimax-m2.5) reaches 24% exact; the rest floor near zero. The one no-thinking model (Nova) floors, confirming the task genuinely requires reasoning.
+1. **Vendor separation.** The top five are all Anthropic, then a sharp cliff. The strongest open-weight model (minimax-m2.5) reaches 24% exact; the rest floor near zero.
 2. **Newer is not always better.** Opus 4.6 (67%) beats Opus 4.8 (58%) and Opus 4.7 (49%); Sonnet 4.6 (67%) beats Sonnet 5 (47%). The Opus 4.6 result reproduced across two independent runs (LIFE 92% then 88%), so it is a genuine regression on long-horizon simulation, not sampling noise.
 
 ## Quickstart

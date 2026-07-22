@@ -122,6 +122,11 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
         seen.add(name)
 
     entries.sort(key=lambda e: -e["overall"]["per_row_pct"])
+    # The ranked board is thinking-on models only (like-for-like). Models with no
+    # extended-thinking mode are demoted to a separate "floor" list - kept as a
+    # control (they show the task needs reasoning) but never ranked.
+    ranked = [e for e in entries if not e.get("thinking_off")]
+    floor = [e for e in entries if e.get("thinking_off")]
 
     cfg = frozen.get("official_run_config", {})
     return {
@@ -137,5 +142,6 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
             "thinking": cfg.get("thinking"),
         },
         "task_meta": frozen.get("tasks", {}),
-        "models": entries,
+        "models": ranked,
+        "floor": floor,
     }
