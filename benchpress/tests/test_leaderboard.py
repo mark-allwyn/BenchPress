@@ -21,13 +21,13 @@ def test_baseline_only_when_no_results(tmp_path):
     items = _frozen_items()
     board = build_leaderboard("simulate", items, [], {}, now="2026-07-16")
     assert board["benchmark"] == "Benchpress-Simulate"
-    assert board["version"] == "v1"
+    assert board["version"] == "v2"
     assert board["tasks"] == ["LIFE", "DAYNIGHT", "ECA110", "ECA30"]
-    assert board["config"]["max_tokens"] == 64000
+    assert board["config"]["max_tokens"] == 96000
     assert len(board["models"]) == 1
     base = board["models"][0]
     assert base["baseline"] is True and base["name"] == "claude-opus-4.8"
-    assert base["tasks"]["LIFE"]["exact_pct"] == 36
+    assert base["tasks"]["LIFE"]["exact_pct"] == 32
 
 
 class _GoldProvider:

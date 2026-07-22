@@ -13,7 +13,7 @@ from benchpress.providers.base import CompletionResult
 def test_load_frozen_simulate_has_official_config():
     frozen = load_frozen("simulate")
     assert frozen and frozen["official_run_config"]["seed"] == 42
-    assert frozen["official_run_config"]["max_tokens"] == 64000
+    assert frozen["official_run_config"]["max_tokens"] == 96000
 
 
 def test_manifest_path_none_for_unfrozen_benchmark():
@@ -87,14 +87,14 @@ def test_eval_frozen_config_overrides_model_params(tmp_path, monkeypatch):
         return _NullProvider()
 
     monkeypatch.setattr(cli, "get_provider", fake_get_provider)
-    # model declares a puny budget; the frozen config must override it to 64000.
+    # model declares a puny budget; the frozen config must override it to 96000.
     cfgfile = tmp_path / "config.yaml"
     cfgfile.write_text(
         "models:\n  fake-model:\n    provider: ollama\n    model: fake\n"
         "    params:\n      max_tokens: 100\n"
     )
     cli.cmd_eval(_args(config=str(cfgfile), results_dir=str(tmp_path / "r")))
-    assert captured["params"]["max_tokens"] == 64000
+    assert captured["params"]["max_tokens"] == 96000
 
 
 def test_eval_seed_override_mints_fresh_holdout(monkeypatch):

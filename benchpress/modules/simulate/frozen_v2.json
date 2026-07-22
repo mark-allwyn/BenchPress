@@ -1,0 +1,49 @@
+{
+  "benchmark": "Benchpress-Simulate",
+  "version": "v2",
+  "frozen": true,
+  "frozen_date": "2026-07-21",
+  "supersedes": "v1",
+  "note": "IMMUTABLE. v2 keeps v1's tasks and seed UNCHANGED and only raises the token budget 64000 -> 96000. Rationale: a budget ablation (re-thresholding a 128k run of minimax-m2.5 by per-item token usage, and 96k reruns of every model that truncated at 64k) showed the 64k cap was invalidly penalising verbose reasoners via truncation - e.g. Sonnet 4.6 went 16% -> 67% exact and minimax-m2.5 12% -> 24% purely from the budget change, with no other change. 96k captures essentially all reasoning (max output observed ~107k; only the most verbose models still truncate a few items). A budget change alters scores, so it is a NEW version, never an edit to v1. Scores are comparable within a version only.",
+  "module": "simulate",
+  "module_version": "1",
+
+  "official_run_config": {
+    "seed": 42,
+    "n_per_bundle": 25,
+    "tools": "OFF (mandatory - with a code interpreter these tasks are trivial)",
+    "thinking": "adaptive",
+    "effort": "high",
+    "max_tokens": 96000,
+    "read_timeout_seconds": 1800,
+    "scoring": "per-item conjunctive exact-match (headline) + per-row/per-part marginal accuracy (graded, primary); no LLM judge",
+    "validity_guard": "only trust items with stop_reason == 'end_turn'. max_tokens = truncated, None = timeout - both invalid. Truncations are surfaced, never silently scored as wrong."
+  },
+
+  "tasks": {
+    "LIFE":     {"kind": "life", "name": "Conway's Game of Life", "S": 7, "gens": 7, "density": 0.40, "born": [3], "survive": [2, 3]},
+    "DAYNIGHT": {"kind": "life", "name": "Day & Night", "S": 7, "gens": 7, "density": 0.45, "born": [3, 6, 7, 8], "survive": [3, 4, 6, 7, 8]},
+    "ECA110":   {"kind": "eca", "rule": 110, "W": 30, "N": 35, "density": 0.5},
+    "ECA30":    {"kind": "eca", "rule": 30, "W": 30, "N": 35, "density": 0.5}
+  },
+
+  "baseline": {
+    "model": "eu.anthropic.claude-opus-4-8 (Bedrock, eu-central-1)",
+    "measured_date": "2026-07-20",
+    "n": 25,
+    "results": {
+      "LIFE":     {"exact_pct": 32, "per_row_pct": 44.6, "truncated": 0},
+      "DAYNIGHT": {"exact_pct": 72, "per_row_pct": 74.9, "truncated": 0},
+      "ECA110":   {"exact_pct": 44, "per_row_pct": 44.0, "truncated": 0},
+      "ECA30":    {"exact_pct": 84, "per_row_pct": 84.0, "truncated": 0}
+    }
+  },
+
+  "caveats": [
+    "Cross-model panel measured (see docs/leaderboard.json): the top five are all Anthropic; open models top out at minimax-m2.5 (24% exact / 47% per-row).",
+    "Newer-is-not-always-better: Opus 4.6 (67% exact) and Sonnet 4.6 (67%) beat their newer siblings Opus 4.8 (58%) and Sonnet 5 (47%). Opus 4.6's LIFE result reproduced across two runs (92% / 88%).",
+    "Even at 96k the most verbose reasoners still truncate a few items (Sonnet 4.6 ~25, minimax-m2.5 ~4), so their true scores may be marginally higher. For the most verbose models there is no budget that is not somewhat unfair; truncation counts are reported for transparency.",
+    "Sample n=25 per task (100 items); ~+/-10% band, so close rankings (e.g. within the Anthropic cluster) are not statistically separable.",
+    "Domain is two cellular-automata families (faithful long-horizon simulation)."
+  ]
+}

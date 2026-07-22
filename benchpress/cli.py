@@ -85,10 +85,15 @@ def cmd_eval(a) -> int:
     spec = dict(models[a.model])
     params = dict(spec.get("params") or {})
     params.update(run_params)  # frozen run-config wins over per-model defaults
+    # --max-tokens overrides the frozen budget (for budget-ablation experiments,
+    # NOT an official frozen run); bump the read timeout for the larger generations.
+    if getattr(a, "max_tokens", None):
+        params["max_tokens"] = a.max_tokens
+        params["read_timeout"] = max(params.get("read_timeout", 900), 1800)
     spec["params"] = params
 
     provider = get_provider(spec)
-    path = _model_path(a.results_dir, a.benchmark, a.model)
+    path = Path(a.out) if getattr(a, "out", None) else _model_path(a.results_dir, a.benchmark, a.model)
     tools_note = "tools OFF, " if load_frozen(a.benchmark) else ""
     print(f"eval: {a.model} on {len(items)} {a.benchmark} items (v{meta.version}), "
           f"{tools_note}max_tokens={params.get('max_tokens', 'default')}", flush=True)
@@ -133,7 +138,11 @@ def _export_leaderboard(a) -> int:
     items, _, _, _ = _frozen_items(a.benchmark)  # join against the frozen item set
     # Exclude non-model artifacts (e.g. old confirm-* calibration runs).
     paths = [p for p in _paths(a.results_dir, a.benchmark) if "confirm" not in p.stem]
-    board = build_leaderboard(a.benchmark, items, paths, load_models(a.config))
+    # The manifest's static Opus baseline is only a bootstrap for an empty board;
+    # once real runs exist (including a fresh Opus 4.8), drop it to avoid a duplicate.
+    have_runs = any(persist.load(p).get("runs") for p in paths)
+    board = build_leaderboard(a.benchmark, items, paths, load_models(a.config),
+                              include_baseline=not have_runs)
     _emit(json.dumps(board, indent=2), a.out)
     return 0
 
@@ -205,6 +214,10 @@ def build_parser() -> argparse.ArgumentParser:
         if name in ("run", "eval"):
             p.add_argument("--rerun", action="store_true")
             p.add_argument("--workers", type=int, default=1)
+        if name == "eval":
+            p.add_argument("--max-tokens", type=int, default=None,
+                           help="override the frozen token budget (ablation only, not an official run)")
+            p.add_argument("--out", default=None, help="results file path override")
         if name == "export":
             p.add_argument("--out", default=None)
             p.add_argument("--format", choices=["json", "leaderboard"], default="json")
