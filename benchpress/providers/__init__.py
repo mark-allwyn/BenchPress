@@ -48,7 +48,8 @@ def get_provider(spec: dict) -> Provider:
         return OpenAIProvider(model, _key(spec), spec.get("base_url", "https://api.openai.com/v1"),
                               max_tokens=max_tokens, timeout=timeout)
     if provider == "google":
-        return GoogleProvider(model, _key(spec), max_tokens=max_tokens, timeout=timeout)
+        return GoogleProvider(model, _key(spec), max_tokens=max_tokens, timeout=timeout,
+                              thinking=thinking, effort=effort)
     if provider == "ollama":
         return OllamaProvider(model, spec.get("base_url", "http://localhost:11434/v1"),
                               max_tokens=max_tokens, timeout=timeout)

@@ -107,6 +107,53 @@ def test_google_parses_thoughts_tokens_and_finish_reason():
     assert r.thinking_tokens == 333
 
 
+def test_google_retries_on_429_then_succeeds():
+    calls = {"n": 0}
+
+    def handler(request):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return httpx.Response(429, text="RESOURCE_EXHAUSTED")
+        return httpx.Response(200, json={
+            "candidates": [{"content": {"parts": [{"text": "ok"}]}, "finishReason": "STOP"}],
+            "usageMetadata": {},
+        })
+
+    r = GoogleProvider("gemini-2.5-pro", "k", client=_client(handler), backoff_base=0).complete("x")
+    assert r.error is None and r.content == "ok" and calls["n"] == 2
+
+
+def test_google_gives_up_after_max_retries_on_429():
+    def handler(request):
+        return httpx.Response(429, text="RESOURCE_EXHAUSTED")
+
+    r = GoogleProvider("gemini-2.5-pro", "k", client=_client(handler),
+                       backoff_base=0, max_retries=2).complete("x")
+    assert r.error is not None and r.content == ""
+
+
+def test_google_honors_server_retry_delay_hint(monkeypatch):
+    # A 429 carrying RetryInfo.retryDelay should drive the sleep duration, so a
+    # throttled request waits out the quota window instead of a too-short backoff.
+    from benchpress.providers import google as g
+
+    slept = []
+    monkeypatch.setattr(g.time, "sleep", lambda s: slept.append(s))
+    calls = {"n": 0}
+
+    def handler(request):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return httpx.Response(429, json={"error": {"status": "RESOURCE_EXHAUSTED", "details": [
+                {"@type": "type.googleapis.com/google.rpc.RetryInfo", "retryDelay": "12s"}]}})
+        return httpx.Response(200, json={
+            "candidates": [{"content": {"parts": [{"text": "ok"}]}, "finishReason": "STOP"}],
+            "usageMetadata": {}})
+
+    r = GoogleProvider("gemini-3.6-flash", "k", client=_client(handler)).complete("x")
+    assert r.content == "ok" and slept == [12.0]
+
+
 # ---- Ollama ------------------------------------------------------------------
 
 def test_ollama_falls_back_to_reasoning_when_content_empty():

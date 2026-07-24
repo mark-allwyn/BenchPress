@@ -15,7 +15,7 @@
     --bg-3:  oklch(0.245 0.018 264);
     --bone:  oklch(0.935 0.014 85);
     --bone-2:oklch(0.72 0.015 264);
-    --bone-3:oklch(0.55 0.017 264);
+    --bone-3:oklch(0.635 0.017 264);
     --line:  oklch(0.30 0.014 264);
     --line-2:oklch(0.42 0.016 264);
     --acc:   oklch(0.705 0.195 34);
@@ -32,7 +32,7 @@
     --bg-3:  oklch(0.895 0.013 85);
     --bone:  oklch(0.20 0.02 264);
     --bone-2:oklch(0.40 0.02 264);
-    --bone-3:oklch(0.55 0.018 264);
+    --bone-3:oklch(0.485 0.018 264);
     --line:  oklch(0.83 0.010 85);
     --line-2:oklch(0.72 0.012 85);
     --acc:   oklch(0.565 0.205 33);
@@ -62,7 +62,8 @@
   .wm{display:flex; align-items:center; gap:13px}
   .wm .name{font-weight:800; font-size:1.06rem; letter-spacing:-.02em}
   .wm .name b{color:var(--acc)}
-  .wm .rev{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); letter-spacing:.06em; padding:3px 8px; border:1px solid var(--line)}
+  .wm .rev{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); letter-spacing:.06em; padding:3px 8px; border:1px solid var(--line); white-space:nowrap}
+  @media(max-width:460px){.wm .rev{display:none}}
   .top nav{display:flex; gap:8px}
   .top .secnav{gap:26px}
   .top .secnav a{font-family:var(--mono); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--bone-3); align-self:center; transition:color .15s; white-space:nowrap}
@@ -81,7 +82,7 @@
   .hero .ey{display:flex; align-items:center; gap:11px; margin-bottom:10px}
   .hero .ey::before{content:""; width:26px; height:2px; background:var(--acc)}
   h1{font-weight:800; letter-spacing:-.03em; line-height:.98;
-    font-size:clamp(1.55rem,1.3vw + 1.1rem,2.5rem); margin:0}
+    font-size:clamp(2rem,1.5vw + 1.5rem,3.05rem); margin:0}
   h1 .hl{color:var(--acc)}
   .lede{margin-top:12px; color:var(--bone-2); max-width:52ch; font-size:clamp(.85rem,.82rem + .2vw,.97rem); line-height:1.5}
   .lede b{color:var(--bone); font-weight:700}
@@ -104,7 +105,7 @@
   .spec{padding:0}
   .spec .kv{padding:16px clamp(12px,1.6vw,20px)}
   .spec .kv:first-child{padding-left:var(--gut)}
-  .spec .kv .k{font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bone-3)}
+  .spec .kv .k{font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bone-3)}
   .spec .kv .v{font-family:var(--mono); font-size:1.15rem; font-weight:600; margin-top:4px; letter-spacing:-.01em; color:var(--bone)}
   .specband{border-bottom:1px solid var(--line); background:var(--bg-2)}
 
@@ -114,7 +115,7 @@
   section + section{border-top:1px solid var(--line)}
   .head{display:flex; align-items:center; gap:16px; margin-bottom:clamp(18px,2.4vw,30px)}
   .head .glyph{width:26px; height:26px}
-  .head h2{font-weight:800; letter-spacing:-.03em; font-size:clamp(1.7rem,1.4rem + 1.4vw,2.7rem)}
+  .head h2{font-weight:800; letter-spacing:-.03em; font-size:clamp(1.5rem,1rem + 1.3vw,2.3rem)}
   .head .n{font-family:var(--mono); font-size:.8rem; color:var(--acc); font-weight:600}
   .head .note{margin-left:auto; font-family:var(--mono); font-size:.7rem; color:var(--bone-3); text-transform:uppercase; letter-spacing:.08em; text-align:right}
 
@@ -147,12 +148,12 @@
   .mname{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
   .mname b{font-weight:700; font-size:1.12rem; letter-spacing:-.02em}
   tr.top .mname b{font-size:1.24rem}
-  .tag{font-family:var(--mono); font-size:.58rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:3px 7px; border:1px solid var(--line-2); color:var(--bone-3)}
+  .tag{font-family:var(--mono); font-size:.66rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; padding:3px 7px; border:1px solid var(--line-2); color:var(--bone-3)}
   .tag.base{border-color:var(--acc); color:var(--acc)}
   .tag.off{border-color:var(--bone-3); color:var(--bone-3); cursor:help}
   .lead em{font-style:italic; color:var(--bone)}
   .fdchip{font-family:var(--mono); color:var(--acc); font-weight:600}
-  .mmeta{font-family:var(--mono); color:var(--bone-3); font-size:.68rem; margin-top:5px; letter-spacing:.01em}
+  .mmeta{font-family:var(--mono); color:var(--bone-3); font-size:.72rem; margin-top:5px; letter-spacing:.01em; white-space:nowrap}
   .cell{display:inline-grid; justify-items:end; gap:7px; min-width:92px}
   .val{font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:1.24rem; letter-spacing:-.03em; line-height:1}
   tr.top .val{font-size:1.4rem}
@@ -161,12 +162,56 @@
   .meter{width:100%; height:5px; background:var(--track)}
   .meter i{display:block; height:100%; background:var(--acc)}
   td.overall .meter i{background:var(--bone)}
-  .sub{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); font-variant-numeric:tabular-nums; letter-spacing:.01em}
+  .sub{font-family:var(--mono); font-size:.72rem; color:var(--bone-3); font-variant-numeric:tabular-nums; letter-spacing:.01em}
   .flag{color:var(--acc); font-family:var(--mono); font-size:.66rem; font-weight:600; cursor:help; margin-left:6px}
   tr.top td{background:linear-gradient(90deg,var(--bg-2),transparent 78%)}
   tr.top td:first-child{box-shadow:inset 3px 0 0 var(--acc)}
-  .capt{font-family:var(--mono); color:var(--bone-3); font-size:.68rem; margin-top:18px; letter-spacing:.01em; line-height:1.8}
+  .capt{font-family:var(--mono); color:var(--bone-3); font-size:.72rem; margin-top:18px; letter-spacing:.01em; line-height:1.75; max-width:88ch}
   .capt b{color:var(--bone-2); font-weight:600}
+  .tag.cap{border-color:var(--acc); color:var(--acc); cursor:help}
+  .val.gate{color:var(--bone-3); font-weight:400; font-size:1rem; cursor:help}
+
+  /* pinned identity columns so the row stays readable while score columns scroll */
+  @media(max-width:760px){
+    tbody td{padding:16px 12px}
+    thead th{padding:0 12px 12px}
+    td.model{min-width:150px}
+    .mname b{font-size:1.02rem}
+    tr.top .mname b{font-size:1.1rem}
+    /* keep rank + model visible while the score columns scroll */
+    thead th.lft:first-child, td.rank{position:sticky; left:0; z-index:2; width:44px; background:var(--bg)}
+    thead th.lft:nth-child(2), td.model{position:sticky; left:44px; z-index:2; background:var(--bg);
+      box-shadow:9px 0 11px -8px color-mix(in oklab,var(--bone) 22%,transparent)}
+    thead th.lft{z-index:5; background:var(--bg)}
+    tbody tr:hover td.rank, tbody tr:hover td.model{background:var(--bg-2)}
+    tr.top td.rank, tr.top td.model{background:var(--bg-2)}
+    tr.top td:first-child{box-shadow:inset 3px 0 0 var(--acc), 9px 0 11px -8px color-mix(in oklab,var(--bone) 22%,transparent)}
+  }
+
+  /* ── cost-vs-payoff bars ── */
+  .effhead{margin-top:44px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .effhead h3{font-size:1.15rem; letter-spacing:-.02em; font-weight:800}
+  .effhead .note{font-family:var(--mono); font-size:.66rem; color:var(--bone-3); text-transform:uppercase; letter-spacing:.08em}
+  .cvp{margin-top:16px; border:1px solid var(--line); background:var(--bg-2); padding:20px clamp(12px,2vw,22px); overflow-x:auto}
+  .cvp .cgrid{min-width:560px}
+  .cvp-head{display:grid; grid-template-columns:var(--pbc); gap:0 12px; padding-bottom:12px; margin-bottom:6px; border-bottom:1px solid var(--line)}
+  .cvp-head span{font-family:var(--mono); font-size:.62rem; text-transform:uppercase; letter-spacing:.09em; color:var(--bone-3)}
+  .cvp-head .hl{text-align:right} .cvp-head .hr{text-align:left}
+  .cvp-head .hl b,.cvp-head .hr b{color:var(--bone-2); font-weight:600}
+  .pb-row{display:grid; grid-template-columns:var(--pbc); gap:0 12px; align-items:center; height:32px}
+  .pb-row:hover{background:var(--bg)}
+  .pb-name{font-family:var(--mono); font-size:.74rem; color:var(--bone-2); text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .pb-row.star .pb-name b{color:var(--acc)}
+  .pb-name .cc{color:var(--acc); font-size:.56rem; margin-left:5px; letter-spacing:.04em}
+  .pb-cost{display:flex; align-items:center; justify-content:flex-end; gap:8px}
+  .pb-pay{display:flex; align-items:center; justify-content:flex-start; gap:8px; border-left:2px solid var(--line-2); padding-left:10px}
+  .pb-bar{height:15px; display:block; min-width:1px}
+  .pb-bar.cost{background:var(--line-2)}
+  .pb-row.star .pb-bar.cost{background:var(--bone-3)}
+  .pb-bar.pay{background:var(--acc)}
+  .pb-num{font-family:var(--mono); font-size:.68rem; color:var(--bone-2); font-variant-numeric:tabular-nums; min-width:38px}
+  .pb-cost .pb-num{text-align:right}
+  .pb-pay .pb-num{text-align:left; color:var(--bone)}
 
   /* ── task grid ── */
   .tasks{display:grid; grid-template-columns:1fr; border:1px solid var(--line); }
@@ -197,7 +242,7 @@
   .note .km{font-family:var(--mono); font-size:.85em; background:var(--bg-3); padding:1px 6px; color:var(--acc); font-weight:500}
   .note .fd{font-family:var(--mono); font-size:.82rem; color:var(--acc); border:1px solid var(--acc); padding:1px 6px; font-weight:500}
 
-  .lead{color:var(--bone-2); max-width:72ch; font-size:clamp(1rem,.94rem + .35vw,1.16rem); margin:-4px 0 32px}
+  .lead{color:var(--bone-2); max-width:60ch; font-size:clamp(1rem,.94rem + .35vw,1.16rem); margin:-4px 0 32px}
   .lead b{color:var(--bone); font-weight:700}
   .why{display:grid; grid-template-columns:1fr; border-top:1px solid var(--line-2)}
   @media(min-width:820px){.why{grid-template-columns:repeat(3,1fr)}}
@@ -280,6 +325,11 @@
     <div class="board"><table id="tbl"><thead><tr id="head"></tr></thead><tbody id="rows"></tbody></table></div>
     <p class="capt" id="cap"></p>
     <p class="capt" id="floornote"></p>
+
+    <div class="effhead"><h3 id="efficiency">What you pay vs what you get</h3><span class="note">reasoning cost against accuracy</span></div>
+    <p class="lead">Accuracy is only half the picture - it matters how many tokens a model <em>spends</em> to get there. Each row pairs the two: on the left, the median tokens it generates per item (thinking + answer - the cost); on the right, the per-row accuracy it earns (the payoff). A model with a <b>short left bar and a long right bar</b> is efficient - lots of accuracy for little reasoning. A <b>long left bar and a short right bar</b> is wasteful. Whether a model actually <em>finishes</em> within the budget shows up as a &dagger; truncation flag in the Overall column above; on the 96k budget almost every model finishes, so it only marks the most verbose reasoners. <span id="capnote"></span></p>
+    <div class="cvp"><div class="cgrid" id="cvp"></div></div>
+    <p class="capt" id="frontcap"></p>
   </div></section>
 
   <section><div class="wrap">
@@ -376,13 +426,16 @@ function tasks(meta,order){
 function head(order){
   const th=(id,lbl,note,cls="")=>`<th class="${cls}" data-k="${id}" aria-sort="${state.sort===id?(state.dir<0?'descending':'ascending'):'none'}">${lbl}${note?`<span class="rn">${note}</span>`:""}<span class="arw">${state.dir<0?'↓':'↑'}</span></th>`;
   $("#head").innerHTML=`<th class="lft" data-k="rank">#</th><th class="lft" data-k="name">Model</th>`+
-    th("overall","Overall","exact · per-row")+order.map(k=>th(k,k,TASK[k]?.rule||"")).join("");
+    th("overall","Overall","exact · per-row")+order.map(k=>th(k,k,TASK[k]?.rule||"")).join("")+
+    th("efficiency","Eff","rows / 1k tok");
   $("#head").querySelectorAll("th").forEach(t=>t.addEventListener("click",()=>{
     const k=t.dataset.k; if(k==="rank")return;
     if(state.sort===k)state.dir*=-1; else {state.sort=k; state.dir=k==="name"?1:-1;} render();
   }));
 }
-const scoreOf=(m,k)=>k==="name"?m.name.toLowerCase():k==="overall"?m.overall[state.metric]:m.tasks[k]?.[state.metric];
+const scoreOf=(m,k)=>k==="name"?m.name.toLowerCase():k==="overall"?m.overall[state.metric]:
+  k==="efficiency"?(m.efficiency_shown?m.overall.efficiency:null):
+  m.tasks[k]?.[state.metric];
 
 function cell(t,isOverall){
   if(!t)return `<td><span class="val dim">—</span></td>`;
@@ -392,9 +445,14 @@ function cell(t,isOverall){
   return `<td class="${isOverall?'overall':''}"><span class="cell"><span class="val">${pct(main)}<span class="u">%</span>${flag}</span>
     <span class="meter"><i style="width:${Math.max(0,Math.min(100,main||0))}%"></i></span><span class="sub">${pct(other)}% ${ol}</span></span></td>`;
 }
-
+function effCell(m){
+  const e=m.overall.efficiency;
+  if(m.efficiency_shown && e!=null)
+    return `<td><span class="val" title="${e.toFixed(3)} correct rows per 1,000 generated tokens (thinking + answer, pooled). Higher = more economical reasoning.">${e.toFixed(3)}</span></td>`;
+  return `<td><span class="val gate" title="Efficiency hidden: per-row accuracy is below the 10% floor, so a rows-per-token ratio would be misleadingly high. See the frontier chart, which plots every model.">—</span></td>`;
+}
 function render(){
-  const d=state.data,order=d.tasks;
+  const d=state.data,order=d.tasks,budget=d.config&&d.config.max_tokens;
   let rows=d.models.filter(m=>state.filter==="all"||m.type===state.filter);
   rows.sort((a,b)=>{const av=scoreOf(a,state.sort),bv=scoreOf(b,state.sort);
     return typeof av==="string"?state.dir*av.localeCompare(bv):state.dir*(((av??-1)-(bv??-1)));});
@@ -402,14 +460,46 @@ function render(){
   $("#rows").innerHTML=rows.length?rows.map((m,i)=>{
     const tag=m.baseline?`<span class="tag base">baseline</span>`:(m.type?`<span class="tag">${m.type}</span>`:"");
     const offtag=m.thinking_off?`<span class="tag off" title="Model has no extended-thinking mode; ran thinking-off, so not directly comparable to the thinking-on models">no thinking</span>`:"";
+    const capchip=(m.output_cap&&budget&&m.output_cap<budget)?`<span class="tag cap" title="This model's API hard-caps a single response at ${Math.round(m.output_cap/1024)}k tokens, below the ${Math.round(budget/1000)}k benchmark budget. On the hardest items its thinking can fill the budget before it answers, so it truncates. Affects comparability only for truncation-heavy models.">${Math.round(m.output_cap/1024)}k cap</span>`:"";
     const disp=m.name.replace(/-bedrock$/,"");
     const meta=[m.company,m.launch_date].filter(Boolean).join(" · ");
+    const trunc=order.reduce((s,k)=>s+((m.tasks[k]||{}).truncated||0),0);
     return `<tr class="${i===0?'top':''}" style="animation-delay:${i*30}ms">
       <td class="rank">${String(i+1).padStart(2,"0")}</td>
-      <td class="model"><span class="mname"><b>${disp}</b>${tag}${offtag}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
-      ${cell({...m.overall,truncated:0},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}</tr>`;
-  }).join(""):`<tr><td colspan="${order.length+3}" class="empty">No models match this filter.</td></tr>`;
-  $("#cap").innerHTML=`Sorted by <b>${state.sort==="name"?"name":state.sort}</b> · <b>${state.metric==="per_row_pct"?"per-row accuracy":"exact match"}</b>. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger; = response hit the token budget before finishing (counted as not correct). All ranked models run thinking-on.`;
+      <td class="model"><span class="mname"><b>${disp}</b>${tag}${offtag}${capchip}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
+      ${cell({...m.overall,truncated:trunc},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}${effCell(m)}</tr>`;
+  }).join(""):`<tr><td colspan="${order.length+4}" class="empty">No models match this filter.</td></tr>`;
+  $("#cap").innerHTML=`Sorted by <b>${state.sort==="name"?"name":state.sort}</b> · <b>${state.metric==="per_row_pct"?"per-row accuracy":"exact match"}</b>. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger;N in Overall = N responses that hit the token budget before finishing (counted as not correct). <b>Eff</b> = correct rows per 1k generated tokens (shown for models above 10% per-row; see the frontier below). All ranked models run thinking-on.`;
+}
+
+/* ── cost-vs-payoff: tokens spent (left) against accuracy earned (right) ── */
+function costPayoff(d){
+  const host=$("#cvp"); if(!host) return;
+  const budget=d.config&&d.config.max_tokens;
+  const rows=d.models
+    .filter(m=>m.gen_tokens_median!=null && m.overall.per_row_pct!=null)
+    .map(m=>({name:m.name.replace(/-bedrock$/,""), tok:m.gen_tokens_median, acc:m.overall.per_row_pct,
+              eff:m.efficiency_shown?m.overall.efficiency:null,
+              cap:!!(m.output_cap&&budget&&m.output_cap<budget)}))
+    .sort((a,b)=>b.acc-a.acc);   // by payoff, so cost variation is the scannable story
+  if(!rows.length){host.innerHTML=""; return;}
+  const maxTok=Math.max(...rows.map(r=>r.tok));
+  const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  const kt=v=>v>=1000?Math.round(v/1000)+"k":v+"";
+  let html=`<div class="cvp-head"><span class="hl"><b>Cost</b> — tokens / item</span>`+
+           `<span></span><span class="hr"><b>Payoff</b> — per-row accuracy</span></div>`;
+  for(const r of rows){
+    const cw=Math.max(1,r.tok/maxTok*100), pw=Math.max(1,r.acc);
+    const cap=r.cap?`<span class="cc" title="Ran against a 64k output cap, below the ${Math.round(budget/1000)}k budget">64k</span>`:"";
+    html+=`<div class="pb-row" title="${esc(r.name)} — ${kt(r.tok)} tokens/item, ${r.acc}% per-row${r.eff!=null?`, ${r.eff.toFixed(3)} rows/1k`:""}">`+
+      `<div class="pb-name"><b>${esc(r.name)}</b>${cap}</div>`+
+      `<div class="pb-cost"><span class="pb-num">${kt(r.tok)}</span><span class="pb-bar cost" style="width:${cw}%"></span></div>`+
+      `<div class="pb-pay"><span class="pb-bar pay" style="width:${pw}%"></span><span class="pb-num">${pct(r.acc)}%</span></div>`+
+      `</div>`;
+  }
+  // grid columns: name | cost | payoff
+  host.style.setProperty("--pbc","174px 1fr 1fr");
+  host.innerHTML=html;
 }
 
 function bindSwitch(id,key,attr){
@@ -464,6 +554,11 @@ fetch("./leaderboard.json").then(r=>r.json()).then(d=>{
   $("#rev").textContent=`SIMULATE ${d.version}`;
   $("#foot").textContent=`${d.benchmark} / ${d.version} · exported ${d.generated}`;
   render();
+  costPayoff(d);
+  const capped=[...d.models,...(d.floor||[])].filter(m=>m.output_cap&&d.config&&d.config.max_tokens&&m.output_cap<d.config.max_tokens);
+  const bud=d.config&&d.config.max_tokens?Math.round(d.config.max_tokens/1000):null;
+  $("#capnote").innerHTML = capped.length ? `<b>Budget note:</b> ${capped.map(m=>m.name.replace(/-bedrock$/,"")).join(", ")} run against an API that hard-caps output at ${Math.round(capped[0].output_cap/1024)}k tokens - below this board's ${bud}k budget - so on the hardest items their thinking can fill the budget before they answer, causing truncations that count as not correct. Every other model ran at the full ${bud}k, so this affects comparability only for these capped, truncation-prone models. Flagged with a <span class="tag cap" style="cursor:default">64k cap</span> chip above.` : "";
+  $("#frontcap").innerHTML = `Rows are sorted by accuracy (payoff). Read across: models with similar right bars but very different left bars reveal the efficiency gap - e.g. <b>Sonnet 4.6</b> spends the most tokens of anyone (72k) for mid-pack accuracy, while <b>Opus 4.6</b> earns the top score on 40k. Left bars scale to the most expensive model; right bars are absolute per-row accuracy. Gemini models marked <b>64k</b> hit a sub-budget output cap.`;
   const fl=d.floor||[];
   $("#floornote").innerHTML = fl.length ? "Non-reasoning floor (not ranked): " +
     fl.map(m=>`<b>${m.name.replace(/-bedrock$/,"")}</b> ${pct(m.overall.exact_pct)}% exact / ${pct(m.overall.per_row_pct)}% per-row`).join(", ") +

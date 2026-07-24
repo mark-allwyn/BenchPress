@@ -122,6 +122,23 @@ Reading the flags and labels:
 Scoring itself is pure byte-exact string comparison against the reference simulator, after a status check that separates a genuine answer from a refusal, a truncation, or an API error.
 There is no LLM judge.
 
+### Reasoning efficiency (accuracy per token)
+
+Beyond raw accuracy, the leaderboard reports how *economically* a model reasons: **efficiency** is the number of correct rows produced per 1,000 tokens the model generated (thinking plus answer), pooled across all items.
+Higher means more correct output for less reasoning.
+
+Because a ratio rewards a tiny denominator, a model that emits almost nothing and lands a row or two by luck would otherwise look "most efficient", so the efficiency *number* in the table is shown only for models above 10% per-row accuracy (others show `—`).
+
+The dashboard tells the story with a **cost-vs-payoff** chart: one row per model, pairing the median tokens it generates per item (the cost, left) against the per-row accuracy it earns (the payoff, right).
+A short left bar and a long right bar is efficient; a long left bar and a short right bar is wasteful.
+Sorted by accuracy, it makes the efficiency gap obvious - e.g. Sonnet 4.6 spends the most tokens of any model (72k/item) for mid-pack accuracy, while Opus 4.6 earns the top score on 40k.
+
+Token accounting is provider-aware. `generated_tokens` = `output_tokens` for every provider except Google/Gemini, whose API reports the visible answer and the thinking separately, so there `generated_tokens = output_tokens + thinking_tokens`. This keeps "total tokens the model generated to answer" comparable across vendors. (Efficiency measures reasoning *economy*, a complement to accuracy - not a capability score on its own; a capable model can still be verbose.)
+
+Truncation is the flip side: a `⚑N` flag in the Overall column counts how many items ran out of budget before finishing. On the 96k budget almost every model finishes, so it only marks the most verbose reasoners (e.g. Sonnet 4.6).
+
+> **Gemini budget caveat.** The Gemini API hard-caps a single response (thinking + answer) at **65,536 tokens** and silently clamps a larger request down to it. Every current `gemini-*` text model is affected, so Gemini effectively ran below the 96k budget the rest of the board used. On the hardest tasks (ECA110/ECA30) a verbose Gemini model can spend its whole 64k budget thinking and truncate before printing the grid. This affects comparability only for the truncation-heavy Gemini models; each is flagged with a `64k cap` chip on the dashboard.
+
 ## Results
 
 Simulate v2 (96k budget), 14-model panel. The full sortable board is on the [live dashboard](https://mark-allwyn.github.io/BenchPress/); the top of it:
