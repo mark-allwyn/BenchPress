@@ -51,7 +51,7 @@ What makes the number trustworthy:
 - **Tools-off.** A code interpreter makes every task a five-line program, so removing tools measures the model's own execution rather than its ability to call a tool.
 - **Contamination-resistant.** Questions are generated from a seed, so a fresh, never-seen variant can be minted at any time to check whether a model memorised the public set.
 
-Across a 14-model panel the scores span a wide, non-saturated range - the frontier tops out near **67% exact** while every open-weight model floors **below 25%** - with Conway's Life as the hardest anchor. See [Results](#results) below.
+Across a 19-model panel the scores span a wide, non-saturated range - the frontier tops out near **67% exact** while every open-weight model floors **below 25%** - with Conway's Life as the hardest anchor. See [Results](#results) below.
 
 ## What a score does and does not mean
 
@@ -155,24 +155,40 @@ Truncation is the flip side: a `⚑N` flag in the Overall column counts how many
 
 ## Results
 
-Simulate v2 (96k budget), 14-model panel. The full sortable board is on the [live dashboard](https://mark-allwyn.github.io/BenchPress/); the top of it:
+Simulate v2 (96k budget): 19 ranked (thinking-on) models plus a non-reasoning floor control.
+Ordered by per-row accuracy (the headline metric); the full sortable board is on the [live dashboard](https://mark-allwyn.github.io/BenchPress/).
 
-| # | Model | Vendor | Exact | Per-row |
-|---|-------|--------|------:|--------:|
-| 1 | Claude Opus 4.6 | Anthropic | 67% | 78.8% |
-| 2 | Claude Sonnet 4.6 | Anthropic | 67% | 54.2% |
-| 3 | Claude Opus 4.8 | Anthropic | 58% | 60.2% |
-| 4 | Claude Opus 4.7 | Anthropic | 49% | 58.0% |
-| 5 | Claude Sonnet 5 | Anthropic | 47% | 56.0% |
-| 6 | minimax-m2.5 | MiniMax (open) | 24% | 46.8% |
-| 7-13 | gpt-oss-20b/120b, qwen3-235b/coder, minimax-m2.1, nemotron, glm | open | ≤9% | ≤14% |
+| # | Model | Vendor | Per-row | Exact | Eff (rows/1k) |
+|---|-------|--------|--------:|------:|--------------:|
+| 1 | Claude Opus 4.6 | Anthropic | 78.8% | 67% | 0.073 |
+| 2 | Claude Opus 4.8 | Anthropic | 60.2% | 58% | 0.065 |
+| 3 | Claude Opus 4.7 | Anthropic | 58.0% | 49% | 0.074 |
+| 4 | Claude Sonnet 5 | Anthropic | 56.0% | 47% | 0.044 |
+| 5 | Claude Sonnet 4.6 | Anthropic | 54.2% | 67% | 0.029 |
+| 6 | minimax-m2.5 | MiniMax (open) | 46.8% | 24% | 0.028 |
+| 7 | gemini-3.1-pro | Google | 44.8% | 26% | 0.047 |
+| 8 | gemini-3.5-flash | Google | 31.5% | 17% | 0.024 |
+| 9 | gemini-3.6-flash | Google | 20.5% | 7% | 0.020 |
+| 10 | gemini-3-flash | Google | 16.0% | 5% | 0.014 |
+| 11 | minimax-m2.1 | MiniMax (open) | 13.5% | 4% | 0.015 |
+| 12 | gpt-oss-20b | OpenAI (open) | 12.8% | 9% | 0.011 |
+| 13 | gpt-oss-120b | OpenAI (open) | 9.0% | 4% | — |
+| 14 | gemini-2.5-flash | Google | 7.5% | 0% | — |
+| 15 | qwen3-235b | Alibaba (open) | 6.8% | 0% | — |
+| 16 | nemotron-3-super-120b | NVIDIA (open) | 4.5% | 0% | — |
+| 17 | qwen3-coder-30b | Alibaba (open) | 3.5% | 1% | — |
+| 18 | gemini-2.5-pro | Google | 2.5% | 0% | — |
+| 19 | glm-4.7-flash | Z.ai (open) | 0.8% | 0% | — |
 
-The ranked board is **thinking-on models only**. A non-reasoning model (Amazon Nova Pro, no extended-thinking mode) was run as a separate control and **floored at 0% exact / 4% per-row** - confirming the task requires reasoning, not recall.
+Efficiency is shown only for models above 10% per-row (below that a rows-per-token ratio flatters cheap-and-wrong models).
+The four Google `gemini-*` rows ran at a 64k output cap (see the Gemini caveat above); truncations (`⚑`) were material only for Sonnet 4.6 (25) and gemini-3.5-flash (10).
+The non-reasoning floor control (Amazon Nova Pro, no extended-thinking mode) **floored at 0% exact / 4% per-row**, confirming the task requires reasoning, not recall.
 
-Two findings stand out:
+Findings that stand out:
 
-1. **Vendor separation.** The top five are all Anthropic, then a sharp cliff. The strongest open-weight model (minimax-m2.5) reaches 24% exact; the rest floor near zero.
-2. **Newer is not always better.** Opus 4.6 (67%) beats Opus 4.8 (58%) and Opus 4.7 (49%); Sonnet 4.6 (67%) beats Sonnet 5 (47%). The Opus 4.6 result reproduced across two independent runs (LIFE 92% then 88%), so it is a genuine regression on long-horizon simulation, not sampling noise.
+1. **Vendor separation.** The top five are all Anthropic, then a sharp cliff. The best non-Anthropic model is gemini-3.1-pro on exact-match (26%) and minimax-m2.5 on per-row (46.8%); everything else floors below ~14% per-row.
+2. **Newer is not always better.** Opus 4.6 (67% exact) beats Opus 4.8 (58%) and Opus 4.7 (49%); Sonnet 4.6 (67%) beats Sonnet 5 (47%). The same holds inside Google: gemini-3.5-flash (17%) beats the newer gemini-3.6-flash (7%), and gemini-2.5-pro floors while gemini-2.5-flash does not. Opus 4.6's LIFE result reproduced across two runs (92% then 88%), so this is a genuine long-horizon regression, not sampling noise.
+3. **Efficiency is a separate axis from accuracy.** Opus 4.7/4.6 reason most economically; Sonnet 4.6 is the least efficient performer (0.029), spending ~72k tokens/item for mid-pack accuracy. See the cost-vs-payoff chart on the dashboard.
 
 ## Quickstart
 
