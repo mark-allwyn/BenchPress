@@ -45,6 +45,30 @@ def test_google_honors_max_tokens():
     assert cap["generationConfig"]["maxOutputTokens"] == 64000
 
 
+def test_google_3x_uses_thinking_level_at_effort():
+    # Gemini 3.x controls reasoning with generationConfig.thinkingConfig.thinkingLevel.
+    cap = {}
+    GoogleProvider("gemini-3.1-pro-preview", "k", client=_capturing_client(cap),
+                   thinking="adaptive", effort="high").complete("x")
+    assert cap["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "high"}
+
+
+def test_google_25_uses_thinking_budget_not_level():
+    # Gemini 2.5 rejects thinkingLevel; adaptive effort maps to a dynamic budget (-1).
+    cap = {}
+    GoogleProvider("gemini-2.5-pro", "k", client=_capturing_client(cap),
+                   thinking="adaptive", effort="high").complete("x")
+    assert cap["generationConfig"]["thinkingConfig"] == {"thinkingBudget": -1}
+
+
+def test_google_no_thinking_config_by_default():
+    # With no thinking/effort injected, send no thinkingConfig (model default).
+    cap = {}
+    GoogleProvider("gemini-2.5-flash", "k", client=_capturing_client(cap),
+                   max_tokens=1000).complete("x")
+    assert "thinkingConfig" not in cap["generationConfig"]
+
+
 def test_ollama_honors_max_tokens():
     cap = {}
     OllamaProvider("glm-5", client=_capturing_client(cap), max_tokens=32000).complete("x")
@@ -81,6 +105,15 @@ def test_get_provider_threads_params_to_google():
     spec = {"provider": "google", "model": "gemini-3-pro", "api_key_env": "X",
             "params": {"max_tokens": 48000}}
     assert get_provider(spec).native_config["max_output_tokens"] == 48000
+
+
+def test_get_provider_threads_thinking_and_effort_to_google():
+    spec = {"provider": "google", "model": "gemini-3.1-pro-preview", "api_key_env": "X",
+            "params": {"max_tokens": 96000, "thinking": "adaptive", "effort": "high"}}
+    prov = get_provider(spec)
+    assert isinstance(prov, GoogleProvider)
+    assert prov.thinking == "adaptive" and prov.effort == "high"
+    assert prov.native_config["thinking_config"] == {"thinkingLevel": "high"}
 
 
 def test_get_provider_threads_thinking_and_tokens_to_bedrock():
