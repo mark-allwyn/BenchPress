@@ -133,9 +133,9 @@
   .board{width:100%; overflow-x:auto; margin-top:22px}
   table{width:100%; border-collapse:collapse; min-width:820px}
   thead th{text-align:right; padding:0 18px 14px; border-bottom:2px solid var(--line-2); white-space:nowrap; vertical-align:bottom;
-    cursor:pointer; user-select:none; font-family:var(--mono); font-size:.66rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--bone-2)}
+    cursor:pointer; user-select:none; font-family:var(--mono); font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--bone)}
   thead th.lft{text-align:left}
-  thead th .rn{display:block; font-weight:400; color:var(--bone-3); font-size:.6rem; margin-top:5px; letter-spacing:.02em}
+  thead th .rn{display:block; font-weight:400; color:var(--bone-3); font-size:.66rem; margin-top:5px; letter-spacing:.01em; text-transform:none}
   thead th:hover{color:var(--bone)}
   thead th[aria-sort="descending"],thead th[aria-sort="ascending"]{color:var(--acc)}
   .arw{opacity:0; margin-left:6px}
@@ -308,12 +308,13 @@
       <span class="glyph" aria-hidden="true"><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
       <span class="n">01</span><h2>Leaderboard</h2>
     </div>
-    <p class="lead">Each task cell shows two numbers: the <b>large one is the selected headline metric</b>, the small one beneath it is the other. <b>Exact match</b> (the default) is the share of grids the model got <em>completely</em> right - every row, all-or-nothing. <b>Per-row accuracy</b> is the share of individual rows correct - partial credit, graded and non-saturating. A model can score on per-row while scoring 0% exact if it drifts by only a cell or two. A dagger (<span class="fdchip">&dagger;N</span>) flags N responses that hit the token budget before finishing, counted as not correct. Switch the headline with <b>Exact / Per-row</b> below.</p>
+    <p class="lead">Every cell shows two numbers. The <b>large one is per-row accuracy</b> (the default): the share of individual output rows the model got right - a graded score that keeps discriminating even when no model gets a whole grid perfect. The <b>small number below</b> is exact match: the share of grids correct in <em>every</em> row, all-or-nothing. Per-row leads because it is lower-variance and does not saturate; flip the large number with <b>Per-row / Exact</b> below.</p>
+    <p class="lead" style="margin-top:-18px">Reading a cell: <b>bar</b> = the large metric; <span class="fdchip">&dagger;N</span> = N answers cut off by the token budget (counted as wrong); <b>Eff</b> = correct rows per 1,000 tokens the model generated. Click any column heading to sort by it.</p>
     <div class="toolbar">
       <div class="field"><span class="fl">Metric</span>
         <div class="switch" id="metric" role="group" aria-label="Metric">
-          <button data-m="exact_pct" aria-pressed="true">Exact</button>
-          <button data-m="per_row_pct" aria-pressed="false">Per-row</button>
+          <button data-m="per_row_pct" aria-pressed="true">Per-row</button>
+          <button data-m="exact_pct" aria-pressed="false">Exact</button>
         </div></div>
       <div class="field"><span class="fl">Type</span>
         <div class="switch" id="filter" role="group" aria-label="Filter">
@@ -404,7 +405,7 @@ const TASK = {
   ECA30:    {fam:"1D row", rule:"Rule 30",
     body:"The same single-row setup and 35 steps, using a different table (\"Rule 30\") whose output looks random. The model reports the final row."},
 };
-const state = {metric:"exact_pct", filter:"all", sort:"overall", dir:-1, data:null};
+const state = {metric:"per_row_pct", filter:"all", sort:"overall", dir:-1, data:null};
 const $ = s => document.querySelector(s);
 const pct = v => v==null ? "—" : (Math.round(v*10)/10).toFixed(1);
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -424,10 +425,11 @@ function tasks(meta,order){
   }).join("");
 }
 
+const TASK_SUB={LIFE:"Conway's Life", DAYNIGHT:"Day & Night", ECA110:"Rule 110 · 1D", ECA30:"Rule 30 · 1D"};
 function head(order){
   const th=(id,lbl,note,cls="")=>`<th class="${cls}" data-k="${id}" aria-sort="${state.sort===id?(state.dir<0?'descending':'ascending'):'none'}">${lbl}${note?`<span class="rn">${note}</span>`:""}<span class="arw">${state.dir<0?'↓':'↑'}</span></th>`;
   $("#head").innerHTML=`<th class="lft" data-k="rank">#</th><th class="lft" data-k="name">Model</th>`+
-    th("overall","Overall","exact · per-row")+order.map(k=>th(k,k,TASK[k]?.rule||"")).join("")+
+    th("overall","Overall","per-row · exact")+order.map(k=>th(k,k,TASK_SUB[k]||TASK[k]?.rule||"")).join("")+
     th("efficiency","Eff","rows / 1k tok");
   $("#head").querySelectorAll("th").forEach(t=>t.addEventListener("click",()=>{
     const k=t.dataset.k; if(k==="rank")return;
