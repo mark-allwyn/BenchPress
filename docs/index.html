@@ -354,6 +354,7 @@
         <p>Following a multi-step procedure, executing an algorithm, or holding state across a long tool-using trajectory all lean on the same skill. A model that loses the thread at step 15 here will lose it at step 15 of a real workflow. Tools normally hide this - a code interpreter makes every task trivial - so we take tools away to measure the raw capability.</p>
       </div>
     </div>
+    <p class="capt"><b>What a score is not.</b> This is not a tool-use, agentic, or general-capability score. Tools are off by design, so a low score means a model simulates poorly <em>by hand</em> - not that it is weak with tools; a strong tool-using model can score low here and still excel in a tool-enabled setting. Scores are genuine, not formatting artifacts: on the lowest-scoring vendor every response finished cleanly and every grid parsed exactly as written, so the misses are real drift, not answers we failed to read.</p>
   </div></section>
 
   <section><div class="wrap">
@@ -488,7 +489,7 @@ function costPayoff(d){
   const maxTok=Math.max(...rows.map(r=>r.tok));
   const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   const kt=v=>v>=1000?Math.round(v/1000)+"k":v+"";
-  let html=`<div class="cvp-head"><span class="hl"><b>Cost</b> — tokens / item</span>`+
+  let html=`<div class="cvp-head"><span class="hl"><b>Cost</b> — output tokens / item (thinking + answer)</span>`+
            `<span></span><span class="hr"><b>Payoff</b> — per-row accuracy</span></div>`;
   for(const r of rows){
     const cw=Math.max(1,r.tok/maxTok*100), pw=Math.max(1,r.acc);
@@ -560,7 +561,7 @@ fetch("./leaderboard.json").then(r=>r.json()).then(d=>{
   const capped=[...d.models,...(d.floor||[])].filter(m=>m.output_cap&&d.config&&d.config.max_tokens&&m.output_cap<d.config.max_tokens);
   const bud=d.config&&d.config.max_tokens?Math.round(d.config.max_tokens/1000):null;
   $("#capnote").innerHTML = capped.length ? `<b>Budget note:</b> ${capped.map(m=>m.name.replace(/-bedrock$/,"")).join(", ")} run against an API that hard-caps output at ${Math.round(capped[0].output_cap/1024)}k tokens - below this board's ${bud}k budget - so on the hardest items their thinking can fill the budget before they answer, causing truncations that count as not correct. Every other model ran at the full ${bud}k, so this affects comparability only for these capped, truncation-prone models. Flagged with a <span class="tag cap" style="cursor:default">64k cap</span> chip above.` : "";
-  $("#frontcap").innerHTML = `Rows are sorted by accuracy (payoff). Read across: models with similar right bars but very different left bars reveal the efficiency gap - e.g. <b>Sonnet 4.6</b> spends the most tokens of anyone (72k) for mid-pack accuracy, while <b>Opus 4.6</b> earns the top score on 40k. Left bars scale to the most expensive model; right bars are absolute per-row accuracy. Gemini models marked <b>64k</b> hit a sub-budget output cap.`;
+  $("#frontcap").innerHTML = `Cost is <b>output tokens per item</b> - the model's thinking plus its final answer (median); the ~200-token prompt is excluded as negligible and near-constant across models. Rows are sorted by accuracy (payoff). Read across: models with similar right bars but very different left bars reveal the efficiency gap - e.g. <b>Sonnet 4.6</b> spends the most tokens of anyone (72k) for mid-pack accuracy, while <b>Opus 4.6</b> earns the top score on 40k. Left bars scale to the most expensive model; right bars are absolute per-row accuracy. Gemini models marked <b>64k</b> hit a sub-budget output cap.`;
   const fl=d.floor||[];
   $("#floornote").innerHTML = fl.length ? "Non-reasoning floor (not ranked): " +
     fl.map(m=>`<b>${m.name.replace(/-bedrock$/,"")}</b> ${pct(m.overall.exact_pct)}% exact / ${pct(m.overall.per_row_pct)}% per-row`).join(", ") +

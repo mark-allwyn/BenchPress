@@ -53,6 +53,20 @@ What makes the number trustworthy:
 
 Across a 14-model panel the scores span a wide, non-saturated range - the frontier tops out near **67% exact** while every open-weight model floors **below 25%** - with Conway's Life as the hardest anchor. See [Results](#results) below.
 
+## What a score does and does not mean
+
+Benchpress measures one narrow thing: **tools-off, in-context execution of a deterministic procedure over many steps** - whether a model can hold an exact state in its head and update it correctly, step after step, without drifting.
+
+It deliberately does **not** measure:
+
+- **Tool-use or agentic ability.** With a code interpreter every task here is a five-line program. Tools are off on purpose, so a low score does **not** mean a model is weak at real agentic or coding work - only that it is being asked to simulate by hand instead of by writing code. A model tuned for orchestrating tools can score low here yet excel in a tool-enabled setting.
+- **Knowledge, breadth, or multimodal skill.** This is a single procedural probe, not a general-capability score.
+- **Real-world performance where tools are available.**
+
+Why the narrow skill still matters: long tool-using trajectories, multi-step procedures, and algorithm execution all depend on holding state across many steps, and a model that drifts at step 15 of a cellular automaton is prone to drift at step 15 of a real workflow. Benchpress isolates that one failure mode - which most benchmarks hide by allowing tools or grading loosely - and nothing more.
+
+**The scores are genuine, not formatting artifacts.** We verified this on the lowest-scoring frontier vendor: across a full 100-item Gemini run, every response finished cleanly and every grid was parsed exactly as the model wrote it; the wrong answers are wrong *grids* - the model's own step-by-step scratch-work matches its final answer - not correct answers we failed to read. A low score here reflects genuine drift in the simulation, not a scoring quirk.
+
 ## Design principles
 
 - **Deterministic.** Items are generated from a fixed seed. The same seed reproduces the exact same questions for every model.
