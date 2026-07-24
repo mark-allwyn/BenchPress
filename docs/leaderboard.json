@@ -1,7 +1,7 @@
 {
   "benchmark": "Benchpress-Simulate",
   "version": "v2",
-  "generated": "2026-07-22",
+  "generated": "2026-07-23",
   "tasks": [
     "LIFE",
     "DAYNIGHT",
@@ -74,9 +74,14 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 40165,
       "overall": {
         "exact_pct": 67.0,
-        "per_row_pct": 78.8
+        "per_row_pct": 78.8,
+        "efficiency": 0.0732,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -117,9 +122,14 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 36813,
       "overall": {
         "exact_pct": 58.0,
-        "per_row_pct": 60.2
+        "per_row_pct": 60.2,
+        "efficiency": 0.0653,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -160,9 +170,14 @@
       "run_date": "2026-07-17",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 31408,
       "overall": {
         "exact_pct": 49.0,
-        "per_row_pct": 58.0
+        "per_row_pct": 58.0,
+        "efficiency": 0.0744,
+        "resilience_pct": 99.0
       },
       "tasks": {
         "LIFE": {
@@ -203,9 +218,14 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 51448,
       "overall": {
         "exact_pct": 47.0,
-        "per_row_pct": 56.0
+        "per_row_pct": 56.0,
+        "efficiency": 0.0442,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -246,9 +266,14 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 72482,
       "overall": {
         "exact_pct": 67.0,
-        "per_row_pct": 54.2
+        "per_row_pct": 54.2,
+        "efficiency": 0.0293,
+        "resilience_pct": 75.0
       },
       "tasks": {
         "LIFE": {
@@ -289,9 +314,14 @@
       "run_date": "2026-07-21",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 63903,
       "overall": {
         "exact_pct": 24.0,
-        "per_row_pct": 46.8
+        "per_row_pct": 46.8,
+        "efficiency": 0.0282,
+        "resilience_pct": 96.0
       },
       "tasks": {
         "LIFE": {
@@ -325,6 +355,198 @@
       }
     },
     {
+      "name": "gemini-3.1-pro",
+      "company": "Google",
+      "type": "closed",
+      "launch_date": null,
+      "run_date": "2026-07-23",
+      "baseline": false,
+      "thinking_off": false,
+      "output_cap": 65536,
+      "efficiency_shown": true,
+      "gen_tokens_median": 38191,
+      "overall": {
+        "exact_pct": 26.0,
+        "per_row_pct": 44.8,
+        "efficiency": 0.0473,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 36.0,
+          "per_row_pct": 50.3,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 44.0,
+          "per_row_pct": 48.6,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 8.0,
+          "per_row_pct": 8.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 16.0,
+          "per_row_pct": 16.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "gemini-3.5-flash",
+      "company": "Google",
+      "type": "closed",
+      "launch_date": "2026-05-01",
+      "run_date": "2026-07-23",
+      "baseline": false,
+      "thinking_off": false,
+      "output_cap": 65536,
+      "efficiency_shown": true,
+      "gen_tokens_median": 51296,
+      "overall": {
+        "exact_pct": 17.0,
+        "per_row_pct": 31.5,
+        "efficiency": 0.0242,
+        "resilience_pct": 90.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 28.0,
+          "per_row_pct": 45.1,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 16.0,
+          "per_row_pct": 23.4,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 4.0,
+          "per_row_pct": 4.0,
+          "n": 25,
+          "truncated": 7,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 20.0,
+          "per_row_pct": 20.0,
+          "n": 25,
+          "truncated": 3,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "gemini-3.6-flash",
+      "company": "Google",
+      "type": "closed",
+      "launch_date": "2026-07-21",
+      "run_date": "2026-07-23",
+      "baseline": false,
+      "thinking_off": false,
+      "output_cap": 65536,
+      "efficiency_shown": true,
+      "gen_tokens_median": 41348,
+      "overall": {
+        "exact_pct": 7.0,
+        "per_row_pct": 20.5,
+        "efficiency": 0.0195,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 8.0,
+          "per_row_pct": 23.4,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 16.0,
+          "per_row_pct": 22.9,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 4.0,
+          "per_row_pct": 4.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "gemini-3-flash",
+      "company": "Google",
+      "type": "closed",
+      "launch_date": "2025-09-01",
+      "run_date": "2026-07-23",
+      "baseline": false,
+      "thinking_off": false,
+      "output_cap": 65536,
+      "efficiency_shown": true,
+      "gen_tokens_median": 43857,
+      "overall": {
+        "exact_pct": 5.0,
+        "per_row_pct": 16.0,
+        "efficiency": 0.0143,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 16.0,
+          "per_row_pct": 25.1,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 4.0,
+          "per_row_pct": 11.4,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
       "name": "minimax-m2.1",
       "company": "MiniMax",
       "type": "open",
@@ -332,9 +554,14 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 24083,
       "overall": {
         "exact_pct": 4.0,
-        "per_row_pct": 13.5
+        "per_row_pct": 13.5,
+        "efficiency": 0.015,
+        "resilience_pct": 95.0
       },
       "tasks": {
         "LIFE": {
@@ -375,9 +602,14 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 47304,
       "overall": {
         "exact_pct": 9.0,
-        "per_row_pct": 12.8
+        "per_row_pct": 12.8,
+        "efficiency": 0.0113,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -418,9 +650,14 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": false,
+      "gen_tokens_median": 35333,
       "overall": {
         "exact_pct": 4.0,
-        "per_row_pct": 9.0
+        "per_row_pct": 9.0,
+        "efficiency": 0.0104,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -454,6 +691,54 @@
       }
     },
     {
+      "name": "gemini-2.5-flash",
+      "company": "Google",
+      "type": "closed",
+      "launch_date": "2025-05-20",
+      "run_date": "2026-07-23",
+      "baseline": false,
+      "thinking_off": false,
+      "output_cap": 65536,
+      "efficiency_shown": false,
+      "gen_tokens_median": 4844,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 7.5,
+        "efficiency": 0.0367,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 14.3,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 2.9,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
       "name": "qwen3-235b",
       "company": "Alibaba",
       "type": "open",
@@ -461,9 +746,14 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": false,
+      "gen_tokens_median": 4938,
       "overall": {
         "exact_pct": 0.0,
-        "per_row_pct": 6.8
+        "per_row_pct": 6.8,
+        "efficiency": 0.0487,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -504,9 +794,14 @@
       "run_date": "2026-07-17",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": false,
+      "gen_tokens_median": 84,
       "overall": {
         "exact_pct": 0.0,
-        "per_row_pct": 4.5
+        "per_row_pct": 4.5,
+        "efficiency": 0.0272,
+        "resilience_pct": 99.0
       },
       "tasks": {
         "LIFE": {
@@ -547,9 +842,14 @@
       "run_date": "2026-07-17",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": false,
+      "gen_tokens_median": 811,
       "overall": {
         "exact_pct": 1.0,
-        "per_row_pct": 3.5
+        "per_row_pct": 3.5,
+        "efficiency": 0.2032,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -583,6 +883,54 @@
       }
     },
     {
+      "name": "gemini-2.5-pro",
+      "company": "Google",
+      "type": "closed",
+      "launch_date": "2025-03-25",
+      "run_date": "2026-07-23",
+      "baseline": false,
+      "thinking_off": false,
+      "output_cap": 65536,
+      "efficiency_shown": false,
+      "gen_tokens_median": 13917,
+      "overall": {
+        "exact_pct": 0.0,
+        "per_row_pct": 2.5,
+        "efficiency": 0.0069,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 0.0,
+          "per_row_pct": 5.1,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.6,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 0.0,
+          "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
       "name": "glm-4.7-flash-bedrock",
       "company": "Z.ai",
       "type": "open",
@@ -590,9 +938,14 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": false,
+      "output_cap": 96000,
+      "efficiency_shown": false,
+      "gen_tokens_median": 56,
       "overall": {
         "exact_pct": 0.0,
-        "per_row_pct": 0.8
+        "per_row_pct": 0.8,
+        "efficiency": 0.2092,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
@@ -635,9 +988,14 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": true,
+      "output_cap": 96000,
+      "efficiency_shown": false,
+      "gen_tokens_median": 201,
       "overall": {
         "exact_pct": 0.0,
-        "per_row_pct": 4.0
+        "per_row_pct": 4.0,
+        "efficiency": 0.381,
+        "resilience_pct": 100.0
       },
       "tasks": {
         "LIFE": {
