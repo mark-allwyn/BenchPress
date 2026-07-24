@@ -403,7 +403,7 @@ const TASK = {
   ECA30:    {fam:"1D row", rule:"Rule 30",
     body:"The same single-row setup and 35 steps, using a different table (\"Rule 30\") whose output looks random. The model reports the final row."},
 };
-const state = {metric:"exact_pct", filter:"all", sort:"exact_pct", dir:-1, data:null};
+const state = {metric:"exact_pct", filter:"all", sort:"overall", dir:-1, data:null};
 const $ = s => document.querySelector(s);
 const pct = v => v==null ? "—" : (Math.round(v*10)/10).toFixed(1);
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -469,7 +469,9 @@ function render(){
       <td class="model"><span class="mname"><b>${disp}</b>${tag}${offtag}${capchip}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
       ${cell({...m.overall,truncated:trunc},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}${effCell(m)}</tr>`;
   }).join(""):`<tr><td colspan="${order.length+4}" class="empty">No models match this filter.</td></tr>`;
-  $("#cap").innerHTML=`Sorted by <b>${state.sort==="name"?"name":state.sort}</b> · <b>${state.metric==="per_row_pct"?"per-row accuracy":"exact match"}</b>. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger;N in Overall = N responses that hit the token budget before finishing (counted as not correct). <b>Eff</b> = correct rows per 1k generated tokens (shown for models above 10% per-row; see the frontier below). All ranked models run thinking-on.`;
+  const metricName=state.metric==="per_row_pct"?"per-row accuracy":"exact match";
+  const sortLabel=state.sort==="name"?"name":state.sort==="overall"?metricName:state.sort==="efficiency"?"efficiency":state.sort;
+  $("#cap").innerHTML=`Sorted by <b>${sortLabel}</b>, highest first (ties broken by per-row). Headline metric: <b>${metricName}</b> - switch it above. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger;N in Overall = N responses that hit the token budget before finishing (counted as not correct). <b>Eff</b> = correct rows per 1k generated tokens (shown for models above 10% per-row; see the chart below). All ranked models run thinking-on.`;
 }
 
 /* ── cost-vs-payoff: tokens spent (left) against accuracy earned (right) ── */
