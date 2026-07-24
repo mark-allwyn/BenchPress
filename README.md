@@ -111,12 +111,12 @@ Their gold answers are never stored in this repository. They are recomputed at r
 Each item's answer is a grid written as labelled rows (`ROW1: ...`, `ROW2: ...`).
 Every item produces two numbers, and the leaderboard shows both.
 
-**Exact match** is all-or-nothing: an item counts only if **every** row is correct.
-It is the fraction of grids the model got completely right, and it is the leaderboard's default headline number.
-
 **Per-row accuracy** is the fraction of individual rows the model got right, across all items.
 It gives partial credit: get 5 of a Life grid's 7 rows right and that item contributes 5/7, even if the grid as a whole is wrong.
-It is the graded, lower-variance, non-saturating secondary metric, useful because it keeps discriminating when no model gets a full grid.
+It is the graded, lower-variance, non-saturating metric, and it is the leaderboard's **default headline** - it keeps discriminating even when no model gets a full grid.
+
+**Exact match** is all-or-nothing: an item counts only if **every** row is correct.
+It is the fraction of grids the model got completely right - the stricter, higher-variance view, shown as the secondary number and one toggle away.
 
 On the leaderboard, each task cell shows both numbers (toggle which one is the large headline); on the ECA tasks they are identical.
 
