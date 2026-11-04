@@ -1,7 +1,7 @@
 {
   "benchmark": "Benchpress-Simulate",
   "version": "v2",
-  "generated": "2026-07-23",
+  "generated": "2026-11-04",
   "tasks": [
     "LIFE",
     "DAYNIGHT",
@@ -74,6 +74,7 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 40165,
@@ -122,6 +123,7 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 36813,
@@ -170,6 +172,7 @@
       "run_date": "2026-07-17",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 31408,
@@ -218,6 +221,7 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 51448,
@@ -266,6 +270,7 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 72482,
@@ -314,6 +319,7 @@
       "run_date": "2026-07-21",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 63903,
@@ -362,6 +368,7 @@
       "run_date": "2026-07-23",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 65536,
       "efficiency_shown": true,
       "gen_tokens_median": 38191,
@@ -410,6 +417,7 @@
       "run_date": "2026-07-23",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 65536,
       "efficiency_shown": true,
       "gen_tokens_median": 51296,
@@ -458,6 +466,7 @@
       "run_date": "2026-07-23",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 65536,
       "efficiency_shown": true,
       "gen_tokens_median": 41348,
@@ -506,6 +515,7 @@
       "run_date": "2026-07-23",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 65536,
       "efficiency_shown": true,
       "gen_tokens_median": 43857,
@@ -554,6 +564,7 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 24083,
@@ -602,6 +613,7 @@
       "run_date": "2026-07-20",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": true,
       "gen_tokens_median": 47304,
@@ -650,6 +662,7 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": false,
       "gen_tokens_median": 35333,
@@ -698,6 +711,7 @@
       "run_date": "2026-07-23",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 65536,
       "efficiency_shown": false,
       "gen_tokens_median": 4844,
@@ -746,6 +760,7 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": false,
       "gen_tokens_median": 4938,
@@ -794,6 +809,7 @@
       "run_date": "2026-07-17",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": false,
       "gen_tokens_median": 84,
@@ -842,6 +858,7 @@
       "run_date": "2026-07-17",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": false,
       "gen_tokens_median": 811,
@@ -890,6 +907,7 @@
       "run_date": "2026-07-23",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 65536,
       "efficiency_shown": false,
       "gen_tokens_median": 13917,
@@ -938,6 +956,7 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": false,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": false,
       "gen_tokens_median": 56,
@@ -988,6 +1007,7 @@
       "run_date": "2026-07-16",
       "baseline": false,
       "thinking_off": true,
+      "harness": "api",
       "output_cap": 96000,
       "efficiency_shown": false,
       "gen_tokens_median": 201,
@@ -1022,6 +1042,106 @@
         "ECA30": {
           "exact_pct": 0.0,
           "per_row_pct": 0.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    }
+  ],
+  "claude_code": [
+    {
+      "name": "claude-opus-5.5-cc",
+      "company": "Anthropic",
+      "type": "closed",
+      "launch_date": null,
+      "run_date": "2026-11-04",
+      "baseline": false,
+      "thinking_off": false,
+      "harness": "claude-code",
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 13880,
+      "overall": {
+        "exact_pct": 64.0,
+        "per_row_pct": 72.5,
+        "efficiency": 0.2102,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 88.0,
+          "per_row_pct": 88.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 48.0,
+          "per_row_pct": 60.6,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 52.0,
+          "per_row_pct": 52.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 68.0,
+          "per_row_pct": 68.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        }
+      }
+    },
+    {
+      "name": "claude-opus-4.6-cc",
+      "company": "Anthropic",
+      "type": "closed",
+      "launch_date": null,
+      "run_date": "2026-11-04",
+      "baseline": false,
+      "thinking_off": false,
+      "harness": "claude-code",
+      "output_cap": 96000,
+      "efficiency_shown": true,
+      "gen_tokens_median": 33821,
+      "overall": {
+        "exact_pct": 50.0,
+        "per_row_pct": 67.5,
+        "efficiency": 0.0725,
+        "resilience_pct": 100.0
+      },
+      "tasks": {
+        "LIFE": {
+          "exact_pct": 60.0,
+          "per_row_pct": 69.7,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "DAYNIGHT": {
+          "exact_pct": 72.0,
+          "per_row_pct": 74.9,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA110": {
+          "exact_pct": 32.0,
+          "per_row_pct": 32.0,
+          "n": 25,
+          "truncated": 0,
+          "errors": 0
+        },
+        "ECA30": {
+          "exact_pct": 36.0,
+          "per_row_pct": 36.0,
           "n": 25,
           "truncated": 0,
           "errors": 0

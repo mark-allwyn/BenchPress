@@ -7,15 +7,23 @@ import os
 from benchpress.providers.anthropic import AnthropicProvider
 from benchpress.providers.base import CompletionResult, Provider
 from benchpress.providers.bedrock import BedrockProvider
+from benchpress.providers.claude_code import ClaudeCodeProvider
 from benchpress.providers.cohere import CohereProvider
 from benchpress.providers.google import GoogleProvider
 from benchpress.providers.ollama import OllamaProvider
 from benchpress.providers.openai import OpenAIProvider
 
 __all__ = [
-    "CompletionResult", "Provider", "get_provider",
-    "AnthropicProvider", "OpenAIProvider", "GoogleProvider",
-    "OllamaProvider", "CohereProvider", "BedrockProvider",
+    "AnthropicProvider",
+    "BedrockProvider",
+    "ClaudeCodeProvider",
+    "CohereProvider",
+    "CompletionResult",
+    "GoogleProvider",
+    "OllamaProvider",
+    "OpenAIProvider",
+    "Provider",
+    "get_provider",
 ]
 
 
@@ -55,6 +63,8 @@ def get_provider(spec: dict) -> Provider:
                               max_tokens=max_tokens, timeout=timeout)
     if provider == "cohere":
         return CohereProvider(model, _key(spec), max_tokens=max_tokens, timeout=timeout)
+    if provider == "claude_code":
+        return ClaudeCodeProvider(model, max_tokens=max_tokens, effort=effort, timeout=timeout)
     if provider == "bedrock":
         kw = {}
         if max_tokens is not None:

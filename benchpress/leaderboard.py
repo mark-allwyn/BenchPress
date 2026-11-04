@@ -10,7 +10,7 @@ anchor row, so the dashboard has data before any fresh run.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from benchpress.frozen import load_frozen
@@ -59,6 +59,7 @@ def _baseline_entry(frozen: dict) -> dict | None:
         "launch_date": "2026-05-28",
         "run_date": base.get("measured_date"),
         "baseline": True,
+        "harness": "api",
         "output_cap": frozen.get("official_run_config", {}).get("max_tokens"),
         "efficiency_shown": False,   # manifest baseline publishes no token counts
         "gen_tokens_median": None,
@@ -74,6 +75,16 @@ def _thinking_off(data: dict) -> bool:
         if runs and (runs[-1].get("native_config") or {}).get("thinking_downgraded"):
             return True
     return False
+
+
+def _harness(data: dict) -> str:
+    """How the model was called: "claude-code" when responses went through the
+    Claude Code CLI on a claude.ai subscription (native_config.harness), else "api"
+    (a direct vendor API or Bedrock call)."""
+    for runs in data.get("runs", {}).values():
+        if runs and (runs[-1].get("native_config") or {}).get("harness") == "claude-code-cli":
+            return "claude-code"
+    return "api"
 
 
 def _median(xs: list[int]) -> int | None:
@@ -111,7 +122,8 @@ def _efficiency_metrics(data: dict, results, meta: dict, budget_default: int | N
 
 
 def _model_entry(name: str, summary: dict, meta: dict, run_date: str | None,
-                 thinking_off: bool = False, eff: dict | None = None) -> dict:
+                 thinking_off: bool = False, eff: dict | None = None,
+                 harness: str = "api") -> dict:
     eff = eff or {}
     return {
         "name": name,
@@ -121,6 +133,7 @@ def _model_entry(name: str, summary: dict, meta: dict, run_date: str | None,
         "run_date": run_date,
         "baseline": False,
         "thinking_off": thinking_off,
+        "harness": harness,
         "output_cap": eff.get("output_cap"),
         "efficiency_shown": eff.get("efficiency_shown", False),
         "gen_tokens_median": eff.get("gen_tokens_median"),
@@ -175,7 +188,8 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
         budget = frozen.get("official_run_config", {}).get("max_tokens")
         eff = _efficiency_metrics(data, results, meta, budget, summary)
         entry = _model_entry(name, summary, meta, _last_run_date(data),
-                             thinking_off=_thinking_off(data), eff=eff)
+                             thinking_off=_thinking_off(data), eff=eff,
+                             harness=_harness(data))
         # A real run supersedes the static baseline row for the same model.
         entries = [e for e in entries if e["name"] != name]
         seen.discard(name)
@@ -186,14 +200,19 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
     # The ranked board is thinking-on models only (like-for-like). Models with no
     # extended-thinking mode are demoted to a separate "floor" list - kept as a
     # control (they show the task needs reasoning) but never ranked.
-    ranked = [e for e in entries if not e.get("thinking_off")]
+    # Claude Code (subscription) runs are listed separately too: a harness control
+    # (Opus 4.6 run both ways on the same items) scored lower through Claude Code,
+    # so they are comparable with each other but not with direct-API runs.
+    ranked = [e for e in entries if not e.get("thinking_off") and e["harness"] == "api"]
     floor = [e for e in entries if e.get("thinking_off")]
+    claude_code = [e for e in entries
+                   if not e.get("thinking_off") and e["harness"] == "claude-code"]
 
     cfg = frozen.get("official_run_config", {})
     return {
         "benchmark": frozen.get("benchmark", benchmark),
         "version": frozen.get("version", ""),
-        "generated": now or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "generated": now or datetime.now(UTC).strftime("%Y-%m-%d"),
         "tasks": bundles,
         "config": {
             "seed": cfg.get("seed"),
@@ -205,4 +224,5 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
         "task_meta": frozen.get("tasks", {}),
         "models": ranked,
         "floor": floor,
+        "claude_code": claude_code,
     }
