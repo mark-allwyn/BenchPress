@@ -3,13 +3,13 @@ anchor, and real runs superseding the baseline row."""
 
 import json
 
-import benchpress.modules.simulate  # noqa: F401  (register module)
+import benchpress.modules.simulate
 import benchpress.scorers  # noqa: F401  (register part-scorers)
 from benchpress.core import registry
 from benchpress.frozen import load_frozen
 from benchpress.leaderboard import build_leaderboard
-from benchpress.runner import persist, run_model, score_model
 from benchpress.providers.base import CompletionResult
+from benchpress.runner import run_model, score_model
 
 
 def _frozen_items():
@@ -95,3 +95,33 @@ def test_models_sorted_by_per_row_desc(tmp_path):
     board = build_leaderboard("simulate", items, [path], {}, now="2026-07-16")
     prs = [m["overall"]["per_row_pct"] for m in board["models"]]
     assert prs == sorted(prs, reverse=True)
+
+
+class _HarnessProvider(_GoldProvider):
+    """Gold answers, tagged with the native_config a given provider would record."""
+
+    def __init__(self, items, native_config):
+        super().__init__(items)
+        self.native_config = native_config
+
+    def complete(self, prompt):
+        r = super().complete(prompt)
+        r.native_config = self.native_config
+        return r
+
+
+def test_harness_is_api_or_claude_code(tmp_path):
+    items = _frozen_items()
+    api, cc = tmp_path / "api-model.json", tmp_path / "cc-model.json"
+    for path, cfg in ((api, {"thinking": "adaptive", "effort": "high"}),
+                      (cc, {"harness": "claude-code-cli", "thinking": "adaptive"})):
+        run_model(_HarnessProvider(items, cfg), items, path, model_name=path.stem,
+                  benchmark="simulate", version="1")
+        score_model(items, path)
+    board = build_leaderboard("simulate", items, [api, cc], {}, now="2026-07-16")
+    ranked = {m["name"]: m["harness"] for m in board["models"]}
+    assert ranked == {"api-model": "api", "claude-opus-4.8": "api"}  # baseline ran on Bedrock
+    # A harness-control run showed Claude Code scores the same model lower, so its
+    # runs are listed separately and never ranked against direct-API runs.
+    assert [(m["name"], m["harness"]) for m in board["claude_code"]] == [
+        ("cc-model", "claude-code")]
