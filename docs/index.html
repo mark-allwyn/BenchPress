@@ -169,7 +169,6 @@
   .capt{font-family:var(--mono); color:var(--bone-3); font-size:.72rem; margin-top:18px; letter-spacing:.01em; line-height:1.75; max-width:88ch}
   .capt b{color:var(--bone-2); font-weight:600}
   .tag.cap{border-color:var(--acc); color:var(--acc); cursor:help}
-  .tag.cc{border-color:var(--bone-3); color:var(--bone-2); cursor:help}
   .val.gate{color:var(--bone-3); font-weight:400; font-size:1rem; cursor:help}
 
   /* pinned identity columns so the row stays readable while score columns scroll */
@@ -328,12 +327,6 @@
     <p class="capt" id="cap"></p>
     <p class="capt" id="floornote"></p>
 
-    <div id="ccsec" hidden>
-      <div class="effhead"><h3 id="claude-code">Claude Code runs (subscription)</h3><span class="note">separate harness · not ranked against the board above</span></div>
-      <p class="lead">These models ran through the <b>Claude Code CLI on a claude.ai subscription</b> instead of a direct API call: the same frozen questions and byte-exact scoring, tools off, adaptive thinking at high effort, and the same 96k budget. Claude Code still wraps each question in a short preamble of its own, so we measured the harness before trusting it: <b>Opus 4.6 run both ways on the identical 100 items scored 50% exact / 67.5% per-row through Claude Code versus 67% / 78.8% through Bedrock</b> (paired McNemar test, p&nbsp;&asymp;&nbsp;0.016). The harness costs accuracy, so scores here are comparable <b>with each other</b> but are <b>not</b> ranked against the API board above, and a model's score here likely understates what it would get through the API.</p>
-      <div class="board"><table><thead><tr id="cchead"></tr></thead><tbody id="ccrows"></tbody></table></div>
-    </div>
-
     <div class="effhead"><h3 id="efficiency">What you pay vs what you get</h3><span class="note">reasoning cost against accuracy</span></div>
     <p class="lead">Accuracy is only half the picture - it matters how many tokens a model <em>spends</em> to get there. Each row pairs the two: on the left, the median tokens it generates per item (thinking + answer - the cost); on the right, the per-row accuracy it earns (the payoff). A model with a <b>short left bar and a long right bar</b> is efficient - lots of accuracy for little reasoning. A <b>long left bar and a short right bar</b> is wasteful. Whether a model actually <em>finishes</em> within the budget shows up as a &dagger; truncation flag in the Overall column above; on the 96k budget almost every model finishes, so it only marks the most verbose reasoners. <span id="capnote"></span></p>
     <div class="cvp"><div class="cgrid" id="cvp"></div></div>
@@ -461,36 +454,26 @@ function effCell(m){
     return `<td><span class="val" title="${e.toFixed(3)} correct rows per 1,000 generated tokens (thinking + answer, pooled). Higher = more economical reasoning.">${e.toFixed(3)}</span></td>`;
   return `<td><span class="val gate" title="Efficiency hidden: per-row accuracy is below the 10% floor, so a rows-per-token ratio would be misleadingly high. See the frontier chart, which plots every model.">—</span></td>`;
 }
-function rowHtml(m,i,order,budget){
-    const tag=m.baseline?`<span class="tag base">baseline</span>`:(m.type?`<span class="tag">${m.type}</span>`:"");
-    const offtag=m.thinking_off?`<span class="tag off" title="Model has no extended-thinking mode; ran thinking-off, so not directly comparable to the thinking-on models">no thinking</span>`:"";
-    const capchip=(m.output_cap&&budget&&m.output_cap<budget)?`<span class="tag cap" title="This model's API hard-caps a single response at ${Math.round(m.output_cap/1024)}k tokens, below the ${Math.round(budget/1000)}k benchmark budget. On the hardest items its thinking can fill the budget before it answers, so it truncates. Affects comparability only for truncation-heavy models.">${Math.round(m.output_cap/1024)}k cap</span>`:"";
-    const ccchip=m.harness==="claude-code"?`<span class="tag cc" title="Run through the Claude Code CLI on a claude.ai subscription rather than a direct API call. Same frozen questions and scoring, tools off, adaptive thinking at high effort, 96k budget. Claude Code adds a short (~700-token) preamble of its own. A harness control found it scores lower than a direct API call, so these runs are listed separately.">Claude Code</span>`:"";
-    const disp=m.name.replace(/-(bedrock|cc)$/,"");
-    const meta=[m.company,m.launch_date].filter(Boolean).join(" · ");
-    const trunc=order.reduce((s,k)=>s+((m.tasks[k]||{}).truncated||0),0);
-    return `<tr class="${i===0?'top':''}" style="animation-delay:${i*30}ms">
-      <td class="rank">${String(i+1).padStart(2,"0")}</td>
-      <td class="model"><span class="mname"><b>${disp}</b>${tag}${offtag}${capchip}${ccchip}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
-      ${cell({...m.overall,truncated:trunc},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}${effCell(m)}</tr>`;
-}
-function renderCC(order,budget){
-  const cc=(state.data.claude_code||[]).slice().sort((a,b)=>(b.overall[state.metric]??-1)-(a.overall[state.metric]??-1));
-  $("#ccsec").hidden=!cc.length; if(!cc.length)return;
-  $("#cchead").innerHTML=`<th class="lft">#</th><th class="lft">Model</th><th>Overall<span class="rn">per-row · exact</span></th>`+
-    order.map(k=>`<th>${k}<span class="rn">${TASK_SUB[k]||""}</span></th>`).join("")+`<th>Eff<span class="rn">rows / 1k tok</span></th>`;
-  $("#ccrows").innerHTML=cc.map((m,i)=>rowHtml(m,i,order,budget)).join("");
-}
 function render(){
   const d=state.data,order=d.tasks,budget=d.config&&d.config.max_tokens;
   let rows=d.models.filter(m=>state.filter==="all"||m.type===state.filter);
   rows.sort((a,b)=>{const av=scoreOf(a,state.sort),bv=scoreOf(b,state.sort);
     return typeof av==="string"?state.dir*av.localeCompare(bv):state.dir*(((av??-1)-(bv??-1)));});
   head(order);
-  $("#rows").innerHTML=rows.length?rows.map((m,i)=>rowHtml(m,i,order,budget)).join(""):`<tr><td colspan="${order.length+4}" class="empty">No models match this filter.</td></tr>`;
+  $("#rows").innerHTML=rows.length?rows.map((m,i)=>{
+    const tag=m.baseline?`<span class="tag base">baseline</span>`:(m.type?`<span class="tag">${m.type}</span>`:"");
+    const offtag=m.thinking_off?`<span class="tag off" title="Model has no extended-thinking mode; ran thinking-off, so not directly comparable to the thinking-on models">no thinking</span>`:"";
+    const capchip=(m.output_cap&&budget&&m.output_cap<budget)?`<span class="tag cap" title="This model's API hard-caps a single response at ${Math.round(m.output_cap/1024)}k tokens, below the ${Math.round(budget/1000)}k benchmark budget. On the hardest items its thinking can fill the budget before it answers, so it truncates. Affects comparability only for truncation-heavy models.">${Math.round(m.output_cap/1024)}k cap</span>`:"";
+    const disp=m.name.replace(/-bedrock$/,"");
+    const meta=[m.company,m.launch_date].filter(Boolean).join(" · ");
+    const trunc=order.reduce((s,k)=>s+((m.tasks[k]||{}).truncated||0),0);
+    return `<tr class="${i===0?'top':''}" style="animation-delay:${i*30}ms">
+      <td class="rank">${String(i+1).padStart(2,"0")}</td>
+      <td class="model"><span class="mname"><b>${disp}</b>${tag}${offtag}${capchip}</span>${meta?`<div class="mmeta">${meta}${m.run_date?` · run ${m.run_date}`:""}</div>`:""}</td>
+      ${cell({...m.overall,truncated:trunc},true)}${order.map(k=>cell(m.tasks[k],false)).join("")}${effCell(m)}</tr>`;
+  }).join(""):`<tr><td colspan="${order.length+4}" class="empty">No models match this filter.</td></tr>`;
   const metricName=state.metric==="per_row_pct"?"per-row accuracy":"exact match";
   const sortLabel=state.sort==="name"?"name":state.sort==="overall"?metricName:state.sort==="efficiency"?"efficiency":state.sort;
-  renderCC(order,budget);
   $("#cap").innerHTML=`Sorted by <b>${sortLabel}</b>, highest first (ties broken by per-row). Headline metric: <b>${metricName}</b> - switch it above. Per-row = fraction of output rows correct; exact = every row of the grid correct. &dagger;N in Overall = N responses that hit the token budget before finishing (counted as not correct). <b>Eff</b> = correct rows per 1k generated tokens (shown for models above 10% per-row; see the chart below). All ranked models run thinking-on.`;
 }
 

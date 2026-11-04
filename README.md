@@ -190,32 +190,6 @@ Findings that stand out:
 2. **Newer is not always better.** Opus 4.6 (67% exact) beats Opus 4.8 (58%) and Opus 4.7 (49%); Sonnet 4.6 (67%) beats Sonnet 5 (47%). The same holds inside Google: gemini-3.5-flash (17%) beats the newer gemini-3.6-flash (7%), and gemini-2.5-pro floors while gemini-2.5-flash does not. Opus 4.6's LIFE result reproduced across two runs (92% then 88%), so this is a genuine long-horizon regression, not sampling noise.
 3. **Efficiency is a separate axis from accuracy.** Opus 4.7/4.6 reason most economically; Sonnet 4.6 is the least efficient performer (0.029), spending ~72k tokens/item for mid-pack accuracy. See the cost-vs-payoff chart on the dashboard.
 
-### Claude Code runs (subscription) - a separate, unranked harness
-
-Some Claude models are also run through the **Claude Code CLI on a claude.ai subscription** (`provider: claude_code`) instead of a direct API call.
-These runs use the same frozen questions, the same byte-exact scoring, tools off, adaptive thinking at high effort, and the same 96k budget.
-They are **not ranked against the table above**, and the dashboard shows them in their own section with a `Claude Code` chip.
-
-The reason is a measured harness effect, not a precaution.
-Claude Code wraps every question in a short preamble of its own (~700 tokens), so before trusting it we ran a control: the same model, Opus 4.6, through both harnesses on the identical 100 items.
-
-| Opus 4.6 | LIFE | DAYNIGHT | ECA110 | ECA30 | Overall exact | Overall per-row |
-|---|--:|--:|--:|--:|--:|--:|
-| Bedrock (API) | 88% | 72% | 44% | 64% | **67%** | **78.8%** |
-| Claude Code (subscription) | 60% | 72% | 32% | 36% | **50%** | **67.5%** |
-
-Item by item, Bedrock solved 31 items that Claude Code missed, and Claude Code solved 14 that Bedrock missed (paired McNemar test, p ≈ 0.016).
-The harness costs accuracy, so a Claude Code score is comparable **with other Claude Code scores** but not with the API board, and it most likely understates what the same model would score through the API.
-
-| # | Model (Claude Code harness) | Per-row | Exact | Eff (rows/1k) |
-|---|-------|--------:|------:|--------------:|
-| 1 | Claude Opus 5.5 | 72.5% | 64% | 0.210 |
-| 2 | Claude Opus 4.6 (harness control) | 67.5% | 50% | 0.072 |
-
-On the like-for-like Claude Code harness, Opus 5.5 beats Opus 4.6 overall (72.5% vs 67.5% per-row, 64% vs 50% exact).
-It is far stronger on LIFE (88% vs 60% exact) and on the 1D tasks, and weaker on DAYNIGHT (48% vs 72% exact).
-It also reasons much more economically, at a median of ~14k generated tokens per item against ~34k for Opus 4.6 on the same harness.
-
 ## Quickstart
 
 ```bash
@@ -256,7 +230,7 @@ Add an entry to `config.yaml` and point `--model` at it.
 ```yaml
 models:
   my-model:
-    provider: openai        # anthropic | bedrock | claude_code | openai | openai_compatible | google | cohere | ollama
+    provider: openai        # anthropic | bedrock | openai | openai_compatible | google | cohere | ollama
     model: the-model-string
     company: Vendor
     type: closed            # open | closed
@@ -264,13 +238,6 @@ models:
 ```
 
 Claude can run either via a direct Anthropic key (`provider: anthropic`) or via AWS Bedrock (`provider: bedrock`), against the identical frozen questions.
-
-Claude can also run on a claude.ai subscription with no API key, through the local Claude Code CLI (`provider: claude_code`).
-This needs `claude` on your `PATH` and logged in with your claude.ai account (`claude auth status` should report `authMethod: claude.ai`).
-Each item is one fresh `claude -p` call with every tool disabled, a minimal system prompt, your CLAUDE.md, skills, plugins, hooks and MCP servers skipped, and adaptive thinking at the frozen effort and budget.
-Any `ANTHROPIC_API_KEY` in the environment is stripped, so these runs always use the subscription.
-If the plan's usage limit is hit mid-run, the affected items are recorded as errors; re-run the same command after the limit resets and only those items are retried.
-Results from this harness are reported separately; see [Claude Code runs](#claude-code-runs-subscription---a-separate-unranked-harness) for why.
 See [`config.example.yaml`](config.example.yaml) for one entry per provider.
 
 To support a new backend, add an adapter under `benchpress/providers/` implementing `complete(prompt) -> CompletionResult` and register it in `get_provider`.
@@ -328,7 +295,7 @@ benchpress/
   frozen.py                  loads a benchmark's frozen manifest + official run-config
   leaderboard.py             builds the score-only public leaderboard payload
   modules/simulate/          the Simulate benchmark (sim.py, generators, frozen_v1.json + frozen_v2.json)
-  providers/                 vendor adapters (anthropic, bedrock, claude_code, openai, google, cohere, ollama)
+  providers/                 vendor adapters (anthropic, bedrock, openai, google, cohere, ollama)
   runner/                    run / score / summary / persistence (atomic, resume-by-content)
   scorers/                   part scorers (categorical, numeric, set, sequence, edge-list)
   stats/                     accuracy, bootstrap CIs, item analysis, contamination audit

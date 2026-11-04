@@ -7,7 +7,7 @@
 # model's identity and how to reach it - never the run budget.
 #
 # Fields:
-#   provider    anthropic | bedrock | claude_code | openai | openai_compatible | google | cohere | ollama
+#   provider    anthropic | bedrock | openai | openai_compatible | google | cohere | ollama
 #   model       the vendor's model string
 #   company     display name (shown on the dashboard)
 #   type        open | closed  (open-weight vs proprietary)
@@ -54,15 +54,6 @@ models:
     provider: bedrock
     model: eu.anthropic.claude-opus-4-8
     region: eu-central-1
-    company: Anthropic
-    type: closed
-
-  # ── Anthropic via the Claude Code CLI on a claude.ai subscription (no API key) ──
-  # Requires `claude` on PATH and logged in (`claude auth status` -> authMethod claude.ai).
-  # Any ANTHROPIC_API_KEY is stripped, so runs always bill to the subscription.
-  claude-opus-5.5-cc:
-    provider: claude_code
-    model: claude-opus-5-5
     company: Anthropic
     type: closed
 
