@@ -115,3 +115,15 @@ def test_factory_threads_frozen_params():
     assert p.native_config["max_tokens"] == 96000
     assert p.native_config["effort"] == "high"
     assert p.timeout == 1800
+
+
+def test_subscription_usage_limit_fails_fast_without_retries():
+    # A plan usage limit resets in hours, so backoff retries only burn time; the
+    # item is recorded as an error and picked up by the next resume sweep.
+    capped = _ok_payload(is_error=True, subtype="success", api_error_status=429,
+                         result="You've hit your 5-hour limit · resets 5pm (Europe/London)",
+                         stop_reason=None)
+    runner = _Runner((json.dumps(capped), 1))
+    r = _provider(runner).complete("x")
+    assert r.content == "" and "hit your 5-hour limit" in r.error
+    assert len(runner.calls) == 1

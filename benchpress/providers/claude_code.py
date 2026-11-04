@@ -27,6 +27,7 @@ from benchpress.providers.errors import sanitize_error
 SYSTEM_PROMPT = "You are a helpful assistant."
 _STRIPPED_ENV = ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")
 _RETRYABLE_STATUS = {429, 500, 502, 503, 504, 529}
+_USAGE_LIMIT = "hit your"  # e.g. "You've hit your 5-hour limit · resets 5pm"
 
 
 class ClaudeCodeProvider(Provider):
@@ -99,7 +100,11 @@ class ClaudeCodeProvider(Provider):
                     return self._parse(data, start)
 
                 status = data.get("api_error_status")
-                if status in _RETRYABLE_STATUS and attempt < self.max_retries:
+                # A subscription usage limit resets in hours, not seconds: fail fast and
+                # leave the item for the next resume sweep instead of sleeping on it.
+                usage_limited = _USAGE_LIMIT in str(data.get("result") or "")
+                if status in _RETRYABLE_STATUS and not usage_limited \
+                        and attempt < self.max_retries:
                     time.sleep(self.backoff_base * (2 ** attempt))
                     attempt += 1
                     continue
