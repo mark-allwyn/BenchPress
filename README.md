@@ -10,14 +10,14 @@
 Faithfully run a machine for N steps, then report the exact final state.
 No shortcut exists, one wrong step corrupts the rest, and the answer is scored by code, not a judge.
 
-[![tests](https://github.com/mark-allwyn/BenchPress/actions/workflows/tests.yml/badge.svg)](https://github.com/mark-allwyn/BenchPress/actions/workflows/tests.yml)
+[![tests](https://github.com/markstent/BenchPress/actions/workflows/tests.yml/badge.svg)](https://github.com/markstent/BenchPress/actions/workflows/tests.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![python](https://img.shields.io/badge/python-3.11%2B-3776ab.svg)](https://www.python.org)
-[![benchmark](https://img.shields.io/badge/benchmark-Simulate%20v2-d4472a.svg)](https://mark-allwyn.github.io/BenchPress/)
+[![benchmark](https://img.shields.io/badge/benchmark-Simulate%20v2-d4472a.svg)](https://markstent.github.io/BenchPress/)
 [![scoring](https://img.shields.io/badge/scoring-judge--free-2ea043.svg)](#how-scoring-works)
 [![eval](https://img.shields.io/badge/eval-tools--off-8957e5.svg)](#design-principles)
 
-[**Live leaderboard**](https://mark-allwyn.github.io/BenchPress/) · [Quickstart](#quickstart) · [The tasks](#the-tasks) · [Integrity](#contamination-and-integrity)
+[**Live leaderboard**](https://markstent.github.io/BenchPress/) · [Quickstart](#quickstart) · [The tasks](#the-tasks) · [Integrity](#contamination-and-integrity)
 
 </div>
 
@@ -156,7 +156,7 @@ Truncation is the flip side: a `⚑N` flag in the Overall column counts how many
 ## Results
 
 Simulate v2 (96k budget): 19 ranked (thinking-on) models plus a non-reasoning floor control.
-Ordered by per-row accuracy (the headline metric); the full sortable board is on the [live dashboard](https://mark-allwyn.github.io/BenchPress/).
+Ordered by per-row accuracy (the headline metric); the full sortable board is on the [live dashboard](https://markstent.github.io/BenchPress/).
 
 | # | Model | Vendor | Per-row | Exact | Eff (rows/1k) |
 |---|-------|--------|--------:|------:|--------------:|
@@ -193,7 +193,7 @@ Findings that stand out:
 ## Quickstart
 
 ```bash
-git clone https://github.com/mark-allwyn/BenchPress.git
+git clone https://github.com/markstent/BenchPress.git
 cd BenchPress
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -263,7 +263,7 @@ A model that memorised the canonical set scores well on seed 42 and poorly on th
 
 ## The dashboard
 
-The [live leaderboard](https://mark-allwyn.github.io/BenchPress/) is a static page under [`docs/`](docs/), served by GitHub Pages.
+The [live leaderboard](https://markstent.github.io/BenchPress/) is a static page under [`docs/`](docs/), served by GitHub Pages.
 It reads a score-only `docs/leaderboard.json` that contains numbers and model metadata only, never prompts, gold answers, or raw model output.
 
 To publish your own runs:
