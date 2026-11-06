@@ -10,7 +10,7 @@ anchor row, so the dashboard has data before any fresh run.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from benchpress.frozen import load_frozen
@@ -193,7 +193,7 @@ def build_leaderboard(benchmark: str, items, paths, models_meta: dict,
     return {
         "benchmark": frozen.get("benchmark", benchmark),
         "version": frozen.get("version", ""),
-        "generated": now or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "generated": now or datetime.now(UTC).strftime("%Y-%m-%d"),
         "tasks": bundles,
         "config": {
             "seed": cfg.get("seed"),

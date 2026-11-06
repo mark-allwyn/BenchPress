@@ -3,13 +3,13 @@ anchor, and real runs superseding the baseline row."""
 
 import json
 
-import benchpress.modules.simulate  # noqa: F401  (register module)
+import benchpress.modules.simulate
 import benchpress.scorers  # noqa: F401  (register part-scorers)
 from benchpress.core import registry
 from benchpress.frozen import load_frozen
 from benchpress.leaderboard import build_leaderboard
-from benchpress.runner import persist, run_model, score_model
 from benchpress.providers.base import CompletionResult
+from benchpress.runner import run_model, score_model
 
 
 def _frozen_items():

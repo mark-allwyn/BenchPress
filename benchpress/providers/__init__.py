@@ -13,9 +13,15 @@ from benchpress.providers.ollama import OllamaProvider
 from benchpress.providers.openai import OpenAIProvider
 
 __all__ = [
-    "CompletionResult", "Provider", "get_provider",
-    "AnthropicProvider", "OpenAIProvider", "GoogleProvider",
-    "OllamaProvider", "CohereProvider", "BedrockProvider",
+    "AnthropicProvider",
+    "BedrockProvider",
+    "CohereProvider",
+    "CompletionResult",
+    "GoogleProvider",
+    "OllamaProvider",
+    "OpenAIProvider",
+    "Provider",
+    "get_provider",
 ]
 
 
